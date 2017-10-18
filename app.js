@@ -24,6 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 
 app.get('/student', student.findAll);
+app.get('/student/:id', student.findOne);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
