@@ -30,7 +30,7 @@ router.findAll = function(req, res) {
 
         res.json(users);
     });
-}
+};
 
 router.findOne = function(req, res) {
 
@@ -41,7 +41,7 @@ router.findOne = function(req, res) {
         else
             res.json(user);
     });
-}
+};
 
 router.addStudent = function(req, res) {
 
@@ -66,7 +66,7 @@ router.addStudent = function(req, res) {
 
         res.json({ message: 'Student Added!', data: student });
     });
-}
+};
 
 router.deleteStudent = function(req, res) {
     var del_student = new Student();
@@ -76,7 +76,7 @@ router.deleteStudent = function(req, res) {
         else
             res.json({ message: 'Student Deleted!'});
     });
-}
+};
 
 router.editStudent = function(req, res) {
 
@@ -108,7 +108,7 @@ router.editStudent = function(req, res) {
             });
         }
     });
-}
+};
 
 router.editStudentPassword = function(req, res) {
 
@@ -144,6 +144,6 @@ router.editStudentPassword = function(req, res) {
             }
         }
     });
-}
+};
 
 module.exports = router;
