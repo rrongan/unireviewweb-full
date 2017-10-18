@@ -43,5 +43,30 @@ router.findOne = function(req, res) {
     });
 }
 
+router.addStudent = function(req, res) {
+
+    var student = new Student();
+
+    student.username = req.body.username;
+    student.password = req.body.password;
+    student.studentid = req.body.studentid;
+    student.name = req.body.name;
+    student.email = req.body.email;
+    student.dob = req.body.dob;
+    student.college.name = req.body.college.name;
+    student.college.course.name = req.body.college.course.name;
+    student.college.course.year = req.body.college.course.year;
+
+    console.log('Adding student: ' + JSON.stringify(student));
+
+    // Save the donation and check for errors
+    student.save(function(err) {
+        if (err)
+            res.send(err);
+
+        res.json({ message: 'Student Added!', data: student });
+    });
+}
+
 
 module.exports = router;
