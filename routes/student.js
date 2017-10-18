@@ -1,3 +1,4 @@
+var Student = require('../models/student');
 var express = require('express');
 
 var mongoose = require('mongoose');
@@ -11,6 +12,14 @@ db.on('error', function (err) {
 });
 db.once('open', function () {
     console.log('connected to database');
+});
+
+//added this in the hope of being able to interface from the command line
+var readline = require('readline');
+
+var rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
 });
 
 
