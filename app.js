@@ -28,6 +28,7 @@ app.get('/student/:id', student.findOne);
 app.post('/student', student.addStudent);
 app.delete('/student/:id', student.deleteStudent);
 app.put('/student/:id', student.editStudent);
+app.put('/student/:id/password', student.editStudentPassword);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
