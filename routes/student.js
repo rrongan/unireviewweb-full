@@ -32,5 +32,16 @@ router.findAll = function(req, res) {
     });
 }
 
+router.findOne = function(req, res) {
+
+    // Use the Students model to find a single user
+    Student.find({ "_id" : req.params.id },function(err, user) {
+        if (err)
+            res.json({ message: 'Student NOT Found!', errmsg : err } );
+        else
+            res.json(user);
+    });
+}
+
 
 module.exports = router;
