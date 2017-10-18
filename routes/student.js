@@ -68,5 +68,15 @@ router.addStudent = function(req, res) {
     });
 }
 
+router.deleteStudent = function(req, res) {
+    var del_student = new Student();
+    Student.findByIdAndRemove(req.params.id, function(err) {
+        if (err)
+            res.send(err);
+        else
+            res.json({ message: 'Student Deleted!'});
+    });
+}
+
 
 module.exports = router;
