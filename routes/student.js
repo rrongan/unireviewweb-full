@@ -22,5 +22,15 @@ var rl = readline.createInterface({
     output: process.stdout
 });
 
+router.findAll = function(req, res) {
+    // Use the Students model to find all donations
+    Student.find(function(err, users) {
+        if (err)
+            res.send(err);
+
+        res.json(users);
+    });
+}
+
 
 module.exports = router;
