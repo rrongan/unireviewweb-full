@@ -78,5 +78,36 @@ router.deleteStudent = function(req, res) {
     });
 }
 
+router.editStudent = function(req, res) {
+
+    var edit_student = Student;
+
+    //{"dob":"1995-08-23","name":"Yun Shen Tan", "email":"rrongan@gmail.com","username":"yunshen","college":{"name":"Waterford Institute of Technology","course":{"year":4,"name":"BSc (H) in Software System Development"}}}
+
+    edit_student.findById(req.params.id, function(err,student) {
+        if (err)
+            res.send(err);
+        else {
+            try {
+                student.username = req.body.username || student.username;
+                student.studentid = req.body.studentid || student.studentid;
+                student.name = req.body.name || student.name;
+                student.email = req.body.email || student.email;
+                student.dob = req.body.dob || student.dob;
+                student.college.name = req.body.college.name || student.college.name;
+                student.college.course.name = req.body.college.course.name || student.college.course.name;
+                student.college.course.year = req.body.college.course.year || student.college.course.year;
+            }catch (e){
+                console.log("Edit Student Error: ",e)
+            }
+            student.save(function (err) {
+                if (err)
+                    res.send(err);
+                else
+                    res.json({ message: 'Student Updated!', data: student });
+            });
+        }
+    });
+}
 
 module.exports = router;
