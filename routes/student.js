@@ -110,38 +110,4 @@ router.editStudent = function(req, res) {
     });
 }
 
-router.editStudentPassword = function(req, res) {
-
-    var edit_student_pass = Student;
-
-    edit_student_pass.findById(req.params.id, function(err,student) {
-        if (err)
-            res.send(err);
-        else {
-            try {
-                if(req.body.oldpassword === req.body.reenterpassword) {
-                    student.comparePassword(req.body.oldpassword, function(err, isMatch){
-                        if (err) throw err;
-                        if(isMatch){
-                            student.password = req.body.newpassword;
-                            student.save(function (err) {
-                                if (err)
-                                    res.send(err);
-                                else
-                                    res.json({ message: 'Student Password Updated!'});
-                            });
-                        }else{
-                            res.json({ message: 'Incorrect Password!'});
-                        }
-                    });
-                }else{
-                    res.json({ message: 'Password Not Match With Re-enter Password, Please Try Again!'});
-                }
-            }catch (e){
-                console.log("Edit Student Password Error: ",e)
-            }
-        }
-    });
-}
-
 module.exports = router;
