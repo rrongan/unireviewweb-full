@@ -13,6 +13,8 @@ var StudentSchema = new mongoose.Schema({
     email: String,
     studentid: String,
     dob: Date,
+    gender: {type: String, enum: ["Male", "Female","Not Disclose"]},
+    address: String,
     username: {type:String, required:true, index: {unique:true}},
     password: { type: String, required: true },
     college:{
