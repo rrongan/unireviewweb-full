@@ -1,6 +1,11 @@
+/*
+* Search http://fusejs.io/
+* Search check data type https://www.webbjocke.com/javascript-check-data-types/
+* */
+
 var Student = require('../models/student');
 var express = require('express');
-
+var Fuse = require('fuse.js');
 var mongoose = require('mongoose');
 
 var router = express.Router();
@@ -142,6 +147,39 @@ router.editStudentPassword = function(req, res) {
             }catch (e){
                 console.log("Edit Student Password Error: ",e)
             }
+        }
+    });
+};
+
+router.search = function(req, res) {
+
+    //{"key":["name","college.name"],"value":"Waterford"}
+
+    Student.find().lean().exec(function(err, users) {
+        if (err)
+            res.send(err);
+
+        var students = users;
+        var key = [];
+
+        if(req.body.key){
+            if(typeof req.body.key === 'object' && req.body.key.constructor === Array) {
+                key = req.body.key;
+            }else{
+                key.push(req.body.key);
+            }
+        }
+        var options = {
+            keys: key
+        };
+
+        var fuse = new Fuse(students,options);
+        var result = fuse.search(req.body.value);
+
+        if(result.length > 0){
+            return res.json(result);
+        }else{
+            res.json({ message: 'Result Not Found!'});
         }
     });
 };
