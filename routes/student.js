@@ -135,7 +135,7 @@ router.editStudentPassword = function(req, res) {
                         else{
                             if(isMatch){
                                 student.password = req.body.newpassword;
-                                student.save(function (err) {
+                                student.update(function (err) {
                                     if (err)
                                         res.send(err);
                                     else
