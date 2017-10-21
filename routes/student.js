@@ -59,14 +59,12 @@ router.addStudent = function(req, res) {
     student.college.course.name = req.body.college.course.name;
     student.college.course.year = req.body.college.course.year;
 
-    console.log('Adding student: ' + JSON.stringify(student));
-
     // Save the donation and check for errors
     student.save(function(err) {
         if (err)
             res.send(err);
-
-        res.json({ message: 'Student Added!', data: student });
+        else
+            res.json({ message: 'Student Added!', data: student });
     });
 }
 
