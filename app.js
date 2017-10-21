@@ -25,7 +25,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({secret: 'unireviewweb'}));
 
 app.use('/', index);
-app.get('/main', main);
+app.get('/main', main.main);
 
 app.get('/student', student.findAll);
 app.get('/student/:id', student.findOne);
