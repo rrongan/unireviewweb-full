@@ -107,7 +107,7 @@ router.editStudent = function(req, res) {
             }catch (e){
                 console.log("Edit Student Error: ",e)
             }
-            student.save(function (err) {
+            student.update(function (err) {
                 if (err)
                     res.send(err);
                 else
