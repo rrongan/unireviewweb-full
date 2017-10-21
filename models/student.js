@@ -10,7 +10,7 @@ var mongoose = require('mongoose'),
 
 var StudentSchema = new mongoose.Schema({
     name: String,
-    email: {type:String, required:true, index: {unique:true}},
+    email: String,
     studentid: String,
     dob: Date,
     gender: {type: String, enum: ["Male", "Female","Not Disclose"]},
@@ -25,24 +25,6 @@ var StudentSchema = new mongoose.Schema({
         }
     }
 });
-
-StudentSchema.path('email').validate(function(value, done) {
-    this.model('Student').count({ email: value }, function(err, count) {
-        if (err) {
-            return done(err);
-        }
-        done(!count);
-    });
-}, 'Email Already Exists!');
-
-StudentSchema.path('username').validate(function(value, done) {
-    this.model('Student').count({ email: value }, function(err, count) {
-        if (err) {
-            return done(err);
-        }
-        done(!count);
-    });
-}, 'Username Already Exists!');
 
 StudentSchema.pre('save', function(next) {
     var user = this;
