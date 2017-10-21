@@ -30,7 +30,7 @@ app.use(session({
 }));
 
 app.use('/', index);
-app.get('/main', main);
+app.get('/main', main.main);
 
 app.post('/login', authentication.login);
 app.get('/login', authentication.logout);
