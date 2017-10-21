@@ -89,7 +89,7 @@ router.editStudent = function(req, res) {
 
     var edit_student = Student;
 
-    //{"dob":"1995-08-23","name":"Yun Shen Tan", "email":"rrongan@gmail.com","username":"yunshen","college":{"name":"Waterford Institute of Technology","course":{"year":4,"name":"BSc (H) in Software System Development"}}}
+    //{"dob":"1995-08-23","name":"Yun Shen Tan","studentid":20065126,"email":"rrongan@gmail.com","username":"yunshen","password":"yunshen95","college":{"name":"Waterford Institute of Technology","course":{"year":4,"name":"BSc (H) in Software System Development"}}}
 
     edit_student.findById(req.params.id, function(err,student) {
         if (err)
