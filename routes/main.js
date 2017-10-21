@@ -4,7 +4,7 @@ var router = express.Router();
 /* GET main page. */
 router.main = function(req, res, next) {
     sess = req.session;
-    if(sess.email) {
+    if(sess.username) {
         res.write('<h1>Hello '+sess.username+'</h1>');
         res.end('<a href="/logout">Logout</a>');
     } else {

@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var main = require('./routes/main.js');
 var student = require('./routes/student.js');
+var authentication = require('./routes/authentication.js');
 
 var app = express();
 
@@ -22,10 +23,17 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(session({secret: 'unireviewweb'}));
+app.use(session({
+    secret: 'unireviewweb',
+    resave: true,
+    saveUninitialized: true
+}));
 
 app.use('/', index);
 app.get('/main', main);
+
+app.post('/login', authentication.login);
+app.get('/login', authentication.logout);
 
 app.get('/student', student.findAll);
 app.get('/student/:id', student.findOne);
