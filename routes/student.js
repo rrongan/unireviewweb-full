@@ -130,17 +130,20 @@ router.editStudentPassword = function(req, res) {
             try {
                 if(req.body.oldpassword === req.body.reenterpassword) {
                     student.comparePassword(req.body.oldpassword, function(err, isMatch){
-                        if (err) throw err;
-                        if(isMatch){
-                            student.password = req.body.newpassword;
-                            student.save(function (err) {
-                                if (err)
-                                    res.send(err);
-                                else
-                                    res.json({ message: 'Student Password Updated!'});
-                            });
-                        }else{
-                            res.json({ message: 'Incorrect Password!'});
+                        if (err)
+                            res.json({Error:err.message});
+                        else{
+                            if(isMatch){
+                                student.password = req.body.newpassword;
+                                student.save(function (err) {
+                                    if (err)
+                                        res.send(err);
+                                    else
+                                        res.json({ message: 'Student Password Updated!'});
+                                });
+                            }else{
+                                res.json({ message: 'Incorrect Password!'});
+                            }
                         }
                     });
                 }else{
