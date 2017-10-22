@@ -38,5 +38,14 @@ router.logout = function(req, res) {
     });
 };
 
+router.sessionChecker = (req, res, next) => {
+    console.log(req.session.cookie.maxAge)
+    if (req.session.cookie.maxAge) {
+        res.redirect('/main');
+    } else {
+        next();
+    }
+};
+
 
 module.exports = router;

@@ -1,5 +1,10 @@
+/*
+* Express session https://www.codementor.io/emjay/how-to-build-a-simple-session-based-authentication-system-with-nodejs-from-scratch-6vn67mcy3
+* */
+
 var express = require('express');
 var session = require('express-session');
+var RedisStore = require('connect-redis')(session);
 var path = require('path');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
@@ -24,9 +29,15 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
+    key: 'user_sid',
     secret: 'unireviewweb',
-    resave: true,
-    saveUninitialized: true
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+        secure: false,
+        maxAge: 60000,
+        httpOnly: false
+    }
 }));
 
 app.use('/', index);
@@ -59,6 +70,14 @@ app.use(function(err, req, res) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
+});
+
+// This middleware will check if user's cookie is still saved in browser and user is not set, then automatically log the user out.
+app.use((req, res, next) => {
+    if (req.cookies.user_sid && !req.session) {
+    res.clearCookie('user_sid');
+    }
+    next();
 });
 
 module.exports = app;
