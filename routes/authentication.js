@@ -19,11 +19,11 @@ router.login = function(req, res) {
                     sess.username = req.body.username;
                     res.end('success');
                 } else {
-                    res.json({message: 'Invalid Username or Password!'});
+                    res.status(401).json({message: 'Authentication Failed. Invalid Username or Password!'});
                 }
             });
         }else{
-            res.json({message: 'Invalid Username or Password!'});
+            res.status(401).json({message: 'Authentication Failed. Invalid Username or Password!'});
         }
     });
 };
