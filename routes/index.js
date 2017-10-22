@@ -5,7 +5,6 @@ var sess;
 /* GET home page. */
 router.get('/', function(req, res, next) {
     sess = req.session;
-    console.log(sess.username);
     if(sess.username) {
         res.redirect('/main');
     }
