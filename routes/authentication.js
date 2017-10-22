@@ -11,16 +11,20 @@ router.login = function(req, res) {
     Student.findOne({"username" : req.body.username }, function(err,student) {
         if (err)
             res.send(err);
-            student.comparePassword(req.body.password, function(err, isMatch) {
+        if(student !== null) {
+            student.comparePassword(req.body.password, function (err, isMatch) {
                 if (err)
                     res.send(err);
-                if(isMatch){
+                if (isMatch) {
                     sess.username = req.body.username;
                     res.end('success');
-                }else{
-                    res.json({ message: 'Invalid Username or Password!'});
+                } else {
+                    res.json({message: 'Invalid Username or Password!'});
                 }
             });
+        }else{
+            res.json({message: 'Invalid Username or Password!'});
+        }
     });
 };
 
