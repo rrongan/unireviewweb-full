@@ -32,8 +32,8 @@ app.use(session({
 app.use('/', index);
 app.get('/main', main.main);
 
-app.post('/login', authentication.login);
-app.get('/login', authentication.logout);
+app.post('/auth/login', authentication.login);
+app.get('/auth/logout', authentication.logout);
 
 app.get('/student', student.findAll);
 app.get('/student/:id', student.findOne);
