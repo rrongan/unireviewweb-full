@@ -65,6 +65,23 @@ StudentSchema.pre('save', function(next) {
     });
 });
 
+StudentSchema.pre('update', function(next) {
+    var user = this;
+
+    // generate a salt
+    bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt) {
+        if (err) return next(err);
+        // hash the password using our new salt
+        bcrypt.hash(user._update.$set.password, salt, function(err, hash) {
+            if (err) return next(err);
+
+            // override the cleartext password with the hashed one
+            user._update.$set.password = hash;
+            next();
+        });
+    });
+});
+
 StudentSchema.methods.comparePassword = function(candidatePassword, cb) {
     bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
         if (err) return cb(err);
