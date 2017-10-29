@@ -42,7 +42,7 @@ router.findOne = function(req, res) {
     // Use the Students model to find a single user
     Student.find({ "_id" : req.params.id },function(err, user) {
         if (err)
-            res.json({ message: 'Student NOT Found!', errmsg : err } );
+            res.status(404).json({ message: 'Student NOT Found!', errmsg : err } );
         else
             res.json(user);
     });
@@ -69,7 +69,7 @@ router.addStudent = function(req, res) {
         if (err)
             res.send(err);
         else
-            res.json({ message: 'Student Added!', data: student });
+            res.status(201).json({ message: 'Student Added!', data: student });
     });
 };
 
@@ -79,7 +79,7 @@ router.deleteStudent = function(req, res) {
         if (err)
             res.send(err);
         if(cal === null)
-            res.json({ message: 'Student Not Found!'});
+            res.status(404).json({ message: 'Student Not Found!'});
         else
             res.json({ message: 'Student Deleted!'});
     });
@@ -133,7 +133,7 @@ router.editStudentPassword = function(req, res) {
                 if(req.body.oldpassword === req.body.reenterpassword) {
                     student.comparePassword(req.body.oldpassword, function(err, isMatch){
                         if (err)
-                            res.json({Error:err.message});
+                            res.status(400).json({Error:err.message});
                         else{
                             if(isMatch){
                                 Student.update({_id:req.params.id},{password:req.body.newpassword},function (err) {
@@ -143,12 +143,12 @@ router.editStudentPassword = function(req, res) {
                                         res.json({ message: 'Student Password Updated!'});
                                 });
                             }else{
-                                res.json({ message: 'Incorrect Password!'});
+                                res.status(400).json({ message: 'Incorrect Password!'});
                             }
                         }
                     });
                 }else{
-                    res.json({ message: 'Password Not Match With Re-enter Password, Please Try Again!'});
+                    res.status(400).json({ message: 'Password Not Match With Re-enter Password, Please Try Again!'});
                 }
             }catch (e){
                 console.log("Edit Student Password Error: ",e)
