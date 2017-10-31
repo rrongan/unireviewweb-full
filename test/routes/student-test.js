@@ -67,6 +67,7 @@ describe('Student', function () {
         });
     });
 
+    var tempid;
     describe('GET /student', function () {
         it('should GET all the donations', function(done) {
             request(app)
@@ -75,6 +76,35 @@ describe('Student', function () {
                 .end(function (err, res) {
                     if(err) return done(err);
                     expect(res.body).to.be.a('array');
+                    tempid = res.body[0]._id;
+                    var result = _.map(res.body, function (student) {
+                        return {
+                            studentid: student.studentid,
+                            name: student.name,
+                            username: student.username,
+                            email: student.email
+                        };
+                    });
+                    expect(result).to.include( {
+                        studentid: '20010001',
+                        name: "Temp Student",
+                        username: "tempstudent",
+                        email: "tempstudent@gmail.com"
+                    } );
+                    done();
+                });
+        });
+    });
+
+    describe('GET /student/:id', function () {
+        it('should GET the specific donation by id', function(done) {
+            request(app)
+                .get('/student/'+tempid)
+                .expect(200)
+                .end(function (err, res) {
+                    if(err) return done(err);
+                    expect(res.body).to.be.a('array');
+                    tempid = res.body._id;
                     var result = _.map(res.body, function (student) {
                         return {
                             studentid: student.studentid,
