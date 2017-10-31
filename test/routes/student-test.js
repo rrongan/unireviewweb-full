@@ -80,7 +80,6 @@ describe('Student', function () {
                             studentid: student.studentid,
                             name: student.name,
                             username: student.username,
-                            password: student.password,
                             email: student.email
                         };
                     });
