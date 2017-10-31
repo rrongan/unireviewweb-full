@@ -17,6 +17,7 @@ var mockgoose = new Mockgoose(mongoose);
 var _ = require('lodash' );
 
 describe('Student', function () {
+    this.timeout(120000);
     before(function(done) {
         mockgoose.prepareStorage().then(function() {
             mongoose.connect('mongodb://localhost:27017/unireviewdb', function(err) {
