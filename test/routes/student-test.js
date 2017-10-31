@@ -83,6 +83,12 @@ describe('Student', function () {
                             email: student.email
                         };
                     });
+                    expect(result).to.include( {
+                        studentid: '20010001',
+                        name: "Temp Student",
+                        username: "tempstudent",
+                        email: "tempstudent@gmail.com"
+                    } );
                     done();
                 });
         });
