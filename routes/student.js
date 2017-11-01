@@ -33,7 +33,7 @@ router.findAll = function(req, res) {
     // Use the Students model to find all donations
     Student.find(function(err, users) {
         if (err)
-            res.send(err);
+            res.status(400).send(err);
 
         res.json(users);
     });
@@ -69,7 +69,7 @@ router.addStudent = function(req, res) {
     // Save the donation and check for errors
     student.save(function(err) {
         if (err)
-            res.send(err);
+            res.status(400).send(err);
         else
             res.status(201).json({ message: 'Student Added!', data: student });
     });
@@ -79,7 +79,7 @@ router.deleteStudent = function(req, res) {
     var del_student = new Student();
     Student.findByIdAndRemove(req.params.id, function(err,cal) {
         if (err)
-            res.send(err);
+            res.status(400).send(err);
         if(cal === null)
             res.status(404).json({ message: 'Student Not Found!'});
         else
@@ -95,7 +95,7 @@ router.editStudent = function(req, res) {
 
     edit_student.findById(req.params.id, function(err,student) {
         if (err)
-            res.send(err);
+            res.status(400).send(err);
         else {
             try {
                 student.studentid = req.body.studentid || student.studentid;
@@ -113,7 +113,7 @@ router.editStudent = function(req, res) {
             }
             student.update(function (err) {
                 if (err)
-                    res.send(err);
+                    res.status(400).send(err);
                 else
                     res.json({ message: 'Student Updated!', data: student });
             });
@@ -129,7 +129,7 @@ router.editStudentPassword = function(req, res) {
 
     edit_student_pass.findById(req.params.id, function(err,student) {
         if (err)
-            res.send(err);
+            res.status(400).send(err);
         else {
             try {
                 if(req.body.oldpassword === req.body.reenterpassword) {
@@ -140,7 +140,7 @@ router.editStudentPassword = function(req, res) {
                             if(isMatch){
                                 Student.update({_id:req.params.id},{password:req.body.newpassword},function (err) {
                                     if (err)
-                                        res.send(err);
+                                        res.status(400).send(err);
                                     else
                                         res.json({ message: 'Student Password Updated!'});
                                 });
@@ -165,7 +165,7 @@ router.search = function(req, res) {
 
     Student.find().lean().exec(function(err, users) {
         if (err)
-            res.send(err);
+            res.status(400).send(err);
 
         var students = users;
         var key = [];
@@ -187,7 +187,7 @@ router.search = function(req, res) {
         if(result.length > 0){
             return res.json(result);
         }else{
-            res.json({ message: 'Result Not Found!'});
+            res.status(404).json({ message: 'Result Not Found!'});
         }
     });
 };
