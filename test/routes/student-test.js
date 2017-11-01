@@ -188,6 +188,57 @@ describe('Student', function () {
         });
     });
 
+    describe('PUT /student/:id', function () {
+        it('should return confirmation message and update student detail', function(done) {
+            var modify = {
+                dob:"2000-02-02",
+                name:"Temp STUDENT",
+                studentid:20020002,
+                username: "tempstudentt",
+                email: "tempstudentt@gmail.com",
+                college:{
+                    name:"Waterford Institute of Technology",
+                    course:{
+                        year:2,
+                        name:"BSc in Software System Development"
+                    }
+                }
+            };
+            request(app)
+                .put('/student/'+tempid)
+                .send(modify)
+                .expect(200)
+                .end(function (err, res) {
+                    if(err) return done(err);
+                    expect(res.body).to.have.property('message').equal('Student Updated!' ) ;
+                    var result = {
+                            studentid: res.body.data.studentid,
+                            name: res.body.data.name,
+                            username: res.body.data.username,
+                            email: res.body.data.email
+                    };
+                    expect(result).to.include( {
+                        studentid: '20020002',
+                        name: "Temp STUDENT",
+                        username: "tempstudentt",
+                        email: "tempstudentt@gmail.com"
+                    } );
+                    done();
+                });
+        });
+
+        it('should return 404 if student is not found', function(done) {
+            request(app)
+                .put('/student/'+tempid+'1')
+                .expect(404)
+                .end(function (err, res) {
+                    if(err) return done(err);
+                    expect(res.body).to.have.property('message').equal('Student NOT Found!' ) ;
+                    done();
+                });
+        });
+    });
+
     describe('DELETE /student/:id', function () {
         it('should DELETE the specific student by id', function(done) {
             request(app)

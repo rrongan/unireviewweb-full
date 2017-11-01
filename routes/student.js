@@ -93,23 +93,28 @@ router.editStudent = function(req, res) {
 
     edit_student.findById(req.params.id, function(err,student) {
         if (err)
-            res.status(400).send(err);
+            res.status(404).json({ message: 'Student NOT Found!', errmsg : err});
         else {
             try {
+                student.password = undefined;
                 student.studentid = req.body.studentid || student.studentid;
                 student.name = req.body.name || student.name;
                 student.dob = req.body.dob || student.dob;
                 student.gender = req.body.gender || student.gender;
                 student.address = req.body.address || student.address;
-                student.college.name = req.body.college.name || student.college.name;
-                student.college.course.name = req.body.college.course.name || student.college.course.name;
-                student.college.course.year = req.body.college.course.year || student.college.course.year;
+                if(req.body.college) {
+                    student.college.name = req.body.college.name || student.college.name;
+                    student.college.course.name = req.body.college.course.name || student.college.course.name;
+                    student.college.course.year = req.body.college.course.year || student.college.course.year;
+                }
                 if(req.body.email)
                     student.email = req.body.email;
+                if(req.body.username)
+                    student.username = req.body.username;
             }catch (e){
                 console.log("Edit Student Error: ",e)
             }
-            student.update(function (err) {
+            Student.update({_id:req.params.id},student,function (err) {
                 if (err)
                     res.status(400).send(err);
                 else
