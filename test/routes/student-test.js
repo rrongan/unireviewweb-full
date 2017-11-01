@@ -65,6 +65,60 @@ describe('Student', function () {
                     done();
                 });
         });
+
+        it('should return error message when username is already exist', function(done) {
+            var tempstudent = {
+                dob:"2000-01-02",
+                name:"Temp Student 2",
+                studentid:20010002,
+                email:"tempstudent2@gmail.com",
+                username:"tempstudent",
+                password:"tempstudent01",
+                college:{
+                    name:"Waterford Institute of Technology",
+                    course:{
+                        year:3,
+                        name:"BSc in Software System Development"
+                    }
+                }
+            };
+            request(app)
+                .post('/student')
+                .send(tempstudent)
+                .expect(400)
+                .end(function (err, res) {
+                    if(err) return done(err);
+                    expect(res.body).to.have.property('message').equal('Student validation failed: username: Username Already Exists!' ) ;
+                    done();
+                });
+        });
+
+        it('should return error message when email is already exist', function(done) {
+            var tempstudent = {
+                dob:"2000-01-03",
+                name:"Temp Student 3",
+                studentid:20010003,
+                email:"tempstudent@gmail.com",
+                username:"tempstudent2",
+                password:"tempstudent02",
+                college:{
+                    name:"Waterford Institute of Technology",
+                    course:{
+                        year:1,
+                        name:"BSc in Software System Development"
+                    }
+                }
+            };
+            request(app)
+                .post('/student')
+                .send(tempstudent)
+                .expect(400)
+                .end(function (err, res) {
+                    if(err) return done(err);
+                    expect(res.body).to.have.property('message').equal('Student validation failed: email: Email Already Exists!' ) ;
+                    done();
+                });
+        });
     });
 
     var tempid;
