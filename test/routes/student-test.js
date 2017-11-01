@@ -158,7 +158,6 @@ describe('Student', function () {
                 .end(function (err, res) {
                     if(err) return done(err);
                     expect(res.body).to.be.a('array');
-                    tempid = res.body._id;
                     var result = _.map(res.body, function (student) {
                         return {
                             studentid: student.studentid,
@@ -173,6 +172,17 @@ describe('Student', function () {
                         username: "tempstudent",
                         email: "tempstudent@gmail.com"
                     } );
+                    done();
+                });
+        });
+
+        it('should return 404 if student is not found', function(done) {
+            request(app)
+                .get('/student/'+tempid+'1')
+                .expect(404)
+                .end(function (err, res) {
+                    if(err) return done(err);
+                    expect(res.body).to.have.property('message').equal('Student NOT Found!' ) ;
                     done();
                 });
         });
