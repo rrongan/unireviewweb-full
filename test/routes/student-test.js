@@ -123,7 +123,7 @@ describe('Student', function () {
 
     var tempid;
     describe('GET /student', function () {
-        it('should GET all the donations', function(done) {
+        it('should GET all the students', function(done) {
             request(app)
                 .get('/student')
                 .expect(200)
@@ -151,7 +151,7 @@ describe('Student', function () {
     });
 
     describe('GET /student/:id', function () {
-        it('should GET the specific donation by id', function(done) {
+        it('should GET the specific student by id', function(done) {
             request(app)
                 .get('/student/'+tempid)
                 .expect(200)
@@ -183,6 +183,30 @@ describe('Student', function () {
                 .end(function (err, res) {
                     if(err) return done(err);
                     expect(res.body).to.have.property('message').equal('Student NOT Found!' ) ;
+                    done();
+                });
+        });
+    });
+
+    describe('DELETE /student/:id', function () {
+        it('should DELETE the specific student by id', function(done) {
+            request(app)
+                .delete('/student/'+tempid)
+                .expect(200)
+                .end(function (err, res) {
+                    if(err) return done(err);
+                    expect(res.body).to.have.property('message').equal('Student Deleted!' ) ;
+                    done();
+                });
+        });
+
+        it('should return 404 if student is not found', function(done) {
+            request(app)
+                .delete('/student/'+tempid+'1')
+                .expect(404)
+                .end(function (err, res) {
+                    if(err) return done(err);
+                    expect(res.body).to.have.property('message').equal('Student Not Found!' ) ;
                     done();
                 });
         });

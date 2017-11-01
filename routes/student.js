@@ -79,9 +79,7 @@ router.deleteStudent = function(req, res) {
     var del_student = new Student();
     Student.findByIdAndRemove(req.params.id, function(err,cal) {
         if (err)
-            res.status(400).send(err);
-        if(cal === null)
-            res.status(404).json({ message: 'Student Not Found!'});
+            res.status(404).json({ message: 'Student Not Found!', errmsg : err});
         else
             res.json({ message: 'Student Deleted!'});
     });
