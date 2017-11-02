@@ -132,7 +132,7 @@ router.editStudentPassword = function(req, res) {
 
     edit_student_pass.findById(req.params.id, function(err,student) {
         if (err)
-            res.status(400).send(err);
+            res.status(404).json({ message: 'Student NOT Found!', errmsg : err});
         else {
             try {
                 if(req.body.oldpassword === req.body.reenterpassword) {

@@ -239,6 +239,70 @@ describe('Student', function () {
         });
     });
 
+    describe('PUT /student/:id/password', function () {
+        it('should return confirmation message and update student password', function(done) {
+            var modify = {
+                "oldpassword":"tempstudent00",
+                "reenterpassword":"tempstudent00",
+                "newpassword":"tempstudent01"
+            };
+            request(app)
+                .put('/student/'+tempid+"/password")
+                .send(modify)
+                .expect(200)
+                .end(function (err, res) {
+                    if(err) return done(err);
+                    expect(res.body).to.have.property('message').equal('Student Password Updated!' ) ;
+                    done();
+                });
+        });
+
+        it('should return error message when old password and reenter password is not equal', function(done) {
+            var modify = {
+                "oldpassword":"tempstudent00",
+                "reenterpassword":"tempstudent01",
+                "newpassword":"tempstudent01"
+            };
+            request(app)
+                .put('/student/'+tempid+"/password")
+                .send(modify)
+                .expect(400)
+                .end(function (err, res) {
+                    if(err) return done(err);
+                    expect(res.body).to.have.property('message').equal('Password Not Match With Re-enter Password, Please Try Again!' ) ;
+                    done();
+                });
+        });
+
+        it('should return error message when password entered is incorrect', function(done) {
+            var modify = {
+                "oldpassword":"tempstudent00",
+                "reenterpassword":"tempstudent00",
+                "newpassword":"tempstudent02"
+            };
+            request(app)
+                .put('/student/'+tempid+"/password")
+                .send(modify)
+                .expect(400)
+                .end(function (err, res) {
+                    if(err) return done(err);
+                    expect(res.body).to.have.property('message').equal('Incorrect Password!' ) ;
+                    done();
+                });
+        });
+
+        it('should return 404 if student is not found', function(done) {
+            request(app)
+                .put('/student/'+tempid+'1/password')
+                .expect(404)
+                .end(function (err, res) {
+                    if(err) return done(err);
+                    expect(res.body).to.have.property('message').equal('Student NOT Found!' ) ;
+                    done();
+                });
+        });
+    });
+
     describe('DELETE /student/:id', function () {
         it('should DELETE the specific student by id', function(done) {
             request(app)
