@@ -303,6 +303,53 @@ describe('Student', function () {
         });
     });
 
+    describe('POST /student/search',function () {
+        it('should return searched result when value is found', function (done) {
+            var value = {
+                "key":["name","college.name"],
+                "value":"Temp"
+            };
+            request(app)
+                .post('/student/search')
+                .send(value)
+                .expect(200)
+                .end(function (err, res) {
+                    if (err) return done(err);
+                    var result = _.map(res.body, function (student) {
+                        return {
+                            studentid: student.studentid,
+                            name: student.name,
+                            username: student.username,
+                            email: student.email
+                        };
+                    });
+                    expect(result).to.include( {
+                        studentid: '20020002',
+                        name: "Temp STUDENT",
+                        username: "tempstudentt",
+                        email: "tempstudentt@gmail.com"
+                    } );
+                    done();
+                });
+        });
+
+        it('should return 404 if student is not found', function(done) {
+            var value = {
+                "key":["name","college.name"],
+                "value":"q"
+            };
+            request(app)
+                .post('/student/search')
+                .send(value)
+                .expect(404)
+                .end(function (err, res) {
+                    if(err) return done(err);
+                    expect(res.body).to.have.property('message').equal('Result Not Found!' ) ;
+                    done();
+                });
+        });
+    });
+
     describe('DELETE /student/:id', function () {
         it('should DELETE the specific student by id', function(done) {
             request(app)
