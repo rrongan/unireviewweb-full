@@ -104,4 +104,17 @@ describe('Authentication', function () {
                 });
         });
     });
+
+    describe('GET /auth/logout', function () {
+        it('should redirect to index when successfully logout', function (done) {
+            request(app)
+                .get('/auth/logout')
+                .expect(302)
+                .end(function (err, res) {
+                    if (err) return done(err);
+                    expect('Location','/');
+                    done();
+                });
+        });
+    });
 });
