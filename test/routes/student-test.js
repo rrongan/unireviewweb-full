@@ -1,6 +1,7 @@
 /*
 * Mockgoose Tutorial https://github.com/EnergeticPixels/testingMockgoose/blob/master/test/routes/user_test.js
 *                    https://github.com/mockgoose/mockgoose
+* Supertest https://github.com/visionmedia/supertest
 * */
 
 var chai = require('chai');
