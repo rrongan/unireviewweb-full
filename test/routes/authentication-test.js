@@ -1,8 +1,15 @@
+/*
+* Supertest session https://github.com/rjz/supertest-session
+* */
+
 var chai = require('chai');
 var expect = chai.expect;
 var request = require('supertest');
+var session = require('supertest-session');
+var testsession = null;
 process.env.NODE_ENV = 'testing';
 var app = require('../../app');
+var auth = require('../../routes/authentication');
 
 var mongoose = require('mongoose');
 
@@ -13,6 +20,11 @@ var _ = require('lodash' );
 
 describe('Authentication', function () {
     this.timeout(120000);
+
+    beforeEach(function () {
+        testsession = session(app);
+    });
+
     before(function(done) {
         mockgoose.prepareStorage().then(function() {
             mongoose.connect('mongodb://localhost:27017/unireviewdb', function(err) {
@@ -63,7 +75,7 @@ describe('Authentication', function () {
                 username: "tempstudent",
                 password: "tempstudent00"
             };
-            request(app)
+            testsession
                 .post('/auth/login')
                 .send(login)
                 .expect(200)
@@ -78,7 +90,7 @@ describe('Authentication', function () {
                 username: "tempstudent1",
                 password: "tempstudent00"
             };
-            request(app)
+            testsession
                 .post('/auth/login')
                 .send(login)
                 .expect(401)
@@ -93,7 +105,7 @@ describe('Authentication', function () {
                 username: "tempstudent",
                 password: "tempstudent01"
             };
-            request(app)
+            testsession
                 .post('/auth/login')
                 .send(login)
                 .expect(401)
@@ -106,13 +118,74 @@ describe('Authentication', function () {
     });
 
     describe('GET /auth/logout', function () {
+        var tempsession;
+        beforeEach(function (done) {
+            var login = {
+                username: "tempstudent",
+                password: "tempstudent00"
+            };
+            testsession
+                .post('/auth/login')
+                .send(login)
+                .expect(200)
+                .end(function (err) {
+                    if(err) return done(err);
+                    tempsession = testsession;
+                    done();
+                });
+        });
         it('should redirect to index when successfully logout', function (done) {
-            request(app)
+            tempsession
                 .get('/auth/logout')
                 .expect(302)
                 .end(function (err, res) {
                     if (err) return done(err);
                     expect('Location','/');
+                    done();
+                });
+        });
+    });
+
+    describe('Session Checker Middleware', function () {
+        var tempsession;
+        beforeEach(function (done) {
+            var login = {
+                username: "tempstudent",
+                password: "tempstudent00"
+            };
+            testsession
+                .post('/auth/login')
+                .send(login)
+                .expect(200)
+                .end(function (err) {
+                    if(err) return done(err);
+                    tempsession = testsession;
+                    done();
+                });
+        });
+
+        it('should redirect to index when session inactive', function (done) {
+            tempsession = session(app,{
+                before: function (req) {
+                    req.set('expires',new Date());
+                }
+            });
+            tempsession
+                .get('/main')
+                .expect(302)
+                .end(function (err, res) {
+                    if(err) return done(err);
+                    expect('Location','/');
+                    done();
+                });
+        });
+
+        it('should remain the same page when session active', function (done) {
+            tempsession
+                .get('/main')
+                .expect(200)
+                .end(function (err, res) {
+                    if(err) return done(err);
                     done();
                 });
         });

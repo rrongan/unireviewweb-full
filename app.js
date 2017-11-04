@@ -41,7 +41,7 @@ app.use(session({
 }));
 
 app.use('/', index);
-app.get('/main', main.main);
+app.get('/main',authentication.sessionChecker, main.main);
 
 app.post('/auth/login', authentication.login);
 app.get('/auth/logout', authentication.logout);
