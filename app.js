@@ -28,15 +28,15 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
-    key: 'user_sid',
-    secret: 'unireviewweb',
-    resave: false,
-    saveUninitialized: false,
-    cookie: {
-        secure: false,
-        maxAge: 60000,
-        httpOnly: false
-    }
+	key: 'user_sid',
+	secret: 'unireviewweb',
+	resave: false,
+	saveUninitialized: false,
+	cookie: {
+		secure: false,
+		maxAge: 60000,
+		httpOnly: false
+	}
 }));
 
 app.use('/', index);
@@ -55,28 +55,28 @@ app.post('/student/search', student.search);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
+	var err = new Error('Not Found');
+	err.status = 404;
+	next(err);
 });
 
 // error handler
 app.use(function(err, req, res) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+	// set locals, only providing error in development
+	res.locals.message = err.message;
+	res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
+	// render the error page
+	res.status(err.status || 500);
+	res.render('error');
 });
 
 // This middleware will check if user's cookie is still saved in browser and user is not set, then automatically log the user out.
 app.use((req, res, next) => {
-    if (req.cookies.user_sid && !req.session) {
-    res.clearCookie('user_sid');
-    }
-    next();
+	if (req.cookies.user_sid && !req.session) {
+		res.clearCookie('user_sid');
+	}
+	next();
 });
 
 module.exports = app;

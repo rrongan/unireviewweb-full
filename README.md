@@ -1,3 +1,5 @@
+<!-- eslint-disable no-alert -->
+
 # Academic Review Web Application Backend
 Name: Yun Shen Tan
 
