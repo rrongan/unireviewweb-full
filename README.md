@@ -28,7 +28,7 @@ just provide the student endpoints and authentication.
 ## Data storage
 MongoDB has been used in this project. The database contain one collection __Student__. The Student collection has the basic detail of student.
 
-###Student
+### Student
 ````js
 var StudentSchema = new mongoose.Schema({
     name: String,
@@ -74,7 +74,8 @@ There are two test suites in this project, __Authentication__ and __Student__. B
 command `npm test`.The section below include a listing of 
 the output from running the test suites.
 
-###Student
+### Student
+
     $ npm test
     
     > unireviewweb@0.0.0 test C:\Users\USER\WebstormProjects\unireviewweb
@@ -120,7 +121,8 @@ the output from running the test suites.
         DELETE /student/59fdf08dedf9eb26fcf6fdd91 404 0.613 ms - 289
               √ should return 404 if student is not found
 
-###Authentication
+### Authentication
+
     Authentication
         POST /student 201 80.739 ms - 406
             POST /auth/login
@@ -154,8 +156,10 @@ the output from running the test suites.
 + ESLint integration for code style
 
 
-##References
-###Web Application Development Lab
+## References
+
+### Web Application Development Lab
+
 + [https://ddrohan.github.io/wit-wad/labwall.html](https://ddrohan.github.io/wit-wad/labwall.html)
 ###Agile Software Development Lab
 + [https://moodle.wit.ie/course/view.php?id=115160&section=5](https://moodle.wit.ie/course/view.php?id=115160&section=5)
