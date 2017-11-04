@@ -3,7 +3,7 @@
 # Academic Review Web Application Backend
 Name: Yun Shen Tan
 
-Student Number 20065126
+Student Number: 20065126
 ## Overview
 This GitHub repository contains the source code for the part of backend of my web application.
 The web application is the project for both Web Applications Development and Agile Software Practices modules.
@@ -163,21 +163,21 @@ the output from running the test suites.
 ### Web Application Development Lab
 
 + [https://ddrohan.github.io/wit-wad/labwall.html](https://ddrohan.github.io/wit-wad/labwall.html)
-###Agile Software Development Lab
+### Agile Software Development Lab
 + [https://moodle.wit.ie/course/view.php?id=115160&section=5](https://moodle.wit.ie/course/view.php?id=115160&section=5)
-###Mongoose password hashing
+### Mongoose password hashing
 + [https://stackoverflow.com/questions/14588032/mongoose-password-hashing](https://stackoverflow.com/questions/14588032/mongoose-password-hashing)
 + [https://www.mongodb.com/blog/post/password-authentication-with-mongoose-part-1](https://www.mongodb.com/blog/post/password-authentication-with-mongoose-part-1)
-###Manage session and authentication
+### Manage session and authentication
 + [https://codeforgeek.com/2014/09/manage-session-using-node-js-express-4/](https://codeforgeek.com/2014/09/manage-session-using-node-js-express-4/)
-###Fuse.js Search
+### Fuse.js Search
 + [http://fusejs.io/](http://fusejs.io/)
-###Search check data type
+### Search check data type
 + [https://www.webbjocke.com/javascript-check-data-types/](https://www.webbjocke.com/javascript-check-data-types/)
-###Supertest session
+### Supertest session
 + [https://github.com/rjz/supertest-session](https://github.com/rjz/supertest-session)
-###Mockgoose Tutorial
+### Mockgoose Tutorial
 + [https://github.com/EnergeticPixels/testingMockgoose/blob/master/test/routes/user_test.js](https://github.com/EnergeticPixels/testingMockgoose/blob/master/test/routes/user_test.js)
 + [https://github.com/mockgoose/mockgoose](https://github.com/mockgoose/mockgoose)
-###Supertest 
+### Supertest 
 + [https://github.com/visionmedia/supertest](https://github.com/visionmedia/supertest)
