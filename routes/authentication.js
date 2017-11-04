@@ -17,7 +17,7 @@ router.login = function(req, res) {
                     res.send(err);
                 if (isMatch) {
                     sess.username = req.body.username;
-                    res.end('success');
+                    res.json({message: 'Successfully Login!'});
                 } else {
                     res.status(401).json({message: 'Authentication Failed. Invalid Username or Password!'});
                 }
