@@ -13,7 +13,6 @@ var mockgoose = new Mockgoose(mongoose);
 var _ = require('lodash' );
 
 var tempstudent = {};
-var tempid;
 
 describe('Student Unit', function () {
 	this.timeout(120000);
