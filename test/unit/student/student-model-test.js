@@ -9,7 +9,7 @@ var Mockgoose = require('mockgoose').Mockgoose;
 var mockgoose = new Mockgoose(mongoose);
 
 var tempstudent = {};
-describe('Student Model', function () {
+describe('Student Model Unit', function () {
 	this.timeout(120000);
 	before(function (done) {
 		mockgoose.prepareStorage().then(function () {
