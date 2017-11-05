@@ -48,6 +48,8 @@ describe('Student', function () {
 				email:'tempstudent@gmail.com',
 				username:'tempstudent',
 				password:'tempstudent00',
+				gender: 'Male',
+				address: '1 temproad, tempplace',
 				college:{
 					name:'Waterford Institute of Technology',
 					course:{
@@ -75,6 +77,8 @@ describe('Student', function () {
 				email:'tempstudent2@gmail.com',
 				username:'tempstudent',
 				password:'tempstudent01',
+				gender: 'Male',
+				address: '1 temproad, tempplace',
 				college:{
 					name:'Waterford Institute of Technology',
 					course:{
@@ -102,6 +106,8 @@ describe('Student', function () {
 				email:'tempstudent@gmail.com',
 				username:'tempstudent2',
 				password:'tempstudent02',
+				gender: 'Male',
+				address: '1 temproad, tempplace',
 				college:{
 					name:'Waterford Institute of Technology',
 					course:{
@@ -129,6 +135,8 @@ describe('Student', function () {
 				email:'tempstudent',
 				username:'tempstudent2',
 				password:'tempstudent02',
+				gender: 'Male',
+				address: '1 temproad, tempplace',
 				college:{
 					name:'Waterford Institute of Technology',
 					course:{
@@ -144,6 +152,35 @@ describe('Student', function () {
 				.end(function (err, res) {
 					if(err) return done(err);
 					expect(res.body).to.have.property('message').equal('Student validation failed: email: Please fill a valid email address!' ) ;
+					done();
+				});
+		});
+
+		it('should return error message when gender is not in correct form', function(done) {
+			var tempstudent = {
+				dob:'2000-01-01',
+				name:'Temp Student4',
+				studentid:20010001,
+				email:'tempstudent4@gmail.com',
+				username:'tempstudent4',
+				password:'tempstudent00',
+				gender: 'ASD',
+				address: '1 temproad, tempplace',
+				college:{
+					name:'Waterford Institute of Technology',
+					course:{
+						year:2,
+						name:'BSc in Software System Development'
+					}
+				}
+			};
+			request(app)
+				.post('/student')
+				.send(tempstudent)
+				.expect(400)
+				.end(function (err, res) {
+					if(err) return done(err);
+					expect(res.body).to.have.property('message').equal('Student validation failed: gender: `ASD` is not a valid enum value for path `gender`.' ) ;
 					done();
 				});
 		});
@@ -224,6 +261,8 @@ describe('Student', function () {
 				studentid:20020002,
 				username: 'tempstudentt',
 				email: 'tempstudentt@gmail.com',
+				gender: 'Male',
+				address: '1 temproad, tempplace',
 				college:{
 					name:'Waterford Institute of Technology',
 					course:{
