@@ -1,6 +1,5 @@
 var chai = require('chai');
 var expect = chai.expect;
-process.env.NODE_ENV = 'testing';
 var Student = require('../../../models/student');
 
 var mongoose = require('mongoose');
@@ -24,11 +23,8 @@ describe('Student Model Unit', function () {
 			delete mongoose.connection.models[col];
 		});
 
-		mockgoose.helper.reset(function () {
-			mongoose.disconnect();
-		}).then(() => {
-			done();
-		});
+		mongoose.disconnect();
+		done();
 	});
 
 	afterEach((done) => {

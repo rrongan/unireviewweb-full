@@ -4,12 +4,17 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "test": "mocha test/routes/student-test test/routes/authentication-test"
+    "unitAuth": "cross-env NODE_ENV=test LOG_LEVEL=silent nyc mocha ./test/unit/authentication -name '*-test.js'",
+    "unitStudent": "cross-env NODE_ENV=test LOG_LEVEL=silent nyc mocha ./test/unit/student -name '*-test.js'",
+    "unit": "npm run unitStudent && npm run unitAuth",
+    "integration": "cross-env NODE_ENV=test LOG_LEVEL=silent nyc mocha ./test/integration -name '*-test.js",
+    "test": "npm run unit && npm run integration"
   },
   "dependencies": {
     "bcrypt": "^1.0.3",
     "body-parser": "~1.18.2",
     "cookie-parser": "~1.4.3",
+    "cross-env": "^5.1.1",
     "debug": "~2.6.9",
     "ejs": "~2.5.7",
     "express": "~4.15.5",
@@ -30,6 +35,7 @@
     "mocha": "^2.4.5",
     "mockgoose": "^7.3.3",
     "supertest": "^3.0.0",
-    "supertest-session": "^3.1.0"
+    "supertest-session": "^3.1.0",
+    "nyc": "^11.3.0"
   }
 }

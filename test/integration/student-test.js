@@ -7,7 +7,6 @@
 var chai = require('chai');
 var expect = chai.expect;
 var request = require('supertest');
-process.env.NODE_ENV = 'testing';
 var app = require('../../app');
 
 var mongoose = require('mongoose');
@@ -32,9 +31,8 @@ describe('Student', function () {
 			delete mongoose.connection.models[col];
 		} );
 
-		mockgoose.helper.reset( function ( ) {
+		mockgoose.helper.reset().then(() => {
 			mongoose.disconnect();
-		}).then(() => {
 			done();
 		});
 	});

@@ -11,7 +11,7 @@ var mongoose = require('mongoose');
 
 var router = express.Router();
 
-if(process.env.NODE_ENV !== 'testing') {
+if(process.env.NODE_ENV !== 'test') {
 	mongoose.connect('mongodb://localhost:27017/unireviewdb');
 	var db = mongoose.connection;
 	db.on('error', function (err) {

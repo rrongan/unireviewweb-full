@@ -7,7 +7,6 @@ var expect = chai.expect;
 var request = require('supertest');
 var session = require('supertest-session');
 var testsession = null;
-process.env.NODE_ENV = 'testing';
 var app = require('../../app');
 
 var mongoose = require('mongoose');
@@ -59,10 +58,8 @@ describe('Authentication', function () {
 		Object.keys( mongoose.connection.collections ).forEach( col => {
 			delete mongoose.connection.models[col];
 		} );
-
-		mockgoose.helper.reset( function ( ) {
+		mockgoose.helper.reset().then(() => {
 			mongoose.disconnect();
-		}).then(() => {
 			done();
 		});
 	});
