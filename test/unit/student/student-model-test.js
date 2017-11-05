@@ -105,8 +105,18 @@ describe('Student Model', function () {
 			});
 		});
 
+		it('should return error if email format is incorrect',function (done) {
+			tempstudent.email = 'asdasdasd';
+			var student = new Student();
+			student.email = tempstudent.email;
+			student.validate(function (err) {
+				expect(err.errors.email.message).to.equal('Please fill a valid email address!');
+				done();
+			});
+		});
+
 		it('should return error if gender is not in correct form', function (done) {
-			tempstudent.gender = "asdasd";
+			tempstudent.gender = 'asdasd';
 			var student = new Student();
 			student.gender = tempstudent.gender;
 			student.validate(function (err) {
@@ -116,18 +126,18 @@ describe('Student Model', function () {
 		});
 	});
 
-	it('should return error if email is existed',function (done) {
-		var student = new Student(tempstudent);
-		student.save().then(function () {
-			var student2 = new Student(tempstudent);
-			student2.save(function (err) {
-				expect(err.errors.email.message).to.equal('Email Already Exists!');
-				done();
-			})
-		});
-	});
-
 	describe('Schema Custom Validator',function () {
+		it('should return error if email is existed',function (done) {
+			var student = new Student(tempstudent);
+			student.save().then(function () {
+				var student2 = new Student(tempstudent);
+				student2.save(function (err) {
+					expect(err.errors.email.message).to.equal('Email Already Exists!');
+					done();
+				});
+			});
+		});
+
 		it('should return error if username is existed', function (done) {
 			var student = new Student(tempstudent);
 			student.save().then(function () {
@@ -135,7 +145,7 @@ describe('Student Model', function () {
 				student2.save(function (err) {
 					expect(err.errors.username.message).to.equal('Username Already Exists!');
 					done();
-				})
+				});
 			});
 		});
 	});
@@ -147,13 +157,13 @@ describe('Student Model', function () {
 				Student.find(function (err, student) {
 					expect(student.password).to.not.equal(tempstudent.password);
 					done();
-				})
+				});
 			});
 		});
 
 		it('should be able to update the password', function (done) {
 			var student = new Student(tempstudent);
-			var newpass = "asdasdas";
+			var newpass = 'asdasdas';
 			var oldencryptedpass;
 			student.save().then(function () {
 				Student.find(function (err, student) {
@@ -164,7 +174,7 @@ describe('Student Model', function () {
 							done();
 						});
 					});
-				})
+				});
 			});
 		});
 
@@ -176,7 +186,7 @@ describe('Student Model', function () {
 						expect(isMatch).to.equal(true);
 						done();
 					});
-				})
+				});
 			});
 		});
 	});

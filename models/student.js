@@ -10,7 +10,11 @@ var mongoose = require('mongoose'),
 
 var StudentSchema = new mongoose.Schema({
 	name: String,
-	email: {type:String, required:true, index: {unique:true}},
+	email: {type:String, required:true, index: {unique:true},
+		validate: [function(email) {
+			return /^[a-zA-Z0-9.!#$%&’*+=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email);
+		},'Please fill a valid email address!']
+	},
 	studentid: String,
 	dob: Date,
 	gender: {type: String, enum: ['Male', 'Female','Not Disclose']},

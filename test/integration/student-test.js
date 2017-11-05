@@ -120,6 +120,33 @@ describe('Student', function () {
 					done();
 				});
 		});
+
+		it('should return error message when email format is incorrect', function(done) {
+			var tempstudent = {
+				dob:'2000-01-03',
+				name:'Temp Student 3',
+				studentid:20010003,
+				email:'tempstudent',
+				username:'tempstudent2',
+				password:'tempstudent02',
+				college:{
+					name:'Waterford Institute of Technology',
+					course:{
+						year:1,
+						name:'BSc in Software System Development'
+					}
+				}
+			};
+			request(app)
+				.post('/student')
+				.send(tempstudent)
+				.expect(400)
+				.end(function (err, res) {
+					if(err) return done(err);
+					expect(res.body).to.have.property('message').equal('Student validation failed: email: Please fill a valid email address!' ) ;
+					done();
+				});
+		});
 	});
 
 	var tempid;
