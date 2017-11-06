@@ -13,4 +13,13 @@ var CollegeSchema = new mongoose.Schema({
 	address: String
 });
 
+CollegeSchema.path('email').validate(function(value, done) {
+	this.model('College').count({ email: value }, function(err, count) {
+		if (err) {
+			return done(err);
+		}
+		done(!count);
+	});
+}, 'Email Already Exists!');
+
 module.exports = mongoose.model('College', CollegeSchema);

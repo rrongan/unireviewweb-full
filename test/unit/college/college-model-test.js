@@ -2,8 +2,37 @@ var chai = require('chai');
 var expect = chai.expect;
 var College = require('../../../models/college');
 
+var mongoose = require('mongoose');
+
+var Mockgoose = require('mockgoose').Mockgoose;
+var mockgoose = new Mockgoose(mongoose);
+
 var tempcollege = {};
 describe('College Model Unit', function () {
+
+	this.timeout(120000);
+	before(function (done) {
+		mockgoose.prepareStorage().then(function () {
+			mongoose.connect('mongodb://localhost:27017/unireviewdb', function (err) {
+				done(err);
+			});
+		});
+	});
+
+	after((done) => {
+		Object.keys(mongoose.connection.collections).forEach(col => {
+			delete mongoose.connection.models[col];
+		});
+
+		mongoose.disconnect();
+		done();
+	});
+
+	afterEach((done) => {
+		mockgoose.helper.reset().then(() => {
+			done();
+		});
+	});
 
 	beforeEach(function () {
 		tempcollege = {
@@ -42,6 +71,19 @@ describe('College Model Unit', function () {
 			college.validate(function (err) {
 				expect(err.errors.email.message).to.equal('Please fill a valid email address!');
 				done();
+			});
+		});
+	});
+
+	describe('Schema Custom Validator',function () {
+		it('should return error if email is existed', function (done) {
+			var college = new College(tempcollege);
+			college.save().then(function () {
+				var college2 = new College(tempcollege);
+				college2.save(function (err) {
+					expect(err.errors.email.message).to.equal('Email Already Exists!');
+					done();
+				});
 			});
 		});
 	});
