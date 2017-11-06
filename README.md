@@ -24,9 +24,16 @@ just provide the student endpoints and authentication.
 + app.put('/student/:id', student.editStudent);
 + app.put('/student/:id/password', student.editStudentPassword);
 + app.post('/student/search', student.search);
++ app.get('/college', college.findAll);
++ app.get('/college/:id', college.findOne);
++ app.post('/college', college.addCollege);
++ app.delete('/college/:id', college.deleteCollege);
++ app.put('/college/:id', college.editCollege);
++ app.post('/college/search', college.search);
 
 ## Data storage
-MongoDB has been used in this project. The database contain one collection __Student__. The Student collection has the basic detail of student.
+MongoDB has been used in this project. The database contain two collection, __Student__ and __College__. The Student 
+collection has the basic detail of student and College collection has some information of college.
 
 ### Student
 ````js
@@ -70,10 +77,33 @@ The model can generate the object in the format below:
         }
     }
 ````
+### College
+````js
+var CollegeSchema = new mongoose.Schema({
+	name: String,
+	email: {type:String, required:true, index: {unique:true},
+		validate: [function(email) {
+			return /^[a-zA-Z0-9.!#$%&’*+=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email);
+		},'Please fill a valid email address!']
+	},
+	contactno: String,
+	address: String
+});
+````
+The model can generate the object in the format below:
+````json
+{
+    "_id": "59ff66f3890a7f3f40259ffd",
+    "name": "Waterford Institute of Technology",
+    "contactno": "0829374960",
+    "email": "waterfordit@wit.ie",
+    "address": "Cork Road, Waterford"
+}
+````
 
 ## Sample Test Execution
-There are two kinds of test in in this project, __Integration Test__ and __Unit Test__. Both of the tests have two 
- test suites, __Authentication__ and __Student__. All the tests can be run in single 
+There are two kinds of test in in this project, __Integration Test__ and __Unit Test__. Both of the tests have three 
+ test suites, __Authentication__, __College__ and __Student__. All the tests can be run in single 
 command `npm test`.The section below include a listing of 
 the output from running the test suites.
 
@@ -162,6 +192,73 @@ the output from running the test suites.
       student.js                 |    86.54 |    66.07 |    89.47 |    86.54 |... 151,163,172 |
     -----------------------------|----------|----------|----------|----------|----------------|
 
+### College Model Unit Test
+
+    College Model Unit
+     
+    College Schema
+      √ should create a college
+      √ should return error if email not available
+      √ should return error if email format is incorrect
+    Schema Custom Validator
+      √ should return error if email is existed
+
+### College Unit Test
+
+    College Unit
+    
+    POST /college
+        POST /college 201 16.546 ms - 208
+          √ should return confirmation message and update database
+        POST /college 400 2.222 ms - 412
+          √ should return error message when email is already exist
+        POST /college 400 0.854 ms - 445
+          √ should return error message when email format is incorrect
+    GET /college
+        GET /college 200 7.536 ms - 169
+          √ should GET all the colleges
+    GET /college/:id
+        GET /college/5a0080d5409e823ed42aad74 200 2.783 ms - 169
+          √ should GET the specific college by id
+        GET /college/5a0080d5409e823ed42aad741 404 1.576 ms - 289
+          √ should return 404 if college is not found
+    PUT /college/:id
+        PUT /college/5a0080d5409e823ed42aad76 200 5.806 ms - 198
+          √ should return confirmation message and update college detail
+        PUT /college/5a0080d5409e823ed42aad761 404 1.258 ms - 289
+          √ should return 404 if college is not found
+    POST /college/search
+        POST /college/search 200 3.418 ms - 169
+          √ should return searched result when value is found
+        POST /college/search 404 1.469 ms - 31
+          √ should return 404 if college is not found
+    DELETE /college/:id
+        DELETE /college/5a0080d5409e823ed42aad7a 200 2.321 ms - 30
+          √ should DELETE the specific college by id
+        DELETE /college/5a0080d5409e823ed42aad7b1 404 0.464 ms - 289
+          √ should return 404 if college is not found
+    
+    
+      16 passing (4s)
+    
+    -----------------------------|----------|----------|----------|----------|----------------|
+    File                         |  % Stmts | % Branch |  % Funcs |  % Lines |Uncovered Lines |
+    -----------------------------|----------|----------|----------|----------|----------------|
+    All files                    |    46.67 |    17.69 |    27.12 |    47.57 |                |
+     unireviewweb-backend        |    72.88 |       10 |        0 |    72.88 |                |
+      app.js                     |    72.88 |       10 |        0 |    72.88 |... 3,98,99,101 |
+     unireviewweb-backend/models |    35.71 |        5 |    18.75 |       40 |                |
+      college.js                 |    90.91 |       50 |      100 |    90.91 |             19 |
+      student.js                 |    22.22 |        0 |        0 |    25.64 |... 89,94,95,96 |
+     unireviewweb-backend/routes |       42 |       21 |    34.21 |       42 |                |
+      authentication.js          |    25.93 |        0 |        0 |    25.93 |... 36,42,43,45 |
+      college.js                 |    91.94 |       70 |      100 |    91.94 | 11,68,72,84,93 |
+      index.js                   |       80 |      100 |        0 |       80 |              6 |
+      main.js                    |       40 |        0 |        0 |       40 |  6,7,8,9,11,12 |
+      student.js                 |     12.5 |        0 |        0 |     12.5 |... 169,170,172 |
+    -----------------------------|----------|----------|----------|----------|----------------|
+
+
 ### Authentication Unit Test
 
     Authentication Unit
@@ -188,16 +285,18 @@ the output from running the test suites.
     -----------------------------|----------|----------|----------|----------|----------------|
     File                         |  % Stmts | % Branch |  % Funcs |  % Lines |Uncovered Lines |
     -----------------------------|----------|----------|----------|----------|----------------|
-    All files                    |    45.53 |    17.35 |    37.21 |    46.72 |                |
-     unireviewweb-backend        |    77.27 |        0 |        0 |    77.27 |                |
-      app.js                     |    77.27 |        0 |        0 |    77.27 |... 71,76,77,79 |
-     unireviewweb-backend/models |    62.22 |    33.33 |    76.92 |    71.79 |                |
+    All files                    |    41.59 |    13.08 |    27.12 |    42.39 |                |
+     unireviewweb-backend        |    72.88 |       10 |        0 |    72.88 |                |
+      app.js                     |    72.88 |       10 |        0 |    72.88 |... 3,98,99,101 |
+     unireviewweb-backend/models |    60.71 |       30 |     62.5 |       68 |                |
+      college.js                 |    54.55 |        0 |        0 |    54.55 |  9,17,18,19,21 |
       student.js                 |    62.22 |    33.33 |    76.92 |    71.79 |... 81,84,85,89 |
-     unireviewweb-backend/routes |    30.82 |    15.28 |    22.22 |    30.82 |                |
+     unireviewweb-backend/routes |       27 |       10 |    15.79 |       27 |                |
       authentication.js          |    85.19 |    71.43 |      100 |    85.19 |    13,17,34,43 |
+      college.js                 |    17.74 |        0 |        0 |    17.74 |... 103,104,106 |
       index.js                   |       80 |      100 |        0 |       80 |              6 |
       main.js                    |       40 |        0 |        0 |       40 |  6,7,8,9,11,12 |
-      student.js                 |    13.46 |     1.79 |        0 |    13.46 |... 182,183,185 |
+      student.js                 |     12.5 |        0 |        0 |     12.5 |... 169,170,172 |
     -----------------------------|----------|----------|----------|----------|----------------|
     
 ### Student Integration Test
@@ -251,6 +350,41 @@ the output from running the test suites.
     
       24 passing (5s)
 
+### College Integration Test
+
+    College
+    
+    POST /college
+        POST /college 201 4.344 ms - 208
+          √ should return confirmation message and update database
+        POST /college 400 2.237 ms - 418
+          √ should return error message when email is already exist
+        POST /college 400 0.747 ms - 443
+          √ should return error message when email format is incorrect
+    GET /college
+        GET /college 200 2.799 ms - 174
+          √ should GET all the colleges
+    GET /college/:id
+        GET /college/5a0080dc0c8f9a2d4084b0cf 200 1.789 ms - 174
+          √ should GET the specific college by id
+        GET /college/5a0080dc0c8f9a2d4084b0cf1 404 2.049 ms - 289
+          √ should return 404 if college is not found
+    PUT /college/:id
+        PUT /college/5a0080dc0c8f9a2d4084b0cf 200 6.111 ms - 198
+          √ should return confirmation message and update college detail
+        PUT /college/5a0080dc0c8f9a2d4084b0cf1 404 0.820 ms - 289
+          √ should return 404 if college is not found
+    POST /college/search
+        POST /college/search 200 3.807 ms - 162
+          √ should return searched result when value is found
+        POST /college/search 404 1.668 ms - 31
+          √ should return 404 if college is not found
+    DELETE /college/:id
+        DELETE /college/5a0080dc0c8f9a2d4084b0cf 200 2.482 ms - 30
+          √ should DELETE the specific college by id
+        DELETE /college/5a0080dc0c8f9a2d4084b0cf1 404 0.495 ms - 289
+          √ should return 404 if college is not found
+
 ### Authentication Integration Test
 
     Authentication
@@ -278,16 +412,18 @@ the output from running the test suites.
     -----------------------------|----------|----------|----------|----------|----------------|
     File                         |  % Stmts | % Branch |  % Funcs |  % Lines |Uncovered Lines |
     -----------------------------|----------|----------|----------|----------|----------------|
-    All files                    |    83.83 |     60.2 |    86.05 |    86.03 |                |
-     unireviewweb-backend        |    77.27 |        0 |        0 |    77.27 |                |
-      app.js                     |    77.27 |        0 |        0 |    77.27 |... 71,76,77,79 |
-     unireviewweb-backend/models |    82.22 |    55.56 |      100 |    94.87 |                |
+    All files                    |    86.03 |    62.31 |    89.83 |     87.7 |                |
+     unireviewweb-backend        |    72.88 |       10 |        0 |    72.88 |                |
+      app.js                     |    72.88 |       10 |        0 |    72.88 |... 3,98,99,101 |
+     unireviewweb-backend/models |    83.93 |       55 |      100 |       94 |                |
+      college.js                 |    90.91 |       50 |      100 |    90.91 |             19 |
       student.js                 |    82.22 |    55.56 |      100 |    94.87 |          36,45 |
-     unireviewweb-backend/routes |     86.3 |    68.06 |    88.89 |     86.3 |                |
+     unireviewweb-backend/routes |     90.5 |       69 |    97.37 |     90.5 |                |
       authentication.js          |    88.89 |    78.57 |      100 |    88.89 |       13,17,34 |
+      college.js                 |    91.94 |       70 |      100 |    91.94 | 11,68,72,84,93 |
       index.js                   |       80 |      100 |        0 |       80 |              6 |
       main.js                    |       80 |       50 |      100 |       80 |          11,12 |
-      student.js                 |    86.54 |    66.07 |    89.47 |    86.54 |... 151,163,172 |
+      student.js                 |    91.67 |    66.67 |      100 |    91.67 |... 138,150,159 |
     -----------------------------|----------|----------|----------|----------|----------------|
 
 
