@@ -10,17 +10,7 @@ var CollegeSchema = new mongoose.Schema({
 		},'Please fill a valid email address!']
 	},
 	contactno: String,
-	address: String,
-	course:{
-		name: String,
-		coursecode: String,
-		courseleader: String,
-		subject: {
-			year: Number,
-			name: String,
-			lecturer: String
-		}
-	}
+	address: String
 });
 
-module.exports = mongoose.model('Student', CollegeSchema);
+module.exports = mongoose.model('College', CollegeSchema);

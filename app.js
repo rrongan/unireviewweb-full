@@ -14,6 +14,7 @@ var mongoose = require('mongoose');
 var index = require('./routes/index');
 var main = require('./routes/main.js');
 var student = require('./routes/student.js');
+var college = require('./routes/college.js');
 var authentication = require('./routes/authentication.js');
 
 var app = express();
@@ -66,6 +67,13 @@ app.delete('/student/:id', student.deleteStudent);
 app.put('/student/:id', student.editStudent);
 app.put('/student/:id/password', student.editStudentPassword);
 app.post('/student/search', student.search);
+
+app.get('/college', college.findAll);
+app.get('/college/:id', college.findOne);
+app.post('/college', college.addCollege);
+app.delete('/college/:id', college.deleteCollege);
+app.put('/college/:id', college.editCollege);
+app.post('/college/search', college.search);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
