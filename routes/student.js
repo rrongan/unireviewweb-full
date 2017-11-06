@@ -2,25 +2,12 @@
 * Search http://fusejs.io/
 * Search check data type https://www.webbjocke.com/javascript-check-data-types/
 * */
-/* eslint no-console: "off"*/
 
 var Student = require('../models/student');
 var express = require('express');
 var Fuse = require('fuse.js');
-var mongoose = require('mongoose');
 
 var router = express.Router();
-
-if(process.env.NODE_ENV !== 'test') {
-	mongoose.connect('mongodb://localhost:27017/unireviewdb');
-	var db = mongoose.connection;
-	db.on('error', function (err) {
-		console.log('connection error', err);
-	});
-	db.once('open', function () {
-		console.log('connected to database');
-	});
-}
 
 router.findAll = function(req, res) {
 	// Use the Students model to find all donations

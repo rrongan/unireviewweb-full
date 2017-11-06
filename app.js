@@ -1,6 +1,7 @@
 /*
 * Express session https://www.codementor.io/emjay/how-to-build-a-simple-session-based-authentication-system-with-nodejs-from-scratch-6vn67mcy3
 * */
+/* eslint no-console: "off"*/
 
 var express = require('express');
 var session = require('express-session');
@@ -8,6 +9,7 @@ var path = require('path');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
 
 var index = require('./routes/index');
 var main = require('./routes/main.js');
@@ -38,6 +40,18 @@ app.use(session({
 		httpOnly: false
 	}
 }));
+
+//open mongo database
+if(process.env.NODE_ENV !== 'test') {
+	mongoose.connect('mongodb://localhost:27017/unireviewdb');
+	var db = mongoose.connection;
+	db.on('error', function (err) {
+		console.log('connection error', err);
+	});
+	db.once('open', function () {
+		console.log('connected to database');
+	});
+}
 
 app.use('/', index);
 app.get('/main',authentication.sessionChecker, main.main);
