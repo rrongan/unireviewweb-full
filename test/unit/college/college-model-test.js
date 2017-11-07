@@ -37,10 +37,10 @@ describe('College Model Unit', function () {
 	beforeEach(function () {
 		tempcollege = {
 			name: 'Waterford Institute of Technology',
-			contactno: "0829374960",
+			contactno: '0829374960',
 			email: 'waterfordit@wit.ie',
 			address: 'Cork Road, Waterford'
-		}
+		};
 	});
 
 	describe('College Schema',function () {

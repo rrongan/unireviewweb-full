@@ -31,9 +31,9 @@ describe('College', function () {
 
 	describe('POST /college',function () {
 		it('should return confirmation message and update database', function(done) {
-			tempcollege = {
+			var tempcollege = {
 				name: 'Waterford Institute of Technology',
-				contactno: "0829374960",
+				contactno: '0829374960',
 				email: 'waterfordit@wit.ie',
 				address: 'Cork Road, Waterford'
 			};
@@ -49,9 +49,9 @@ describe('College', function () {
 		});
 
 		it('should return error message when email is already exist', function(done) {
-			tempcollege = {
+			var tempcollege = {
 				name: 'Waterford Institute of Technology',
-				contactno: "0829374960",
+				contactno: '0829374960',
 				email: 'waterfordit@wit.ie',
 				address: 'Cork Road, Waterford'
 			};
@@ -67,9 +67,9 @@ describe('College', function () {
 		});
 
 		it('should return error message when email format is incorrect', function(done) {
-			tempcollege = {
+			var tempcollege = {
 				name: 'Waterford Institute of Technology',
-				contactno: "0829374960",
+				contactno: '0829374960',
 				email: 'waterfordit',
 				address: 'Cork Road, Waterford'
 			};
@@ -105,7 +105,7 @@ describe('College', function () {
 					});
 					expect(result[0]).to.include( {
 						name: 'Waterford Institute of Technology',
-						contactno: "0829374960",
+						contactno: '0829374960',
 						email: 'waterfordit@wit.ie',
 						address: 'Cork Road, Waterford'
 					} );
@@ -132,7 +132,7 @@ describe('College', function () {
 					});
 					expect(result).to.include( {
 						name: 'Waterford Institute of Technology',
-						contactno: "0829374960",
+						contactno: '0829374960',
 						email: 'waterfordit@wit.ie',
 						address: 'Cork Road, Waterford'
 					} );
@@ -156,7 +156,7 @@ describe('College', function () {
 		it('should return confirmation message and update college detail', function(done) {
 			var modify = {
 				name: 'Cork Institute of Technology',
-				contactno: "082123132",
+				contactno: '082123132',
 				email: 'cork@cit.ie',
 				address: 'Kilkenny Road, Carlow'
 			};
@@ -175,7 +175,7 @@ describe('College', function () {
 					};
 					expect(result).to.include( {
 						name: 'Cork Institute of Technology',
-						contactno: "082123132",
+						contactno: '082123132',
 						email: 'cork@cit.ie',
 						address: 'Kilkenny Road, Carlow'
 					} );
@@ -217,7 +217,7 @@ describe('College', function () {
 					});
 					expect(result[0]).to.include( {
 						name: 'Cork Institute of Technology',
-						contactno: "082123132",
+						contactno: '082123132',
 						email: 'cork@cit.ie',
 						address: 'Kilkenny Road, Carlow'
 					} );

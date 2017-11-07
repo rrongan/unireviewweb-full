@@ -26,14 +26,14 @@ describe('College Unit', function () {
 	beforeEach(async function () {
 		tempcollege = {
 			name: 'Waterford Institute of Technology',
-			contactno: "0829374960",
+			contactno: '0829374960',
 			email: 'waterfordit@wit.ie',
 			address: 'Cork Road, Waterford'
 		};
 
 		var college = new College({
 			name: 'Carlow Institute of Technology',
-			contactno: "0829374960",
+			contactno: '0829374960',
 			email: 'carlowit@cit.ie',
 			address: 'Kilkenny Road, Carlow'
 		});
@@ -115,7 +115,7 @@ describe('College Unit', function () {
 					});
 					expect(result[0]).to.include( {
 						name: 'Carlow Institute of Technology',
-						contactno: "0829374960",
+						contactno: '0829374960',
 						email: 'carlowit@cit.ie',
 						address: 'Kilkenny Road, Carlow'
 					} );
@@ -145,7 +145,7 @@ describe('College Unit', function () {
 					});
 					expect(result).to.include( {
 						name: 'Carlow Institute of Technology',
-						contactno: "0829374960",
+						contactno: '0829374960',
 						email: 'carlowit@cit.ie',
 						address: 'Kilkenny Road, Carlow'
 					} );
@@ -169,7 +169,7 @@ describe('College Unit', function () {
 		it('should return confirmation message and update college detail', async function(done) {
 			var modify = {
 				name: 'Cork Institute of Technology',
-				contactno: "082123132",
+				contactno: '082123132',
 				email: 'cork@cit.ie',
 				address: 'Kilkenny Road, Carlow'
 			};
@@ -191,7 +191,7 @@ describe('College Unit', function () {
 					};
 					expect(result).to.include( {
 						name: 'Cork Institute of Technology',
-						contactno: "082123132",
+						contactno: '082123132',
 						email: 'cork@cit.ie',
 						address: 'Kilkenny Road, Carlow'
 					} );
@@ -233,7 +233,7 @@ describe('College Unit', function () {
 					});
 					expect(result).to.include( {
 						name: 'Carlow Institute of Technology',
-						contactno: "0829374960",
+						contactno: '0829374960',
 						email: 'carlowit@cit.ie',
 						address: 'Kilkenny Road, Carlow'
 					} );
