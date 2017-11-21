@@ -32,6 +32,8 @@ router.addCollege = function(req, res) {
 	college.email = req.body.email;
 	college.contactno = req.body.contactno;
 	college.address = req.body.address;
+	college.website = req.body.website;
+	college.description = req.body.description;
 
 	college.save(function(err) {
 		if (err)
@@ -62,17 +64,19 @@ router.editCollege = function(req, res) {
 				college.name = req.body.name || college.name;
 				college.contactno = req.body.contactno || college.contactno;
 				college.address = req.body.address || college.address;
+				college.website = req.body.website || college.website;
+				college.description = req.body.description;
 				if(req.body.email)
 					college.email = req.body.email;
+				College.update({_id:req.params.id},college,function (err) {
+					if (err)
+						res.status(400).send(err);
+					else
+						res.json({ message: 'College Updated!', data: college });
+				});
 			}catch (e){
-				res.status(400).json({message:'Edit College Error: ',errmsg: e});
+				res.status(400).json({message:'Edit College Error: ',errmsg: e.message});
 			}
-			College.update({_id:req.params.id},college,function (err) {
-				if (err)
-					res.status(400).send(err);
-				else
-					res.json({ message: 'College Updated!', data: college });
-			});
 		}
 	});
 };

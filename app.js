@@ -15,6 +15,7 @@ var index = require('./routes/index');
 var main = require('./routes/main.js');
 var student = require('./routes/student.js');
 var college = require('./routes/college.js');
+var course = require('./routes/course.js');
 var authentication = require('./routes/authentication.js');
 
 var app = express();
@@ -74,6 +75,12 @@ app.post('/college', college.addCollege);
 app.delete('/college/:id', college.deleteCollege);
 app.put('/college/:id', college.editCollege);
 app.post('/college/search', college.search);
+
+app.get('/college/:id/course', course.findAllCollegeCourse);
+app.get('/college/:id/course/:cid', course.findOneCollegeCourse);
+app.put('/college/:id/course', course.addCollegeCourse);
+app.put('/college/:id/course/:cid', course.editCollegeCourse);
+app.delete('/college/:id/course/:cid', course.deleteCollegeCourse);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

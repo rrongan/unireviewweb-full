@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var Course = require('../models/course').schema;
 
 var CollegeSchema = new mongoose.Schema({
 	name: String,
@@ -8,7 +9,10 @@ var CollegeSchema = new mongoose.Schema({
 		},'Please fill a valid email address!']
 	},
 	contactno: String,
-	address: String
+	address: String,
+	website: String,
+	description: String,
+	course: [Course]
 });
 
 CollegeSchema.path('email').validate(function(value, done) {
