@@ -16,6 +16,7 @@ var main = require('./routes/main.js');
 var student = require('./routes/student.js');
 var college = require('./routes/college.js');
 var course = require('./routes/course.js');
+var review = require('./routes/review.js');
 var authentication = require('./routes/authentication.js');
 
 var app = express();
@@ -81,6 +82,13 @@ app.get('/college/:id/course/:cid', course.findOneCollegeCourse);
 app.put('/college/:id/course', course.addCollegeCourse);
 app.put('/college/:id/course/:cid', course.editCollegeCourse);
 app.delete('/college/:id/course/:cid', course.deleteCollegeCourse);
+
+app.get('/review', review.findAll);
+app.get('/review/:id', review.findOne);
+app.post('/review', review.addReview);
+app.delete('/review/:id', review.deleteReview);
+app.put('/review/:id', review.editReview);
+app.post('/review/search', review.search);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
