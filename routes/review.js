@@ -4,30 +4,50 @@ var Fuse = require('fuse.js');
 
 var router = express.Router();
 
-router.findAll = function(req, res, next) {
+router.findAll = function(req, res) {
 
 	Review.find(function(err, review) {
 		if (err)
 			res.status(400).send(err);
 
 		res.json(review);
-		next();
 	});
 };
 
-router.findOne = function(req, res, next) {
+router.findAllMiddleware = function(req, res) {
+
+	Review.find({ '_id' : {$in: req.reviewids }},function(err, review) {
+		if (err)
+			res.status(404).json({ message: 'Review NOT Found!', errmsg : err } );
+		else {
+			res.json(review);
+		}
+	});
+};
+
+router.findOne = function(req, res) {
 
 	Review.find({ '_id' : req.params.id },function(err, review) {
 		if (err)
 			res.status(404).json({ message: 'Review NOT Found!', errmsg : err } );
 		else {
 			res.json(review);
-			next();
 		}
 	});
 };
 
-router.addReview = function(req, res, next) {
+router.findOneMiddleware = function(req, res) {
+
+	Review.find({ '_id' : req.reviewid },function(err, review) {
+		if (err)
+			res.status(404).json({ message: 'Review NOT Found!', errmsg : err } );
+		else {
+			res.json(review);
+		}
+	});
+};
+
+router.addReview = function(req, res) {
 
 	var review = new Review();
 
@@ -41,23 +61,53 @@ router.addReview = function(req, res, next) {
 			res.status(400).send(err);
 		else {
 			res.status(201).json({message: 'Review Added!', data: review});
+		}
+	});
+};
+
+router.addReviewMiddleware = function(req, res, next) {
+
+	var review = new Review();
+
+	review.rating = req.body.rating;
+	review.comment = req.body.comment;
+	review.reviewer = req.body.reviewer;
+	review.type = req.body.type;
+
+	review.save(function(err) {
+		if (err)
+			res.status(400).send(err);
+		else {
+			req.reviewid = review._id;
 			next();
 		}
 	});
 };
 
-router.deleteReview = function(req, res, next) {
+router.deleteReview = function(req, res) {
 	Review.findByIdAndRemove(req.params.id, function(err) {
 		if (err)
 			res.status(404).json({ message: 'Review Not Found!', errmsg : err});
 		else {
 			res.json({message: 'Review Deleted!'});
-			next();
 		}
 	});
 };
 
-router.editReview = function(req, res, next) {
+router.deleteReviewMiddleware = function(req, res) {
+	if(req.reviewid !== undefined) {
+		Review.findByIdAndRemove(req.reviewid, function (err) {
+			if (err)
+				res.status(404).json({message: 'Review Not Found!', errmsg: err});
+			else {
+				res.json({message: 'Review Deleted!'});
+			}
+		});
+	}else
+		res.status(404).json({message: 'Review Not Found!'});
+};
+
+router.editReview = function(req, res) {
 
 	var edit_review = Review;
 
@@ -76,7 +126,6 @@ router.editReview = function(req, res, next) {
 						res.status(400).send(err);
 					else {
 						res.json({message: 'Review Updated!', data: review});
-						next();
 					}
 				});
 			}catch (e){
@@ -86,7 +135,38 @@ router.editReview = function(req, res, next) {
 	});
 };
 
-router.search = function(req, res, next) {
+router.editReviewMiddleware = function(req, res) {
+
+	var edit_review = Review;
+
+	if(req.reviewid !== undefined) {
+		edit_review.findById(req.reviewid, function (err, review) {
+			if (err)
+				res.status(404).json({message: 'Review NOT Found!', errmsg: err});
+			else {
+				try {
+					review.rating = req.body.rating || review.rating;
+					review.comment = req.body.comment || review.comment;
+					review.reviewer = req.body.reviewer || review.reviewer;
+					review.type = req.body.type || review.type;
+
+					Review.update({_id: req.reviewid}, review, function (err) {
+						if (err)
+							res.status(400).send(err);
+						else {
+							res.json({message: 'Review Updated!', data: review});
+						}
+					});
+				} catch (e) {
+					res.status(400).json({message: 'Edit Review Error: ', errmsg: e.message});
+				}
+			}
+		});
+	}else
+		res.status(404).json({message: 'Review NOT Found!'});
+};
+
+router.search = function(req, res) {
 
 	Review.find().lean().exec(function(err, review) {
 		if (err)
@@ -114,7 +194,6 @@ router.search = function(req, res, next) {
 
 		if(result.length > 0){
 			res.json(result);
-			next();
 		}else{
 			res.status(404).json({ message: 'Result Not Found!'});
 		}

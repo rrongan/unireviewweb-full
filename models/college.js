@@ -12,7 +12,8 @@ var CollegeSchema = new mongoose.Schema({
 	address: String,
 	website: String,
 	description: String,
-	course: [Course]
+	course: [Course],
+	reviewid: [String]
 });
 
 CollegeSchema.path('email').validate(function(value, done) {

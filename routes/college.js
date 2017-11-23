@@ -112,4 +112,94 @@ router.search = function(req, res) {
 	});
 };
 
+router.addCollegeReview = function(req, res) {
+
+	var edit_college = College;
+
+	edit_college.findById(req.params.id, function(err,college) {
+		if (err)
+			res.status(404).json({ message: 'College NOT Found!', errmsg : err});
+		else {
+			var array = [];
+			try {
+				if (Array.isArray(college.reviewid)) {
+					college.reviewid.push(req.reviewid);
+				} else {
+					array.push(req.reviewid);
+					college.reviewid = array;
+				}
+
+				College.update({_id:req.params.id},college,function (err) {
+					if (err)
+						res.status(400).send(err);
+					else {
+						res.json({message: 'Review Added to College Profile!', data: college});
+					}
+				});
+			}catch (e){
+				res.status(400).json({message:'Add College Review Error: ',errmsg: e.message});
+			}
+		}
+	});
+};
+
+router.findAllCollegeReview = function(req, res, next) {
+
+	College.findById({ '_id' : req.params.id },function(err, college) {
+		if (err)
+			res.status(404).json({ message: 'College NOT Found!', errmsg : err } );
+		else {
+			req.reviewids = college.reviewid;
+			next();
+		}
+	});
+};
+
+router.findOneCollegeReview = function(req, res, next) {
+
+	College.findById({ '_id' : req.params.id },function(err, college) {
+		if (err)
+			res.status(404).json({ message: 'College NOT Found!', errmsg : err } );
+		else {
+			for(var i=0;i<college.reviewid.length;i++){
+				if(college.reviewid[i] == req.params.rid){
+					req.reviewid = req.params.rid;
+					break;
+				}else{
+					req.reviewid = undefined;
+				}
+			}
+			next();
+		}
+	});
+};
+
+router.deleteCollegeReview = function(req, res, next) {
+
+	College.findById({ '_id' : req.params.id },function(err, college) {
+		if (err)
+			res.status(404).json({ message: 'College NOT Found!', errmsg : err } );
+		else {
+			for(var i=0;i<college.reviewid.length;i++){
+				if(college.reviewid[i] == req.params.rid){
+					req.reviewid = req.params.rid;
+					var index = college.reviewid.indexOf(college.reviewid[i]);
+					college.reviewid.splice(index, 1);
+					College.update({_id:req.params.id},college,function (err) {
+						if (err)
+							res.status(400).send(err);
+						else {
+							next();
+						}
+					});
+					break;
+				}else{
+					req.reviewid = undefined;
+				}
+			}
+			next();
+		}
+	});
+};
+
 module.exports = router;

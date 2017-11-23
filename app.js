@@ -76,6 +76,11 @@ app.post('/college', college.addCollege);
 app.delete('/college/:id', college.deleteCollege);
 app.put('/college/:id', college.editCollege);
 app.post('/college/search', college.search);
+app.get('/college/:id/review', college.findAllCollegeReview, review.findAllMiddleware);
+app.get('/college/:id/review/:rid', college.findOneCollegeReview, review.findOneMiddleware);
+app.put('/college/:id/review/:rid', college.findOneCollegeReview, review.editReviewMiddleware);
+app.post('/college/:id/review', review.addReviewMiddleware, college.addCollegeReview);
+app.delete('/college/:id/review/:rid', college.deleteCollegeReview, review.deleteReviewMiddleware);
 
 app.get('/college/:id/course', course.findAllCollegeCourse);
 app.get('/college/:id/course/:cid', course.findOneCollegeCourse);
