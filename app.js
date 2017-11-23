@@ -84,9 +84,14 @@ app.delete('/college/:id/review/:rid', college.deleteCollegeReview, review.delet
 
 app.get('/college/:id/course', course.findAllCollegeCourse);
 app.get('/college/:id/course/:cid', course.findOneCollegeCourse);
-app.put('/college/:id/course', course.addCollegeCourse);
+app.post('/college/:id/course', course.addCollegeCourse);
 app.put('/college/:id/course/:cid', course.editCollegeCourse);
 app.delete('/college/:id/course/:cid', course.deleteCollegeCourse);
+app.get('/college/:id/course/:cid/review', course.findAllCourseReview, review.findAllMiddleware);
+app.get('/college/:id/course/:cid/review/:rid', course.findOneCourseReview, review.findOneMiddleware);
+app.delete('/college/:id/course/:cid/review/:rid', course.deleteCourseReview, review.deleteReviewMiddleware);
+app.put('/college/:id/course/:cid/review/:rid', course.findOneCourseReview, review.editReviewMiddleware);
+app.post('/college/:id/course/:cid/review', review.addReviewMiddleware, course.addCourseReview);
 
 app.get('/review', review.findAll);
 app.get('/review/:id', review.findOne);
