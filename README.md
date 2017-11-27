@@ -1,18 +1,17 @@
 <!-- eslint-disable no-alert -->
 
-# Academic Review Web Application Backend
+# Academic Review Web Application
 Name: Yun Shen Tan
 
 Student Number: 20065126
 ## Overview
-This GitHub repository contains the source code for the part of backend of my web application.
+This GitHub repository contains the source code for my web application.
 The web application is the project for both Web Applications Development and Agile Software Practices modules.
 
 The web application collects universities reviews, including the reviews of courses and subjects in these universities 
 from students who studied in the universities before and displays them for all members to see.
 
-This is the backend API that will let students to add review for universities and courses they studied. This project is 
-just provide the student endpoints and authentication.
+This is the frontend and backend API that will let students to add review for universities and courses they studied.
 
 ## API endpoints
 + app.use('/', index);
