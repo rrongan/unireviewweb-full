@@ -1,12 +1,74 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-    <a href="/login">Login</a>
-  </body>
+<!DOCTYPE HTML>
+<html ng-app="UniReviewWeb">
+<head>
+  <title>Academic Review</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+</head>
+<body ng-controller="mainController" class="index">
+<div id="page-wrapper">
+
+  <!-- Header -->
+  <header id="header" ng-class="{'alt':check.mainpage}">
+    <h1 id="logo"><a ng-class="getClass('home')" href="#/" ng-click="home()" style="border-top: 5px double white;border-bottom: 5px double white;padding: 8px 0">Academic Review</a></h1>
+    <nav id="nav">
+      <ul>
+        <li ng-if="currentUser" class="current"><a href="#/">Welcome, {{ currentUser.name }}</a></li>
+        <li class="submenu">
+          <a href="#">Colleges</a>
+          <ul>
+            <li><a href="#">Courses</a></li>
+          </ul>
+        </li>
+        <li><a href="" ng-if="!currentUser" ng-class="getClass('signin')" ng-click="signin()" class="button special2">Sign In</a></li>
+        <li><a href="" ng-if="!currentUser" ng-class="getClass('signup')" ng-click="signup()" class="button special">Sign Up</a></li>
+        <li><a href="" ng-if="currentUser" ng-click="logout()" class="button special3">Logout</a></li>
+      </ul>
+    </nav>
+  </header>
+
+    <div ui-view></div>
+
+  <!-- Footer -->
+  <footer id="footer">
+
+    <ul class="icons">
+      <li><a href="#" class="icon circle fa-twitter"><span class="label">Twitter</span></a></li>
+      <li><a href="#" class="icon circle fa-facebook"><span class="label">Facebook</span></a></li>
+      <li><a href="#" class="icon circle fa-google-plus"><span class="label">Google+</span></a></li>
+      <li><a href="#" class="icon circle fa-github"><span class="label">Github</span></a></li>
+      <li><a href="#" class="icon circle fa-dribbble"><span class="label">Dribbble</span></a></li>
+    </ul>
+
+    <ul class="copyright">
+      <li>&copy; Untitled</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+    </ul>
+
+  </footer>
+
+</div>
+
+<!-- Scripts -->
+<script src="/javascripts/angular/angular.min.js"></script>
+<script src="/javascripts/angular/angular-route.js"></script>
+<script src="/javascripts/angular/angular-ui-router.js"></script>
+<script src="/javascripts/angular/ui-bootstrap-tpls-2.5.0.min.js"></script>
+
+<script src="/javascripts/angularApp.js"></script>
+<script src="/javascripts/controllers/maincontroller.js"></script>
+<script src="/javascripts/controllers/searchresultcontroller.js"></script>
+<script src="/javascripts/auth.js"></script>
+<script src="/javascripts/controllers/signincontroller.js"></script>
+<script src="/javascripts/controllers/signupcontroller.js"></script>
+
+<script src="/javascripts/jquery/jquery.min.js"></script>
+<script src="/javascripts/jquery/jquery.dropotron.min.js"></script>
+<script src="/javascripts/jquery/jquery.scrolly.min.js"></script>
+<script src="/javascripts/jquery/jquery.scrollgress.min.js"></script>
+<script src="/javascripts/jquery/skel.min.js"></script>
+<script src="/javascripts/jquery/util.js"></script>
+<script src="/javascripts/jquery/main.js"></script>
+
+</body>
 </html>

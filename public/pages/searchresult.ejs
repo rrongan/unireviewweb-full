@@ -1,0 +1,23 @@
+<!-- Main -->
+<article id="main" ng-controller="searchResultController">
+
+    <header class="special container">
+        <h2>{{keyword}}</h2>
+    </header>
+
+    <!-- One -->
+    <section class="wrapper style4 container">
+        <!-- Content -->
+        <div class="content">
+            <section>
+                <table class ="default table table-striped table-bordered" align="center" valign="left">
+                    <tr ng-repeat="result in results" ng-click="go(result)">
+                        <td><h2 style="margin:0">{{result.name}}</h2>{{result.address}}</td>
+                    </tr>
+                </table>
+            </section>
+        </div>
+
+    </section>
+
+</article>

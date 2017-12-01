@@ -7,7 +7,6 @@ var express = require('express');
 var router = express.Router();
 
 router.login = function(req, res) {
-	var sess = req.session;
 	Student.findOne({'username' : req.body.username }, function(err,student) {
 		if (err)
 			res.send(err);
@@ -16,8 +15,14 @@ router.login = function(req, res) {
 				if (err)
 					res.send(err);
 				if (isMatch) {
-					sess.username = req.body.username;
-					res.json({message: 'Successfully Login!'});
+					res.json({
+						message: 'Successfully Login!',
+						users:{
+							username:req.body.username,
+							studentid:student._id,
+							name: student.name
+						}
+					});
 				} else {
 					res.status(401).json({message: 'Authentication Failed. Invalid Username or Password!'});
 				}
@@ -39,7 +44,7 @@ router.logout = function(req, res) {
 };
 
 router.sessionChecker = (req, res, next) => {
-	if (req.session.cookie.maxAge && req.session.username) {
+	if (req.session.cookie.maxAge && req.session._id) {
 		next();
 	} else {
 		res.redirect('/');

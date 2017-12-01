@@ -140,49 +140,4 @@ describe('Authentication', function () {
 				});
 		});
 	});
-
-	describe('Session Checker Middleware', function () {
-		var tempsession;
-		beforeEach(function (done) {
-			var login = {
-				username: 'tempstudent',
-				password: 'tempstudent00'
-			};
-			testsession
-				.post('/auth/login')
-				.send(login)
-				.expect(200)
-				.end(function (err) {
-					if(err) return done(err);
-					tempsession = testsession;
-					done();
-				});
-		});
-
-		it('should redirect to index when session inactive', function (done) {
-			tempsession = session(app,{
-				before: function (req) {
-					req.set('expires',new Date());
-				}
-			});
-			tempsession
-				.get('/main')
-				.expect(302)
-				.end(function (err) {
-					if(err) return done(err);
-					expect('Location','/');
-					done();
-				});
-		});
-
-		it('should remain the same page when session active', function (done) {
-			tempsession
-				.get('/main')
-				.expect(200)
-				.end(function (err) {
-					if(err) return done(err);
-					done();
-				});
-		});
-	});
 });

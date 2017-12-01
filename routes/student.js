@@ -42,9 +42,11 @@ router.addStudent = function(req, res) {
 	student.dob = req.body.dob;
 	student.gender = req.body.gender;
 	student.address = req.body.address;
-	student.college.name = req.body.college.name;
-	student.college.course.name = req.body.college.course.name;
-	student.college.course.year = req.body.college.course.year;
+	if(req.body.college) {
+		student.college.name = req.body.college.name;
+		student.college.course.name = req.body.college.course.name;
+		student.college.course.year = req.body.college.course.year;
+	}
 
 	// Save the donation and check for errors
 	student.save(function(err) {
