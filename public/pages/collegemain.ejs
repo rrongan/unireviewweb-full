@@ -1,0 +1,26 @@
+<!-- Banner Background: https://cdn.theculturetrip.com/wp-content/uploads/2016/08/6995209237_5244628609_k.jpg -->
+<!-- Banner -->
+<section id="collegebanner" ng-style="image"></section>
+
+<!-- Main -->
+<article id="main" style="padding-top:0">
+
+	<header class="special container">
+		<span class="icon"><img ng-src="{{icon}}"></span>
+		<h1 style="font-size: 3em">{{college.name}}</h1>
+		<jk-rating-stars rating="rating" read-only="readOnly" class="my-custom-stars"></jk-rating-stars>
+		<p style="font-size: 1.5em">{{rating}} &#9733;</p>
+	</header>
+
+	<!-- One -->
+	<section class="wrapper style2 container special-alt">
+		
+		<div>
+			<h2>{{college.name}}</h2>
+			<blockquote >From Wikipedia, the free encyclopedia</blockquote >
+			<div ng-bind-html="wiki">
+			</div>
+		</div>
+	</section>
+
+</article>

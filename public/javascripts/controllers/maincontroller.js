@@ -1,7 +1,7 @@
 var app = angular.module('UniReviewWeb');
 
-app.controller('mainController', ['$scope', '$location', '$state', '$rootScope', '$uibModal', 'Auth', 'AUTH_EVENTS','USER_ROLES', '$window',
-	function($scope, $location, $state, $rootScope, $uibModal, Auth, AUTH_EVENTS, USER_ROLES, $window) {
+app.controller('mainController', ['$scope', '$state', '$rootScope', '$uibModal', 'Auth', 'AUTH_EVENTS','USER_ROLES', '$window',
+	function($scope, $state, $rootScope, $uibModal, Auth, AUTH_EVENTS, USER_ROLES, $window) {
 
 	$scope.check = {};
 	$scope.check.mainpage = true;
@@ -10,7 +10,7 @@ app.controller('mainController', ['$scope', '$location', '$state', '$rootScope',
 	});
 	function search() {
 		if ($scope.college.length > 0) {
-			$location.path('/college/search/' + $scope.college)
+			$state.go('searchresult', {"param": $scope.college})
 		}
 	}
 	$scope.searchCollege = function () {

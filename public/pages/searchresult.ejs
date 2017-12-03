@@ -1,9 +1,7 @@
 <!-- Main -->
 <article id="main" ng-controller="searchResultController">
 
-    <header class="special container">
-        <h2>{{keyword}}</h2>
-    </header>
+    <h2 style="text-align: center">{{keyword}}</h2>
 
     <!-- One -->
     <section class="wrapper style4 container">
@@ -11,7 +9,8 @@
         <div class="content">
             <section>
                 <table class ="default table table-striped table-bordered" align="center" valign="left">
-                    <tr ng-repeat="result in results" ng-click="go(result)">
+                    <tr ng-repeat="result in results" ng-click="go(result,result.image)">
+                        <td style="padding:0; vertical-align:bottom"><img ng-src="{{ result.image }}" /></td>
                         <td><h2 style="margin:0">{{result.name}}</h2>{{result.address}}</td>
                     </tr>
                 </table>

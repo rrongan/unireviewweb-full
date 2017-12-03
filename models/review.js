@@ -4,7 +4,8 @@ var ReviewSchema = new mongoose.Schema({
 	rating: Number,
 	comment: String,
 	reviewer: String,
-	type: String
+	type: String,
+	date: Date
 });
 
 module.exports = mongoose.model('Review', ReviewSchema);

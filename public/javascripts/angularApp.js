@@ -1,5 +1,5 @@
 /* Authentication https://medium.com/opinionated-angularjs/techniques-for-authentication-in-angularjs-applications-7bbf0346acec*/
-var app = angular.module('UniReviewWeb', ['ui.router','ui.bootstrap'])
+var app = angular.module('UniReviewWeb', ['ui.router','ui.bootstrap','ngMaterial', 'jkAngularRatingStars', 'jtt_wikipedia'])
 	.constant('USER_ROLES', {
 		all : '*',
 		admin : 'admin',
@@ -14,7 +14,7 @@ var app = angular.module('UniReviewWeb', ['ui.router','ui.bootstrap'])
 		notAuthorized : 'auth-not-authorized'
 	});
 
-app.config(['$stateProvider', '$urlRouterProvider', 'USER_ROLES',function($stateProvider, $urlRouterProvider, USER_ROLES) {
+app.config(['$stateProvider', '$urlRouterProvider', 'USER_ROLES', '$sceDelegateProvider',function($stateProvider, $urlRouterProvider, USER_ROLES, $sceDelegateProvider) {
 	$urlRouterProvider.otherwise("/");
 
 	$stateProvider
@@ -50,6 +50,19 @@ app.config(['$stateProvider', '$urlRouterProvider', 'USER_ROLES',function($state
 				authorizedRoles: [USER_ROLES.all]
 			}
 		})
+		.state('collegemain', {
+			url:'/college?collegeid&image',
+			templateUrl : '../pages/collegemain.ejs',
+			controller  : 'collegeMainController',
+			data: {
+				authorizedRoles: [USER_ROLES.all]
+			}
+		});
+
+	$sceDelegateProvider.resourceUrlWhitelist([
+		'self',
+		'https://en.wikipedia.org/**'
+	]);
 }]);
 
 /* Adding the auth interceptor here, to check every $http request*/

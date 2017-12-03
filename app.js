@@ -18,6 +18,7 @@ var college = require('./routes/college.js');
 var course = require('./routes/course.js');
 var review = require('./routes/review.js');
 var authentication = require('./routes/authentication.js');
+var googleimg = require('./routes/googleimg.js');
 
 var app = express();
 
@@ -61,6 +62,8 @@ app.get('/main',authentication.sessionChecker, main.main);
 
 app.post('/auth/login', authentication.login);
 app.get('/auth/logout', authentication.logout);
+
+app.get('/googleimg/:keyword', googleimg.imagesearch);
 
 app.get('/student', student.findAll);
 app.get('/student/:id', student.findOne);

@@ -1,5 +1,6 @@
 /*noinspection CssUnknownTarget*/
 @import url('/stylesheets/font-awesome.min.css');
+@import url('/stylesheets/angular-material.css');
 @import url("https://fonts.googleapis.com/css?family=Lato:300,400,900");
 
 /*
@@ -1642,7 +1643,7 @@ hr {
 blockquote {
   border-left: solid 0.5em rgba(124, 128, 129, 0.2);
   font-style: italic;
-  padding: 1em 0 1em 2em;
+  padding: 0 0 0 2em;
 }
 
 /* Section/Article */
@@ -2147,12 +2148,23 @@ input[type="reset"].small,
 }
 
 .wrapper.style2 {
-  background-color: #83d3c9;
+  background-color: #e2eeff;
   background-image: url("images/light-bl.svg"), url("images/light-br.svg");
   background-position: bottom left, bottom right;
   background-repeat: no-repeat, no-repeat;
   background-size: 25em, 25em;
-  color: #fff;
+  color: black;
+}
+
+.wrapper.style2 p{
+    margin: 0 0 1em 0;
+    padding: 0;
+}
+
+.wrapper.style2 h2{
+    margin: 1em 0 1em 0;
+    padding: 0;
+    border-bottom: 2px solid #7c8081;
 }
 
 .wrapper.style2 .button:hover {
@@ -2497,6 +2509,20 @@ input[type="reset"].small,
 
 #banner .inner footer {
   margin: 2em 0 0 0;
+}
+
+/*College Banner*/
+#collegebanner {
+    background-attachment: scroll, scroll, scroll, fixed;
+    background-color: #645862;
+    background-image: url("images/light-bl.svg"), url("images/light-br.svg"), url("images/overlay.png"), url("images/banner.jpg");
+    background-position: bottom left, bottom right, top left, bottom center;
+    background-repeat: no-repeat, no-repeat, repeat, no-repeat;
+    background-size: 25em, 25em, auto, cover;
+    color: #fff;
+    cursor: default;
+    padding: 6em 0 16em 0;
+    text-align: center;
 }
 
 /* Main */
@@ -3376,4 +3402,46 @@ body.index #main {
 .forgot {
     margin-top: -20px;
     text-align: right;
+}
+
+/*Rating Star*/
+.jk-rating-stars-container .button {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+    -moz-transition: none;
+    -webkit-transition: none;
+    -ms-transition: none;
+    transition: none;
+    background: none;
+    border: none;
+    color: inherit;
+    display: inherit;
+    font-size: 0;
+    font-weight: normal;
+    letter-spacing: 0;
+    min-width: 0;
+    padding: 0;
+    line-height: 0;
+    text-align: start;
+    text-decoration: none;
+    text-transform: none;
+    cursor: pointer; }
+.jk-rating-stars-container .button .material-icons {
+    font-size: 50px; }
+
+.jk-rating-stars-container .star-button {
+    text-shadow: 0.06em .04em #000000; }
+.jk-rating-stars-container .star-button.star-on .material-icons {
+    color: #EE9A00; }
+.jk-rating-stars-container .star-button.star-off .material-icons {
+    color: #ddd; }
+
+.jk-rating-stars-container[read-only="true"] .button {
+    cursor: default; }
+
+.my-custom-stars {
+    display: inline-block;
+    margin:auto;
 }

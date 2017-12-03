@@ -55,6 +55,7 @@ router.addReview = function(req, res) {
 	review.comment = req.body.comment;
 	review.reviewer = req.body.reviewer;
 	review.type = req.body.type;
+	review.date = Date.now();
 
 	review.save(function(err) {
 		if (err)
@@ -73,6 +74,7 @@ router.addReviewMiddleware = function(req, res, next) {
 	review.comment = req.body.comment;
 	review.reviewer = req.body.reviewer;
 	review.type = req.body.type;
+	review.date = Date.now();
 
 	review.save(function(err) {
 		if (err)
