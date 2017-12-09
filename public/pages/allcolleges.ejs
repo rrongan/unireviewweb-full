@@ -1,17 +1,18 @@
 <!-- Main -->
 <article id="main" ng-controller="allCollegesController">
 
-    <h2 style="text-align: center">{{keyword}}</h2>
+    <h2 style="text-align: center">All Colleges</h2>
 
     <!-- One -->
     <section class="wrapper style4 container">
         <!-- Content -->
         <div class="content">
             <section>
-                <table class ="default table table-striped table-bordered" align="center" valign="left">
-                    <tr ng-repeat="result in results" ng-click="go(result,result.image)">
-                        <td style="padding:0; vertical-align:bottom"><img ng-src="{{ result.image }}" /></td>
-                        <td><h2 style="margin:0">{{result.name}}</h2>{{result.address}}</td>
+                <table class ="colleges table table-striped table-bordered" align="center" valign="left">
+                    <tr ng-repeat="result in results | filter:getFiltered" ng-click="go(result,result.image)">
+                        <td><img ng-src="{{ result.image }}" /><h2 style="margin:0">{{result.name}}</h2>{{result.address}}</td>
+                        <td><img ng-src="{{ results[result._index+1].image }}" /><h2 style="margin:0">{{results[result._index+1].name}}</h2>{{results[result._index+1].address}}</td>
+                        <td><img ng-src="{{ results[result._index+2].image }}" /><h2 style="margin:0">{{results[result._index+2].name}}</h2>{{results[result._index+2].address}}</td>
                     </tr>
                 </table>
             </section>

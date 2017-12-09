@@ -1,6 +1,6 @@
 var app = angular.module('UniReviewWeb');
 
-app.controller('searchResultController', ['$http','$window','$rootScope','$state','$scope','$stateParams','GoogleImageSearch', function($http, $window, $rootScope, $state, $scope, $stateParams,GoogleImageSearch) {
+app.controller('searchResultController', ['$http','$state','$scope','$stateParams','GoogleImageSearch', function($http, $state, $scope, $stateParams,GoogleImageSearch) {
 
 	$scope.check.mainpage = false;
 	$scope.keyword = 'Search Result: '+ $stateParams.param;

@@ -58,6 +58,30 @@ app.config(['$stateProvider', '$urlRouterProvider', 'USER_ROLES', '$sceDelegateP
 				authorizedRoles: [USER_ROLES.all]
 			}
 		})
+		.state('allcolleges', {
+		url:'/colleges',
+		templateUrl : '../pages/allcolleges.ejs',
+		controller  : 'allCollegesController',
+		data: {
+			authorizedRoles: [USER_ROLES.all]
+		}
+	})
+	.state('addcollege', {
+		url:'/addcollege',
+		templateUrl : '../pages/addcollege.ejs',
+		controller  : 'addCollegeController',
+		data: {
+			authorizedRoles: [USER_ROLES.all]
+		}
+	})
+	.state('editcollege', {
+		url:'/editcollege',
+		templateUrl : '../pages/editcollege.ejs',
+		controller  : 'editCollegeController',
+		data: {
+			authorizedRoles: [USER_ROLES.all]
+		}
+	});
 
 	$sceDelegateProvider.resourceUrlWhitelist([
 		'self',
