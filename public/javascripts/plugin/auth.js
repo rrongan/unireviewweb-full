@@ -60,7 +60,7 @@ app.factory('AuthInterceptor', [ '$rootScope', '$q', 'Session', 'AUTH_EVENTS',
 	}
 ]);
 
-app.run(function($rootScope, $state, Auth, AUTH_EVENTS) {
+app.run(function($rootScope, $window, $state, Auth, AUTH_EVENTS) {
 
 	$rootScope.$on('$stateChangeStart', function (event, next) {
 		var authorizedRoles = next.data.authorizedRoles;
@@ -74,6 +74,11 @@ app.run(function($rootScope, $state, Auth, AUTH_EVENTS) {
 			}
 		}
 	});
+
+	if ($window.sessionStorage["userInfo"] && !$rootScope.currentUser) {
+		var credentials = JSON.parse($window.sessionStorage["userInfo"]);
+		Auth.login(credentials,function (user) {});
+	}
 
 	$rootScope.getClass = function(path) {
 		if ($state.current.name == path) {

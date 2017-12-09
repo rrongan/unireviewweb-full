@@ -14,7 +14,9 @@ app.controller('signInController', ['$scope', '$state' , '$window', 'Auth', func
 
 	$scope.login = function(credentials) {
 		Auth.login(credentials, function(user) {
-			$state.go('home')
+			if(!$scope.check.mainpage)
+				$scope.check.mainpage = true;
+			$window.history.back();
 		}, function(err) {
 			alert(err.data.message);
 		});

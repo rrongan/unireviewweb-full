@@ -122,6 +122,7 @@ router.editReview = function(req, res) {
 				review.comment = req.body.comment || review.comment;
 				review.reviewer = req.body.reviewer || review.reviewer;
 				review.type = req.body.type || review.type;
+				review.date = Date.now();
 
 				Review.update({_id:req.params.id},review,function (err) {
 					if (err)
@@ -151,6 +152,7 @@ router.editReviewMiddleware = function(req, res) {
 					review.comment = req.body.comment || review.comment;
 					review.reviewer = req.body.reviewer || review.reviewer;
 					review.type = req.body.type || review.type;
+					review.date = Date.now();
 
 					Review.update({_id: req.reviewid}, review, function (err) {
 						if (err)

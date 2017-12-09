@@ -2031,6 +2031,42 @@ table.default thead {
   color: #fff;
 }
 
+table.review {
+    width: 100%;
+}
+
+table.review tbody tr {
+    border-bottom: solid 1px rgba(124, 128, 129, 0.2);
+}
+
+table.review td {
+    padding: 0.5em 1em 0.5em 1em;
+}
+
+table.review td .md-fab{
+    margin-top: 5px;
+}
+
+table.review td .editicon{
+    width: 30px;
+    height: 30px;
+}
+
+table.review td input{
+    background-color: white;
+}
+
+table.review th {
+    font-weight: 400;
+    padding: 0.5em 1em 0.5em 1em;
+    text-align: left;
+}
+
+table.review thead {
+    background: #7c8081;
+    color: #fff;
+}
+
 /* Button */
 
 input[type="button"],
@@ -2053,7 +2089,6 @@ input[type="reset"],
   font-size: 0.8em;
   font-weight: 900;
   letter-spacing: 2px;
-  min-width: 18em;
   padding: 0 0.75em;
   line-height: 3.75em;
   text-align: center;
@@ -2180,6 +2215,21 @@ input[type="reset"].small,
 .wrapper.style2 .button.special:hover {
   border-color: inherit !important;
   color: #fff !important;
+}
+
+.wrapper.style2 button:disabled {
+    border-color: inherit;
+    background-color: #EBEBE4;
+    color: #fff;
+}
+
+.wrapper.style2 textarea {
+    background-color: white;
+    color: black;
+}
+
+.wrapper.style2 textarea:disabled {
+    background-color: #EBEBE4;
 }
 
 .wrapper.style3 {
@@ -2615,6 +2665,19 @@ body.index #main {
   header.special {
     padding-top: 5.5em;
     margin-bottom: 4em;
+  }
+
+  #collegebanner {
+    background-attachment: scroll, scroll, scroll, fixed;
+    background-color: #645862;
+    background-image: url("images/light-bl.svg"), url("images/light-br.svg"), url("images/overlay.png"), url("images/banner.jpg");
+    background-position: bottom left, bottom right, top left, bottom 30%;
+    background-repeat: no-repeat, no-repeat, repeat, no-repeat;
+    background-size: 25em, 25em, auto, cover;
+    color: #fff;
+    cursor: default;
+    padding: 6em 0 10em 0;
+    text-align: center;
   }
 
 }
@@ -3305,6 +3368,39 @@ body.index #main {
     color: #ffffff;
 }
 
+.tab-group-college {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 40px 0;
+}
+.tab-group-college:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.tab-group-college li a {
+    display: block;
+    text-decoration: none;
+    padding: 15px;
+    background: rgba(107, 119, 116, 0.25);
+    color: #677674;
+    font-size: 20px;
+    float: left;
+    width: 50%;
+    text-align: center;
+    cursor: pointer;
+    -webkit-transition: .5s ease;!important;
+    transition: .5s ease;
+}
+.tab-group-college li a:hover {
+    background: #4eacd3;
+    color: #ffffff;
+}
+.tab-group-college .active a {
+    background: #4eacd3;
+    color: #ffffff;
+}
+
 .form h2 {
     text-align: center;
     color: #ffffff;
@@ -3418,7 +3514,7 @@ body.index #main {
     border: none;
     color: inherit;
     display: inherit;
-    font-size: 0;
+    font-size: 100%;
     font-weight: normal;
     letter-spacing: 0;
     min-width: 0;
@@ -3429,7 +3525,7 @@ body.index #main {
     text-transform: none;
     cursor: pointer; }
 .jk-rating-stars-container .button .material-icons {
-    font-size: 50px; }
+    font-size: 30px; }
 
 .jk-rating-stars-container .star-button {
     text-shadow: 0.06em .04em #000000; }
@@ -3442,6 +3538,17 @@ body.index #main {
     cursor: default; }
 
 .my-custom-stars {
-    display: inline-block;
+    display: inline-flex;
     margin:auto;
 }
+
+.my-custom-stars .button .material-icons {
+    font-size: 30px; }
+
+.my-review-custom-stars {
+    display: inline-flex;
+    margin:auto;
+}
+
+.my-review-custom-stars .button .material-icons {
+    font-size: 25px; }

@@ -1,5 +1,5 @@
 /* Authentication https://medium.com/opinionated-angularjs/techniques-for-authentication-in-angularjs-applications-7bbf0346acec*/
-var app = angular.module('UniReviewWeb', ['ui.router','ui.bootstrap','ngMaterial', 'jkAngularRatingStars', 'jtt_wikipedia'])
+var app = angular.module('UniReviewWeb', ['ui.router','ui.bootstrap','ngMaterial','ngMessages', 'jkAngularRatingStars', 'jtt_wikipedia', 'angularMoment'])
 	.constant('USER_ROLES', {
 		all : '*',
 		admin : 'admin',
@@ -57,7 +57,7 @@ app.config(['$stateProvider', '$urlRouterProvider', 'USER_ROLES', '$sceDelegateP
 			data: {
 				authorizedRoles: [USER_ROLES.all]
 			}
-		});
+		})
 
 	$sceDelegateProvider.resourceUrlWhitelist([
 		'self',

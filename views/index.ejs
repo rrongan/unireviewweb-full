@@ -19,11 +19,12 @@
         <li class="submenu">
           <a href="#">Colleges</a>
           <ul>
-            <li><a href="#">Courses</a></li>
+            <li><a href="#">All Colleges</a></li>
+            <li><a href="#">Add College</a></li>
           </ul>
         </li>
-        <li><a href="" ng-if="!currentUser" ng-class="getClass('signin')" ng-click="signin()" class="button special2">Sign In</a></li>
-        <li><a href="" ng-if="!currentUser" ng-class="getClass('signup')" ng-click="signup()" class="button special">Sign Up</a></li>
+        <li><a href="#!/signin" ng-if="!currentUser" ng-click="signin()" class="button special2">Sign In</a></li>
+        <li><a href="#!/signup" ng-if="!currentUser" ng-click="signup()" class="button special">Sign Up</a></li>
         <li><a href="" ng-if="currentUser" ng-click="logout()" class="button special3">Logout</a></li>
       </ul>
     </nav>
@@ -57,7 +58,10 @@
 <script src="/javascripts/angular/angular-animate.js"></script>
 <script src="/javascripts/angular/angular-aria.js"></script>
 <script src="/javascripts/angular/angular-material.js"></script>
+<script src="/javascripts/angular/angular-messages.js"></script>
 <script src="/javascripts/angular/ui-bootstrap-tpls-2.5.0.min.js"></script>
+<script src="/javascripts/plugin/moment.js"></script>
+<script src="/javascripts/angular/angular-moment.js"></script>
 
 <script src="/javascripts/angularApp.js"></script>
 <script src="/javascripts/controllers/maincontroller.js"></script>
@@ -65,6 +69,7 @@
 <script src="/javascripts/controllers/signincontroller.js"></script>
 <script src="/javascripts/controllers/signupcontroller.js"></script>
 <script src="/javascripts/controllers/collegemaincontroller.js"></script>
+
 <script src="/javascripts/plugin/auth.js"></script>
 <script src="/javascripts/plugin/googleImage.js"></script>
 <script src="/javascripts/plugin/rating.js"></script>
@@ -77,6 +82,37 @@
 <script src="/javascripts/jquery/skel.min.js"></script>
 <script src="/javascripts/jquery/util.js"></script>
 <script src="/javascripts/jquery/main.js"></script>
+
+<script type="text/ng-template" id="display">
+  <td>
+    <jk-rating-stars rating="review.rating" read-only="readOnly"></jk-rating-stars>
+    <h1 style="padding-left:5px">{{review.comment}}</h1>
+    <blockquote style="font-size: 14px;">Reviewed by {{review.reviewerName}} on {{review.date}}</blockquote>
+  </td>
+  <td ng-show="showEditDelete(review.reviewer)">
+    <md-button class="md-fab md-primary" aria-label="Use Android" ng-click="editReview(review)">
+      <md-icon class="editicon" md-svg-src="images/icons/edit.svg"></md-icon>
+    </md-button>
+    <md-button class="md-fab md-warn" aria-label="Use Android" ng-click="deleteReview($event,review)">
+      <md-icon class="editicon" md-svg-src="images/icons/delete.svg"></md-icon>
+    </md-button>
+  </td>
+</script>
+
+<script type="text/ng-template" id="edit">
+  <td>
+    <jk-rating-stars rating="review.rating"></jk-rating-stars>
+    <input type="text" ng-model=review.comment class="form-control input-sm"/>
+  </td>
+  <td ng-show="showEditDelete(review.reviewer)">
+    <md-button class="md-fab md-primary" aria-label="Use Android" ng-click="updateReview(review)">
+      <md-icon class="editicon" md-svg-src="images/icons/save.svg"></md-icon>
+    </md-button>
+    <md-button class="md-fab md-warn" aria-label="Use Android" ng-click="reset()">
+      <md-icon class="editicon" md-svg-src="images/icons/cancel.svg"></md-icon>
+    </md-button>
+  </td>
+</script>
 
 </body>
 </html>

@@ -31,17 +31,11 @@ app.controller('mainController', ['$scope', '$state', '$rootScope', '$uibModal',
 			$scope.check.mainpage = true;
 	};
 
-	if ($window.sessionStorage["userInfo"] && !$rootScope.currentUser) {
-		var credentials = JSON.parse($window.sessionStorage["userInfo"]);
-		$scope.signin();
-	}
-
 	var showLoginPage = function() {
 		$state.go('signin');
 	};
 
 	var backHomePage = function() {
-		$state.go('home');
 		$window.location.reload();
 	};
 

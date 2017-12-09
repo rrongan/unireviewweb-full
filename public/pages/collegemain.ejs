@@ -14,12 +14,26 @@
 
 	<!-- One -->
 	<section class="wrapper style2 container special-alt">
-		
-		<div>
+		<ul class="tab-group-college">
+			<li class="tab" ng-click="overviewtab()" ng-class="{active:tab}"><a>Overview</a></li>
+			<li class="tab" ng-click="reviewtab()" ng-class="{active:!tab}"><a>Review</a></li>
+		</ul>
+		<div ng-show="show">
 			<h2>{{college.name}}</h2>
 			<blockquote >From Wikipedia, the free encyclopedia</blockquote >
 			<div ng-bind-html="wiki">
 			</div>
+		</div>
+		<div ng-show="!show">
+			<table class ="review table table-striped table-bordered" align="center" valign="left">
+				<tr ng-repeat="review in reviews" ng-include src="getTemplate(review)">
+				</tr>
+			</table>
+			<h2>Add Review:</h2>
+			<h3>Rating: <jk-rating-stars read-only="!currentUser" rating="addreviewrating" class="my-review-custom-stars"></jk-rating-stars></h3>
+			<textarea ng-model="comment" ng-disabled="!currentUser" required></textarea>
+			<button ng-disabled="!currentUser" ng-click="addReview()" style="margin-top:5px;" class="button special2">Submit</button>
+			<strong ng-show="!currentUser">Please Sign In to Add Review! </strong>
 		</div>
 	</section>
 
