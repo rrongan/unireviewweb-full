@@ -1,5 +1,24 @@
 /* Authentication https://medium.com/opinionated-angularjs/techniques-for-authentication-in-angularjs-applications-7bbf0346acec*/
-var app = angular.module('UniReviewWeb', ['ui.router','ui.bootstrap','ngMaterial','ngMessages', 'jkAngularRatingStars', 'jtt_wikipedia', 'angularMoment'])
+require('angular');
+require('angular-route');
+require('angular-aria');
+require('angular-animate');
+require('angular-material');
+require('angular-messages');
+require('angular-ui-bootstrap');
+require('moment');
+require('angular-moment');
+require('jquery');
+require('skel-framework-npm');
+require('./plugin/rating.js');
+require('./plugin/wikipedia.js');
+require('./jquery/jquery.dropotron.min.js');
+require('./jquery/jquery.scrolly.min.js');
+require('./jquery/jquery.scrollgress.min.js');
+require('./jquery/util.js');
+require('./jquery/main.js');
+
+var app = angular.module('UniReviewWeb', ['ui.router','ngRoute','ui.bootstrap','ngMaterial','ngMessages', 'jkAngularRatingStars', 'jtt_wikipedia', 'angularMoment'])
 	.constant('USER_ROLES', {
 		all : '*',
 		admin : 'admin',
@@ -14,81 +33,122 @@ var app = angular.module('UniReviewWeb', ['ui.router','ui.bootstrap','ngMaterial
 		notAuthorized : 'auth-not-authorized'
 	});
 
-app.config(['$stateProvider', '$urlRouterProvider', 'USER_ROLES', '$sceDelegateProvider',function($stateProvider, $urlRouterProvider, USER_ROLES, $sceDelegateProvider) {
-	$urlRouterProvider.otherwise('/');
+require('./controllers/index');
+require('./plugin/auth.js');
+require('./plugin/googleImage.js');
 
-	$stateProvider
-		.state('home', {
-			url:'/',
-			templateUrl : '../public/pages/main.ejs',
+app.config(['$routeProvider', 'USER_ROLES', '$sceDelegateProvider',function($routeProvider, USER_ROLES, $sceDelegateProvider) {
+
+	// $stateProvider
+	// 	.state('home', {
+	// 		url:'/',
+	// 		templateUrl : 'public/pages/main.ejs',
+	// 		controller  : 'mainController',
+	// 		data: {
+	// 			authorizedRoles: [USER_ROLES.all]
+	// 		}
+	// 	})
+	// 	.state('searchresult', {
+	// 		url:'/college/search/:param',
+	// 		templateUrl : 'public/pages/searchresult.ejs',
+	// 		controller  : 'searchResultController',
+	// 		data: {
+	// 			authorizedRoles: [USER_ROLES.admin]
+	// 		}
+	// 	})
+	// 	.state('signin', {
+	// 		url:'/signin',
+	// 		templateUrl : 'public/pages/signin.ejs',
+	// 		controller  : 'signInController',
+	// 		data: {
+	// 			authorizedRoles: [USER_ROLES.all]
+	// 		}
+	// 	})
+	// 	.state('signup', {
+	// 		url:'/signup',
+	// 		templateUrl : 'public/pages/signup.ejs',
+	// 		controller  : 'signUpController',
+	// 		data: {
+	// 			authorizedRoles: [USER_ROLES.all]
+	// 		}
+	// 	})
+	// 	.state('collegemain', {
+	// 		url:'/college?collegeid&image',
+	// 		templateUrl : 'public/pages/collegemain.ejs',
+	// 		controller  : 'collegeMainController',
+	// 		data: {
+	// 			authorizedRoles: [USER_ROLES.all]
+	// 		}
+	// 	})
+	// 	.state('allcolleges', {
+	// 		url:'/colleges',
+	// 		templateUrl : 'public/pages/allcolleges.ejs',
+	// 		controller  : 'allCollegesController',
+	// 		data: {
+	// 			authorizedRoles: [USER_ROLES.all]
+	// 		}
+	// 	})
+	// 	.state('addcollege', {
+	// 		url:'/addcollege',
+	// 		templateUrl : 'public/pages/addcollege.ejs',
+	// 		controller  : 'addCollegeController',
+	// 		data: {
+	// 			authorizedRoles: [USER_ROLES.all]
+	// 		}
+	// 	})
+	// 	.state('editcollege', {
+	// 		url:'/editcollege',
+	// 		templateUrl : 'public/pages/editcollege.ejs',
+	// 		controller  : 'editCollegeController',
+	// 		data: {
+	// 			authorizedRoles: [USER_ROLES.all]
+	// 		}
+	// 	})
+	// 	.state('studentprofile', {
+	// 		url:'/studentprofile',
+	// 		templateUrl : 'public/pages/studentprofile.ejs',
+	// 		controller  : 'studentProfileController',
+	// 		data: {
+	// 			authorizedRoles: [USER_ROLES.all]
+	// 		}
+	// 	});
+
+	$routeProvider
+		.when('/', {
+			templateUrl : 'public/pages/main.ejs',
 			controller  : 'mainController',
-			data: {
-				authorizedRoles: [USER_ROLES.all]
-			}
 		})
-		.state('searchresult', {
-			url:'/college/search/:param',
-			templateUrl : '../public/pages/searchresult.ejs',
-			controller  : 'searchResultController',
-			data: {
-				authorizedRoles: [USER_ROLES.admin]
-			}
+		.when('/college/search/:param', {
+			templateUrl : 'public/pages/searchresult.ejs',
+			controller  : 'searchResultController'
 		})
-		.state('signin', {
-			url:'/signin',
-			templateUrl : '../public/pages/signin.ejs',
-			controller  : 'signInController',
-			data: {
-				authorizedRoles: [USER_ROLES.all]
-			}
+		.when('/signin', {
+			templateUrl : 'public/pages/signin.ejs',
+			controller  : 'signInController'
 		})
-		.state('signup', {
-			url:'/signup',
-			templateUrl : '../public/pages/signup.ejs',
-			controller  : 'signUpController',
-			data: {
-				authorizedRoles: [USER_ROLES.all]
-			}
+		.when('/signup', {
+			templateUrl : 'public/pages/signup.ejs',
+			controller  : 'signUpController'
 		})
-		.state('collegemain', {
-			url:'/college?collegeid&image',
-			templateUrl : '../public/pages/collegemain.ejs',
-			controller  : 'collegeMainController',
-			data: {
-				authorizedRoles: [USER_ROLES.all]
-			}
+		.when('/college/:param', {
+			templateUrl : 'public/pages/collegemain.ejs',
+			controller  : 'collegeMainController'
 		})
-		.state('allcolleges', {
-			url:'/colleges',
-			templateUrl : '../public/pages/allcolleges.ejs',
-			controller  : 'allCollegesController',
-			data: {
-				authorizedRoles: [USER_ROLES.all]
-			}
+		.when('/colleges', {
+			templateUrl : 'public/pages/allcolleges.ejs',
+			controller  : 'allCollegesController'
 		})
-		.state('addcollege', {
-			url:'/addcollege',
-			templateUrl : '../public/pages/addcollege.ejs',
-			controller  : 'addCollegeController',
-			data: {
-				authorizedRoles: [USER_ROLES.all]
-			}
+		.when('/addcollege', {
+			templateUrl : 'public/pages/addcollege.ejs',
+			controller  : 'addCollegeController'
 		})
-		.state('editcollege', {
-			url:'/editcollege',
-			templateUrl : '../public/pages/editcollege.ejs',
-			controller  : 'editCollegeController',
-			data: {
-				authorizedRoles: [USER_ROLES.all]
-			}
+		.when('/editcollege', {
+			templateUrl : 'public/pages/editcollege.ejs',
+			controller  : 'editCollegeController'
 		})
-		.state('studentprofile', {
-			url:'/studentprofile',
-			templateUrl : '../public/pages/studentprofile.ejs',
-			controller  : 'studentProfileController',
-			data: {
-				authorizedRoles: [USER_ROLES.all]
-			}
+		.when('/studentprofile', {
+			templateUrl : 'public/pages/studentprofile.ejs',
+			controller  : 'studentProfileController'
 		});
 
 	$sceDelegateProvider.resourceUrlWhitelist([

@@ -1,16 +1,16 @@
 var app = angular.module('UniReviewWeb');
 
-app.controller('signUpController', ['$scope', '$rootScope', '$http', '$state', '$mdDialog', function($scope, $rootScope, $http, $state, $mdDialog) {
+function signUpController($scope, $http, $rootScope, $location, $mdDialog) {
 
 	$scope.check.mainpage = false;
 
 	$scope.signin = function () {
-		$state.go('signin');
+		$location.path('/signin');
 	};
 
 	if($rootScope.currentUser){
 		$scope.check.mainpage = true;
-		$state.go('home');
+		$location.path('/');
 	}
 
 	$scope.submit = function() {
@@ -34,7 +34,7 @@ app.controller('signUpController', ['$scope', '$rootScope', '$http', '$state', '
 				.ariaLabel('Lucky day')
 				.ok('Confirm');
 			$mdDialog.show(alert);
-			$state.go('signin');
+			$location.path('/signin');
 		},function (err) {
 			var msg = err.data.message;
 			msg = msg.toString().replace('email:','');
@@ -47,4 +47,6 @@ app.controller('signUpController', ['$scope', '$rootScope', '$http', '$state', '
 			$mdDialog.show(alert);
 		});
 	};
-}]);
+}
+
+module.exports = signUpController;

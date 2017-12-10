@@ -1,6 +1,6 @@
 var app = angular.module('UniReviewWeb');
 
-app.controller('editCollegeController', ['$http', '$scope','$rootScope', '$state', '$mdDialog', function($http, $scope,$rootScope, $state, $mdDialog) {
+function editCollegeController($scope, $http, $rootScope, $route, $location, $mdDialog) {
 
 	$scope.check.mainpage = false;
 	$scope.selected = {};
@@ -27,7 +27,7 @@ app.controller('editCollegeController', ['$http', '$scope','$rootScope', '$state
 				.ariaLabel('Lucky day')
 				.ok('Confirm');
 			$mdDialog.show(alert);
-			$state.reload();
+			$route.reload();
 		});
 	};
 
@@ -48,7 +48,7 @@ app.controller('editCollegeController', ['$http', '$scope','$rootScope', '$state
 		$mdDialog.show(confirm).then(function() {
 			$http.delete('/college/'+college._id).then(function () {
 				$mdDialog.show(alert);
-				$state.reload();
+				$route.reload();
 			});
 		}, function() {
 
@@ -69,6 +69,8 @@ app.controller('editCollegeController', ['$http', '$scope','$rootScope', '$state
 	};
 
 	$scope.add = function () {
-		$state.go('addcollege');
+		$location.path('/addcollege');
 	};
-}]);
+}
+
+module.exports = editCollegeController;

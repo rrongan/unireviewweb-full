@@ -1,13 +1,13 @@
 var app = angular.module('UniReviewWeb');
 
-app.controller('searchResultController', ['$http','$state','$scope','$stateParams','GoogleImageSearch', function($http, $state, $scope, $stateParams,GoogleImageSearch) {
+function searchResultController($scope, $http, $location , $routeParams, GoogleImageSearch) {
 
 	$scope.check.mainpage = false;
-	$scope.keyword = 'Search Result: '+ $stateParams.param;
+	$scope.keyword = 'Search Result: '+ $routeParams.param;
 
 	var params = {
 		key:['name'],
-		value: $stateParams.param
+		value: $routeParams.param
 	};
 
 	$http.post('/college/search',params).then(async function (data) {
@@ -31,7 +31,9 @@ app.controller('searchResultController', ['$http','$state','$scope','$stateParam
 		$scope.keyword = 'Result Not Found, Please Try Again';
 	});
 
-	$scope.go = function(college,image) {
-		$state.go('collegemain',{'collegeid':college._id, 'image':image});
+	$scope.go = function(college) {
+		$location.path('/college/'+ college._id);
 	};
-}]);
+}
+
+module.exports = searchResultController;

@@ -1,6 +1,6 @@
 var app = angular.module('UniReviewWeb');
 
-app.controller('allCollegesController', ['$http','$window','$state','$scope','GoogleImageSearch', function($http, $window, $state, $scope, GoogleImageSearch) {
+function allCollegesController($scope, $http, $location, GoogleImageSearch) {
 
 	$scope.check.mainpage = false;
 
@@ -20,6 +20,8 @@ app.controller('allCollegesController', ['$http','$window','$state','$scope','Go
 	});
 
 	$scope.go = function(college,image) {
-		$state.go('collegemain',{'collegeid':college._id, 'image':image});
+		$location.path('/college/'+ college._id);
 	};
-}]);
+}
+
+module.exports = allCollegesController;

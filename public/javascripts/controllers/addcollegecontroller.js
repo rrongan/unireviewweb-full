@@ -1,6 +1,6 @@
 var app = angular.module('UniReviewWeb');
 
-app.controller('addCollegeController', ['$http', '$scope', '$state', '$mdDialog', function($http, $scope, $state, $mdDialog) {
+function addCollegeController($scope, $http, $mdDialog, $location) {
 
 	$scope.check.mainpage = false;
 	$scope.credentials = {};
@@ -19,9 +19,9 @@ app.controller('addCollegeController', ['$http', '$scope', '$state', '$mdDialog'
 				.ariaLabel('Lucky day')
 				.ok('Confirm');
 			$mdDialog.show(alert);
-			$state.go('home');
+			$location.path('/');
 		},function (err) {
-			var msg = err.data.message;
+			var msg = err.data.message || err.data.errmsg;
 			msg = msg.toString().replace('email:','');
 			msg = msg.toString().replace('username:','');
 			var alert = $mdDialog.alert()
@@ -34,6 +34,8 @@ app.controller('addCollegeController', ['$http', '$scope', '$state', '$mdDialog'
 	};
 
 	$scope.edit = function () {
-		$state.go('editcollege');
+		$location.path('/editcollege');
 	};
-}]);
+};
+
+module.exports = addCollegeController;

@@ -2,6 +2,7 @@
 // Copyright (c) 2017 by Fedir Bobylev. All Rights Reserved.
 // https://github.com/Techblogogy/free-google-image-search
 //
+var app = angular.module('UniReviewWeb');
 
 app.factory('GoogleImageSearch', function (){
 

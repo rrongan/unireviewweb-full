@@ -48,32 +48,14 @@ app.factory('AuthInterceptor', [ '$rootScope', '$q', 'Session', 'AUTH_EVENTS',
 	function($rootScope, $q, Session, AUTH_EVENTS) {
 		return {
 			responseError : function(response) {
-				$rootScope.$broadcast({
-					401 : AUTH_EVENTS.notAuthenticated,
-					403 : AUTH_EVENTS.notAuthorized,
-					419 : AUTH_EVENTS.sessionTimeout,
-					440 : AUTH_EVENTS.sessionTimeout
-				}[response.status], response);
+
 				return $q.reject(response);
 			}
 		};
 	}
 ]);
 
-app.run(function($rootScope, $window, $state, Auth, AUTH_EVENTS) {
-
-	$rootScope.$on('$stateChangeStart', function (event, next) {
-		var authorizedRoles = next.data.authorizedRoles;
-		if (!Auth.isAuthorized(authorizedRoles)) {
-			event.preventDefault();
-			if (Auth.isAuthenticated()) {
-				// user is not allowed
-				$rootScope.$broadcast(AUTH_EVENTS.notAuthorized);
-			} else {
-				$rootScope.$broadcast(AUTH_EVENTS.notAuthenticated);
-			}
-		}
-	});
+app.run(function($rootScope, $window, $location, Auth, AUTH_EVENTS) {
 
 	if ($window.sessionStorage['userInfo'] && !$rootScope.currentUser) {
 		var credentials = JSON.parse($window.sessionStorage['userInfo']);
