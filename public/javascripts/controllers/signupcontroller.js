@@ -5,7 +5,7 @@ app.controller('signUpController', ['$scope', '$rootScope', '$http', '$state', '
 	$scope.check.mainpage = false;
 
 	$scope.signin = function () {
-		$state.go('signin')
+		$state.go('signin');
 	};
 
 	if($rootScope.currentUser){
@@ -28,17 +28,17 @@ app.controller('signUpController', ['$scope', '$rootScope', '$http', '$state', '
 	};
 
 	$scope.register = function(credentials) {
-		$http.post('/student',credentials).then(function (data) {
+		$http.post('/student',credentials).then(function () {
 			var alert = $mdDialog.alert()
 				.title('Register Successfully')
 				.ariaLabel('Lucky day')
 				.ok('Confirm');
 			$mdDialog.show(alert);
-			$state.go('signin')
+			$state.go('signin');
 		},function (err) {
 			var msg = err.data.message;
-			msg = msg.toString().replace("email:","");
-			msg = msg.toString().replace("username:","");
+			msg = msg.toString().replace('email:','');
+			msg = msg.toString().replace('username:','');
 			var alert = $mdDialog.alert()
 				.title('Registration Failed')
 				.textContent(msg)

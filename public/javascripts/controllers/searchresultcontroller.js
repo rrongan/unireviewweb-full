@@ -6,7 +6,7 @@ app.controller('searchResultController', ['$http','$state','$scope','$stateParam
 	$scope.keyword = 'Search Result: '+ $stateParams.param;
 
 	var params = {
-		key:["name"],
+		key:['name'],
 		value: $stateParams.param
 	};
 
@@ -26,12 +26,12 @@ app.controller('searchResultController', ['$http','$state','$scope','$stateParam
 				$scope.results[i].image = res[0];
 			});
 		}
-		var image = $scope.results[i].image;
-	}, function (err) {
-		$scope.keyword = 'Result Not Found, Please Try Again'
+		var image = $scope.results[i].image; // eslint-disable-line no-unused-vars
+	}, function () {
+		$scope.keyword = 'Result Not Found, Please Try Again';
 	});
 
 	$scope.go = function(college,image) {
 		$state.go('collegemain',{'collegeid':college._id, 'image':image});
-	}
+	};
 }]);

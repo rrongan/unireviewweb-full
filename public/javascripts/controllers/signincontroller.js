@@ -1,6 +1,6 @@
 var app = angular.module('UniReviewWeb');
 
-app.controller('signInController', ['$scope', '$state' , '$window', 'Auth', function($scope, $state, $window, Auth ) {
+app.controller('signInController', ['$scope', '$state' , '$window', 'Auth', '$mdDialog', function($scope, $state, $window, Auth, $mdDialog) {
 
 	$scope.check.mainpage = false;
 	$scope.credentials = {};
@@ -13,17 +13,21 @@ app.controller('signInController', ['$scope', '$state' , '$window', 'Auth', func
 	};
 
 	$scope.login = function(credentials) {
-		Auth.login(credentials, function(user) {
+		Auth.login(credentials, function() {
 			if(!$scope.check.mainpage)
 				$scope.check.mainpage = true;
 			$window.history.back();
 		}, function(err) {
-			alert(err.data.message);
+			var alert = $mdDialog.alert()
+				.title(err.data.message)
+				.ariaLabel('Lucky day')
+				.ok('Confirm');
+			$mdDialog.show(alert);
 		});
 	};
 
-	if ($window.sessionStorage["userInfo"]) {
-		var credentials = JSON.parse($window.sessionStorage["userInfo"]);
+	if ($window.sessionStorage['userInfo']) {
+		var credentials = JSON.parse($window.sessionStorage['userInfo']);
 		$scope.login(credentials);
 	}
 

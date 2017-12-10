@@ -17,31 +17,31 @@ app.factory('GoogleImageSearch', function (){
 		return new Promise( (resolve, reject) => {
 
 			// Fetches Items from Google Image Search URL
-			fetch("https://cors-anywhere.herokuapp.com/https://www.google.com.ua/search?source=lnms&sa=X&gbv=1&tbm=isch&q="+query)
+			fetch('https://cors-anywhere.herokuapp.com/https://www.google.com.ua/search?source=lnms&sa=X&gbv=1&tbm=isch&q='+query)
 				.then( res => res.text() )
 				.then( res => {
 
 					// Transforms HTML string into DOM object
 					let parser = new DOMParser();
-					parser = parser.parseFromString(res, "text/html");
+					parser = parser.parseFromString(res, 'text/html');
 
 					// Gets DOM element with image results
-					let images = parser.getElementById("ires").childNodes[0];
+					let images = parser.getElementById('ires').childNodes[0];
 
-					if (images.nodeName === "DIV") {
+					if (images.nodeName === 'DIV') {
 
-						resolve(this.googleGetMobile(images))
-					} else if (images.nodeName === "TABLE") {
+						resolve(this.googleGetMobile(images));
+					} else if (images.nodeName === 'TABLE') {
 
-						resolve(this.googleGetDesktop(images))
+						resolve(this.googleGetDesktop(images));
 					} else {
 
-						reject("Unknown System")
+						reject('Unknown System');
 					}
 
 				})
-				.catch( err => reject(err) )
-		})
+				.catch( err => reject(err) );
+		});
 	};
 
 	/**
@@ -58,9 +58,9 @@ app.factory('GoogleImageSearch', function (){
 
 		// Maps Image Sources
 		return images.map( (imgDiv) => {
-			console.log(imgDiv.getAttribute("href"));
-			return imgDiv.childNodes[0].src
-		} )
+			console.log(imgDiv.getAttribute('href'));
+			return imgDiv.childNodes[0].src;
+		} );
 	};
 
 	/**
@@ -82,11 +82,11 @@ app.factory('GoogleImageSearch', function (){
 			tRow = tRow.childNodes;
 			tRow.forEach( (tCol) => {
 				let aLink = tCol.childNodes[0].childNodes[0];
-				imgSrc.push(aLink.src)
-			})
+				imgSrc.push(aLink.src);
+			});
 		} );
 
-		return imgSrc
+		return imgSrc;
 	};
 
 	return this;

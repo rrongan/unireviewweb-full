@@ -34,8 +34,8 @@
 
 	/* global shallowCopy: false */
 
-// `isArray` and `isObject` are necessary for `shallowCopy()` (included via `src/shallowCopy.js`).
-// They are initialized inside the `$RouteProvider`, to ensure `window.angular` is available.
+	// `isArray` and `isObject` are necessary for `shallowCopy()` (included via `src/shallowCopy.js`).
+	// They are initialized inside the `$RouteProvider`, to ensure `window.angular` is available.
 	var isArray;
 	var isObject;
 	var isDefined;
@@ -58,13 +58,13 @@
 	 */
 	/* global -ngRouteModule */
 	var ngRouteModule = angular.
-	module('ngRoute', []).
-	info({ angularVersion: '1.6.6' }).
-	provider('$route', $RouteProvider).
-	// Ensure `$route` will be instantiated in time to capture the initial `$locationChangeSuccess`
-	// event (unless explicitly disabled). This is necessary in case `ngView` is included in an
-	// asynchronously loaded template.
-	run(instantiateRoute);
+		module('ngRoute', []).
+		info({ angularVersion: '1.6.6' }).
+		provider('$route', $RouteProvider).
+		// Ensure `$route` will be instantiated in time to capture the initial `$locationChangeSuccess`
+		// event (unless explicitly disabled). This is necessary in case `ngView` is included in an
+		// asynchronously loaded template.
+		run(instantiateRoute);
 	var $routeMinErr = angular.$$minErr('ngRoute');
 	var isEagerInstantiationEnabled;
 
@@ -719,33 +719,33 @@
 						$browser.$$incOutstandingRequestCount();
 
 						nextRoutePromise.
-						then(getRedirectionData).
-						then(handlePossibleRedirection).
-						then(function(keepProcessingRoute) {
-							return keepProcessingRoute && nextRoutePromise.
-							then(resolveLocals).
-							then(function(locals) {
-								// after route change
+							then(getRedirectionData).
+							then(handlePossibleRedirection).
+							then(function(keepProcessingRoute) {
+								return keepProcessingRoute && nextRoutePromise.
+									then(resolveLocals).
+									then(function(locals) {
+										// after route change
+										if (nextRoute === $route.current) {
+											if (nextRoute) {
+												nextRoute.locals = locals;
+												angular.copy(nextRoute.params, $routeParams);
+											}
+											$rootScope.$broadcast('$routeChangeSuccess', nextRoute, lastRoute);
+										}
+									});
+							}).catch(function(error) {
 								if (nextRoute === $route.current) {
-									if (nextRoute) {
-										nextRoute.locals = locals;
-										angular.copy(nextRoute.params, $routeParams);
-									}
-									$rootScope.$broadcast('$routeChangeSuccess', nextRoute, lastRoute);
+									$rootScope.$broadcast('$routeChangeError', nextRoute, lastRoute, error);
 								}
-							});
-						}).catch(function(error) {
-							if (nextRoute === $route.current) {
-								$rootScope.$broadcast('$routeChangeError', nextRoute, lastRoute, error);
-							}
-						}).finally(function() {
+							}).finally(function() {
 							// Because `commitRoute()` is called from a `$rootScope.$evalAsync` block (see
 							// `$locationWatch`), this `$$completeOutstandingRequest()` call will not cause
 							// `outstandingRequestCount` to hit zero.  This is important in case we are redirecting
 							// to a new route which also requires some asynchronous work.
 
-							$browser.$$completeOutstandingRequest(noop);
-						});
+								$browser.$$completeOutstandingRequest(noop);
+							});
 					}
 				}
 
@@ -773,15 +773,15 @@
 							}
 						} else if (route.resolveRedirectTo) {
 							return $q.
-							resolve($injector.invoke(route.resolveRedirectTo)).
-							then(function(newUrl) {
-								if (angular.isDefined(newUrl)) {
-									data.url = newUrl;
-									data.hasRedirection = true;
-								}
+								resolve($injector.invoke(route.resolveRedirectTo)).
+								then(function(newUrl) {
+									if (angular.isDefined(newUrl)) {
+										data.url = newUrl;
+										data.hasRedirection = true;
+									}
 
-								return data;
-							});
+									return data;
+								});
 						}
 					}
 
@@ -799,14 +799,14 @@
 
 						if (newUrl) {
 							$location.
-							url(newUrl).
-							replace();
+								url(newUrl).
+								replace();
 						} else {
 							newUrl = $location.
-							path(data.path).
-							search(data.search).
-							replace().
-							url();
+								path(data.path).
+								search(data.search).
+								replace().
+								url();
 						}
 
 						if (newUrl !== oldUrl) {
@@ -1191,11 +1191,11 @@
 		};
 	}
 
-// This directive is called during the $transclude call of the first `ngView` directive.
-// It will replace and compile the content of the element with the loaded template.
-// We need this directive so that the element content is already filled when
-// the link function of another directive on the same element as ngView
-// is called.
+	// This directive is called during the $transclude call of the first `ngView` directive.
+	// It will replace and compile the content of the element with the loaded template.
+	// We need this directive so that the element content is already filled when
+	// the link function of another directive on the same element as ngView
+	// is called.
 	ngViewFillContentFactory.$inject = ['$compile', '$controller', '$route'];
 	function ngViewFillContentFactory($compile, $controller, $route) {
 		return {

@@ -5,24 +5,24 @@
  * v1.1.4
  */
 (function( window, angular, undefined ){
-	"use strict";
+	'use strict';
 
 	(function(){
-		"use strict";
+		'use strict';
 
-		angular.module('ngMaterial', ["ng","ngAnimate","ngAria","material.core","material.core.interaction","material.core.gestures","material.core.layout","material.core.meta","material.core.theming.palette","material.core.theming","material.core.animate","material.components.autocomplete","material.components.backdrop","material.components.bottomSheet","material.components.button","material.components.card","material.components.checkbox","material.components.chips","material.components.colors","material.components.content","material.components.datepicker","material.components.dialog","material.components.divider","material.components.fabActions","material.components.fabShared","material.components.fabSpeedDial","material.components.fabToolbar","material.components.gridList","material.components.icon","material.components.input","material.components.list","material.components.menu","material.components.menuBar","material.components.navBar","material.components.progressCircular","material.components.panel","material.components.progressLinear","material.components.radioButton","material.components.showHide","material.components.sidenav","material.components.select","material.components.slider","material.components.sticky","material.components.subheader","material.components.switch","material.components.swipe","material.components.tabs","material.components.toast","material.components.toolbar","material.components.tooltip","material.components.truncate","material.components.virtualRepeat","material.components.whiteframe"]);
+		angular.module('ngMaterial', ['ng','ngAnimate','ngAria','material.core','material.core.interaction','material.core.gestures','material.core.layout','material.core.meta','material.core.theming.palette','material.core.theming','material.core.animate','material.components.autocomplete','material.components.backdrop','material.components.bottomSheet','material.components.button','material.components.card','material.components.checkbox','material.components.chips','material.components.colors','material.components.content','material.components.datepicker','material.components.dialog','material.components.divider','material.components.fabActions','material.components.fabShared','material.components.fabSpeedDial','material.components.fabToolbar','material.components.gridList','material.components.icon','material.components.input','material.components.list','material.components.menu','material.components.menuBar','material.components.navBar','material.components.progressCircular','material.components.panel','material.components.progressLinear','material.components.radioButton','material.components.showHide','material.components.sidenav','material.components.select','material.components.slider','material.components.sticky','material.components.subheader','material.components.switch','material.components.swipe','material.components.tabs','material.components.toast','material.components.toolbar','material.components.tooltip','material.components.truncate','material.components.virtualRepeat','material.components.whiteframe']);
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		/**
 		 * Initialization function that validates environment
 		 * requirements.
 		 */
-		DetectNgTouch.$inject = ["$log", "$injector"];
-		MdCoreConfigure.$inject = ["$provide", "$mdThemingProvider"];
-		rAFDecorator.$inject = ["$delegate"];
-		qDecorator.$inject = ["$delegate"];
+		DetectNgTouch.$inject = ['$log', '$injector'];
+		MdCoreConfigure.$inject = ['$provide', '$mdThemingProvider'];
+		rAFDecorator.$inject = ['$delegate'];
+		qDecorator.$inject = ['$delegate'];
 		angular
 			.module('material.core', [
 				'ngAnimate',
@@ -43,10 +43,10 @@
 		 */
 		function DetectNgTouch($log, $injector) {
 			if ( $injector.has('$swipe') ) {
-				var msg = "" +
-					"You are using the ngTouch module. \n" +
-					"AngularJS Material already has mobile click, tap, and swipe support... \n" +
-					"ngTouch is not supported with AngularJS Material!";
+				var msg = '' +
+					'You are using the ngTouch module. \n' +
+					'AngularJS Material already has mobile click, tap, and swipe support... \n' +
+					'ngTouch is not supported with AngularJS Material!';
 				$log.warn(msg);
 			}
 		}
@@ -120,10 +120,10 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 
-		MdAutofocusDirective.$inject = ["$parse"];angular.module('material.core')
+		MdAutofocusDirective.$inject = ['$parse'];angular.module('material.core')
 			.directive('mdAutofocus', MdAutofocusDirective)
 
 			// Support the deprecated md-auto-focus and md-sidenav-focus as well
@@ -255,7 +255,7 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		/**
 		 * @ngdoc module
@@ -295,10 +295,10 @@
 			function rgbaToHex(color) {
 				color = color.match(/^rgba?[\s+]?\([\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?/i);
 
-				var hex = (color && color.length === 4) ? "#" +
-					("0" + parseInt(color[1],10).toString(16)).slice(-2) +
-					("0" + parseInt(color[2],10).toString(16)).slice(-2) +
-					("0" + parseInt(color[3],10).toString(16)).slice(-2) : '';
+				var hex = (color && color.length === 4) ? '#' +
+					('0' + parseInt(color[1],10).toString(16)).slice(-2) +
+					('0' + parseInt(color[2],10).toString(16)).slice(-2) +
+					('0' + parseInt(color[3],10).toString(16)).slice(-2) : '';
 
 				return hex.toUpperCase();
 			}
@@ -333,7 +333,7 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		angular.module('material.core')
 			.factory('$mdConstant', MdConstantFactory);
@@ -494,11 +494,11 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		angular
 			.module('material.core')
-			.config( ["$provide", function($provide){
+			.config( ['$provide', function($provide){
 				$provide.decorator('$mdUtil', ['$delegate', function ($delegate){
 					/**
 					 * Inject the iterator facade to easily support iteration and accessors
@@ -726,10 +726,10 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 
-		mdMediaFactory.$inject = ["$mdConstant", "$rootScope", "$window"];angular.module('material.core')
+		mdMediaFactory.$inject = ['$mdConstant', '$rootScope', '$window'];angular.module('material.core')
 			.factory('$mdMedia', mdMediaFactory);
 
 		/**
@@ -926,11 +926,11 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		angular
 			.module('material.core')
-			.config( ["$provide", function($provide) {
+			.config( ['$provide', function($provide) {
 				$provide.decorator('$mdUtil', ['$delegate', function ($delegate) {
 
 					// Inject the prefixer into our original $mdUtil service.
@@ -1027,7 +1027,7 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		/*
  * This var has to be outside the angular factory, otherwise when
@@ -1035,7 +1035,7 @@
  * will create its own instance of this array and the app's IDs
  * will not be unique.
  */
-		UtilFactory.$inject = ["$document", "$timeout", "$compile", "$rootScope", "$$mdAnimate", "$interpolate", "$log", "$rootElement", "$window", "$$rAF"];
+		UtilFactory.$inject = ['$document', '$timeout', '$compile', '$rootScope', '$$mdAnimate', '$interpolate', '$log', '$rootElement', '$window', '$$rAF'];
 		var nextUniqueId = 0;
 
 		/**
@@ -1093,8 +1093,8 @@
 				dom: {},
 				now: window.performance && window.performance.now ?
 					angular.bind(window.performance, window.performance.now) : Date.now || function() {
-					return new Date().getTime();
-				},
+						return new Date().getTime();
+					},
 
 				/**
 				 * Cross-version compatibility method to retrieve an option of a ngModel controller,
@@ -1112,7 +1112,7 @@
 
 					// The newer versions of AngularJS introduced a `getOption function and made the option values no longer
 					// visible on the $options object.
-					return $options.getOption ? $options.getOption(optionName) : $options[optionName]
+					return $options.getOption ? $options.getOption(optionName) : $options[optionName];
 				},
 
 				/**
@@ -1600,7 +1600,7 @@
 					var hasContains = (window.Node && window.Node.prototype && Node.prototype.contains);
 					var findFn = hasContains ? angular.bind(node, node.contains) : angular.bind(node, function(arg) {
 						// compares the positions of two nodes and returns a bitmask
-						return (node === child) || !!(this.compareDocumentPosition(arg) & 16)
+						return (node === child) || !!(this.compareDocumentPosition(arg) & 16);
 					});
 
 					return findFn(child);
@@ -1618,7 +1618,7 @@
 				extractElementByName: function(element, nodeName, scanDeep, warnNotFound) {
 					var found = scanTree(element);
 					if (!found && !!warnNotFound) {
-						$log.warn( $mdUtil.supplant("Unable to find node '{0}' in element '{1}'.",[nodeName, element[0].outerHTML]) );
+						$log.warn( $mdUtil.supplant('Unable to find node \'{0}\' in element \'{1}\'.',[nodeName, element[0].outerHTML]) );
 					}
 
 					return angular.element(found || element);
@@ -1627,7 +1627,7 @@
 					 * Breadth-First tree scan for element with matching `nodeName`
 					 */
 					function scanTree(element) {
-						return scanLevel(element) || (!!scanDeep ? scanChildren(element) : null);
+						return scanLevel(element) || (scanDeep ? scanChildren(element) : null);
 					}
 
 					/**
@@ -1893,7 +1893,7 @@
 			};
 
 
-// Instantiate other namespace utility methods
+			// Instantiate other namespace utility methods
 
 			$mdUtil.dom.animator = $$mdAnimate($mdUtil);
 
@@ -1925,7 +1925,7 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		/**
 		 * @ngdoc module
@@ -1933,7 +1933,7 @@
 		 * @description
 		 * AngularJS Material template and element compiler.
 		 */
-		MdCompilerService.$inject = ["$q", "$templateRequest", "$injector", "$compile", "$controller"];
+		MdCompilerService.$inject = ['$q', '$templateRequest', '$injector', '$compile', '$controller'];
 		angular
 			.module('material.core')
 			.service('$mdCompiler', MdCompilerService);
@@ -2229,7 +2229,7 @@
 						if (contentEl.parentNode) {
 							contentEl.parentNode.removeChild(contentEl);
 						}
-					}
+					};
 				}
 			}
 
@@ -2253,14 +2253,14 @@
 						// before.
 						parent.insertBefore(element, nextSibling);
 					}
-				}
+				};
 			}
 		};
 
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		/**
 		 * @ngdoc module
@@ -2268,7 +2268,7 @@
 		 * @description
 		 * Aria Expectations for AngularJS Material components.
 		 */
-		MdAriaService.$inject = ["$$rAF", "$log", "$window", "$interpolate"];
+		MdAriaService.$inject = ['$$rAF', '$log', '$window', '$interpolate'];
 		angular
 			.module('material.core')
 			.provider('$mdAria', MdAriaProvider);
@@ -2302,7 +2302,7 @@
 
 			return {
 				disableWarnings: disableWarnings,
-				$get: ["$$rAF", "$log", "$window", "$interpolate", function($$rAF, $log, $window, $interpolate) {
+				$get: ['$$rAF', '$log', '$window', '$interpolate', function($$rAF, $log, $window, $interpolate) {
 					return MdAriaService.apply(config, arguments);
 				}]
 			};
@@ -2372,7 +2372,7 @@
 			}
 
 			function expectWithText(element, attrName) {
-				var content = getText(element) || "";
+				var content = getText(element) || '';
 				var hasBinding = content.indexOf($interpolate.startSymbol()) > -1;
 
 				if (hasBinding) {
@@ -2482,104 +2482,104 @@
 					/* Perform role blacklist check */
 					if (parentNode.hasAttribute('role')) {
 						switch(parentNode.getAttribute('role').toLowerCase()) {
-							case 'command':
-							case 'definition':
-							case 'directory':
-							case 'grid':
-							case 'list':
-							case 'listitem':
-							case 'log':
-							case 'marquee':
-							case 'menu':
-							case 'menubar':
-							case 'note':
-							case 'presentation':
-							case 'separator':
-							case 'scrollbar':
-							case 'status':
-							case 'tablist':
-								return false;
+						case 'command':
+						case 'definition':
+						case 'directory':
+						case 'grid':
+						case 'list':
+						case 'listitem':
+						case 'log':
+						case 'marquee':
+						case 'menu':
+						case 'menubar':
+						case 'note':
+						case 'presentation':
+						case 'separator':
+						case 'scrollbar':
+						case 'status':
+						case 'tablist':
+							return false;
 						}
 					}
 					/* Perform tagName blacklist check */
 					switch(parentNode.tagName.toLowerCase()) {
-						case 'abbr':
-						case 'acronym':
-						case 'address':
-						case 'applet':
-						case 'audio':
-						case 'b':
-						case 'bdi':
-						case 'bdo':
-						case 'big':
-						case 'blockquote':
-						case 'br':
-						case 'canvas':
-						case 'caption':
-						case 'center':
-						case 'cite':
-						case 'code':
-						case 'col':
-						case 'data':
-						case 'dd':
-						case 'del':
-						case 'dfn':
-						case 'dir':
-						case 'div':
-						case 'dl':
-						case 'em':
-						case 'embed':
-						case 'fieldset':
-						case 'figcaption':
-						case 'font':
-						case 'h1':
-						case 'h2':
-						case 'h3':
-						case 'h4':
-						case 'h5':
-						case 'h6':
-						case 'hgroup':
-						case 'html':
-						case 'i':
-						case 'ins':
-						case 'isindex':
-						case 'kbd':
-						case 'keygen':
-						case 'label':
-						case 'legend':
-						case 'li':
-						case 'map':
-						case 'mark':
-						case 'menu':
-						case 'object':
-						case 'ol':
-						case 'output':
-						case 'pre':
-						case 'presentation':
-						case 'q':
-						case 'rt':
-						case 'ruby':
-						case 'samp':
-						case 'small':
-						case 'source':
-						case 'span':
-						case 'status':
-						case 'strike':
-						case 'strong':
-						case 'sub':
-						case 'sup':
-						case 'svg':
-						case 'tbody':
-						case 'td':
-						case 'th':
-						case 'thead':
-						case 'time':
-						case 'tr':
-						case 'track':
-						case 'tt':
-						case 'ul':
-						case 'var':
-							return false;
+					case 'abbr':
+					case 'acronym':
+					case 'address':
+					case 'applet':
+					case 'audio':
+					case 'b':
+					case 'bdi':
+					case 'bdo':
+					case 'big':
+					case 'blockquote':
+					case 'br':
+					case 'canvas':
+					case 'caption':
+					case 'center':
+					case 'cite':
+					case 'code':
+					case 'col':
+					case 'data':
+					case 'dd':
+					case 'del':
+					case 'dfn':
+					case 'dir':
+					case 'div':
+					case 'dl':
+					case 'em':
+					case 'embed':
+					case 'fieldset':
+					case 'figcaption':
+					case 'font':
+					case 'h1':
+					case 'h2':
+					case 'h3':
+					case 'h4':
+					case 'h5':
+					case 'h6':
+					case 'hgroup':
+					case 'html':
+					case 'i':
+					case 'ins':
+					case 'isindex':
+					case 'kbd':
+					case 'keygen':
+					case 'label':
+					case 'legend':
+					case 'li':
+					case 'map':
+					case 'mark':
+					case 'menu':
+					case 'object':
+					case 'ol':
+					case 'output':
+					case 'pre':
+					case 'presentation':
+					case 'q':
+					case 'rt':
+					case 'ruby':
+					case 'samp':
+					case 'small':
+					case 'source':
+					case 'span':
+					case 'status':
+					case 'strike':
+					case 'strong':
+					case 'sub':
+					case 'sup':
+					case 'svg':
+					case 'tbody':
+					case 'td':
+					case 'th':
+					case 'thead':
+					case 'time':
+					case 'tr':
+					case 'track':
+					case 'tt':
+					case 'ul':
+					case 'var':
+						return false;
 					}
 					return true;
 				}
@@ -2588,7 +2588,7 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		/**
 		 * @ngdoc module
@@ -2596,7 +2596,7 @@
 		 * @description
 		 * User interaction detection to provide proper accessibility.
 		 */
-		MdInteractionService.$inject = ["$timeout", "$mdUtil"];
+		MdInteractionService.$inject = ['$timeout', '$mdUtil'];
 		angular
 			.module('material.core.interaction', [])
 			.service('$mdInteraction', MdInteractionService);
@@ -2743,11 +2743,11 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 
-		MdGesture.$inject = ["$$MdGestureHandler", "$$rAF", "$timeout"];
-		attachToDocument.$inject = ["$mdGesture", "$$MdGestureHandler"];var HANDLERS = {};
+		MdGesture.$inject = ['$$MdGestureHandler', '$$rAF', '$timeout'];
+		attachToDocument.$inject = ['$mdGesture', '$$MdGestureHandler'];var HANDLERS = {};
 
 		/* The state of the current 'pointer'
  * The pointer represents the state of the current touch.
@@ -2763,7 +2763,7 @@
 		 */
 		var lastLabelClickPos = null;
 
-// Used to attach event listeners once when multiple ng-apps are running.
+		// Used to attach event listeners once when multiple ng-apps are running.
 		var isInitialized = false;
 
 		angular
@@ -2807,7 +2807,7 @@
 			 * $get is used to build an instance of $mdGesture
 			 * @ngInject
 			 */
-			$get : ["$$MdGestureHandler", "$$rAF", "$timeout", function($$MdGestureHandler, $$rAF, $timeout) {
+			$get : ['$$MdGestureHandler', '$$rAF', '$timeout', function($$MdGestureHandler, $$rAF, $timeout) {
 				return new MdGesture($$MdGestureHandler, $$rAF, $timeout);
 			}]
 		};
@@ -3402,9 +3402,9 @@
 
 		}
 
-// ********************
-// Module Functions
-// ********************
+		// ********************
+		// Module Functions
+		// ********************
 
 		/*
  * Initiate the pointer. x, y, and the pointer's type.
@@ -3488,7 +3488,7 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		angular.module('material.core')
 			.provider('$$interimElement', InterimElementProvider);
@@ -3518,7 +3518,7 @@
  */
 
 		function InterimElementProvider() {
-			InterimElementFactory.$inject = ["$document", "$q", "$rootScope", "$timeout", "$rootElement", "$animate", "$mdUtil", "$mdCompiler", "$mdTheming", "$injector", "$exceptionHandler"];
+			InterimElementFactory.$inject = ['$document', '$q', '$rootScope', '$timeout', '$rootElement', '$animate', '$mdUtil', '$mdCompiler', '$mdTheming', '$injector', '$exceptionHandler'];
 			createInterimElementProvider.$get = InterimElementFactory;
 			return createInterimElementProvider;
 
@@ -3528,7 +3528,7 @@
 			 * as well as configuration of 'preset' methods (eg dialog.basic(): basic is a preset method)
 			 */
 			function createInterimElementProvider(interimFactoryName) {
-				factory.$inject = ["$$interimElement", "$injector"];
+				factory.$inject = ['$$interimElement', '$injector'];
 				var EXPOSED_METHODS = ['onHide', 'onShow', 'onRemove'];
 
 				var customMethods = {};
@@ -3580,10 +3580,10 @@
 					definition.options = definition.options || function() { return {}; };
 
 					if (/^cancel|hide|show$/.test(name)) {
-						throw new Error("Preset '" + name + "' in " + interimFactoryName + " is reserved!");
+						throw new Error('Preset \'' + name + '\' in ' + interimFactoryName + ' is reserved!');
 					}
 					if (definition.methods.indexOf('_options') > -1) {
-						throw new Error("Method '_options' in " + interimFactoryName + " is reserved!");
+						throw new Error('Method \'_options\' in ' + interimFactoryName + ' is reserved!');
 					}
 					providerConfig.presets[name] = {
 						methods: definition.methods.concat(EXPOSED_METHODS),
@@ -3921,7 +3921,7 @@
 									});
 								}
 
-								return $q.when("No interim elements currently showing up.");
+								return $q.when('No interim elements currently showing up.');
 							}
 
 							return callbackFn.apply(service, fnArguments);
@@ -4248,7 +4248,7 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		(function() {
 			'use strict';
@@ -4260,8 +4260,8 @@
 
 			var FLEX_OPTIONS = ['grow', 'initial', 'auto', 'none', 'noshrink', 'nogrow' ];
 			var LAYOUT_OPTIONS = ['row', 'column'];
-			var ALIGNMENT_MAIN_AXIS= [ "", "start", "center", "end", "stretch", "space-around", "space-between" ];
-			var ALIGNMENT_CROSS_AXIS= [ "", "start", "center", "end", "stretch" ];
+			var ALIGNMENT_MAIN_AXIS= [ '', 'start', 'center', 'end', 'stretch', 'space-around', 'space-between' ];
+			var ALIGNMENT_CROSS_AXIS= [ '', 'start', 'center', 'end', 'stretch' ];
 
 			var config = {
 				/**
@@ -4329,9 +4329,9 @@
 				var SPECIAL_CHARS_REGEXP = /([\:\-\_]+(.))/g;
 
 				// NOTE: these are also defined in constants::MEDIA_PRIORITY and constants::MEDIA
-				var BREAKPOINTS     = [ "", "xs", "gt-xs", "sm", "gt-sm", "md", "gt-md", "lg", "gt-lg", "xl", "print" ];
-				var API_WITH_VALUES = [ "layout", "flex", "flex-order", "flex-offset", "layout-align" ];
-				var API_NO_VALUES   = [ "show", "hide", "layout-padding", "layout-margin" ];
+				var BREAKPOINTS     = [ '', 'xs', 'gt-xs', 'sm', 'gt-sm', 'md', 'gt-md', 'lg', 'gt-lg', 'xl', 'print' ];
+				var API_WITH_VALUES = [ 'layout', 'flex', 'flex-order', 'flex-offset', 'layout-align' ];
+				var API_NO_VALUES   = [ 'show', 'hide', 'layout-padding', 'layout-margin' ];
 
 
 				// Build directive registration functions for the standard Layout API... for all breakpoints.
@@ -4339,13 +4339,13 @@
 
 					// Attribute directives with expected, observable value(s)
 					angular.forEach( API_WITH_VALUES, function(name){
-						var fullName = mqb ? name + "-" + mqb : name;
+						var fullName = mqb ? name + '-' + mqb : name;
 						module.directive( directiveNormalize(fullName), attributeWithObserve(fullName));
 					});
 
 					// Attribute directives with no expected value(s)
 					angular.forEach( API_NO_VALUES, function(name){
-						var fullName = mqb ? name + "-" + mqb : name;
+						var fullName = mqb ? name + '-' + mqb : name;
 						module.directive( directiveNormalize(fullName), attributeWithoutValue(fullName));
 					});
 
@@ -4505,7 +4505,7 @@
 			 */
 			function attributeWithObserve(className) {
 
-				return ['$mdUtil', '$interpolate', "$log", function(_$mdUtil_, _$interpolate_, _$log_) {
+				return ['$mdUtil', '$interpolate', '$log', function(_$mdUtil_, _$interpolate_, _$log_) {
 					$mdUtil = _$mdUtil_;
 					$interpolate = _$interpolate_;
 					$log = _$log_;
@@ -4520,7 +4520,7 @@
 								validateAttributeUsage(className, attr, element, $log);
 
 								validateAttributeValue( className,
-									getNormalizedAttrValue(className, attr, ""),
+									getNormalizedAttrValue(className, attr, ''),
 									buildUpdateFn(element, className, attr)
 								);
 
@@ -4541,8 +4541,8 @@
 					var updateFn = updateClassWithValue(element, className, attrs);
 					var unwatch = attrs.$observe(attrs.$normalize(className), updateFn);
 
-					updateFn(getNormalizedAttrValue(className, attrs, ""));
-					scope.$on("$destroy", function() { unwatch(); });
+					updateFn(getNormalizedAttrValue(className, attrs, ''));
+					scope.$on('$destroy', function() { unwatch(); });
 				}
 			}
 
@@ -4552,7 +4552,7 @@
 			 * any attribute value
 			 */
 			function attributeWithoutValue(className) {
-				return ['$mdUtil', '$interpolate', "$log", function(_$mdUtil_, _$interpolate_, _$log_) {
+				return ['$mdUtil', '$interpolate', '$log', function(_$mdUtil_, _$interpolate_, _$log_) {
 					$mdUtil = _$mdUtil_;
 					$interpolate = _$interpolate_;
 					$log = _$log_;
@@ -4565,7 +4565,7 @@
 								// immediately replace static (non-interpolated) invalid values...
 
 								validateAttributeValue( className,
-									getNormalizedAttrValue(className, attr, ""),
+									getNormalizedAttrValue(className, attr, ''),
 									buildUpdateFn(element, className, attr)
 								);
 
@@ -4609,10 +4609,10 @@
 				var lastClass;
 
 				return function updateClassFn(newValue) {
-					var value = validateAttributeValue(className, newValue || "");
+					var value = validateAttributeValue(className, newValue || '');
 					if ( angular.isDefined(value) ) {
 						if (lastClass) element.removeClass(lastClass);
-						lastClass = !value ? className : className + "-" + value.trim().replace(WHITESPACE, "-");
+						lastClass = !value ? className : className + '-' + value.trim().replace(WHITESPACE, '-');
 						element.addClass(lastClass);
 					}
 				};
@@ -4623,9 +4623,9 @@
 			 *
 			 */
 			function warnAttrNotSupported(className) {
-				var parts = className.split("-");
-				return ["$log", function($log) {
-					$log.warn(className + "has been deprecated. Please use a `" + parts[0] + "-gt-<xxx>` variant.");
+				var parts = className.split('-');
+				return ['$log', function($log) {
+					$log.warn(className + 'has been deprecated. Please use a `' + parts[0] + '-gt-<xxx>` variant.');
 					return angular.noop;
 				}];
 			}
@@ -4637,18 +4637,18 @@
 				var message, usage, url;
 				var nodeName = element[0].nodeName.toLowerCase();
 
-				switch(className.replace(SUFFIXES,"")) {
-					case "flex":
-						if ((nodeName == "md-button") || (nodeName == "fieldset")){
-							// @see https://github.com/philipwalton/flexbugs#9-some-html-elements-cant-be-flex-containers
-							// Use <div flex> wrapper inside (preferred) or outside
+				switch(className.replace(SUFFIXES,'')) {
+				case 'flex':
+					if ((nodeName == 'md-button') || (nodeName == 'fieldset')){
+						// @see https://github.com/philipwalton/flexbugs#9-some-html-elements-cant-be-flex-containers
+						// Use <div flex> wrapper inside (preferred) or outside
 
-							usage = "<" + nodeName + " " + className + "></" + nodeName + ">";
-							url = "https://github.com/philipwalton/flexbugs#9-some-html-elements-cant-be-flex-containers";
-							message = "Markup '{0}' may not work as expected in IE Browsers. Consult '{1}' for details.";
+						usage = '<' + nodeName + ' ' + className + '></' + nodeName + '>';
+						url = 'https://github.com/philipwalton/flexbugs#9-some-html-elements-cant-be-flex-containers';
+						message = 'Markup \'{0}\' may not work as expected in IE Browsers. Consult \'{1}\' for details.';
 
-							$log.warn( $mdUtil.supplant(message, [usage, url]) );
-						}
+						$log.warn( $mdUtil.supplant(message, [usage, url]) );
+					}
 				}
 
 			}
@@ -4662,41 +4662,41 @@
 				var origValue;
 
 				if (!needsInterpolation(value)) {
-					switch (className.replace(SUFFIXES,"")) {
-						case 'layout'        :
-							if ( !findIn(value, LAYOUT_OPTIONS) ) {
-								value = LAYOUT_OPTIONS[0];    // 'row';
+					switch (className.replace(SUFFIXES,'')) {
+					case 'layout'        :
+						if ( !findIn(value, LAYOUT_OPTIONS) ) {
+							value = LAYOUT_OPTIONS[0];    // 'row';
+						}
+						break;
+
+					case 'flex'          :
+						if (!findIn(value, FLEX_OPTIONS)) {
+							if (isNaN(value)) {
+								value = '';
 							}
-							break;
+						}
+						break;
 
-						case 'flex'          :
-							if (!findIn(value, FLEX_OPTIONS)) {
-								if (isNaN(value)) {
-									value = '';
-								}
-							}
-							break;
+					case 'flex-offset' :
+					case 'flex-order'    :
+						if (!value || isNaN(+value)) {
+							value = '0';
+						}
+						break;
 
-						case 'flex-offset' :
-						case 'flex-order'    :
-							if (!value || isNaN(+value)) {
-								value = '0';
-							}
-							break;
+					case 'layout-align'  :
+						var axis = extractAlignAxis(value);
+						value = $mdUtil.supplant('{main}-{cross}',axis);
+						break;
 
-						case 'layout-align'  :
-							var axis = extractAlignAxis(value);
-							value = $mdUtil.supplant("{main}-{cross}",axis);
-							break;
-
-						case 'layout-padding' :
-						case 'layout-margin'  :
-						case 'layout-fill'    :
-						case 'layout-wrap'    :
-						case 'layout-nowrap'  :
-						case 'layout-nowrap' :
-							value = '';
-							break;
+					case 'layout-padding' :
+					case 'layout-margin'  :
+					case 'layout-fill'    :
+					case 'layout-wrap'    :
+					case 'layout-nowrap'  :
+					case 'layout-nowrap' :
+						value = '';
+						break;
 					}
 
 					if (value != origValue) {
@@ -4704,7 +4704,7 @@
 					}
 				}
 
-				return value ? value.trim() : "";
+				return value ? value.trim() : '';
 			}
 
 			/**
@@ -4726,12 +4726,12 @@
 			 * e.g.  flex-gt-md="{{triggerPoint}}"
 			 */
 			function needsInterpolation(value) {
-				return (value || "").indexOf($interpolate.startSymbol()) > -1;
+				return (value || '').indexOf($interpolate.startSymbol()) > -1;
 			}
 
 			function getNormalizedAttrValue(className, attrs, defaultVal) {
 				var normalizedAttr = attrs.$normalize(className);
-				return attrs[normalizedAttr] ? attrs[normalizedAttr].trim().replace(WHITESPACE, "-") : defaultVal || null;
+				return attrs[normalizedAttr] ? attrs[normalizedAttr].trim().replace(WHITESPACE, '-') : defaultVal || null;
 			}
 
 			function findIn(item, list, replaceWith) {
@@ -4749,28 +4749,28 @@
 
 			function extractAlignAxis(attrValue) {
 				var axis = {
-					main : "start",
-					cross: "stretch"
-				}, values;
+						main : 'start',
+						cross: 'stretch'
+					}, values;
 
-				attrValue = (attrValue || "");
+				attrValue = (attrValue || '');
 
-				if ( attrValue.indexOf("-") === 0 || attrValue.indexOf(" ") === 0) {
+				if ( attrValue.indexOf('-') === 0 || attrValue.indexOf(' ') === 0) {
 					// For missing main-axis values
-					attrValue = "none" + attrValue;
+					attrValue = 'none' + attrValue;
 				}
 
-				values = attrValue.toLowerCase().trim().replace(WHITESPACE, "-").split("-");
-				if ( values.length && (values[0] === "space") ) {
+				values = attrValue.toLowerCase().trim().replace(WHITESPACE, '-').split('-');
+				if ( values.length && (values[0] === 'space') ) {
 					// for main-axis values of "space-around" or "space-between"
-					values = [ values[0]+"-"+values[1],values[2] ];
+					values = [ values[0]+'-'+values[1],values[2] ];
 				}
 
 				if ( values.length > 0 ) axis.main  = values[0] || axis.main;
 				if ( values.length > 1 ) axis.cross = values[1] || axis.cross;
 
-				if ( ALIGNMENT_MAIN_AXIS.indexOf(axis.main) < 0 )   axis.main = "start";
-				if ( ALIGNMENT_CROSS_AXIS.indexOf(axis.cross) < 0 ) axis.cross = "stretch";
+				if ( ALIGNMENT_MAIN_AXIS.indexOf(axis.main) < 0 )   axis.main = 'start';
+				if ( ALIGNMENT_CROSS_AXIS.indexOf(axis.cross) < 0 ) axis.cross = 'stretch';
 
 				return axis;
 			}
@@ -4780,7 +4780,7 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		/**
 		 * @ngdoc module
@@ -4788,7 +4788,7 @@
 		 * @description
 		 * AngularJS Material Live Announcer to provide accessibility for Voice Readers.
 		 */
-		MdLiveAnnouncer.$inject = ["$timeout"];
+		MdLiveAnnouncer.$inject = ['$timeout'];
 		angular
 			.module('material.core')
 			.service('$mdLiveAnnouncer', MdLiveAnnouncer);
@@ -4874,7 +4874,7 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		/**
 		 * @ngdoc service
@@ -4998,7 +4998,7 @@
 			});
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		/**
 		 * @ngdoc module
@@ -5008,7 +5008,7 @@
 		 * A component instance registration service.
 		 * Note: currently this as a private service in the SideNav component.
 		 */
-		ComponentRegistry.$inject = ["$log", "$q"];
+		ComponentRegistry.$inject = ['$log', '$q'];
 		angular.module('material.core')
 			.factory('$mdComponentRegistry', ComponentRegistry);
 
@@ -5030,7 +5030,7 @@
 				 * Used to print an error when an instance for a handle isn't found.
 				 */
 				notFoundError: function(handle, msgContext) {
-					$log.error( (msgContext || "") + 'No instance found for handle', handle);
+					$log.error( (msgContext || '') + 'No instance found for handle', handle);
 				},
 				/**
 				 * Return all registered instances as an array.
@@ -5115,20 +5115,20 @@
 
 						return deferred.promise;
 					}
-					return $q.reject("Invalid `md-component-id` value.");
+					return $q.reject('Invalid `md-component-id` value.');
 				}
 
 			};
 
 			function isValidID(handle){
-				return handle && (handle !== "");
+				return handle && (handle !== '');
 			}
 
 		}
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		(function() {
 			'use strict';
@@ -5146,7 +5146,7 @@
 			 * @param {object=} options (Optional) Configuration options to override the default ripple configuration
 			 */
 
-			MdButtonInkRipple.$inject = ["$mdInkRipple"];
+			MdButtonInkRipple.$inject = ['$mdInkRipple'];
 			angular.module('material.core')
 				.factory('$mdButtonInkRipple', MdButtonInkRipple);
 
@@ -5178,7 +5178,7 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		(function() {
 			'use strict';
@@ -5196,7 +5196,7 @@
 			 * @param {object=} options (Optional) Configuration options to override the defaultripple configuration
 			 */
 
-			MdCheckboxInkRipple.$inject = ["$mdInkRipple"];
+			MdCheckboxInkRipple.$inject = ['$mdInkRipple'];
 			angular.module('material.core')
 				.factory('$mdCheckboxInkRipple', MdCheckboxInkRipple);
 
@@ -5217,7 +5217,7 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		(function() {
 			'use strict';
@@ -5235,7 +5235,7 @@
 			 * @param {object=} options (Optional) Configuration options to override the defaultripple configuration
 			 */
 
-			MdListInkRipple.$inject = ["$mdInkRipple"];
+			MdListInkRipple.$inject = ['$mdInkRipple'];
 			angular.module('material.core')
 				.factory('$mdListInkRipple', MdListInkRipple);
 
@@ -5257,7 +5257,7 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		/**
 		 * @ngdoc module
@@ -5265,8 +5265,8 @@
 		 * @description
 		 * Ripple
 		 */
-		InkRippleCtrl.$inject = ["$scope", "$element", "rippleOptions", "$window", "$timeout", "$mdUtil", "$mdColorUtil"];
-		InkRippleDirective.$inject = ["$mdButtonInkRipple", "$mdCheckboxInkRipple"];
+		InkRippleCtrl.$inject = ['$scope', '$element', 'rippleOptions', '$window', '$timeout', '$mdUtil', '$mdColorUtil'];
+		InkRippleDirective.$inject = ['$mdButtonInkRipple', '$mdCheckboxInkRipple'];
 		angular.module('material.core')
 			.provider('$mdInkRipple', InkRippleProvider)
 			.directive('mdInkRipple', InkRippleDirective)
@@ -5363,7 +5363,7 @@
 
 			return {
 				disableInkRipple: disableInkRipple,
-				$get: ["$injector", function($injector) {
+				$get: ['$injector', function($injector) {
 					return { attach: attach };
 
 					/**
@@ -5725,7 +5725,7 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		(function() {
 			'use strict';
@@ -5743,7 +5743,7 @@
 			 * @param {object=} options (Optional) Configuration options to override the defaultripple configuration
 			 */
 
-			MdTabInkRipple.$inject = ["$mdInkRipple"];
+			MdTabInkRipple.$inject = ['$mdInkRipple'];
 			angular.module('material.core')
 				.factory('$mdTabInkRipple', MdTabInkRipple);
 
@@ -5765,7 +5765,7 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		angular.module('material.core.theming.palette', [])
 			.constant('$mdColorPalette', {
@@ -6129,7 +6129,7 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		(function(angular) {
 			'use strict';
@@ -6139,11 +6139,11 @@
 			 * @description
 			 * Theming
 			 */
-			detectDisabledThemes.$inject = ["$mdThemingProvider"];
-			ThemingDirective.$inject = ["$mdTheming", "$interpolate", "$parse", "$mdUtil", "$q", "$log"];
-			ThemableDirective.$inject = ["$mdTheming"];
-			ThemingProvider.$inject = ["$mdColorPalette", "$$mdMetaProvider"];
-			generateAllThemes.$inject = ["$injector", "$mdTheming"];
+			detectDisabledThemes.$inject = ['$mdThemingProvider'];
+			ThemingDirective.$inject = ['$mdTheming', '$interpolate', '$parse', '$mdUtil', '$q', '$log'];
+			ThemableDirective.$inject = ['$mdTheming'];
+			ThemingProvider.$inject = ['$mdColorPalette', '$$mdMetaProvider'];
+			generateAllThemes.$inject = ['$injector', '$mdTheming'];
 			angular.module('material.core.theming', ['material.core.theming.palette', 'material.core.meta'])
 				.directive('mdTheme', ThemingDirective)
 				.directive('mdThemable', ThemableDirective)
@@ -6316,14 +6316,14 @@
  *
  */
 
-// In memory generated CSS rules; registered by theme.name
+			// In memory generated CSS rules; registered by theme.name
 			var GENERATED = { };
 
-// In memory storage of defined themes and color palettes (both loaded by CSS, and user specified)
+			// In memory storage of defined themes and color palettes (both loaded by CSS, and user specified)
 			var PALETTES;
 
-// Text Colors on light and dark backgrounds
-// @see https://www.google.com/design/spec/style/color.html#color-text-background-colors
+			// Text Colors on light and dark backgrounds
+			// @see https://www.google.com/design/spec/style/color.html#color-text-background-colors
 			var DARK_FOREGROUND = {
 				name: 'dark',
 				'1': 'rgba(0,0,0,0.87)',
@@ -6349,7 +6349,7 @@
 			var THEME_COLOR_TYPES = ['primary', 'accent', 'warn', 'background'];
 			var DEFAULT_COLOR_TYPE = 'primary';
 
-// A color in a theme will use these hues by default, if not specified by user.
+			// A color in a theme will use these hues by default, if not specified by user.
 			var LIGHT_DEFAULT_HUES = {
 				'accent': {
 					'default': 'A200',
@@ -6401,7 +6401,7 @@
 			 *
 			 */
 			function ThemingProvider($mdColorPalette, $$mdMetaProvider) {
-				ThemingService.$inject = ["$rootScope", "$mdUtil", "$q", "$log"];
+				ThemingService.$inject = ['$rootScope', '$mdUtil', '$q', '$log'];
 				PALETTES = { };
 				var THEMES = { };
 
@@ -6538,7 +6538,7 @@
 						return !map[field];
 					});
 					if (missingColors.length) {
-						throw new Error("Missing colors %1 in palette %2!"
+						throw new Error('Missing colors %1 in palette %2!'
 							.replace('%1', missingColors.join(', '))
 							.replace('%2', name));
 					}
@@ -6623,7 +6623,7 @@
 
 							Object.keys(color.hues).forEach(function(name) {
 								if (!defaultHues[name]) {
-									throw new Error("Invalid hue name '%1' in theme %2's %3 color %4. Available hue names: %4"
+									throw new Error('Invalid hue name \'%1\' in theme %2\'s %3 color %4. Available hue names: %4'
 										.replace('%1', name)
 										.replace('%2', self.name)
 										.replace('%3', paletteName)
@@ -6635,7 +6635,7 @@
 								return color.hues[key];
 							}).forEach(function(hueValue) {
 								if (VALID_HUE_VALUES.indexOf(hueValue) == -1) {
-									throw new Error("Invalid hue value '%1' in theme %2's %3 color %4. Available hue values: %5"
+									throw new Error('Invalid hue value \'%1\' in theme %2\'s %3 color %4. Available hue values: %5'
 										.replace('%1', hueValue)
 										.replace('%2', self.name)
 										.replace('%3', colorType)
@@ -7076,7 +7076,7 @@
 
 			var rulesByType = {};
 
-// Generate our themes at run time given the state of THEMES and PALETTES
+			// Generate our themes at run time given the state of THEMES and PALETTES
 			function generateAllThemes($injector, $mdTheming) {
 				var head = document.head;
 				var firstChild = head ? head.firstElementChild : null;
@@ -7170,7 +7170,7 @@
 						// Map everything to rgb colors
 						var rgbValue = colorToRgbaArray(hueValue);
 						if (!rgbValue) {
-							throw new Error("Color %1, in palette %2's hue %3, is invalid. Hex or rgb(a) color expected."
+							throw new Error('Color %1, in palette %2\'s hue %3, is invalid. Hex or rgb(a) color expected.'
 								.replace('%1', hueValue)
 								.replace('%2', palette.name)
 								.replace('%3', hueName));
@@ -7235,7 +7235,7 @@
 				// If theme attempts to use a palette that doesnt exist, throw error
 				if (!PALETTES[ (theme.colors[colorType] || {}).name ]) {
 					throw new Error(
-						"You supplied an invalid color palette for theme %1's %2 palette. Available palettes: %3"
+						'You supplied an invalid color palette for theme %1\'s %2 palette. Available palettes: %3'
 							.replace('%1', theme.name)
 							.replace('%2', colorType)
 							.replace('%3', Object.keys(PALETTES).join(', '))
@@ -7266,7 +7266,7 @@
 			}
 
 			function rgba(rgbArray, opacity) {
-				if ( !rgbArray ) return "rgb('0,0,0')";
+				if ( !rgbArray ) return 'rgb(\'0,0,0\')';
 
 				if (rgbArray.length == 4) {
 					rgbArray = angular.copy(rgbArray);
@@ -7282,12 +7282,12 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
-// Polyfill angular < 1.4 (provide $animateCss)
+		// Polyfill angular < 1.4 (provide $animateCss)
 		angular
 			.module('material.core')
-			.factory('$$mdAnimate', ["$q", "$timeout", "$mdConstant", "$animateCss", function($q, $timeout, $mdConstant, $animateCss){
+			.factory('$$mdAnimate', ['$q', '$timeout', '$mdConstant', '$animateCss', function($q, $timeout, $mdConstant, $animateCss){
 
 				// Since $$mdAnimate is injected into $mdUtil... use a wrapper function
 				// to subsequently inject $mdUtil as an argument to the AnimateDomUtils
@@ -7427,7 +7427,7 @@
 				 * NOTE: all values are rounded to the nearest integer
 				 */
 				calculateZoomToOrigin: function (element, originator) {
-					var zoomTemplate = "translate3d( {centerX}px, {centerY}px, 0 ) scale( {scaleX}, {scaleY} )";
+					var zoomTemplate = 'translate3d( {centerX}px, {centerY}px, 0 ) scale( {scaleX}, {scaleY} )';
 					var buildZoom = angular.bind(null, $mdUtil.supplant, zoomTemplate);
 
 					return buildZoom(self.calculateTransformValues(element, originator));
@@ -7438,7 +7438,7 @@
 				 * NOTE: all values are rounded to the nearest integer
 				 */
 				calculateSlideToOrigin: function (element, originator) {
-					var slideTemplate = "translate3d( {centerX}px, {centerY}px, 0 )";
+					var slideTemplate = 'translate3d( {centerX}px, {centerY}px, 0 )';
 					var buildSlide = angular.bind(null, $mdUtil.supplant, slideTemplate);
 
 					return buildSlide(self.calculateTransformValues(element, originator));
@@ -7458,18 +7458,18 @@
 							css[key] = value + 'px';
 						} else {
 							switch (key) {
-								case 'transition':
-									convertToVendor(key, $mdConstant.CSS.TRANSITION, value);
-									break;
-								case 'transform':
-									convertToVendor(key, $mdConstant.CSS.TRANSFORM, value);
-									break;
-								case 'transformOrigin':
-									convertToVendor(key, $mdConstant.CSS.TRANSFORM_ORIGIN, value);
-									break;
-								case 'font-size':
-									css['font-size'] = value; // font sizes aren't always in px
-									break;
+							case 'transition':
+								convertToVendor(key, $mdConstant.CSS.TRANSITION, value);
+								break;
+							case 'transform':
+								convertToVendor(key, $mdConstant.CSS.TRANSFORM, value);
+								break;
+							case 'transformOrigin':
+								convertToVendor(key, $mdConstant.CSS.TRANSFORM_ORIGIN, value);
+								break;
+							case 'font-size':
+								css['font-size'] = value; // font sizes aren't always in px
+								break;
 							}
 						}
 					});
@@ -7493,7 +7493,7 @@
 					});
 
 					if (addTransition) {
-						transition = transition || "all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) !important";
+						transition = transition || 'all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) !important';
 						css.transition = transition;
 					}
 
@@ -7547,13 +7547,13 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		if (angular.version.minor >= 4) {
 			angular.module('material.core.animate', []);
 		} else {
 			(function() {
-				"use strict";
+				'use strict';
 
 				var forEach = angular.forEach;
 
@@ -7889,7 +7889,7 @@
 
 							function parseMaxTime(str) {
 								var maxValue = 0;
-								var values = (str || "").split(/\s*,\s*/);
+								var values = (str || '').split(/\s*,\s*/);
 								forEach(values, function(value) {
 									// it's always safe to consider only second values and omit `ms` values since
 									// getComputedStyle will always handle the conversion for us
@@ -7977,7 +7977,7 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		/**
 		 * @ngdoc module
@@ -7994,7 +7994,7 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		/*
  * @ngdoc module
@@ -8017,7 +8017,7 @@
 
 		angular
 			.module('material.components.backdrop', ['material.core'])
-			.directive('mdBackdrop', ["$mdTheming", "$mdUtil", "$animate", "$rootElement", "$window", "$log", "$$rAF", "$document", function BackdropDirective($mdTheming, $mdUtil, $animate, $rootElement, $window, $log, $$rAF, $document) {
+			.directive('mdBackdrop', ['$mdTheming', '$mdUtil', '$animate', '$rootElement', '$window', '$log', '$$rAF', '$document', function BackdropDirective($mdTheming, $mdUtil, $animate, $rootElement, $window, $log, $$rAF, $document) {
 				var ERROR_CSS_POSITION = '<md-backdrop> may not work properly in a scrolled, static-positioned parent container.';
 
 				return {
@@ -8082,7 +8082,7 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		/**
 		 * @ngdoc module
@@ -8090,8 +8090,8 @@
 		 * @description
 		 * BottomSheet
 		 */
-		MdBottomSheetDirective.$inject = ["$mdBottomSheet"];
-		MdBottomSheetProvider.$inject = ["$$interimElementProvider"];
+		MdBottomSheetDirective.$inject = ['$mdBottomSheet'];
+		MdBottomSheetProvider.$inject = ['$$interimElementProvider'];
 		angular
 			.module('material.components.bottomSheet', [
 				'material.core',
@@ -8248,7 +8248,7 @@
 
 		function MdBottomSheetProvider($$interimElementProvider) {
 			// how fast we need to flick down to close the sheet, pixels/ms
-			bottomSheetDefaults.$inject = ["$animate", "$mdConstant", "$mdUtil", "$mdTheming", "$mdBottomSheet", "$rootElement", "$mdGesture", "$log"];
+			bottomSheetDefaults.$inject = ['$animate', '$mdConstant', '$mdUtil', '$mdTheming', '$mdBottomSheet', '$rootElement', '$mdGesture', '$log'];
 			var CLOSING_VELOCITY = 0.5;
 			var PADDING = 80; // same as css
 
@@ -8279,7 +8279,7 @@
 					element = $mdUtil.extractElementByName(element, 'md-bottom-sheet');
 
 					// prevent tab focus or click focus on the bottom-sheet container
-					element.attr('tabindex',"-1");
+					element.attr('tabindex','-1');
 
 					// Once the md-bottom-sheet has `ng-cloak` applied on his template the opening animation will not work properly.
 					// This is a very common problem, so we have to notify the developer about this.
@@ -8290,7 +8290,7 @@
 
 					if (!options.disableBackdrop) {
 						// Add a backdrop that will close on click
-						backdrop = $mdUtil.createBackdrop(scope, "md-bottom-sheet-backdrop md-opaque");
+						backdrop = $mdUtil.createBackdrop(scope, 'md-bottom-sheet-backdrop md-opaque');
 
 						// Prevent mouse focus on backdrop; ONLY programatic focus allowed.
 						// This allows clicks on backdrop to propogate to the $rootElement and
@@ -8408,7 +8408,7 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		/**
 		 * @ngdoc module
@@ -8417,8 +8417,8 @@
 		 *
 		 * Button
 		 */
-		MdButtonDirective.$inject = ["$mdButtonInkRipple", "$mdTheming", "$mdAria", "$mdInteraction"];
-		MdAnchorDirective.$inject = ["$mdTheming"];
+		MdButtonDirective.$inject = ['$mdButtonInkRipple', '$mdTheming', '$mdAria', '$mdInteraction'];
+		MdAnchorDirective.$inject = ['$mdTheming'];
 		angular
 			.module('material.components.button', [ 'material.core' ])
 			.directive('mdButton', MdButtonDirective)
@@ -8597,7 +8597,7 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		/**
 		 * @ngdoc module
@@ -8606,7 +8606,7 @@
 		 * @description
 		 * Card components.
 		 */
-		mdCardDirective.$inject = ["$mdTheming"];
+		mdCardDirective.$inject = ['$mdTheming'];
 		angular.module('material.components.card', [
 			'material.core'
 		])
@@ -8734,14 +8734,14 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		/**
 		 * @ngdoc module
 		 * @name material.components.checkbox
 		 * @description Checkbox module!
 		 */
-		MdCheckboxDirective.$inject = ["inputDirective", "$mdAria", "$mdConstant", "$mdTheming", "$mdUtil", "$mdInteraction"];
+		MdCheckboxDirective.$inject = ['inputDirective', '$mdAria', '$mdConstant', '$mdTheming', '$mdUtil', '$mdInteraction'];
 		angular
 			.module('material.components.checkbox', ['material.core'])
 			.directive('mdCheckbox', MdCheckboxDirective);
@@ -8948,7 +8948,7 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		/**
 		 * @ngdoc module
@@ -8964,17 +8964,17 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		(function () {
-			"use strict";
+			'use strict';
 
 			/**
 			 *  Use a RegExp to check if the `md-colors="<expression>"` is static string
 			 *  or one that should be observed and dynamically interpolated.
 			 */
-			MdColorsDirective.$inject = ["$mdColors", "$mdUtil", "$log", "$parse"];
-			MdColorsService.$inject = ["$mdTheming", "$mdUtil", "$log"];
+			MdColorsDirective.$inject = ['$mdColors', '$mdUtil', '$log', '$parse'];
+			MdColorsService.$inject = ['$mdTheming', '$mdUtil', '$log'];
 			var STATIC_COLOR_EXPRESSION = /^{((\s|,)*?["'a-zA-Z-]+?\s*?:\s*?('|")[a-zA-Z0-9-.]*('|"))+\s*}$/;
 			var colorPalettes = null;
 
@@ -9369,7 +9369,7 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		/**
 		 * @ngdoc module
@@ -9378,7 +9378,7 @@
 		 * @description
 		 * Scrollable content
 		 */
-		mdContentDirective.$inject = ["$mdTheming"];
+		mdContentDirective.$inject = ['$mdTheming'];
 		angular.module('material.components.content', [
 			'material.core'
 		])
@@ -9466,7 +9466,7 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		/**
 		 * @ngdoc module
@@ -9482,14 +9482,14 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		/**
 		 * @ngdoc module
 		 * @name material.components.dialog
 		 */
-		MdDialogDirective.$inject = ["$$rAF", "$mdTheming", "$mdDialog"];
-		MdDialogProvider.$inject = ["$$interimElementProvider"];
+		MdDialogDirective.$inject = ['$$rAF', '$mdTheming', '$mdDialog'];
+		MdDialogProvider.$inject = ['$$interimElementProvider'];
 		angular
 			.module('material.components.dialog', [
 				'material.core',
@@ -10068,8 +10068,8 @@
 
 		function MdDialogProvider($$interimElementProvider) {
 			// Elements to capture and redirect focus when the user presses tab at the dialog boundary.
-			advancedDialogOptions.$inject = ["$mdDialog", "$mdConstant"];
-			dialogDefaultOptions.$inject = ["$mdDialog", "$mdAria", "$mdUtil", "$mdConstant", "$animate", "$document", "$window", "$rootElement", "$log", "$injector", "$mdTheming", "$interpolate", "$mdInteraction"];
+			advancedDialogOptions.$inject = ['$mdDialog', '$mdConstant'];
+			dialogDefaultOptions.$inject = ['$mdDialog', '$mdAria', '$mdUtil', '$mdConstant', '$animate', '$document', '$window', '$rootElement', '$log', '$injector', '$mdTheming', '$interpolate', '$mdInteraction'];
 			var topFocusTrap, bottomFocusTrap;
 
 			return $$interimElementProvider('$mdDialog')
@@ -10294,7 +10294,7 @@
 
 					// For navigation $destroy events, do a quick, non-animated removal,
 					// but for normal closes (from clicks, etc) animate the removal
-					return !!options.$destroy ? detachAndClean() : animateRemoval().then( detachAndClean );
+					return options.$destroy ? detachAndClean() : animateRemoval().then( detachAndClean );
 
 					/**
 					 * For normal closes, animate the removal.
@@ -10520,7 +10520,7 @@
 					}
 
 					if (options.hasBackdrop) {
-						options.backdrop = $mdUtil.createBackdrop(scope, "md-dialog-backdrop md-opaque");
+						options.backdrop = $mdUtil.createBackdrop(scope, 'md-dialog-backdrop md-opaque');
 						$animate.enter(options.backdrop, options.parent);
 					}
 
@@ -10529,7 +10529,7 @@
 					 */
 					options.hideBackdrop = function hideBackdrop($destroy) {
 						if (options.backdrop) {
-							if ( !!$destroy ) options.backdrop.remove();
+							if ( $destroy ) options.backdrop.remove();
 							else              $animate.leave(options.backdrop);
 						}
 
@@ -10685,7 +10685,7 @@
 					var buildTranslateToOrigin = animator.calculateZoomToOrigin;
 					var translateOptions = {transitionInClass: 'md-transition-in', transitionOutClass: 'md-transition-out'};
 					var from = animator.toTransformCss(buildTranslateToOrigin(dialogEl, options.openFrom || options.origin));
-					var to = animator.toTransformCss("");  // defaults to center display (or parent or $rootElement)
+					var to = animator.toTransformCss('');  // defaults to center display (or parent or $rootElement)
 
 					dialogEl.toggleClass('md-dialog-fullscreen', !!options.fullscreen);
 
@@ -10764,14 +10764,14 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		/**
 		 * @ngdoc module
 		 * @name material.components.divider
 		 * @description Divider module!
 		 */
-		MdDividerDirective.$inject = ["$mdTheming"];
+		MdDividerDirective.$inject = ['$mdTheming'];
 		angular.module('material.components.divider', [
 			'material.core'
 		])
@@ -10804,7 +10804,7 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		(function() {
 			'use strict';
@@ -10813,7 +10813,7 @@
 			 * @ngdoc module
 			 * @name material.components.fabActions
 			 */
-			MdFabActionsDirective.$inject = ["$mdUtil"];
+			MdFabActionsDirective.$inject = ['$mdUtil'];
 			angular
 				.module('material.components.fabActions', ['material.core'])
 				.directive('mdFabActions', MdFabActionsDirective);
@@ -10859,12 +10859,12 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		(function() {
 			'use strict';
 
-			MdFabController.$inject = ["$scope", "$element", "$animate", "$mdUtil", "$mdConstant", "$timeout"];
+			MdFabController.$inject = ['$scope', '$element', '$animate', '$mdUtil', '$mdConstant', '$timeout'];
 			angular.module('material.components.fabShared', ['material.core'])
 				.controller('MdFabController', MdFabController);
 
@@ -10875,12 +10875,12 @@
 				// NOTE: We use async eval(s) below to avoid conflicts with any existing digest loops
 
 				vm.open = function() {
-					$scope.$evalAsync("vm.isOpen = true");
+					$scope.$evalAsync('vm.isOpen = true');
 				};
 
 				vm.close = function() {
 					// Async eval to avoid conflicts with existing digest loops
-					$scope.$evalAsync("vm.isOpen = false");
+					$scope.$evalAsync('vm.isOpen = false');
 
 					// Focus the trigger when the element closes so users can still tab to the next item
 					$element.find('md-fab-trigger')[0].focus();
@@ -10888,7 +10888,7 @@
 
 				// Toggle the open/close state when the trigger is clicked
 				vm.toggle = function() {
-					$scope.$evalAsync("vm.isOpen = !vm.isOpen");
+					$scope.$evalAsync('vm.isOpen = !vm.isOpen');
 				};
 
 				/*
@@ -11065,11 +11065,11 @@
 
 				function keyPressed(event) {
 					switch (event.which) {
-						case $mdConstant.KEY_CODE.ESCAPE: vm.close(); event.preventDefault(); return false;
-						case $mdConstant.KEY_CODE.LEFT_ARROW: doKeyLeft(event); return false;
-						case $mdConstant.KEY_CODE.UP_ARROW: doKeyUp(event); return false;
-						case $mdConstant.KEY_CODE.RIGHT_ARROW: doKeyRight(event); return false;
-						case $mdConstant.KEY_CODE.DOWN_ARROW: doKeyDown(event); return false;
+					case $mdConstant.KEY_CODE.ESCAPE: vm.close(); event.preventDefault(); return false;
+					case $mdConstant.KEY_CODE.LEFT_ARROW: doKeyLeft(event); return false;
+					case $mdConstant.KEY_CODE.UP_ARROW: doKeyUp(event); return false;
+					case $mdConstant.KEY_CODE.RIGHT_ARROW: doKeyRight(event); return false;
+					case $mdConstant.KEY_CODE.DOWN_ARROW: doKeyDown(event); return false;
 					}
 				}
 
@@ -11173,7 +11173,7 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		(function() {
 			'use strict';
@@ -11183,8 +11183,8 @@
 			 *
 			 * @type {number}
 			 */
-			MdFabSpeedDialFlingAnimation.$inject = ["$timeout"];
-			MdFabSpeedDialScaleAnimation.$inject = ["$timeout"];
+			MdFabSpeedDialFlingAnimation.$inject = ['$timeout'];
+			MdFabSpeedDialScaleAnimation.$inject = ['$timeout'];
 			var cssAnimationDuration = 300;
 
 			/**
@@ -11346,22 +11346,22 @@
 							var triggerItemWidthOffset = (triggerElement.clientWidth - item.clientWidth) / 2;
 
 							switch (ctrl.direction) {
-								case 'up':
-									newPosition = (item.scrollHeight * (index + 1) + triggerItemHeightOffset);
-									axis = 'Y';
-									break;
-								case 'down':
-									newPosition = -(item.scrollHeight * (index + 1) + triggerItemHeightOffset);
-									axis = 'Y';
-									break;
-								case 'left':
-									newPosition = (item.scrollWidth * (index + 1) + triggerItemWidthOffset);
-									axis = 'X';
-									break;
-								case 'right':
-									newPosition = -(item.scrollWidth * (index + 1) + triggerItemWidthOffset);
-									axis = 'X';
-									break;
+							case 'up':
+								newPosition = (item.scrollHeight * (index + 1) + triggerItemHeightOffset);
+								axis = 'Y';
+								break;
+							case 'down':
+								newPosition = -(item.scrollHeight * (index + 1) + triggerItemHeightOffset);
+								axis = 'Y';
+								break;
+							case 'left':
+								newPosition = (item.scrollWidth * (index + 1) + triggerItemWidthOffset);
+								axis = 'X';
+								break;
+							case 'right':
+								newPosition = -(item.scrollWidth * (index + 1) + triggerItemWidthOffset);
+								axis = 'X';
+								break;
 							}
 
 							var newTranslate = 'translate' + axis + '(' + newPosition + 'px)';
@@ -11433,7 +11433,7 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		(function() {
 			'use strict';
@@ -11635,16 +11635,16 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		/**
 		 * @ngdoc module
 		 * @name material.components.gridList
 		 */
-		GridListController.$inject = ["$mdUtil"];
-		GridLayoutFactory.$inject = ["$mdUtil"];
-		GridListDirective.$inject = ["$interpolate", "$mdConstant", "$mdGridLayout", "$mdMedia"];
-		GridTileDirective.$inject = ["$mdMedia"];
+		GridListController.$inject = ['$mdUtil'];
+		GridLayoutFactory.$inject = ['$mdUtil'];
+		GridListDirective.$inject = ['$interpolate', '$mdConstant', '$mdGridLayout', '$mdMedia'];
+		GridTileDirective.$inject = ['$mdMedia'];
 		angular.module('material.components.gridList', ['material.core'])
 			.directive('mdGridList', GridListDirective)
 			.directive('mdGridTile', GridTileDirective)
@@ -11836,9 +11836,9 @@
 											style: getTileStyle(ps.position, ps.spans,
 												props.colCount, rowCount,
 												props.gutter, props.rowMode, props.rowHeight)
-										}
+										};
 									})
-								}
+								};
 							})
 							.reflow()
 							.performance();
@@ -11933,40 +11933,40 @@
 					};
 
 					switch (rowMode) {
-						case 'fixed':
-							// In fixed mode, simply use the given rowHeight.
-							style.top = POSITION({ unit: rowHeight, offset: position.row, gutter: gutter });
-							style.height = DIMENSION({ unit: rowHeight, span: spans.row, gutter: gutter });
-							break;
+					case 'fixed':
+						// In fixed mode, simply use the given rowHeight.
+						style.top = POSITION({ unit: rowHeight, offset: position.row, gutter: gutter });
+						style.height = DIMENSION({ unit: rowHeight, span: spans.row, gutter: gutter });
+						break;
 
-						case 'ratio':
-							// Percent of the available vertical space that one row takes up. Here, rowHeight holds
-							// the ratio value. For example, if the width:height ratio is 4:3, rowHeight = 1.333.
-							var vShare = hShare / rowHeight;
+					case 'ratio':
+						// Percent of the available vertical space that one row takes up. Here, rowHeight holds
+						// the ratio value. For example, if the width:height ratio is 4:3, rowHeight = 1.333.
+						var vShare = hShare / rowHeight;
 
-							// Base veritcal size of a row.
-							var vUnit = UNIT({ share: vShare, gutterShare: hGutterShare, gutter: gutter });
+						// Base veritcal size of a row.
+						var vUnit = UNIT({ share: vShare, gutterShare: hGutterShare, gutter: gutter });
 
-							// padidngTop and marginTop are used to maintain the given aspect ratio, as
-							// a percentage-based value for these properties is applied to the *width* of the
-							// containing block. See http://www.w3.org/TR/CSS2/box.html#margin-properties
-							style.paddingTop = DIMENSION({ unit: vUnit, span: spans.row, gutter: gutter});
-							style.marginTop = POSITION({ unit: vUnit, offset: position.row, gutter: gutter });
-							break;
+						// padidngTop and marginTop are used to maintain the given aspect ratio, as
+						// a percentage-based value for these properties is applied to the *width* of the
+						// containing block. See http://www.w3.org/TR/CSS2/box.html#margin-properties
+						style.paddingTop = DIMENSION({ unit: vUnit, span: spans.row, gutter: gutter});
+						style.marginTop = POSITION({ unit: vUnit, offset: position.row, gutter: gutter });
+						break;
 
-						case 'fit':
-							// Fraction of the gutter size that each column takes up.
-							var vGutterShare = (rowCount - 1) / rowCount;
+					case 'fit':
+						// Fraction of the gutter size that each column takes up.
+						var vGutterShare = (rowCount - 1) / rowCount;
 
-							// Percent of the available vertical space that one row takes up.
-							var vShare = (1 / rowCount) * 100;
+						// Percent of the available vertical space that one row takes up.
+						var vShare = (1 / rowCount) * 100;
 
-							// Base vertical size of a row.
-							var vUnit = UNIT({share: vShare, gutterShare: vGutterShare, gutter: gutter});
+						// Base vertical size of a row.
+						var vUnit = UNIT({share: vShare, gutterShare: vGutterShare, gutter: gutter});
 
-							style.top = POSITION({unit: vUnit, offset: position.row, gutter: gutter});
-							style.height = DIMENSION({unit: vUnit, span: spans.row, gutter: gutter});
-							break;
+						style.top = POSITION({unit: vUnit, offset: position.row, gutter: gutter});
+						style.height = DIMENSION({unit: vUnit, span: spans.row, gutter: gutter});
+						break;
 					}
 
 					return style;
@@ -11976,25 +11976,25 @@
 					var style = {};
 
 					switch(rowMode) {
-						case 'fixed':
-							style.height = DIMENSION({ unit: rowHeight, span: rowCount, gutter: gutter });
-							style.paddingBottom = '';
-							break;
+					case 'fixed':
+						style.height = DIMENSION({ unit: rowHeight, span: rowCount, gutter: gutter });
+						style.paddingBottom = '';
+						break;
 
-						case 'ratio':
-							// rowHeight is width / height
-							var hGutterShare = colCount === 1 ? 0 : (colCount - 1) / colCount,
-								hShare = (1 / colCount) * 100,
-								vShare = hShare * (1 / rowHeight),
-								vUnit = UNIT({ share: vShare, gutterShare: hGutterShare, gutter: gutter });
+					case 'ratio':
+						// rowHeight is width / height
+						var hGutterShare = colCount === 1 ? 0 : (colCount - 1) / colCount,
+							hShare = (1 / colCount) * 100,
+							vShare = hShare * (1 / rowHeight),
+							vUnit = UNIT({ share: vShare, gutterShare: hGutterShare, gutter: gutter });
 
-							style.height = '';
-							style.paddingBottom = DIMENSION({ unit: vUnit, span: rowCount, gutter: gutter});
-							break;
+						style.height = '';
+						style.paddingBottom = DIMENSION({ unit: vUnit, span: rowCount, gutter: gutter});
+						break;
 
-						case 'fit':
-							// noop, as the height is user set
-							break;
+					case 'fit':
+						// noop, as the height is user set
+						break;
 					}
 
 					return style;
@@ -12041,13 +12041,13 @@
 					}
 
 					switch (getRowMode()) {
-						case 'fixed':
-							return applyDefaultUnit(rowHeight);
-						case 'ratio':
-							var whRatio = rowHeight.split(':');
-							return parseFloat(whRatio[0]) / parseFloat(whRatio[1]);
-						case 'fit':
-							return 0; // N/A
+					case 'fixed':
+						return applyDefaultUnit(rowHeight);
+					case 'ratio':
+						var whRatio = rowHeight.split(':');
+						return parseFloat(whRatio[0]) / parseFloat(whRatio[1]);
+					case 'fit':
+						return 0; // N/A
 					}
 				}
 
@@ -12193,7 +12193,7 @@
 				grid.element.css(grid.style);
 				tiles.forEach(function(t) {
 					t.element.css(t.style);
-				})
+				});
 			}
 
 			/**
@@ -12367,7 +12367,7 @@
 				transclude: true,
 				scope: {},
 				// Simple controller that exposes attributes to the grid directive
-				controller: ["$attrs", function($attrs) {
+				controller: ['$attrs', function($attrs) {
 					this.$attrs = $attrs;
 				}],
 				link: postLink
@@ -12413,7 +12413,7 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		/**
 		 * @ngdoc module
@@ -12425,21 +12425,21 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		/**
 		 * @ngdoc module
 		 * @name material.components.input
 		 */
-		mdInputContainerDirective.$inject = ["$mdTheming", "$parse"];
-		inputTextareaDirective.$inject = ["$mdUtil", "$window", "$mdAria", "$timeout", "$mdGesture"];
-		mdMaxlengthDirective.$inject = ["$animate", "$mdUtil"];
-		placeholderDirective.$inject = ["$compile"];
-		ngMessageDirective.$inject = ["$mdUtil"];
-		mdSelectOnFocusDirective.$inject = ["$timeout"];
-		mdInputInvalidMessagesAnimation.$inject = ["$$AnimateRunner", "$animateCss", "$mdUtil", "$log"];
-		ngMessagesAnimation.$inject = ["$$AnimateRunner", "$animateCss", "$mdUtil", "$log"];
-		ngMessageAnimation.$inject = ["$$AnimateRunner", "$animateCss", "$mdUtil", "$log"];
+		mdInputContainerDirective.$inject = ['$mdTheming', '$parse'];
+		inputTextareaDirective.$inject = ['$mdUtil', '$window', '$mdAria', '$timeout', '$mdGesture'];
+		mdMaxlengthDirective.$inject = ['$animate', '$mdUtil'];
+		placeholderDirective.$inject = ['$compile'];
+		ngMessageDirective.$inject = ['$mdUtil'];
+		mdSelectOnFocusDirective.$inject = ['$timeout'];
+		mdInputInvalidMessagesAnimation.$inject = ['$$AnimateRunner', '$animateCss', '$mdUtil', '$log'];
+		ngMessagesAnimation.$inject = ['$$AnimateRunner', '$animateCss', '$mdUtil', '$log'];
+		ngMessageAnimation.$inject = ['$$AnimateRunner', '$animateCss', '$mdUtil', '$log'];
 		var inputModule = angular.module('material.components.input', [
 			'material.core'
 		])
@@ -12458,7 +12458,7 @@
 			.animation('.md-input-messages-animation', ngMessagesAnimation)
 			.animation('.md-input-message-animation', ngMessageAnimation);
 
-// If we are running inside of tests; expose some extra services so that we can test them
+		// If we are running inside of tests; expose some extra services so that we can test them
 		if (window._mdMocksIncluded) {
 			inputModule.service('$$mdInput', function() {
 				return {
@@ -12468,7 +12468,7 @@
 						hide        : hideInputMessages,
 						getElement  : getMessagesElement
 					}
-				}
+				};
 			})
 
 			// Register a service for each animation so that we can easily inject them into unit tests
@@ -12530,16 +12530,16 @@
 		 */
 		function mdInputContainerDirective($mdTheming, $parse) {
 
-			ContainerCtrl.$inject = ["$scope", "$element", "$attrs", "$animate"];
+			ContainerCtrl.$inject = ['$scope', '$element', '$attrs', '$animate'];
 			var INPUT_TAGS = ['INPUT', 'TEXTAREA', 'SELECT', 'MD-SELECT'];
 
 			var LEFT_SELECTORS = INPUT_TAGS.reduce(function(selectors, isel) {
 				return selectors.concat(['md-icon ~ ' + isel, '.md-icon ~ ' + isel]);
-			}, []).join(",");
+			}, []).join(',');
 
 			var RIGHT_SELECTORS = INPUT_TAGS.reduce(function(selectors, isel) {
 				return selectors.concat([isel + ' ~ md-icon', isel + ' ~ .md-icon']);
-			}, []).join(",");
+			}, []).join(',');
 
 			return {
 				restrict: 'E',
@@ -12767,7 +12767,7 @@
 					if (containerCtrl.input[0].contains(element[0])) {
 						return;
 					} else {
-						throw new Error("<md-input-container> can only have *one* <input>, <textarea> or <md-select> child element!");
+						throw new Error('<md-input-container> can only have *one* <input>, <textarea> or <md-select> child element!');
 					}
 				}
 				containerCtrl.input = element;
@@ -13222,7 +13222,7 @@
 			};
 
 			function postLink(scope, element, attr) {
-				if (element[0].nodeName !== 'INPUT' && element[0].nodeName !== "TEXTAREA") return;
+				if (element[0].nodeName !== 'INPUT' && element[0].nodeName !== 'TEXTAREA') return;
 
 				var preventMouseUp = false;
 
@@ -13333,7 +13333,7 @@
 				}
 
 				function isInsideInputContainer(element) {
-					return !!$mdUtil.getClosest(element, "md-input-container");
+					return !!$mdUtil.getClosest(element, 'md-input-container');
 				}
 
 				function initMessageElement(element) {
@@ -13370,7 +13370,7 @@
 				},
 
 				addClass: function(element, className, done) {
-					if (className == "ng-hide") {
+					if (className == 'ng-hide') {
 						hideInputMessages(element, done);
 					} else {
 						done();
@@ -13378,7 +13378,7 @@
 				},
 
 				removeClass: function(element, className, done) {
-					if (className == "ng-hide") {
+					if (className == 'ng-hide') {
 						showInputMessages(element, done);
 					} else {
 						done();
@@ -13463,8 +13463,8 @@
 			return $animateCss(element, {
 				event: 'enter',
 				structural: true,
-				from: {"opacity": 0, "margin-top": -height + "px"},
-				to: {"opacity": 1, "margin-top": "0"},
+				from: {'opacity': 0, 'margin-top': -height + 'px'},
+				to: {'opacity': 1, 'margin-top': '0'},
 				duration: 0.3
 			});
 		}
@@ -13482,8 +13482,8 @@
 			return $animateCss(element, {
 				event: 'leave',
 				structural: true,
-				from: {"opacity": 1, "margin-top": 0},
-				to: {"opacity": 0, "margin-top": -height + "px"},
+				from: {'opacity': 1, 'margin-top': 0},
+				to: {'opacity': 0, 'margin-top': -height + 'px'},
 				duration: 0.3
 			});
 		}
@@ -13520,7 +13520,7 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		/**
 		 * @ngdoc module
@@ -13528,9 +13528,9 @@
 		 * @description
 		 * List module
 		 */
-		MdListController.$inject = ["$scope", "$element", "$mdListInkRipple"];
-		mdListDirective.$inject = ["$mdTheming"];
-		mdListItemDirective.$inject = ["$mdAria", "$mdConstant", "$mdUtil", "$timeout"];
+		MdListController.$inject = ['$scope', '$element', '$mdListInkRipple'];
+		mdListDirective.$inject = ['$mdTheming'];
+		mdListItemDirective.$inject = ['$mdAria', '$mdConstant', '$mdUtil', '$timeout'];
 		angular.module('material.components.list', [
 			'material.core'
 		])
@@ -13791,7 +13791,7 @@
 					wrapSecondaryItems();
 					setupToggleAria();
 
-					if (hasProxiedElement && proxyElement.nodeName === "MD-MENU") {
+					if (hasProxiedElement && proxyElement.nodeName === 'MD-MENU') {
 						setupProxiedMenu();
 					}
 
@@ -13955,7 +13955,7 @@
 					function isButton(el) {
 						var nodeName = el.nodeName.toUpperCase();
 
-						return nodeName == "MD-BUTTON" || nodeName == "BUTTON";
+						return nodeName == 'MD-BUTTON' || nodeName == 'BUTTON';
 					}
 
 					function hasClickEvent (element) {
@@ -14115,7 +14115,7 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		/**
 		 * @ngdoc module
@@ -14129,7 +14129,7 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		/**
 		 * @ngdoc module
@@ -14144,7 +14144,7 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		/**
 		 * @ngdoc module
@@ -14152,10 +14152,10 @@
 		 */
 
 
-		MdNavBarController.$inject = ["$element", "$scope", "$timeout", "$mdConstant"];
-		MdNavItem.$inject = ["$mdAria", "$$rAF"];
-		MdNavItemController.$inject = ["$element"];
-		MdNavBar.$inject = ["$mdAria", "$mdTheming"];
+		MdNavBarController.$inject = ['$element', '$scope', '$timeout', '$mdConstant'];
+		MdNavItem.$inject = ['$mdAria', '$$rAF'];
+		MdNavItemController.$inject = ['$element'];
+		MdNavBar.$inject = ['$mdAria', '$mdTheming'];
 		angular.module('material.components.navBar', ['material.core'])
 			.controller('MdNavBarController', MdNavBarController)
 			.directive('mdNavBar', MdNavBar)
@@ -14333,14 +14333,14 @@
 			var self = this;
 			// need to wait for transcluded content to be available
 			var deregisterTabWatch = this._$scope.$watch(function() {
-					return self._navBarEl.querySelectorAll('._md-nav-button').length;
-				},
-				function(newLength) {
-					if (newLength > 0) {
-						self._initTabs();
-						deregisterTabWatch();
-					}
-				});
+				return self._navBarEl.querySelectorAll('._md-nav-button').length;
+			},
+			function(newLength) {
+				if (newLength > 0) {
+					self._initTabs();
+					deregisterTabWatch();
+				}
+			});
 		}
 
 
@@ -14427,7 +14427,7 @@
 			var controllers = Array.prototype.slice.call(
 				this._navBarEl.querySelectorAll('.md-nav-item'))
 				.map(function(el) {
-					return angular.element(el).controller('mdNavItem')
+					return angular.element(el).controller('mdNavItem');
 				});
 			return controllers.indexOf(undefined) ? controllers : null;
 		};
@@ -14515,25 +14515,25 @@
 
 			// use arrow keys to navigate between tabs
 			switch (e.keyCode) {
-				case keyCodes.UP_ARROW:
-				case keyCodes.LEFT_ARROW:
-					if (focusedTabIndex > 0) {
-						this._moveFocus(focusedTab, tabs[focusedTabIndex - 1]);
-					}
-					break;
-				case keyCodes.DOWN_ARROW:
-				case keyCodes.RIGHT_ARROW:
-					if (focusedTabIndex < tabs.length - 1) {
-						this._moveFocus(focusedTab, tabs[focusedTabIndex + 1]);
-					}
-					break;
-				case keyCodes.SPACE:
-				case keyCodes.ENTER:
-					// timeout to avoid a "digest already in progress" console error
-					this._$timeout(function() {
-						focusedTab.getButtonEl().click();
-					});
-					break;
+			case keyCodes.UP_ARROW:
+			case keyCodes.LEFT_ARROW:
+				if (focusedTabIndex > 0) {
+					this._moveFocus(focusedTab, tabs[focusedTabIndex - 1]);
+				}
+				break;
+			case keyCodes.DOWN_ARROW:
+			case keyCodes.RIGHT_ARROW:
+				if (focusedTabIndex < tabs.length - 1) {
+					this._moveFocus(focusedTab, tabs[focusedTabIndex + 1]);
+				}
+				break;
+			case keyCodes.SPACE:
+			case keyCodes.ENTER:
+				// timeout to avoid a "digest already in progress" console error
+				this._$timeout(function() {
+					focusedTab.getButtonEl().click();
+				});
+				break;
 			}
 		};
 
@@ -14727,7 +14727,7 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		/**
 		 * @ngdoc module
@@ -14739,13 +14739,13 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		/**
 		 * @ngdoc module
 		 * @name material.components.panel
 		 */
-		MdPanelService.$inject = ["presets", "$rootElement", "$rootScope", "$injector", "$window"];
+		MdPanelService.$inject = ['presets', '$rootElement', '$rootScope', '$injector', '$window'];
 		angular
 			.module('material.components.panel', [
 				'material.core',
@@ -17853,22 +17853,22 @@
 			var targetWidth = targetBounds.width;
 
 			switch (this._bidi(position.x)) {
-				case MdPanelPosition.xPosition.OFFSET_START:
-					this._left = targetLeft - panelWidth + 'px';
-					break;
-				case MdPanelPosition.xPosition.ALIGN_END:
-					this._left = targetRight - panelWidth + 'px';
-					break;
-				case MdPanelPosition.xPosition.CENTER:
-					var left = targetLeft + (0.5 * targetWidth) - (0.5 * panelWidth);
-					this._left = left + 'px';
-					break;
-				case MdPanelPosition.xPosition.ALIGN_START:
-					this._left = targetLeft + 'px';
-					break;
-				case MdPanelPosition.xPosition.OFFSET_END:
-					this._left = targetRight + 'px';
-					break;
+			case MdPanelPosition.xPosition.OFFSET_START:
+				this._left = targetLeft - panelWidth + 'px';
+				break;
+			case MdPanelPosition.xPosition.ALIGN_END:
+				this._left = targetRight - panelWidth + 'px';
+				break;
+			case MdPanelPosition.xPosition.CENTER:
+				var left = targetLeft + (0.5 * targetWidth) - (0.5 * panelWidth);
+				this._left = left + 'px';
+				break;
+			case MdPanelPosition.xPosition.ALIGN_START:
+				this._left = targetLeft + 'px';
+				break;
+			case MdPanelPosition.xPosition.OFFSET_END:
+				this._left = targetRight + 'px';
+				break;
 			}
 
 			var targetTop = targetBounds.top;
@@ -17876,22 +17876,22 @@
 			var targetHeight = targetBounds.height;
 
 			switch (position.y) {
-				case MdPanelPosition.yPosition.ABOVE:
-					this._top = targetTop - panelHeight + 'px';
-					break;
-				case MdPanelPosition.yPosition.ALIGN_BOTTOMS:
-					this._top = targetBottom - panelHeight + 'px';
-					break;
-				case MdPanelPosition.yPosition.CENTER:
-					var top = targetTop + (0.5 * targetHeight) - (0.5 * panelHeight);
-					this._top = top + 'px';
-					break;
-				case MdPanelPosition.yPosition.ALIGN_TOPS:
-					this._top = targetTop + 'px';
-					break;
-				case MdPanelPosition.yPosition.BELOW:
-					this._top = targetBottom + 'px';
-					break;
+			case MdPanelPosition.yPosition.ABOVE:
+				this._top = targetTop - panelHeight + 'px';
+				break;
+			case MdPanelPosition.yPosition.ALIGN_BOTTOMS:
+				this._top = targetBottom - panelHeight + 'px';
+				break;
+			case MdPanelPosition.yPosition.CENTER:
+				var top = targetTop + (0.5 * targetHeight) - (0.5 * panelHeight);
+				this._top = top + 'px';
+				break;
+			case MdPanelPosition.yPosition.ALIGN_TOPS:
+				this._top = targetTop + 'px';
+				break;
+			case MdPanelPosition.yPosition.BELOW:
+				this._top = targetBottom + 'px';
+				break;
 			}
 		};
 
@@ -18079,46 +18079,46 @@
 			var openTo = animator.toTransformCss(panelTransform);
 
 			switch (this._animationClass) {
-				case MdPanelAnimation.animation.SLIDE:
-					// Slide should start with opacity: 1.
-					panelEl.css('opacity', '1');
+			case MdPanelAnimation.animation.SLIDE:
+				// Slide should start with opacity: 1.
+				panelEl.css('opacity', '1');
 
+				animationOptions = {
+					transitionInClass: '_md-panel-animate-enter'
+				};
+
+				var openSlide = animator.calculateSlideToOrigin(
+					panelEl, this._openFrom) || '';
+				openFrom = animator.toTransformCss(openSlide + ' ' + panelTransform);
+				break;
+
+			case MdPanelAnimation.animation.SCALE:
+				animationOptions = {
+					transitionInClass: '_md-panel-animate-enter'
+				};
+
+				var openScale = animator.calculateZoomToOrigin(
+					panelEl, this._openFrom) || '';
+				openFrom = animator.toTransformCss(openScale + ' ' + panelTransform);
+				break;
+
+			case MdPanelAnimation.animation.FADE:
+				animationOptions = {
+					transitionInClass: '_md-panel-animate-enter'
+				};
+				break;
+
+			default:
+				if (angular.isString(this._animationClass)) {
 					animationOptions = {
-						transitionInClass: '_md-panel-animate-enter'
+						transitionInClass: this._animationClass
 					};
-
-					var openSlide = animator.calculateSlideToOrigin(
-						panelEl, this._openFrom) || '';
-					openFrom = animator.toTransformCss(openSlide + ' ' + panelTransform);
-					break;
-
-				case MdPanelAnimation.animation.SCALE:
+				} else {
 					animationOptions = {
-						transitionInClass: '_md-panel-animate-enter'
+						transitionInClass: this._animationClass['open'],
+						transitionOutClass: this._animationClass['close'],
 					};
-
-					var openScale = animator.calculateZoomToOrigin(
-						panelEl, this._openFrom) || '';
-					openFrom = animator.toTransformCss(openScale + ' ' + panelTransform);
-					break;
-
-				case MdPanelAnimation.animation.FADE:
-					animationOptions = {
-						transitionInClass: '_md-panel-animate-enter'
-					};
-					break;
-
-				default:
-					if (angular.isString(this._animationClass)) {
-						animationOptions = {
-							transitionInClass: this._animationClass
-						};
-					} else {
-						animationOptions = {
-							transitionInClass: this._animationClass['open'],
-							transitionOutClass: this._animationClass['close'],
-						};
-					}
+				}
 			}
 
 			animationOptions.duration = this._openDuration;
@@ -18145,45 +18145,45 @@
 			var closeTo = animator.toTransformCss(panelTransform);
 
 			switch (this._animationClass) {
-				case MdPanelAnimation.animation.SLIDE:
-					// Slide should start with opacity: 1.
-					panelEl.css('opacity', '1');
+			case MdPanelAnimation.animation.SLIDE:
+				// Slide should start with opacity: 1.
+				panelEl.css('opacity', '1');
+				reverseAnimationOptions = {
+					transitionInClass: '_md-panel-animate-leave'
+				};
+
+				var closeSlide = animator.calculateSlideToOrigin(
+					panelEl, this._closeTo) || '';
+				closeTo = animator.toTransformCss(closeSlide + ' ' + panelTransform);
+				break;
+
+			case MdPanelAnimation.animation.SCALE:
+				reverseAnimationOptions = {
+					transitionInClass: '_md-panel-animate-scale-out _md-panel-animate-leave'
+				};
+
+				var closeScale = animator.calculateZoomToOrigin(
+					panelEl, this._closeTo) || '';
+				closeTo = animator.toTransformCss(closeScale + ' ' + panelTransform);
+				break;
+
+			case MdPanelAnimation.animation.FADE:
+				reverseAnimationOptions = {
+					transitionInClass: '_md-panel-animate-fade-out _md-panel-animate-leave'
+				};
+				break;
+
+			default:
+				if (angular.isString(this._animationClass)) {
 					reverseAnimationOptions = {
-						transitionInClass: '_md-panel-animate-leave'
+						transitionOutClass: this._animationClass
 					};
-
-					var closeSlide = animator.calculateSlideToOrigin(
-						panelEl, this._closeTo) || '';
-					closeTo = animator.toTransformCss(closeSlide + ' ' + panelTransform);
-					break;
-
-				case MdPanelAnimation.animation.SCALE:
+				} else {
 					reverseAnimationOptions = {
-						transitionInClass: '_md-panel-animate-scale-out _md-panel-animate-leave'
+						transitionInClass: this._animationClass['close'],
+						transitionOutClass: this._animationClass['open']
 					};
-
-					var closeScale = animator.calculateZoomToOrigin(
-						panelEl, this._closeTo) || '';
-					closeTo = animator.toTransformCss(closeScale + ' ' + panelTransform);
-					break;
-
-				case MdPanelAnimation.animation.FADE:
-					reverseAnimationOptions = {
-						transitionInClass: '_md-panel-animate-fade-out _md-panel-animate-leave'
-					};
-					break;
-
-				default:
-					if (angular.isString(this._animationClass)) {
-						reverseAnimationOptions = {
-							transitionOutClass: this._animationClass
-						};
-					} else {
-						reverseAnimationOptions = {
-							transitionInClass: this._animationClass['close'],
-							transitionOutClass: this._animationClass['open']
-						};
-					}
+				}
 			}
 
 			reverseAnimationOptions.duration = this._closeDuration;
@@ -18280,14 +18280,14 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		/**
 		 * @ngdoc module
 		 * @name material.components.progressLinear
 		 * @description Linear Progress module!
 		 */
-		MdProgressLinearDirective.$inject = ["$mdTheming", "$mdUtil", "$log"];
+		MdProgressLinearDirective.$inject = ['$mdTheming', '$mdUtil', '$log'];
 		angular.module('material.components.progressLinear', [
 			'material.core'
 		])
@@ -18343,11 +18343,11 @@
 		 * </hljs>
 		 */
 		function MdProgressLinearDirective($mdTheming, $mdUtil, $log) {
-			var MODE_DETERMINATE = "determinate";
-			var MODE_INDETERMINATE = "indeterminate";
-			var MODE_BUFFER = "buffer";
-			var MODE_QUERY = "query";
-			var DISABLED_CLASS = "_md-progress-linear-disabled";
+			var MODE_DETERMINATE = 'determinate';
+			var MODE_INDETERMINATE = 'indeterminate';
+			var MODE_BUFFER = 'buffer';
+			var MODE_QUERY = 'query';
+			var DISABLED_CLASS = '_md-progress-linear-disabled';
 
 			return {
 				restrict: 'E',
@@ -18413,15 +18413,15 @@
 						if (lastMode) container.removeClass( lastMode );
 
 						switch( mode ) {
-							case MODE_QUERY:
-							case MODE_BUFFER:
-							case MODE_DETERMINATE:
-							case MODE_INDETERMINATE:
-								container.addClass( lastMode = "md-mode-" + mode );
-								break;
-							default:
-								container.addClass( lastMode = "md-mode-" + MODE_INDETERMINATE );
-								break;
+						case MODE_QUERY:
+						case MODE_BUFFER:
+						case MODE_DETERMINATE:
+						case MODE_INDETERMINATE:
+							container.addClass( lastMode = 'md-mode-' + mode );
+							break;
+						default:
+							container.addClass( lastMode = 'md-mode-' + MODE_INDETERMINATE );
+							break;
 						}
 					});
 				}
@@ -18433,11 +18433,11 @@
 					if ( angular.isUndefined(attr.mdMode) ) {
 						var hasValue = angular.isDefined(attr.value);
 						var mode = hasValue ? MODE_DETERMINATE : MODE_INDETERMINATE;
-						var info = "Auto-adding the missing md-mode='{0}' to the ProgressLinear element";
+						var info = 'Auto-adding the missing md-mode=\'{0}\' to the ProgressLinear element';
 
 						//$log.debug( $mdUtil.supplant(info, [mode]) );
 
-						element.attr("md-mode", mode);
+						element.attr('md-mode', mode);
 						attr.mdMode = mode;
 					}
 				}
@@ -18446,17 +18446,17 @@
 				 * Is the md-mode a valid option?
 				 */
 				function mode() {
-					var value = (attr.mdMode || "").trim();
+					var value = (attr.mdMode || '').trim();
 					if ( value ) {
 						switch(value) {
-							case MODE_DETERMINATE:
-							case MODE_INDETERMINATE:
-							case MODE_BUFFER:
-							case MODE_QUERY:
-								break;
-							default:
-								value = MODE_INDETERMINATE;
-								break;
+						case MODE_DETERMINATE:
+						case MODE_INDETERMINATE:
+						case MODE_BUFFER:
+						case MODE_QUERY:
+							break;
+						default:
+							value = MODE_INDETERMINATE;
+							break;
 						}
 					}
 					return value;
@@ -18469,7 +18469,7 @@
 				function animateIndicator(target, value) {
 					if ( isDisabled || !mode() ) return;
 
-					var to = $mdUtil.supplant("translateX({0}%) scale({1},1)", [ (value-100)/2, value/100 ]);
+					var to = $mdUtil.supplant('translateX({0}%) scale({1},1)', [ (value-100)/2, value/100 ]);
 					var styles = toVendorCSS({ transform : to });
 					angular.element(target).css( styles );
 				}
@@ -18488,15 +18488,15 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		/**
 		 * @ngdoc module
 		 * @name material.components.radioButton
 		 * @description radioButton module!
 		 */
-		mdRadioGroupDirective.$inject = ["$mdUtil", "$mdConstant", "$mdTheming", "$timeout"];
-		mdRadioButtonDirective.$inject = ["$mdAria", "$mdUtil", "$mdTheming"];
+		mdRadioGroupDirective.$inject = ['$mdUtil', '$mdConstant', '$mdTheming', '$timeout'];
+		mdRadioButtonDirective.$inject = ['$mdAria', '$mdUtil', '$mdTheming'];
 		angular.module('material.components.radioButton', [
 			'material.core'
 		])
@@ -18611,26 +18611,26 @@
 					}
 
 					switch (keyCode) {
-						case $mdConstant.KEY_CODE.LEFT_ARROW:
-						case $mdConstant.KEY_CODE.UP_ARROW:
-							ev.preventDefault();
-							rgCtrl.selectPrevious();
-							setFocus();
-							break;
+					case $mdConstant.KEY_CODE.LEFT_ARROW:
+					case $mdConstant.KEY_CODE.UP_ARROW:
+						ev.preventDefault();
+						rgCtrl.selectPrevious();
+						setFocus();
+						break;
 
-						case $mdConstant.KEY_CODE.RIGHT_ARROW:
-						case $mdConstant.KEY_CODE.DOWN_ARROW:
-							ev.preventDefault();
-							rgCtrl.selectNext();
-							setFocus();
-							break;
+					case $mdConstant.KEY_CODE.RIGHT_ARROW:
+					case $mdConstant.KEY_CODE.DOWN_ARROW:
+						ev.preventDefault();
+						rgCtrl.selectNext();
+						setFocus();
+						break;
 
-						case $mdConstant.KEY_CODE.ENTER:
-							var form = angular.element($mdUtil.getClosest(element[0], 'form'));
-							if (form.length > 0) {
-								form.triggerHandler('submit');
-							}
-							break;
+					case $mdConstant.KEY_CODE.ENTER:
+						var form = angular.element($mdUtil.getClosest(element[0], 'form'));
+						if (form.length > 0) {
+							form.triggerHandler('submit');
+						}
+						break;
 					}
 
 				}
@@ -18694,7 +18694,7 @@
 				if (buttons.count()) {
 					var validate = function (button) {
 						// If disabled, then NOT valid
-						return !angular.element(button).attr("disabled");
+						return !angular.element(button).attr('disabled');
 					};
 
 					var selected = parent[0].querySelector('md-radio-button.md-checked');
@@ -18845,16 +18845,16 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		/**
 		 * @ngdoc module
 		 * @name material.components.showHide
 		 */
 
-// Add additional handlers to ng-show and ng-hide that notify directives
-// contained within that they should recompute their size.
-// These run in addition to AngularJS's built-in ng-hide and ng-show directives.
+		// Add additional handlers to ng-show and ng-hide that notify directives
+		// contained within that they should recompute their size.
+		// These run in addition to AngularJS's built-in ng-hide and ng-show directives.
 		angular.module('material.components.showHide', [
 			'material.core'
 		])
@@ -18898,7 +18898,7 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		/**
 		 * @ngdoc module
@@ -18907,9 +18907,9 @@
 		 * @description
 		 * A Sidenav QP component.
 		 */
-		SidenavService.$inject = ["$mdComponentRegistry", "$mdUtil", "$q", "$log"];
-		SidenavDirective.$inject = ["$mdMedia", "$mdUtil", "$mdConstant", "$mdTheming", "$mdInteraction", "$animate", "$compile", "$parse", "$log", "$q", "$document", "$window", "$$rAF"];
-		SidenavController.$inject = ["$scope", "$attrs", "$mdComponentRegistry", "$q", "$interpolate"];
+		SidenavService.$inject = ['$mdComponentRegistry', '$mdUtil', '$q', '$log'];
+		SidenavDirective.$inject = ['$mdMedia', '$mdUtil', '$mdConstant', '$mdTheming', '$mdInteraction', '$animate', '$compile', '$parse', '$log', '$q', '$document', '$window', '$$rAF'];
+		SidenavController.$inject = ['$scope', '$attrs', '$mdComponentRegistry', '$q', '$interpolate'];
 		angular
 			.module('material.components.sidenav', [
 				'material.core',
@@ -18974,7 +18974,7 @@
 		 * </hljs>
 		 */
 		function SidenavService($mdComponentRegistry, $mdUtil, $q, $log) {
-			var errorMsg = "SideNav '{0}' is not available! Did you use md-component-id='{0}'?";
+			var errorMsg = 'SideNav \'{0}\' is not available! Did you use md-component-id=\'{0}\'?';
 			var service = {
 				find    : findInstance,     //  sync  - returns proxy API
 				waitFor : waitForInstance   //  async - returns promise
@@ -19004,7 +19004,7 @@
 			function addLegacyAPI(service, handle) {
 				var falseFn  = function() { return false; };
 				var rejectFn = function() {
-					return $q.when($mdUtil.supplant(errorMsg, [handle || ""]));
+					return $q.when($mdUtil.supplant(errorMsg, [handle || '']));
 				};
 
 				return angular.extend({
@@ -19030,7 +19030,7 @@
 				if (!instance && !shouldWait) {
 
 					// Report missing instance
-					$log.error( $mdUtil.supplant(errorMsg, [handle || ""]) );
+					$log.error( $mdUtil.supplant(errorMsg, [handle || '']) );
 
 					// The component has not registered itself... most like NOT yet created
 					// return null to indicate that the Sidenav is not in the DOM
@@ -19178,7 +19178,7 @@
 				var isLocked = function() {
 					return isLockedOpenParsed(scope.$parent, {
 						$media: function(arg) {
-							$log.warn("$media is deprecated for is-locked-open. Use $mdMedia instead.");
+							$log.warn('$media is deprecated for is-locked-open. Use $mdMedia instead.');
 							return $mdMedia(arg);
 						},
 						$mdMedia: $mdMedia
@@ -19202,7 +19202,7 @@
 
 				// Only create the backdrop if the backdrop isn't disabled.
 				if (!attr.hasOwnProperty('mdDisableBackdrop')) {
-					backdrop = $mdUtil.createBackdrop(scope, "md-sidenav-backdrop md-opaque ng-enter");
+					backdrop = $mdUtil.createBackdrop(scope, 'md-sidenav-backdrop md-opaque ng-enter');
 				}
 
 				element.addClass('_md');     // private md component indicator for styling
@@ -19452,7 +19452,7 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		/**
 		 * @ngdoc module
@@ -19466,10 +19466,10 @@
 
 		 ***************************************************/
 
-		SelectDirective.$inject = ["$mdSelect", "$mdUtil", "$mdConstant", "$mdTheming", "$mdAria", "$parse", "$sce", "$injector"];
-		SelectMenuDirective.$inject = ["$parse", "$mdUtil", "$mdConstant", "$mdTheming"];
-		OptionDirective.$inject = ["$mdButtonInkRipple", "$mdUtil", "$mdTheming"];
-		SelectProvider.$inject = ["$$interimElementProvider"];
+		SelectDirective.$inject = ['$mdSelect', '$mdUtil', '$mdConstant', '$mdTheming', '$mdAria', '$parse', '$sce', '$injector'];
+		SelectMenuDirective.$inject = ['$parse', '$mdUtil', '$mdConstant', '$mdTheming'];
+		OptionDirective.$inject = ['$mdButtonInkRipple', '$mdUtil', '$mdTheming'];
+		SelectProvider.$inject = ['$$interimElementProvider'];
 		var SELECT_EDGE_MARGIN = 8;
 		var selectNextId = 0;
 		var CHECKBOX_SELECTION_INDICATOR =
@@ -19756,7 +19756,7 @@
 							// We ignore inputs that are in the md-select-header (one
 							// case where this might be useful would be adding as searchbox)
 							if (element.find('md-select-header').find('input')[0] !== containerCtrl.input[0]) {
-								throw new Error("<md-input-container> can only have *one* child <input>, <textarea> or <select> element!");
+								throw new Error('<md-input-container> can only have *one* child <input>, <textarea> or <select> element!');
 							}
 						}
 
@@ -20072,7 +20072,7 @@
 			// We want the scope to be set to 'false' so an isolated scope is not created
 			// which would interfere with the md-select-header's access to the
 			// parent scope.
-			SelectMenuController.$inject = ["$scope", "$attrs", "$element"];
+			SelectMenuController.$inject = ['$scope', '$attrs', '$element'];
 			return {
 				restrict: 'E',
 				require: ['mdSelectMenu'],
@@ -20384,7 +20384,7 @@
 
 		function OptionDirective($mdButtonInkRipple, $mdUtil, $mdTheming) {
 
-			OptionController.$inject = ["$element"];
+			OptionController.$inject = ['$element'];
 			return {
 				restrict: 'E',
 				require: ['mdOption', '^^mdSelectMenu'],
@@ -20549,7 +20549,7 @@
 		}
 
 		function SelectProvider($$interimElementProvider) {
-			selectDefaultOptions.$inject = ["$mdSelect", "$mdConstant", "$mdUtil", "$window", "$q", "$$rAF", "$animateCss", "$animate", "$document"];
+			selectDefaultOptions.$inject = ['$mdSelect', '$mdConstant', '$mdUtil', '$window', '$q', '$$rAF', '$animateCss', '$animate', '$document'];
 			return $$interimElementProvider('$mdSelect')
 				.setDefaults({
 					methods: ['target'],
@@ -20558,7 +20558,7 @@
 
 			/* @ngInject */
 			function selectDefaultOptions($mdSelect, $mdConstant, $mdUtil, $window, $q, $$rAF, $animateCss, $animate, $document) {
-				var ERROR_TARGET_EXPECTED = "$mdSelect.show() expected a target element in options.target but got '{0}'!";
+				var ERROR_TARGET_EXPECTED = '$mdSelect.show() expected a target element in options.target but got \'{0}\'!';
 				var animator = $mdUtil.dom.animator;
 				var keyCodes = $mdConstant.KEY_CODE;
 
@@ -20699,7 +20699,7 @@
 
 						if (options.hasBackdrop) {
 							// Override duration to immediately show invisible backdrop
-							options.backdrop = $mdUtil.createBackdrop(scope, "md-select-backdrop md-click-catcher");
+							options.backdrop = $mdUtil.createBackdrop(scope, 'md-select-backdrop md-click-catcher');
 							$animate.enter(options.backdrop, $document[0].body, null, {duration: 0});
 						}
 
@@ -20788,8 +20788,8 @@
 									scope.$$loadingAsyncDone = true;
 									delete opts.loadingAsync;
 								}).then(function() {
-								$$rAF(positionAndFocusMenu);
-							});
+									$$rAF(positionAndFocusMenu);
+								});
 						}
 					}
 
@@ -20837,35 +20837,35 @@
 							ev.stopPropagation();
 
 							switch (ev.keyCode) {
-								case keyCodes.UP_ARROW:
-									return focusPrevOption();
-								case keyCodes.DOWN_ARROW:
-									return focusNextOption();
-								case keyCodes.SPACE:
-								case keyCodes.ENTER:
-									var option = $mdUtil.getClosest(ev.target, 'md-option');
-									if (option) {
-										dropDown.triggerHandler({
-											type: 'click',
-											target: option
-										});
-										ev.preventDefault();
-									}
-									checkCloseMenu(ev);
-									break;
-								case keyCodes.TAB:
-								case keyCodes.ESCAPE:
-									ev.stopPropagation();
+							case keyCodes.UP_ARROW:
+								return focusPrevOption();
+							case keyCodes.DOWN_ARROW:
+								return focusNextOption();
+							case keyCodes.SPACE:
+							case keyCodes.ENTER:
+								var option = $mdUtil.getClosest(ev.target, 'md-option');
+								if (option) {
+									dropDown.triggerHandler({
+										type: 'click',
+										target: option
+									});
 									ev.preventDefault();
-									opts.restoreFocus = true;
-									$mdUtil.nextTick($mdSelect.hide, true);
-									break;
-								default:
-									if (shouldHandleKey(ev, $mdConstant)) {
-										var optNode = dropDown.controller('mdSelectMenu').optNodeForKeyboardSearch(ev);
-										opts.focusedNode = optNode || opts.focusedNode;
-										optNode && optNode.focus();
-									}
+								}
+								checkCloseMenu(ev);
+								break;
+							case keyCodes.TAB:
+							case keyCodes.ESCAPE:
+								ev.stopPropagation();
+								ev.preventDefault();
+								opts.restoreFocus = true;
+								$mdUtil.nextTick($mdSelect.hide, true);
+								break;
+							default:
+								if (shouldHandleKey(ev, $mdConstant)) {
+									var optNode = dropDown.controller('mdSelectMenu').optNodeForKeyboardSearch(ev);
+									opts.focusedNode = optNode || opts.focusedNode;
+									optNode && optNode.focus();
+								}
 							}
 						}
 
@@ -21094,7 +21094,7 @@
 							element: angular.element(selectNode),
 							styles: {
 								transformOrigin: transformOrigin,
-								transform: !opts.alreadyOpen ? $mdUtil.supplant('scale({0},{1})', [scaleX, scaleY]) : ""
+								transform: !opts.alreadyOpen ? $mdUtil.supplant('scale({0},{1})', [scaleX, scaleY]) : ''
 							}
 						}
 					};
@@ -21151,13 +21151,13 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		/**
 		 * @ngdoc module
 		 * @name material.components.slider
 		 */
-		SliderDirective.$inject = ["$$rAF", "$window", "$mdAria", "$mdUtil", "$mdConstant", "$mdTheming", "$mdGesture", "$parse", "$log", "$timeout"];
+		SliderDirective.$inject = ['$$rAF', '$window', '$mdAria', '$mdUtil', '$mdConstant', '$mdTheming', '$mdGesture', '$parse', '$log', '$timeout'];
 		angular.module('material.components.slider', [
 			'material.core'
 		])
@@ -21752,7 +21752,7 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		/**
 		 * @ngdoc module
@@ -21761,7 +21761,7 @@
 		 * Sticky effects for md
 		 *
 		 */
-		MdSticky.$inject = ["$mdConstant", "$$rAF", "$mdUtil", "$compile"];
+		MdSticky.$inject = ['$mdConstant', '$$rAF', '$mdUtil', '$compile'];
 		angular
 			.module('material.components.sticky', [
 				'material.core',
@@ -22110,7 +22110,7 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		/**
 		 * @ngdoc module
@@ -22130,7 +22130,7 @@
 		 *  > To improve the visual grouping of content, use the system color for your subheaders.
 		 *
 		 */
-		MdSubheaderDirective.$inject = ["$mdSticky", "$compile", "$mdTheming", "$mdUtil", "$mdAria"];
+		MdSubheaderDirective.$inject = ['$mdSticky', '$compile', '$mdTheming', '$mdUtil', '$mdAria'];
 		angular
 			.module('material.components.subheader', [
 				'material.core',
@@ -22236,14 +22236,14 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		/**
 		 * @ngdoc module
 		 * @name material.components.switch
 		 */
 
-		MdSwitch.$inject = ["mdCheckboxDirective", "$mdUtil", "$mdConstant", "$parse", "$$rAF", "$mdGesture", "$timeout"];
+		MdSwitch.$inject = ['mdCheckboxDirective', '$mdUtil', '$mdConstant', '$parse', '$$rAF', '$mdGesture', '$timeout'];
 		angular.module('material.components.switch', [
 			'material.core',
 			'material.components.checkbox'
@@ -22420,7 +22420,7 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		/**
 		 * @ngdoc module
@@ -22499,7 +22499,7 @@
 			.directive('mdSwipeDown', getDirective('SwipeDown'));
 
 		function getDirective(name) {
-			DirectiveFactory.$inject = ["$parse"];
+			DirectiveFactory.$inject = ['$parse'];
 			var directiveName = 'md' + name;
 			var eventName = '$md.' + name.toLowerCase();
 
@@ -22524,7 +22524,7 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		/**
 		 * @ngdoc module
@@ -22556,7 +22556,7 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		/**
 		 * @ngdoc module
@@ -22564,8 +22564,8 @@
 		 * @description
 		 * Toast
 		 */
-		MdToastDirective.$inject = ["$mdToast"];
-		MdToastProvider.$inject = ["$$interimElementProvider"];
+		MdToastDirective.$inject = ['$mdToast'];
+		MdToastProvider.$inject = ['$$interimElementProvider'];
 		angular.module('material.components.toast', [
 			'material.core',
 			'material.components.button'
@@ -22858,7 +22858,7 @@
 
 		function MdToastProvider($$interimElementProvider) {
 			// Differentiate promise resolves: hide timeout (value == true) and hide action clicks (value == ok).
-			toastDefaultOptions.$inject = ["$animate", "$mdToast", "$mdUtil", "$mdMedia"];
+			toastDefaultOptions.$inject = ['$animate', '$mdToast', '$mdUtil', '$mdMedia'];
 			var ACTION_RESOLVE = 'ok';
 
 			var activeToastContent;
@@ -22870,7 +22870,7 @@
 				.addPreset('simple', {
 					argOption: 'textContent',
 					methods: ['textContent', 'content', 'action', 'highlightAction', 'highlightClass', 'theme', 'parent' ],
-					options: /* @ngInject */ ["$mdToast", "$mdTheming", function($mdToast, $mdTheming) {
+					options: /* @ngInject */ ['$mdToast', '$mdTheming', function($mdToast, $mdTheming) {
 						return {
 							template:
 							'<md-toast md-theme="{{ toast.theme }}" ng-class="{\'md-capsule\': toast.capsule}">' +
@@ -22884,14 +22884,14 @@
 							'    </md-button>' +
 							'  </div>' +
 							'</md-toast>',
-							controller: /* @ngInject */ ["$scope", function mdToastCtrl($scope) {
+							controller: /* @ngInject */ ['$scope', function mdToastCtrl($scope) {
 								var self = this;
 
 								if (self.highlightAction) {
 									$scope.highlightClasses = [
 										'md-highlight',
 										self.highlightClass
-									]
+									];
 								}
 
 								$scope.$watch(function() { return activeToastContent; }, function() {
@@ -23040,13 +23040,13 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		/**
 		 * @ngdoc module
 		 * @name material.components.toolbar
 		 */
-		mdToolbarDirective.$inject = ["$$rAF", "$mdConstant", "$mdUtil", "$mdTheming", "$animate"];
+		mdToolbarDirective.$inject = ['$$rAF', '$mdConstant', '$mdUtil', '$mdTheming', '$animate'];
 		angular.module('material.components.toolbar', [
 			'material.core',
 			'material.components.content'
@@ -23288,8 +23288,8 @@
 							var margin = (-toolbarHeight * shrinkSpeedFactor) + 'px';
 
 							contentElement.css({
-								"margin-top": margin,
-								"margin-bottom": margin
+								'margin-top': margin,
+								'margin-bottom': margin
 							});
 
 							onContentScroll();
@@ -23304,13 +23304,13 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		/**
 		 * @ngdoc module
 		 * @name material.components.tooltip
 		 */
-		MdTooltipDirective.$inject = ["$timeout", "$window", "$$rAF", "$document", "$interpolate", "$mdUtil", "$mdPanel", "$$mdTooltipRegistry"];
+		MdTooltipDirective.$inject = ['$timeout', '$window', '$$rAF', '$document', '$interpolate', '$mdUtil', '$mdPanel', '$$mdTooltipRegistry'];
 		angular
 			.module('material.components.tooltip', [
 				'material.core',
@@ -23355,7 +23355,7 @@
 		 *     Defaults to bottom.
 		 */
 		function MdTooltipDirective($timeout, $window, $$rAF, $document, $interpolate,
-									$mdUtil, $mdPanel, $$mdTooltipRegistry) {
+			$mdUtil, $mdPanel, $$mdTooltipRegistry) {
 
 			var ENTER_EVENTS = 'focus touchstart mouseenter';
 			var LEAVE_EVENTS = 'blur touchcancel mouseleave';
@@ -23790,13 +23790,13 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		/**
 		 * @ngdoc module
 		 * @name material.components.truncate
 		 */
-		MdTruncateController.$inject = ["$element"];
+		MdTruncateController.$inject = ['$element'];
 		angular.module('material.components.truncate', ['material.core'])
 			.directive('mdTruncate', MdTruncateDirective);
 
@@ -23865,7 +23865,7 @@
 				controller: MdTruncateController,
 				controllerAs: '$ctrl',
 				bindToController: true
-			}
+			};
 		}
 
 		/**
@@ -23882,15 +23882,15 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		/**
 		 * @ngdoc module
 		 * @name material.components.virtualRepeat
 		 */
-		VirtualRepeatContainerController.$inject = ["$$rAF", "$mdUtil", "$mdConstant", "$parse", "$rootScope", "$window", "$scope", "$element", "$attrs"];
-		VirtualRepeatController.$inject = ["$scope", "$element", "$attrs", "$browser", "$document", "$rootScope", "$$rAF", "$mdUtil"];
-		VirtualRepeatDirective.$inject = ["$parse"];
+		VirtualRepeatContainerController.$inject = ['$$rAF', '$mdUtil', '$mdConstant', '$parse', '$rootScope', '$window', '$scope', '$element', '$attrs'];
+		VirtualRepeatController.$inject = ['$scope', '$element', '$attrs', '$browser', '$document', '$rootScope', '$$rAF', '$mdUtil'];
+		VirtualRepeatDirective.$inject = ['$parse'];
 		angular.module('material.components.virtualRepeat', [
 			'material.core',
 			'material.components.showHide'
@@ -24881,13 +24881,13 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		/**
 		 * @ngdoc module
 		 * @name material.components.whiteframe
 		 */
-		MdWhiteframeDirective.$inject = ["$log"];
+		MdWhiteframeDirective.$inject = ['$log'];
 		angular
 			.module('material.components.whiteframe', ['material.core'])
 			.directive('mdWhiteframe', MdWhiteframeDirective);
@@ -24957,10 +24957,10 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 
-		MdAutocompleteCtrl.$inject = ["$scope", "$element", "$mdUtil", "$mdConstant", "$mdTheming", "$window", "$animate", "$rootElement", "$attrs", "$q", "$log", "$mdLiveAnnouncer"];angular
+		MdAutocompleteCtrl.$inject = ['$scope', '$element', '$mdUtil', '$mdConstant', '$mdTheming', '$window', '$animate', '$rootElement', '$attrs', '$q', '$log', '$mdLiveAnnouncer'];angular
 			.module('material.components.autocomplete')
 			.controller('MdAutocompleteCtrl', MdAutocompleteCtrl);
 
@@ -25498,56 +25498,56 @@
 			 */
 			function keydown (event) {
 				switch (event.keyCode) {
-					case $mdConstant.KEY_CODE.DOWN_ARROW:
-						if (ctrl.loading) return;
-						event.stopPropagation();
-						event.preventDefault();
-						ctrl.index   = Math.min(ctrl.index + 1, ctrl.matches.length - 1);
-						updateScroll();
-						reportMessages(false, ReportType.Selected);
-						break;
-					case $mdConstant.KEY_CODE.UP_ARROW:
-						if (ctrl.loading) return;
-						event.stopPropagation();
-						event.preventDefault();
-						ctrl.index   = ctrl.index < 0 ? ctrl.matches.length - 1 : Math.max(0, ctrl.index - 1);
-						updateScroll();
-						reportMessages(false, ReportType.Selected);
-						break;
-					case $mdConstant.KEY_CODE.TAB:
-						// If we hit tab, assume that we've left the list so it will close
-						onListLeave();
+				case $mdConstant.KEY_CODE.DOWN_ARROW:
+					if (ctrl.loading) return;
+					event.stopPropagation();
+					event.preventDefault();
+					ctrl.index   = Math.min(ctrl.index + 1, ctrl.matches.length - 1);
+					updateScroll();
+					reportMessages(false, ReportType.Selected);
+					break;
+				case $mdConstant.KEY_CODE.UP_ARROW:
+					if (ctrl.loading) return;
+					event.stopPropagation();
+					event.preventDefault();
+					ctrl.index   = ctrl.index < 0 ? ctrl.matches.length - 1 : Math.max(0, ctrl.index - 1);
+					updateScroll();
+					reportMessages(false, ReportType.Selected);
+					break;
+				case $mdConstant.KEY_CODE.TAB:
+					// If we hit tab, assume that we've left the list so it will close
+					onListLeave();
 
-						if (ctrl.hidden || ctrl.loading || ctrl.index < 0 || ctrl.matches.length < 1) return;
-						select(ctrl.index);
-						break;
-					case $mdConstant.KEY_CODE.ENTER:
-						if (ctrl.hidden || ctrl.loading || ctrl.index < 0 || ctrl.matches.length < 1) return;
-						if (hasSelection()) return;
-						event.stopPropagation();
-						event.preventDefault();
-						select(ctrl.index);
-						break;
-					case $mdConstant.KEY_CODE.ESCAPE:
-						event.preventDefault(); // Prevent browser from always clearing input
-						if (!shouldProcessEscape()) return;
-						event.stopPropagation();
+					if (ctrl.hidden || ctrl.loading || ctrl.index < 0 || ctrl.matches.length < 1) return;
+					select(ctrl.index);
+					break;
+				case $mdConstant.KEY_CODE.ENTER:
+					if (ctrl.hidden || ctrl.loading || ctrl.index < 0 || ctrl.matches.length < 1) return;
+					if (hasSelection()) return;
+					event.stopPropagation();
+					event.preventDefault();
+					select(ctrl.index);
+					break;
+				case $mdConstant.KEY_CODE.ESCAPE:
+					event.preventDefault(); // Prevent browser from always clearing input
+					if (!shouldProcessEscape()) return;
+					event.stopPropagation();
 
-						clearSelectedItem();
-						if ($scope.searchText && hasEscapeOption('clear')) {
-							clearSearchText();
-						}
+					clearSelectedItem();
+					if ($scope.searchText && hasEscapeOption('clear')) {
+						clearSearchText();
+					}
 
-						// Manually hide (needed for mdNotFound support)
-						ctrl.hidden = true;
+					// Manually hide (needed for mdNotFound support)
+					ctrl.hidden = true;
 
-						if (hasEscapeOption('blur')) {
-							// Force the component to blur if they hit escape
-							doBlur(true);
-						}
+					if (hasEscapeOption('blur')) {
+						// Force the component to blur if they hit escape
+						doBlur(true);
+					}
 
-						break;
-					default:
+					break;
+				default:
 				}
 			}
 
@@ -25860,12 +25860,12 @@
 			 */
 			function getCountMessage () {
 				switch (ctrl.matches.length) {
-					case 0:
-						return 'There are no matches available.';
-					case 1:
-						return 'There is 1 match available.';
-					default:
-						return 'There are ' + ctrl.matches.length + ' matches available.';
+				case 0:
+					return 'There are no matches available.';
+				case 1:
+					return 'There is 1 match available.';
+				default:
+					return 'There are ' + ctrl.matches.length + ' matches available.';
 				}
 			}
 
@@ -25971,10 +25971,10 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 
-		MdAutocomplete.$inject = ["$$mdSvgRegistry"];angular
+		MdAutocomplete.$inject = ['$$mdSvgRegistry'];angular
 			.module('material.components.autocomplete')
 			.directive('mdAutocomplete', MdAutocomplete);
 
@@ -26252,7 +26252,7 @@
 						if (!angular.isDefined(attrs.mdClearButton) && !scope.floatingLabel) {
 							scope.clearButton = true;
 						}
-					}
+					};
 				},
 				template:     function (element, attr) {
 					var noItemsTemplate = getNoItemsTemplate(),
@@ -26394,10 +26394,10 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 
-		MdAutocompleteItemScopeDirective.$inject = ["$compile", "$mdUtil"];angular
+		MdAutocompleteItemScopeDirective.$inject = ['$compile', '$mdUtil'];angular
 			.module('material.components.autocomplete')
 			.directive('mdAutocompleteParentScope', MdAutocompleteItemScopeDirective);
 
@@ -26474,10 +26474,10 @@
 		}
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 
-		MdHighlightCtrl.$inject = ["$scope", "$element", "$attrs"];angular
+		MdHighlightCtrl.$inject = ['$scope', '$element', '$attrs'];angular
 			.module('material.components.autocomplete')
 			.controller('MdHighlightCtrl', MdHighlightCtrl);
 
@@ -26598,10 +26598,10 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 
-		MdHighlight.$inject = ["$interpolate", "$parse"];angular
+		MdHighlight.$inject = ['$interpolate', '$parse'];angular
 			.module('material.components.autocomplete')
 			.directive('mdHighlightText', MdHighlight);
 
@@ -26651,10 +26651,10 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 
-		MdChipCtrl.$inject = ["$scope", "$element", "$mdConstant", "$timeout", "$mdUtil"];angular
+		MdChipCtrl.$inject = ['$scope', '$element', '$mdConstant', '$timeout', '$mdUtil'];angular
 			.module('material.components.chips')
 			.controller('MdChipCtrl', MdChipCtrl);
 
@@ -26849,10 +26849,10 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 
-		MdChip.$inject = ["$mdTheming", "$mdUtil", "$compile", "$timeout"];angular
+		MdChip.$inject = ['$mdTheming', '$mdUtil', '$compile', '$timeout'];angular
 			.module('material.components.chips')
 			.directive('mdChip', MdChip);
 
@@ -26873,8 +26873,8 @@
 		 *
 		 */
 
-// This hint text is hidden within a chip but used by screen readers to
-// inform the user how they can interact with a chip.
+		// This hint text is hidden within a chip but used by screen readers to
+		// inform the user how they can interact with a chip.
 		var DELETE_HINT_TEMPLATE = '\
     <span ng-if="!$mdChipsCtrl.readonly" class="md-visually-hidden">\
       {{$mdChipsCtrl.deleteHint}}\
@@ -26933,10 +26933,10 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 
-		MdChipRemove.$inject = ["$timeout"];angular
+		MdChipRemove.$inject = ['$timeout'];angular
 			.module('material.components.chips')
 			.directive('mdChipRemove', MdChipRemove);
 
@@ -26997,10 +26997,10 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 
-		MdChipTransclude.$inject = ["$compile"];angular
+		MdChipTransclude.$inject = ['$compile'];angular
 			.module('material.components.chips')
 			.directive('mdChipTransclude', MdChipTransclude);
 
@@ -27028,14 +27028,14 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		/**
 		 * The default chip append delay.
 		 *
 		 * @type {number}
 		 */
-		MdChipsCtrl.$inject = ["$scope", "$attrs", "$mdConstant", "$log", "$element", "$timeout", "$mdUtil"];
+		MdChipsCtrl.$inject = ['$scope', '$attrs', '$mdConstant', '$log', '$element', '$timeout', '$mdUtil'];
 		var DEFAULT_CHIP_APPEND_DELAY = 300;
 
 		angular
@@ -27374,33 +27374,33 @@
 			if (this.isEditingChip()) return;
 
 			switch (event.keyCode) {
-				case this.$mdConstant.KEY_CODE.BACKSPACE:
-				case this.$mdConstant.KEY_CODE.DELETE:
-					if (this.selectedChip < 0) return;
-					event.preventDefault();
-					// Cancel the delete action only after the event cancel. Otherwise the page will go back.
-					if (!this.isRemovable()) return;
-					this.removeAndSelectAdjacentChip(this.selectedChip);
-					break;
-				case this.$mdConstant.KEY_CODE.LEFT_ARROW:
-					event.preventDefault();
-					// By default, allow selection of -1 which will focus the input; if we're readonly, don't go
-					// below 0
-					if (this.selectedChip < 0 || (this.readonly && this.selectedChip == 0)) {
-						this.selectedChip = this.items.length;
-					}
-					if (this.items.length) this.selectAndFocusChipSafe(this.selectedChip - 1);
-					break;
-				case this.$mdConstant.KEY_CODE.RIGHT_ARROW:
-					event.preventDefault();
-					this.selectAndFocusChipSafe(this.selectedChip + 1);
-					break;
-				case this.$mdConstant.KEY_CODE.ESCAPE:
-				case this.$mdConstant.KEY_CODE.TAB:
-					if (this.selectedChip < 0) return;
-					event.preventDefault();
-					this.onFocus();
-					break;
+			case this.$mdConstant.KEY_CODE.BACKSPACE:
+			case this.$mdConstant.KEY_CODE.DELETE:
+				if (this.selectedChip < 0) return;
+				event.preventDefault();
+				// Cancel the delete action only after the event cancel. Otherwise the page will go back.
+				if (!this.isRemovable()) return;
+				this.removeAndSelectAdjacentChip(this.selectedChip);
+				break;
+			case this.$mdConstant.KEY_CODE.LEFT_ARROW:
+				event.preventDefault();
+				// By default, allow selection of -1 which will focus the input; if we're readonly, don't go
+				// below 0
+				if (this.selectedChip < 0 || (this.readonly && this.selectedChip == 0)) {
+					this.selectedChip = this.items.length;
+				}
+				if (this.items.length) this.selectAndFocusChipSafe(this.selectedChip - 1);
+				break;
+			case this.$mdConstant.KEY_CODE.RIGHT_ARROW:
+				event.preventDefault();
+				this.selectAndFocusChipSafe(this.selectedChip + 1);
+				break;
+			case this.$mdConstant.KEY_CODE.ESCAPE:
+			case this.$mdConstant.KEY_CODE.TAB:
+				if (this.selectedChip < 0) return;
+				event.preventDefault();
+				this.onFocus();
+				break;
 			}
 		};
 
@@ -27774,9 +27774,9 @@
 			// Bind to keydown and focus events of input
 			inputElement
 				.attr({ tabindex: 0 })
-				.on('keydown', function(event) { scopeApplyFn(event, ctrl.inputKeydown) })
-				.on('focus', function(event) { scopeApplyFn(event, ctrl.onInputFocus) })
-				.on('blur', function(event) { scopeApplyFn(event, ctrl.onInputBlur) })
+				.on('keydown', function(event) { scopeApplyFn(event, ctrl.inputKeydown); })
+				.on('focus', function(event) { scopeApplyFn(event, ctrl.onInputFocus); })
+				.on('blur', function(event) { scopeApplyFn(event, ctrl.onInputBlur); });
 		};
 
 		MdChipsCtrl.prototype.configureAutocomplete = function(ctrl) {
@@ -27829,10 +27829,10 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 
-		MdChips.$inject = ["$mdTheming", "$mdUtil", "$compile", "$log", "$timeout", "$$mdSvgRegistry"];angular
+		MdChips.$inject = ['$mdTheming', '$mdUtil', '$compile', '$log', '$timeout', '$$mdSvgRegistry'];angular
 			.module('material.components.chips')
 			.directive('mdChips', MdChips);
 
@@ -28279,7 +28279,7 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		angular
 			.module('material.components.chips')
@@ -28311,10 +28311,10 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 
-		MdContactChips.$inject = ["$mdTheming", "$mdUtil"];angular
+		MdContactChips.$inject = ['$mdTheming', '$mdUtil'];angular
 			.module('material.components.chips')
 			.directive('mdContactChips', MdContactChips);
 
@@ -28463,7 +28463,7 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		(function() {
 			'use strict';
@@ -28488,7 +28488,7 @@
 			 *   <md-calendar ng-model="birthday"></md-calendar>
 			 * </hljs>
 			 */
-			CalendarCtrl.$inject = ["$element", "$scope", "$$mdDateUtil", "$mdUtil", "$mdConstant", "$mdTheming", "$$rAF", "$attrs", "$mdDateLocale"];
+			CalendarCtrl.$inject = ['$element', '$scope', '$$mdDateUtil', '$mdUtil', '$mdConstant', '$mdTheming', '$$rAF', '$attrs', '$mdDateLocale'];
 			angular.module('material.components.datepicker')
 				.directive('mdCalendar', calendarDirective);
 
@@ -28818,23 +28818,23 @@
 				var keyCode = this.keyCode;
 
 				switch (event.which) {
-					case keyCode.ENTER: return 'select';
+				case keyCode.ENTER: return 'select';
 
-					case keyCode.RIGHT_ARROW: return 'move-right';
-					case keyCode.LEFT_ARROW: return 'move-left';
+				case keyCode.RIGHT_ARROW: return 'move-right';
+				case keyCode.LEFT_ARROW: return 'move-left';
 
 					// TODO(crisbeto): Might want to reconsider using metaKey, because it maps
 					// to the "Windows" key on PC, which opens the start menu or resizes the browser.
-					case keyCode.DOWN_ARROW: return event.metaKey ? 'move-page-down' : 'move-row-down';
-					case keyCode.UP_ARROW: return event.metaKey ? 'move-page-up' : 'move-row-up';
+				case keyCode.DOWN_ARROW: return event.metaKey ? 'move-page-down' : 'move-row-down';
+				case keyCode.UP_ARROW: return event.metaKey ? 'move-page-up' : 'move-row-up';
 
-					case keyCode.PAGE_DOWN: return 'move-page-down';
-					case keyCode.PAGE_UP: return 'move-page-up';
+				case keyCode.PAGE_DOWN: return 'move-page-down';
+				case keyCode.PAGE_UP: return 'move-page-up';
 
-					case keyCode.HOME: return 'start';
-					case keyCode.END: return 'end';
+				case keyCode.HOME: return 'start';
+				case keyCode.END: return 'end';
 
-					default: return null;
+				default: return null;
 				}
 			};
 
@@ -28950,12 +28950,12 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		(function() {
 			'use strict';
 
-			CalendarMonthCtrl.$inject = ["$element", "$scope", "$animate", "$q", "$$mdDateUtil", "$mdDateLocale"];
+			CalendarMonthCtrl.$inject = ['$element', '$scope', '$animate', '$q', '$$mdDateUtil', '$mdDateLocale'];
 			angular.module('material.components.datepicker')
 				.directive('mdCalendarMonth', calendarDirective);
 
@@ -29239,17 +29239,17 @@
 					var dateUtil = this.dateUtil;
 
 					switch (action) {
-						case 'move-right': date = dateUtil.incrementDays(displayDate, 1); break;
-						case 'move-left': date = dateUtil.incrementDays(displayDate, -1); break;
+					case 'move-right': date = dateUtil.incrementDays(displayDate, 1); break;
+					case 'move-left': date = dateUtil.incrementDays(displayDate, -1); break;
 
-						case 'move-page-down': date = dateUtil.incrementMonths(displayDate, 1); break;
-						case 'move-page-up': date = dateUtil.incrementMonths(displayDate, -1); break;
+					case 'move-page-down': date = dateUtil.incrementMonths(displayDate, 1); break;
+					case 'move-page-up': date = dateUtil.incrementMonths(displayDate, -1); break;
 
-						case 'move-row-down': date = dateUtil.incrementDays(displayDate, 7); break;
-						case 'move-row-up': date = dateUtil.incrementDays(displayDate, -7); break;
+					case 'move-row-down': date = dateUtil.incrementDays(displayDate, 7); break;
+					case 'move-row-up': date = dateUtil.incrementDays(displayDate, -7); break;
 
-						case 'start': date = dateUtil.getFirstDateOfMonth(displayDate); break;
-						case 'end': date = dateUtil.getLastDateOfMonth(displayDate); break;
+					case 'start': date = dateUtil.getFirstDateOfMonth(displayDate); break;
+					case 'end': date = dateUtil.getLastDateOfMonth(displayDate); break;
 					}
 
 					if (date) {
@@ -29265,13 +29265,13 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		(function() {
 			'use strict';
 
-			mdCalendarMonthBodyDirective.$inject = ["$compile", "$$mdSvgRegistry"];
-			CalendarMonthBodyCtrl.$inject = ["$element", "$$mdDateUtil", "$mdDateLocale"];
+			mdCalendarMonthBodyDirective.$inject = ['$compile', '$$mdSvgRegistry'];
+			CalendarMonthBodyCtrl.$inject = ['$element', '$$mdDateUtil', '$mdDateLocale'];
 			angular.module('material.components.datepicker')
 				.directive('mdCalendarMonthBody', mdCalendarMonthBodyDirective);
 
@@ -29572,12 +29572,12 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		(function() {
 			'use strict';
 
-			CalendarYearCtrl.$inject = ["$element", "$scope", "$animate", "$q", "$$mdDateUtil"];
+			CalendarYearCtrl.$inject = ['$element', '$scope', '$animate', '$q', '$$mdDateUtil'];
 			angular.module('material.components.datepicker')
 				.directive('mdCalendarYear', calendarDirective);
 
@@ -29756,11 +29756,11 @@
 					var dateUtil = this.dateUtil;
 
 					switch (action) {
-						case 'move-right': date = dateUtil.incrementMonths(displayDate, 1); break;
-						case 'move-left': date = dateUtil.incrementMonths(displayDate, -1); break;
+					case 'move-right': date = dateUtil.incrementMonths(displayDate, 1); break;
+					case 'move-left': date = dateUtil.incrementMonths(displayDate, -1); break;
 
-						case 'move-row-down': date = dateUtil.incrementMonths(displayDate, 6); break;
-						case 'move-row-up': date = dateUtil.incrementMonths(displayDate, -6); break;
+					case 'move-row-down': date = dateUtil.incrementMonths(displayDate, 6); break;
+					case 'move-row-up': date = dateUtil.incrementMonths(displayDate, -6); break;
 					}
 
 					if (date) {
@@ -29791,12 +29791,12 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		(function() {
 			'use strict';
 
-			CalendarYearBodyCtrl.$inject = ["$element", "$$mdDateUtil", "$mdDateLocale"];
+			CalendarYearBodyCtrl.$inject = ['$element', '$$mdDateUtil', '$mdDateLocale'];
 			angular.module('material.components.datepicker')
 				.directive('mdCalendarYearBody', mdCalendarYearDirective);
 
@@ -29909,7 +29909,7 @@
 				var cellText = this.dateLocale.shortMonths[month];
 
 				if (this.dateUtil.isMonthWithinRange(firstOfMonth,
-						calendarCtrl.minDate, calendarCtrl.maxDate)) {
+					calendarCtrl.minDate, calendarCtrl.maxDate)) {
 					var selectionIndicator = document.createElement('span');
 					selectionIndicator.classList.add('md-calendar-date-selection-indicator');
 					selectionIndicator.textContent = cellText;
@@ -29978,7 +29978,7 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		(function() {
 			'use strict';
@@ -30067,7 +30067,7 @@
 			 * </hljs>
 			 *
 			 */
-			angular.module('material.components.datepicker').config(["$provide", function($provide) {
+			angular.module('material.components.datepicker').config(['$provide', function($provide) {
 				// TODO(jelbourn): Assert provided values are correctly formatted. Need assertions.
 
 				/** @constructor */
@@ -30278,7 +30278,7 @@
 
 					return service;
 				};
-				DateLocaleProvider.prototype.$get.$inject = ["$locale", "$filter"];
+				DateLocaleProvider.prototype.$get.$inject = ['$locale', '$filter'];
 
 				$provide.provider('$mdDateLocale', new DateLocaleProvider());
 			}]);
@@ -30286,7 +30286,7 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		(function() {
 			'use strict';
@@ -30602,7 +30602,7 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		(function() {
 			'use strict';
@@ -30616,8 +30616,8 @@
 			// TODO(jelbourn): input behavior (masking? auto-complete?)
 
 
-			DatePickerCtrl.$inject = ["$scope", "$element", "$attrs", "$window", "$mdConstant", "$mdTheming", "$mdUtil", "$mdDateLocale", "$$mdDateUtil", "$$rAF", "$filter"];
-			datePickerDirective.$inject = ["$$mdSvgRegistry", "$mdUtil", "$mdAria", "inputDirective"];
+			DatePickerCtrl.$inject = ['$scope', '$element', '$attrs', '$window', '$mdConstant', '$mdTheming', '$mdUtil', '$mdDateLocale', '$$mdDateUtil', '$$rAF', '$filter'];
+			datePickerDirective.$inject = ['$$mdSvgRegistry', '$mdUtil', '$mdAria', 'inputDirective'];
 			angular.module('material.components.datepicker')
 				.directive('mdDatepicker', datePickerDirective);
 
@@ -30847,7 +30847,7 @@
 			 * @ngInject @constructor
 			 */
 			function DatePickerCtrl($scope, $element, $attrs, $window, $mdConstant,
-									$mdTheming, $mdUtil, $mdDateLocale, $$mdDateUtil, $$rAF, $filter) {
+				$mdTheming, $mdUtil, $mdDateLocale, $$mdDateUtil, $$rAF, $filter) {
 
 				/** @final */
 				this.$window = $window;
@@ -31530,7 +31530,7 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		angular
 			.module('material.components.icon')
@@ -31762,7 +31762,7 @@
 				}
 
 				/* Don't process ARIA if already valid */
-				if ( attr.role === "img" && !attr.ariaHidden && !$mdAria.hasAriaLabel(element) ) {
+				if ( attr.role === 'img' && !attr.ariaHidden && !$mdAria.hasAriaLabel(element) ) {
 					var iconName;
 					if (attr.alt) {
 						/* Use alt text by default if available */
@@ -31827,10 +31827,10 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 
-		MdIconService.$inject = ["config", "$templateRequest", "$q", "$log", "$mdUtil", "$sce"];angular
+		MdIconService.$inject = ['config', '$templateRequest', '$q', '$log', '$mdUtil', '$sce'];angular
 			.module('material.components.icon')
 			.constant('$$mdSvgRegistry', {
 				'mdTabsArrow':   'data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgMjQgMjQiPjxnPjxwb2x5Z29uIHBvaW50cz0iMTUuNCw3LjQgMTQsNiA4LDEyIDE0LDE4IDE1LjQsMTYuNiAxMC44LDEyICIvPjwvZz48L3N2Zz4=',
@@ -32413,7 +32413,7 @@
 
 				// Inject the namespace if not available...
 				if (!el.getAttribute('xmlns')) {
-					el.setAttribute('xmlns', "http://www.w3.org/2000/svg");
+					el.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
 				}
 
 				this.element = el;
@@ -32452,11 +32452,11 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 
 
-		MenuController.$inject = ["$mdMenu", "$attrs", "$element", "$scope", "$mdUtil", "$timeout", "$rootScope", "$q", "$log"];
+		MenuController.$inject = ['$mdMenu', '$attrs', '$element', '$scope', '$mdUtil', '$timeout', '$rootScope', '$q', '$log'];
 		angular
 			.module('material.components.menu')
 			.controller('mdMenuCtrl', MenuController);
@@ -32704,7 +32704,7 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		/**
 		 * @ngdoc directive
@@ -32866,7 +32866,7 @@
 		 *
 		 */
 
-		MenuDirective.$inject = ["$mdUtil"];
+		MenuDirective.$inject = ['$mdUtil'];
 		angular
 			.module('material.components.menu')
 			.directive('mdMenu', MenuDirective);
@@ -32955,10 +32955,10 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 
-		MenuProvider.$inject = ["$$interimElementProvider"];angular
+		MenuProvider.$inject = ['$$interimElementProvider'];angular
 			.module('material.components.menu')
 			.provider('$mdMenu', MenuProvider);
 
@@ -32973,7 +32973,7 @@
  */
 
 		function MenuProvider($$interimElementProvider) {
-			menuDefaultOptions.$inject = ["$mdUtil", "$mdTheming", "$mdConstant", "$document", "$window", "$q", "$$rAF", "$animateCss", "$animate", "$log"];
+			menuDefaultOptions.$inject = ['$mdUtil', '$mdTheming', '$mdConstant', '$document', '$window', '$q', '$$rAF', '$animateCss', '$animate', '$log'];
 			var MENU_EDGE_MARGIN = 8;
 
 			return $$interimElementProvider('$mdMenu')
@@ -32984,7 +32984,7 @@
 
 			/* @ngInject */
 			function menuDefaultOptions($mdUtil, $mdTheming, $mdConstant, $document, $window, $q, $$rAF,
-										$animateCss, $animate, $log) {
+				$animateCss, $animate, $log) {
 
 				var prefixer = $mdUtil.prefixer();
 				var animator = $mdUtil.dom.animator;
@@ -33018,7 +33018,7 @@
 					}
 
 					if (options.hasBackdrop) {
-						options.backdrop = $mdUtil.createBackdrop(scope, "md-menu-backdrop md-click-catcher");
+						options.backdrop = $mdUtil.createBackdrop(scope, 'md-menu-backdrop md-click-catcher');
 
 						$animate.enter(options.backdrop, $document[0].body);
 					}
@@ -33185,7 +33185,7 @@
 
 						return function() {
 							opts.backdrop.off('click', onBackdropClick);
-						}
+						};
 					}
 
 					/**
@@ -33249,39 +33249,39 @@
 						function onMenuKeyDown(ev) {
 							var handled;
 							switch (ev.keyCode) {
-								case $mdConstant.KEY_CODE.ESCAPE:
-									opts.mdMenuCtrl.close(false, { closeAll: true });
-									handled = true;
-									break;
-								case $mdConstant.KEY_CODE.UP_ARROW:
-									if (!focusMenuItem(ev, opts.menuContentEl, opts, -1) && !opts.nestLevel) {
-										opts.mdMenuCtrl.triggerContainerProxy(ev);
-									}
-									handled = true;
-									break;
-								case $mdConstant.KEY_CODE.DOWN_ARROW:
-									if (!focusMenuItem(ev, opts.menuContentEl, opts, 1) && !opts.nestLevel) {
-										opts.mdMenuCtrl.triggerContainerProxy(ev);
-									}
-									handled = true;
-									break;
-								case $mdConstant.KEY_CODE.LEFT_ARROW:
-									if (opts.nestLevel) {
-										opts.mdMenuCtrl.close();
-									} else {
-										opts.mdMenuCtrl.triggerContainerProxy(ev);
-									}
-									handled = true;
-									break;
-								case $mdConstant.KEY_CODE.RIGHT_ARROW:
-									var parentMenu = $mdUtil.getClosest(ev.target, 'MD-MENU');
-									if (parentMenu && parentMenu != opts.parent[0]) {
-										ev.target.click();
-									} else {
-										opts.mdMenuCtrl.triggerContainerProxy(ev);
-									}
-									handled = true;
-									break;
+							case $mdConstant.KEY_CODE.ESCAPE:
+								opts.mdMenuCtrl.close(false, { closeAll: true });
+								handled = true;
+								break;
+							case $mdConstant.KEY_CODE.UP_ARROW:
+								if (!focusMenuItem(ev, opts.menuContentEl, opts, -1) && !opts.nestLevel) {
+									opts.mdMenuCtrl.triggerContainerProxy(ev);
+								}
+								handled = true;
+								break;
+							case $mdConstant.KEY_CODE.DOWN_ARROW:
+								if (!focusMenuItem(ev, opts.menuContentEl, opts, 1) && !opts.nestLevel) {
+									opts.mdMenuCtrl.triggerContainerProxy(ev);
+								}
+								handled = true;
+								break;
+							case $mdConstant.KEY_CODE.LEFT_ARROW:
+								if (opts.nestLevel) {
+									opts.mdMenuCtrl.close();
+								} else {
+									opts.mdMenuCtrl.triggerContainerProxy(ev);
+								}
+								handled = true;
+								break;
+							case $mdConstant.KEY_CODE.RIGHT_ARROW:
+								var parentMenu = $mdUtil.getClosest(ev.target, 'MD-MENU');
+								if (parentMenu && parentMenu != opts.parent[0]) {
+									ev.target.click();
+								} else {
+									opts.mdMenuCtrl.triggerContainerProxy(ev);
+								}
+								handled = true;
+								break;
 							}
 							if (handled) {
 								ev.preventDefault();
@@ -33436,59 +33436,59 @@
 					var transformOrigin = 'top ';
 
 					switch (positionMode.top) {
-						case 'target':
-							position.top = existingOffsets.top + originNodeRect.top - alignTargetRect.top;
-							break;
-						case 'cascade':
-							position.top = originNodeRect.top - parseFloat(menuStyle.paddingTop) - originNode.style.top;
-							break;
-						case 'bottom':
-							position.top = originNodeRect.top + originNodeRect.height;
-							break;
-						default:
-							throw new Error('Invalid target mode "' + positionMode.top + '" specified for md-menu on Y axis.');
+					case 'target':
+						position.top = existingOffsets.top + originNodeRect.top - alignTargetRect.top;
+						break;
+					case 'cascade':
+						position.top = originNodeRect.top - parseFloat(menuStyle.paddingTop) - originNode.style.top;
+						break;
+					case 'bottom':
+						position.top = originNodeRect.top + originNodeRect.height;
+						break;
+					default:
+						throw new Error('Invalid target mode "' + positionMode.top + '" specified for md-menu on Y axis.');
 					}
 
 					var rtl = ($mdUtil.bidi() == 'rtl');
 
 					switch (positionMode.left) {
-						case 'target':
-							position.left = existingOffsets.left + originNodeRect.left - alignTargetRect.left;
-							transformOrigin += rtl ? 'right'  : 'left';
-							break;
-						case 'target-left':
+					case 'target':
+						position.left = existingOffsets.left + originNodeRect.left - alignTargetRect.left;
+						transformOrigin += rtl ? 'right'  : 'left';
+						break;
+					case 'target-left':
+						position.left = originNodeRect.left;
+						transformOrigin += 'left';
+						break;
+					case 'target-right':
+						position.left = originNodeRect.right - openMenuNodeRect.width + (openMenuNodeRect.right - alignTargetRect.right);
+						transformOrigin += 'right';
+						break;
+					case 'cascade':
+						var willFitRight = rtl ? (originNodeRect.left - openMenuNodeRect.width) < bounds.left : (originNodeRect.right + openMenuNodeRect.width) < bounds.right;
+						position.left = willFitRight ? originNodeRect.right - originNode.style.left : originNodeRect.left - originNode.style.left - openMenuNodeRect.width;
+						transformOrigin += willFitRight ? 'left' : 'right';
+						break;
+					case 'right':
+						if (rtl) {
+							position.left = originNodeRect.right - originNodeRect.width;
+							transformOrigin += 'left';
+						} else {
+							position.left = originNodeRect.right - openMenuNodeRect.width;
+							transformOrigin += 'right';
+						}
+						break;
+					case 'left':
+						if (rtl) {
+							position.left = originNodeRect.right - openMenuNodeRect.width;
+							transformOrigin += 'right';
+						} else {
 							position.left = originNodeRect.left;
 							transformOrigin += 'left';
-							break;
-						case 'target-right':
-							position.left = originNodeRect.right - openMenuNodeRect.width + (openMenuNodeRect.right - alignTargetRect.right);
-							transformOrigin += 'right';
-							break;
-						case 'cascade':
-							var willFitRight = rtl ? (originNodeRect.left - openMenuNodeRect.width) < bounds.left : (originNodeRect.right + openMenuNodeRect.width) < bounds.right;
-							position.left = willFitRight ? originNodeRect.right - originNode.style.left : originNodeRect.left - originNode.style.left - openMenuNodeRect.width;
-							transformOrigin += willFitRight ? 'left' : 'right';
-							break;
-						case 'right':
-							if (rtl) {
-								position.left = originNodeRect.right - originNodeRect.width;
-								transformOrigin += 'left';
-							} else {
-								position.left = originNodeRect.right - openMenuNodeRect.width;
-								transformOrigin += 'right';
-							}
-							break;
-						case 'left':
-							if (rtl) {
-								position.left = originNodeRect.right - openMenuNodeRect.width;
-								transformOrigin += 'right';
-							} else {
-								position.left = originNodeRect.left;
-								transformOrigin += 'left';
-							}
-							break;
-						default:
-							throw new Error('Invalid target mode "' + positionMode.left + '" specified for md-menu on X axis.');
+						}
+						break;
+					default:
+						throw new Error('Invalid target mode "' + positionMode.left + '" specified for md-menu on X axis.');
 					}
 
 					var offsets = opts.mdMenuCtrl.offsets();
@@ -33540,10 +33540,10 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 
-		MenuBarController.$inject = ["$scope", "$rootScope", "$element", "$attrs", "$mdConstant", "$document", "$mdUtil", "$timeout"];
+		MenuBarController.$inject = ['$scope', '$rootScope', '$element', '$attrs', '$mdConstant', '$document', '$mdUtil', '$timeout'];
 		angular
 			.module('material.components.menuBar')
 			.controller('MenuBarController', MenuBarController);
@@ -33698,34 +33698,34 @@
 			this.setKeyboardMode(true);
 			var handled, newMenu, newMenuCtrl;
 			switch (e.keyCode) {
-				case keyCodes.DOWN_ARROW:
-					if (currentMenu) {
-						currentMenu.focusMenuContainer();
-					} else {
-						this.openFocusedMenu();
-					}
-					handled = true;
-					break;
-				case keyCodes.UP_ARROW:
-					currentMenu && currentMenu.close();
-					handled = true;
-					break;
-				case keyCodes.LEFT_ARROW:
-					newMenu = this.focusMenu(-1);
-					if (wasOpen) {
-						newMenuCtrl = angular.element(newMenu).controller('mdMenu');
-						this.scheduleOpenMenu(newMenuCtrl);
-					}
-					handled = true;
-					break;
-				case keyCodes.RIGHT_ARROW:
-					newMenu = this.focusMenu(+1);
-					if (wasOpen) {
-						newMenuCtrl = angular.element(newMenu).controller('mdMenu');
-						this.scheduleOpenMenu(newMenuCtrl);
-					}
-					handled = true;
-					break;
+			case keyCodes.DOWN_ARROW:
+				if (currentMenu) {
+					currentMenu.focusMenuContainer();
+				} else {
+					this.openFocusedMenu();
+				}
+				handled = true;
+				break;
+			case keyCodes.UP_ARROW:
+				currentMenu && currentMenu.close();
+				handled = true;
+				break;
+			case keyCodes.LEFT_ARROW:
+				newMenu = this.focusMenu(-1);
+				if (wasOpen) {
+					newMenuCtrl = angular.element(newMenu).controller('mdMenu');
+					this.scheduleOpenMenu(newMenuCtrl);
+				}
+				handled = true;
+				break;
+			case keyCodes.RIGHT_ARROW:
+				newMenu = this.focusMenu(+1);
+				if (wasOpen) {
+					newMenuCtrl = angular.element(newMenu).controller('mdMenu');
+					this.scheduleOpenMenu(newMenuCtrl);
+				}
+				handled = true;
+				break;
 			}
 			if (handled) {
 				e && e.preventDefault && e.preventDefault();
@@ -33802,7 +33802,7 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		/**
 		 * @ngdoc directive
@@ -33894,7 +33894,7 @@
 		 *
 		 */
 
-		MenuBarDirective.$inject = ["$mdUtil", "$mdTheming"];
+		MenuBarDirective.$inject = ['$mdUtil', '$mdTheming'];
 		angular
 			.module('material.components.menuBar')
 			.directive('mdMenuBar', MenuBarDirective);
@@ -33949,7 +33949,7 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 
 		angular
@@ -33970,10 +33970,10 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 
-		MenuItemController.$inject = ["$scope", "$element", "$attrs"];
+		MenuItemController.$inject = ['$scope', '$element', '$attrs'];
 		angular
 			.module('material.components.menuBar')
 			.controller('MenuItemController', MenuItemController);
@@ -34004,10 +34004,10 @@
 			}
 		};
 
-// ngAria auto sets attributes on a menu-item with a ngModel.
-// We don't want this because our content (buttons) get the focus
-// and set their own aria attributes appropritately. Having both
-// breaks NVDA / JAWS. This undeoes ngAria's attrs.
+		// ngAria auto sets attributes on a menu-item with a ngModel.
+		// We don't want this because our content (buttons) get the focus
+		// and set their own aria attributes appropritately. Having both
+		// breaks NVDA / JAWS. This undeoes ngAria's attrs.
 		MenuItemController.prototype.clearNgAria = function() {
 			var el = this.$element[0];
 			var clearAttrs = ['role', 'tabindex', 'aria-invalid', 'aria-checked'];
@@ -34080,10 +34080,10 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 
-		MenuItemDirective.$inject = ["$mdUtil", "$mdConstant", "$$mdSvgRegistry"];
+		MenuItemDirective.$inject = ['$mdUtil', '$mdConstant', '$$mdSvgRegistry'];
 		angular
 			.module('material.components.menuBar')
 			.directive('mdMenuItem', MenuItemDirective);
@@ -34154,7 +34154,7 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		/**
 		 * @ngdoc directive
@@ -34201,7 +34201,7 @@
 		 * </hljs>
 		 */
 
-		MdProgressCircularDirective.$inject = ["$window", "$mdProgressCircular", "$mdTheming", "$mdUtil", "$interval", "$log"];
+		MdProgressCircularDirective.$inject = ['$window', '$mdProgressCircular', '$mdTheming', '$mdUtil', '$interval', '$log'];
 		angular
 			.module('material.components.progressCircular')
 			.directive('mdProgressCircular', MdProgressCircularDirective);
@@ -34520,7 +34520,7 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		/**
 		 * @ngdoc service
@@ -34561,7 +34561,7 @@
 
 		angular
 			.module('material.components.progressCircular')
-			.provider("$mdProgressCircular", MdProgressCircularProvider);
+			.provider('$mdProgressCircular', MdProgressCircularProvider);
 
 		function MdProgressCircularProvider() {
 			var progressConfig = {
@@ -34604,7 +34604,7 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		/**
 		 * @ngdoc directive
@@ -34737,7 +34737,7 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		angular
 			.module('material.components.tabs')
@@ -34755,7 +34755,7 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		angular
 			.module('material.components.tabs')
@@ -34768,10 +34768,10 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 
-		MdTabScroll.$inject = ["$parse"];angular.module('material.components.tabs')
+		MdTabScroll.$inject = ['$parse'];angular.module('material.components.tabs')
 			.directive('mdTabScroll', MdTabScroll);
 
 		function MdTabScroll ($parse) {
@@ -34790,10 +34790,10 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 
-		MdTabsController.$inject = ["$scope", "$element", "$window", "$mdConstant", "$mdTabInkRipple", "$mdUtil", "$animateCss", "$attrs", "$compile", "$mdTheming", "$mdInteraction"];angular
+		MdTabsController.$inject = ['$scope', '$element', '$window', '$mdConstant', '$mdTabInkRipple', '$mdUtil', '$animateCss', '$attrs', '$compile', '$mdTheming', '$mdInteraction'];angular
 			.module('material.components.tabs')
 			.controller('MdTabsController', MdTabsController);
 
@@ -35089,19 +35089,19 @@
 			 */
 			function keydown (event) {
 				switch (event.keyCode) {
-					case $mdConstant.KEY_CODE.LEFT_ARROW:
-						event.preventDefault();
-						incrementIndex(-1, true);
-						break;
-					case $mdConstant.KEY_CODE.RIGHT_ARROW:
-						event.preventDefault();
-						incrementIndex(1, true);
-						break;
-					case $mdConstant.KEY_CODE.SPACE:
-					case $mdConstant.KEY_CODE.ENTER:
-						event.preventDefault();
-						if (!locked) select(ctrl.focusIndex);
-						break;
+				case $mdConstant.KEY_CODE.LEFT_ARROW:
+					event.preventDefault();
+					incrementIndex(-1, true);
+					break;
+				case $mdConstant.KEY_CODE.RIGHT_ARROW:
+					event.preventDefault();
+					incrementIndex(1, true);
+					break;
+				case $mdConstant.KEY_CODE.SPACE:
+				case $mdConstant.KEY_CODE.ENTER:
+					event.preventDefault();
+					if (!locked) select(ctrl.focusIndex);
+					break;
 				}
 			}
 
@@ -35325,12 +35325,12 @@
 			 */
 			function shouldStretchTabs () {
 				switch (ctrl.stretchTabs) {
-					case 'always':
-						return true;
-					case 'never':
-						return false;
-					default:
-						return !ctrl.shouldPaginate
+				case 'always':
+					return true;
+				case 'never':
+					return false;
+				default:
+					return !ctrl.shouldPaginate
 							&& $window.matchMedia('(max-width: 600px)').matches;
 				}
 			}
@@ -35673,7 +35673,7 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 		/**
 		 * @ngdoc directive
@@ -35773,7 +35773,7 @@
 		 * </hljs>
 		 *
 		 */
-		MdTabs.$inject = ["$$mdSvgRegistry"];
+		MdTabs.$inject = ['$$mdSvgRegistry'];
 		angular
 			.module('material.components.tabs')
 			.directive('mdTabs', MdTabs);
@@ -35892,10 +35892,10 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 
-		MdTabsDummyWrapper.$inject = ["$mdUtil", "$window"];angular
+		MdTabsDummyWrapper.$inject = ['$mdUtil', '$window'];angular
 			.module('material.components.tabs')
 			.directive('mdTabsDummyWrapper', MdTabsDummyWrapper);
 
@@ -35953,10 +35953,10 @@
 
 	})();
 	(function(){
-		"use strict";
+		'use strict';
 
 
-		MdTabsTemplate.$inject = ["$compile", "$mdUtil"];angular
+		MdTabsTemplate.$inject = ['$compile', '$mdUtil'];angular
 			.module('material.components.tabs')
 			.directive('mdTabsTemplate', MdTabsTemplate);
 
@@ -35998,8 +35998,8 @@
 
 	})();
 	(function(){
-		angular.module("material.core").constant("$MD_THEME_CSS", "md-autocomplete.md-THEME_NAME-theme{background:\"{{background-A100}}\"}md-autocomplete.md-THEME_NAME-theme[disabled]:not([md-floating-label]){background:\"{{background-100}}\"}md-autocomplete.md-THEME_NAME-theme button md-icon path{fill:\"{{background-600}}\"}md-autocomplete.md-THEME_NAME-theme button:after{background:\"{{background-600-0.3}}\"}.md-autocomplete-suggestions-container.md-THEME_NAME-theme{background:\"{{background-A100}}\"}.md-autocomplete-suggestions-container.md-THEME_NAME-theme li{color:\"{{background-900}}\"}.md-autocomplete-suggestions-container.md-THEME_NAME-theme li .highlight{color:\"{{background-600}}\"}.md-autocomplete-suggestions-container.md-THEME_NAME-theme li.selected,.md-autocomplete-suggestions-container.md-THEME_NAME-theme li:hover{background:\"{{background-200}}\"}md-backdrop{background-color:\"{{background-900-0.0}}\"}md-backdrop.md-opaque.md-THEME_NAME-theme{background-color:\"{{background-900-1.0}}\"}md-bottom-sheet.md-THEME_NAME-theme{background-color:\"{{background-50}}\";border-top-color:\"{{background-300}}\"}md-bottom-sheet.md-THEME_NAME-theme.md-list md-list-item{color:\"{{foreground-1}}\"}md-bottom-sheet.md-THEME_NAME-theme .md-subheader{background-color:\"{{background-50}}\";color:\"{{foreground-1}}\"}.md-button.md-THEME_NAME-theme:not([disabled]).md-focused,.md-button.md-THEME_NAME-theme:not([disabled]):hover{background-color:\"{{background-500-0.2}}\"}.md-button.md-THEME_NAME-theme:not([disabled]).md-icon-button:hover{background-color:transparent}.md-button.md-THEME_NAME-theme.md-fab md-icon{color:\"{{accent-contrast}}\"}.md-button.md-THEME_NAME-theme.md-primary{color:\"{{primary-color}}\"}.md-button.md-THEME_NAME-theme.md-primary.md-fab,.md-button.md-THEME_NAME-theme.md-primary.md-raised{color:\"{{primary-contrast}}\";background-color:\"{{primary-color}}\"}.md-button.md-THEME_NAME-theme.md-primary.md-fab:not([disabled]) md-icon,.md-button.md-THEME_NAME-theme.md-primary.md-raised:not([disabled]) md-icon{color:\"{{primary-contrast}}\"}.md-button.md-THEME_NAME-theme.md-primary.md-fab:not([disabled]).md-focused,.md-button.md-THEME_NAME-theme.md-primary.md-fab:not([disabled]):hover,.md-button.md-THEME_NAME-theme.md-primary.md-raised:not([disabled]).md-focused,.md-button.md-THEME_NAME-theme.md-primary.md-raised:not([disabled]):hover{background-color:\"{{primary-600}}\"}.md-button.md-THEME_NAME-theme.md-primary:not([disabled]) md-icon{color:\"{{primary-color}}\"}.md-button.md-THEME_NAME-theme.md-fab{background-color:\"{{accent-color}}\";color:\"{{accent-contrast}}\"}.md-button.md-THEME_NAME-theme.md-fab:not([disabled]) .md-icon{color:\"{{accent-contrast}}\"}.md-button.md-THEME_NAME-theme.md-fab:not([disabled]).md-focused,.md-button.md-THEME_NAME-theme.md-fab:not([disabled]):hover{background-color:\"{{accent-A700}}\"}.md-button.md-THEME_NAME-theme.md-raised{color:\"{{background-900}}\";background-color:\"{{background-50}}\"}.md-button.md-THEME_NAME-theme.md-raised:not([disabled]) md-icon{color:\"{{background-900}}\"}.md-button.md-THEME_NAME-theme.md-raised:not([disabled]):hover{background-color:\"{{background-50}}\"}.md-button.md-THEME_NAME-theme.md-raised:not([disabled]).md-focused{background-color:\"{{background-200}}\"}.md-button.md-THEME_NAME-theme.md-warn{color:\"{{warn-color}}\"}.md-button.md-THEME_NAME-theme.md-warn.md-fab,.md-button.md-THEME_NAME-theme.md-warn.md-raised{color:\"{{warn-contrast}}\";background-color:\"{{warn-color}}\"}.md-button.md-THEME_NAME-theme.md-warn.md-fab:not([disabled]) md-icon,.md-button.md-THEME_NAME-theme.md-warn.md-raised:not([disabled]) md-icon{color:\"{{warn-contrast}}\"}.md-button.md-THEME_NAME-theme.md-warn.md-fab:not([disabled]).md-focused,.md-button.md-THEME_NAME-theme.md-warn.md-fab:not([disabled]):hover,.md-button.md-THEME_NAME-theme.md-warn.md-raised:not([disabled]).md-focused,.md-button.md-THEME_NAME-theme.md-warn.md-raised:not([disabled]):hover{background-color:\"{{warn-600}}\"}.md-button.md-THEME_NAME-theme.md-warn:not([disabled]) md-icon{color:\"{{warn-color}}\"}.md-button.md-THEME_NAME-theme.md-accent{color:\"{{accent-color}}\"}.md-button.md-THEME_NAME-theme.md-accent.md-fab,.md-button.md-THEME_NAME-theme.md-accent.md-raised{color:\"{{accent-contrast}}\";background-color:\"{{accent-color}}\"}.md-button.md-THEME_NAME-theme.md-accent.md-fab:not([disabled]) md-icon,.md-button.md-THEME_NAME-theme.md-accent.md-raised:not([disabled]) md-icon{color:\"{{accent-contrast}}\"}.md-button.md-THEME_NAME-theme.md-accent.md-fab:not([disabled]).md-focused,.md-button.md-THEME_NAME-theme.md-accent.md-fab:not([disabled]):hover,.md-button.md-THEME_NAME-theme.md-accent.md-raised:not([disabled]).md-focused,.md-button.md-THEME_NAME-theme.md-accent.md-raised:not([disabled]):hover{background-color:\"{{accent-A700}}\"}.md-button.md-THEME_NAME-theme.md-accent:not([disabled]) md-icon{color:\"{{accent-color}}\"}.md-button.md-THEME_NAME-theme.md-accent[disabled],.md-button.md-THEME_NAME-theme.md-fab[disabled],.md-button.md-THEME_NAME-theme.md-raised[disabled],.md-button.md-THEME_NAME-theme.md-warn[disabled],.md-button.md-THEME_NAME-theme[disabled]{color:\"{{foreground-3}}\";cursor:default}.md-button.md-THEME_NAME-theme.md-accent[disabled] md-icon,.md-button.md-THEME_NAME-theme.md-fab[disabled] md-icon,.md-button.md-THEME_NAME-theme.md-raised[disabled] md-icon,.md-button.md-THEME_NAME-theme.md-warn[disabled] md-icon,.md-button.md-THEME_NAME-theme[disabled] md-icon{color:\"{{foreground-3}}\"}.md-button.md-THEME_NAME-theme.md-fab[disabled],.md-button.md-THEME_NAME-theme.md-raised[disabled]{background-color:\"{{foreground-4}}\"}.md-button.md-THEME_NAME-theme[disabled]{background-color:transparent}._md a.md-THEME_NAME-theme:not(.md-button).md-primary{color:\"{{primary-color}}\"}._md a.md-THEME_NAME-theme:not(.md-button).md-primary:hover{color:\"{{primary-700}}\"}._md a.md-THEME_NAME-theme:not(.md-button).md-accent{color:\"{{accent-color}}\"}._md a.md-THEME_NAME-theme:not(.md-button).md-accent:hover{color:\"{{accent-A700}}\"}._md a.md-THEME_NAME-theme:not(.md-button).md-warn{color:\"{{warn-color}}\"}._md a.md-THEME_NAME-theme:not(.md-button).md-warn:hover{color:\"{{warn-700}}\"}md-card.md-THEME_NAME-theme{color:\"{{foreground-1}}\";background-color:\"{{background-hue-1}}\";border-radius:2px}md-card.md-THEME_NAME-theme .md-card-image{border-radius:2px 2px 0 0}md-card.md-THEME_NAME-theme md-card-header md-card-avatar md-icon{color:\"{{background-color}}\";background-color:\"{{foreground-3}}\"}md-card.md-THEME_NAME-theme md-card-header md-card-header-text .md-subhead,md-card.md-THEME_NAME-theme md-card-title md-card-title-text:not(:only-child) .md-subhead{color:\"{{foreground-2}}\"}md-checkbox.md-THEME_NAME-theme .md-ripple{color:\"{{accent-A700}}\"}md-checkbox.md-THEME_NAME-theme.md-checked .md-ripple{color:\"{{background-600}}\"}md-checkbox.md-THEME_NAME-theme.md-checked.md-focused .md-container:before{background-color:\"{{accent-color-0.26}}\"}md-checkbox.md-THEME_NAME-theme .md-ink-ripple{color:\"{{foreground-2}}\"}md-checkbox.md-THEME_NAME-theme.md-checked .md-ink-ripple{color:\"{{accent-color-0.87}}\"}md-checkbox.md-THEME_NAME-theme:not(.md-checked) .md-icon{border-color:\"{{foreground-2}}\"}md-checkbox.md-THEME_NAME-theme.md-checked .md-icon{background-color:\"{{accent-color-0.87}}\"}md-checkbox.md-THEME_NAME-theme.md-checked .md-icon:after{border-color:\"{{accent-contrast-0.87}}\"}md-checkbox.md-THEME_NAME-theme:not([disabled]).md-primary .md-ripple{color:\"{{primary-600}}\"}md-checkbox.md-THEME_NAME-theme:not([disabled]).md-primary.md-checked .md-ripple{color:\"{{background-600}}\"}md-checkbox.md-THEME_NAME-theme:not([disabled]).md-primary .md-ink-ripple{color:\"{{foreground-2}}\"}md-checkbox.md-THEME_NAME-theme:not([disabled]).md-primary.md-checked .md-ink-ripple{color:\"{{primary-color-0.87}}\"}md-checkbox.md-THEME_NAME-theme:not([disabled]).md-primary:not(.md-checked) .md-icon{border-color:\"{{foreground-2}}\"}md-checkbox.md-THEME_NAME-theme:not([disabled]).md-primary.md-checked .md-icon{background-color:\"{{primary-color-0.87}}\"}md-checkbox.md-THEME_NAME-theme:not([disabled]).md-primary.md-checked.md-focused .md-container:before{background-color:\"{{primary-color-0.26}}\"}md-checkbox.md-THEME_NAME-theme:not([disabled]).md-primary.md-checked .md-icon:after{border-color:\"{{primary-contrast-0.87}}\"}md-checkbox.md-THEME_NAME-theme:not([disabled]).md-primary .md-indeterminate[disabled] .md-container{color:\"{{foreground-3}}\"}md-checkbox.md-THEME_NAME-theme:not([disabled]).md-warn .md-ripple{color:\"{{warn-600}}\"}md-checkbox.md-THEME_NAME-theme:not([disabled]).md-warn .md-ink-ripple{color:\"{{foreground-2}}\"}md-checkbox.md-THEME_NAME-theme:not([disabled]).md-warn.md-checked .md-ink-ripple{color:\"{{warn-color-0.87}}\"}md-checkbox.md-THEME_NAME-theme:not([disabled]).md-warn:not(.md-checked) .md-icon{border-color:\"{{foreground-2}}\"}md-checkbox.md-THEME_NAME-theme:not([disabled]).md-warn.md-checked .md-icon{background-color:\"{{warn-color-0.87}}\"}md-checkbox.md-THEME_NAME-theme:not([disabled]).md-warn.md-checked.md-focused:not([disabled]) .md-container:before{background-color:\"{{warn-color-0.26}}\"}md-checkbox.md-THEME_NAME-theme:not([disabled]).md-warn.md-checked .md-icon:after{border-color:\"{{background-200}}\"}md-checkbox.md-THEME_NAME-theme[disabled]:not(.md-checked) .md-icon{border-color:\"{{foreground-3}}\"}md-checkbox.md-THEME_NAME-theme[disabled].md-checked .md-icon{background-color:\"{{foreground-3}}\"}md-checkbox.md-THEME_NAME-theme[disabled].md-checked .md-icon:after{border-color:\"{{background-200}}\"}md-checkbox.md-THEME_NAME-theme[disabled] .md-icon:after{border-color:\"{{foreground-3}}\"}md-checkbox.md-THEME_NAME-theme[disabled] .md-label{color:\"{{foreground-3}}\"}md-chips.md-THEME_NAME-theme .md-chips{box-shadow:0 1px \"{{foreground-4}}\"}md-chips.md-THEME_NAME-theme .md-chips.md-focused{box-shadow:0 2px \"{{primary-color}}\"}md-chips.md-THEME_NAME-theme .md-chips .md-chip-input-container input{color:\"{{foreground-1}}\"}md-chips.md-THEME_NAME-theme .md-chips .md-chip-input-container input:-moz-placeholder,md-chips.md-THEME_NAME-theme .md-chips .md-chip-input-container input::-moz-placeholder{color:\"{{foreground-3}}\"}md-chips.md-THEME_NAME-theme .md-chips .md-chip-input-container input:-ms-input-placeholder{color:\"{{foreground-3}}\"}md-chips.md-THEME_NAME-theme .md-chips .md-chip-input-container input::-webkit-input-placeholder{color:\"{{foreground-3}}\"}md-chips.md-THEME_NAME-theme md-chip{background:\"{{background-300}}\";color:\"{{background-800}}\"}md-chips.md-THEME_NAME-theme md-chip md-icon{color:\"{{background-700}}\"}md-chips.md-THEME_NAME-theme md-chip.md-focused{background:\"{{primary-color}}\";color:\"{{primary-contrast}}\"}md-chips.md-THEME_NAME-theme md-chip.md-focused md-icon{color:\"{{primary-contrast}}\"}md-chips.md-THEME_NAME-theme md-chip._md-chip-editing{background:transparent;color:\"{{background-800}}\"}md-chips.md-THEME_NAME-theme md-chip-remove .md-button md-icon path{fill:\"{{background-500}}\"}.md-contact-suggestion span.md-contact-email{color:\"{{background-400}}\"}md-content.md-THEME_NAME-theme{color:\"{{foreground-1}}\";background-color:\"{{background-default}}\"}.md-calendar.md-THEME_NAME-theme{background:\"{{background-A100}}\";color:\"{{background-A200-0.87}}\"}.md-calendar.md-THEME_NAME-theme tr:last-child td{border-bottom-color:\"{{background-200}}\"}.md-THEME_NAME-theme .md-calendar-day-header{background:\"{{background-300}}\";color:\"{{background-A200-0.87}}\"}.md-THEME_NAME-theme .md-calendar-date.md-calendar-date-today .md-calendar-date-selection-indicator{border:1px solid \"{{primary-500}}\"}.md-THEME_NAME-theme .md-calendar-date.md-calendar-date-today.md-calendar-date-disabled{color:\"{{primary-500-0.6}}\"}.md-calendar-date.md-focus .md-THEME_NAME-theme .md-calendar-date-selection-indicator,.md-THEME_NAME-theme .md-calendar-date-selection-indicator:hover{background:\"{{background-300}}\"}.md-THEME_NAME-theme .md-calendar-date.md-calendar-selected-date .md-calendar-date-selection-indicator,.md-THEME_NAME-theme .md-calendar-date.md-focus.md-calendar-selected-date .md-calendar-date-selection-indicator{background:\"{{primary-500}}\";color:\"{{primary-500-contrast}}\";border-color:transparent}.md-THEME_NAME-theme .md-calendar-date-disabled,.md-THEME_NAME-theme .md-calendar-month-label-disabled{color:\"{{background-A200-0.435}}\"}.md-THEME_NAME-theme .md-datepicker-input{color:\"{{foreground-1}}\"}.md-THEME_NAME-theme .md-datepicker-input:-moz-placeholder,.md-THEME_NAME-theme .md-datepicker-input::-moz-placeholder{color:\"{{foreground-3}}\"}.md-THEME_NAME-theme .md-datepicker-input:-ms-input-placeholder{color:\"{{foreground-3}}\"}.md-THEME_NAME-theme .md-datepicker-input::-webkit-input-placeholder{color:\"{{foreground-3}}\"}.md-THEME_NAME-theme .md-datepicker-input-container{border-bottom-color:\"{{foreground-4}}\"}.md-THEME_NAME-theme .md-datepicker-input-container.md-datepicker-focused{border-bottom-color:\"{{primary-color}}\"}.md-accent .md-THEME_NAME-theme .md-datepicker-input-container.md-datepicker-focused{border-bottom-color:\"{{accent-color}}\"}.md-THEME_NAME-theme .md-datepicker-input-container.md-datepicker-invalid,.md-warn .md-THEME_NAME-theme .md-datepicker-input-container.md-datepicker-focused{border-bottom-color:\"{{warn-A700}}\"}.md-THEME_NAME-theme .md-datepicker-calendar-pane{border-color:\"{{background-hue-1}}\"}.md-THEME_NAME-theme .md-datepicker-triangle-button .md-datepicker-expand-triangle{border-top-color:\"{{foreground-2}}\"}.md-THEME_NAME-theme .md-datepicker-open .md-datepicker-calendar-icon{color:\"{{primary-color}}\"}.md-accent .md-THEME_NAME-theme .md-datepicker-open .md-datepicker-calendar-icon,.md-THEME_NAME-theme .md-datepicker-open.md-accent .md-datepicker-calendar-icon{color:\"{{accent-color}}\"}.md-THEME_NAME-theme .md-datepicker-open.md-warn .md-datepicker-calendar-icon,.md-warn .md-THEME_NAME-theme .md-datepicker-open .md-datepicker-calendar-icon{color:\"{{warn-A700}}\"}.md-THEME_NAME-theme .md-datepicker-calendar{background:\"{{background-A100}}\"}.md-THEME_NAME-theme .md-datepicker-input-mask-opaque{box-shadow:0 0 0 9999px \"{{background-hue-1}}\"}.md-THEME_NAME-theme .md-datepicker-open .md-datepicker-input-container{background:\"{{background-hue-1}}\"}md-dialog.md-THEME_NAME-theme{border-radius:4px;background-color:\"{{background-hue-1}}\";color:\"{{foreground-1}}\"}md-dialog.md-THEME_NAME-theme.md-content-overflow .md-actions,md-dialog.md-THEME_NAME-theme.md-content-overflow md-dialog-actions,md-divider.md-THEME_NAME-theme{border-top-color:\"{{foreground-4}}\"}.layout-gt-lg-row>md-divider.md-THEME_NAME-theme,.layout-gt-md-row>md-divider.md-THEME_NAME-theme,.layout-gt-sm-row>md-divider.md-THEME_NAME-theme,.layout-gt-xs-row>md-divider.md-THEME_NAME-theme,.layout-lg-row>md-divider.md-THEME_NAME-theme,.layout-md-row>md-divider.md-THEME_NAME-theme,.layout-row>md-divider.md-THEME_NAME-theme,.layout-sm-row>md-divider.md-THEME_NAME-theme,.layout-xl-row>md-divider.md-THEME_NAME-theme,.layout-xs-row>md-divider.md-THEME_NAME-theme{border-right-color:\"{{foreground-4}}\"}md-icon.md-THEME_NAME-theme{color:\"{{foreground-2}}\"}md-icon.md-THEME_NAME-theme.md-primary{color:\"{{primary-color}}\"}md-icon.md-THEME_NAME-theme.md-accent{color:\"{{accent-color}}\"}md-icon.md-THEME_NAME-theme.md-warn{color:\"{{warn-color}}\"}md-input-container.md-THEME_NAME-theme .md-input{color:\"{{foreground-1}}\";border-color:\"{{foreground-4}}\"}md-input-container.md-THEME_NAME-theme .md-input:-moz-placeholder,md-input-container.md-THEME_NAME-theme .md-input::-moz-placeholder{color:\"{{foreground-3}}\"}md-input-container.md-THEME_NAME-theme .md-input:-ms-input-placeholder{color:\"{{foreground-3}}\"}md-input-container.md-THEME_NAME-theme .md-input::-webkit-input-placeholder{color:\"{{foreground-3}}\"}md-input-container.md-THEME_NAME-theme>md-icon{color:\"{{foreground-1}}\"}md-input-container.md-THEME_NAME-theme .md-placeholder,md-input-container.md-THEME_NAME-theme label{color:\"{{foreground-3}}\"}md-input-container.md-THEME_NAME-theme label.md-required:after{color:\"{{warn-A700}}\"}md-input-container.md-THEME_NAME-theme:not(.md-input-focused):not(.md-input-invalid) label.md-required:after{color:\"{{foreground-2}}\"}md-input-container.md-THEME_NAME-theme .md-input-message-animation,md-input-container.md-THEME_NAME-theme .md-input-messages-animation{color:\"{{warn-A700}}\"}md-input-container.md-THEME_NAME-theme .md-input-message-animation .md-char-counter,md-input-container.md-THEME_NAME-theme .md-input-messages-animation .md-char-counter{color:\"{{foreground-1}}\"}md-input-container.md-THEME_NAME-theme.md-input-focused .md-input:-moz-placeholder,md-input-container.md-THEME_NAME-theme.md-input-focused .md-input::-moz-placeholder{color:\"{{foreground-2}}\"}md-input-container.md-THEME_NAME-theme.md-input-focused .md-input:-ms-input-placeholder{color:\"{{foreground-2}}\"}md-input-container.md-THEME_NAME-theme.md-input-focused .md-input::-webkit-input-placeholder{color:\"{{foreground-2}}\"}md-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-has-value label{color:\"{{foreground-2}}\"}md-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused .md-input,md-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-resized .md-input{border-color:\"{{primary-color}}\"}md-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused label,md-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused md-icon{color:\"{{primary-color}}\"}md-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused.md-accent .md-input{border-color:\"{{accent-color}}\"}md-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused.md-accent label,md-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused.md-accent md-icon{color:\"{{accent-color}}\"}md-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused.md-warn .md-input{border-color:\"{{warn-A700}}\"}md-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused.md-warn label,md-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused.md-warn md-icon{color:\"{{warn-A700}}\"}md-input-container.md-THEME_NAME-theme.md-input-invalid .md-input{border-color:\"{{warn-A700}}\"}md-input-container.md-THEME_NAME-theme.md-input-invalid .md-char-counter,md-input-container.md-THEME_NAME-theme.md-input-invalid .md-input-message-animation,md-input-container.md-THEME_NAME-theme.md-input-invalid label{color:\"{{warn-A700}}\"}[disabled] md-input-container.md-THEME_NAME-theme .md-input,md-input-container.md-THEME_NAME-theme .md-input[disabled]{border-bottom-color:transparent;color:\"{{foreground-3}}\";background-image:linear-gradient(90deg,\"{{foreground-3}}\" 0,\"{{foreground-3}}\" 33%,transparent 0);background-image:-ms-linear-gradient(left,transparent 0,\"{{foreground-3}}\" 100%)}md-list.md-THEME_NAME-theme md-list-item.md-2-line .md-list-item-text h3,md-list.md-THEME_NAME-theme md-list-item.md-2-line .md-list-item-text h4,md-list.md-THEME_NAME-theme md-list-item.md-3-line .md-list-item-text h3,md-list.md-THEME_NAME-theme md-list-item.md-3-line .md-list-item-text h4{color:\"{{foreground-1}}\"}md-list.md-THEME_NAME-theme md-list-item.md-2-line .md-list-item-text p,md-list.md-THEME_NAME-theme md-list-item.md-3-line .md-list-item-text p{color:\"{{foreground-2}}\"}md-list.md-THEME_NAME-theme .md-proxy-focus.md-focused div.md-no-style{background-color:\"{{background-100}}\"}md-list.md-THEME_NAME-theme md-list-item .md-avatar-icon{background-color:\"{{foreground-3}}\";color:\"{{background-color}}\"}md-list.md-THEME_NAME-theme md-list-item>md-icon{color:\"{{foreground-2}}\"}md-list.md-THEME_NAME-theme md-list-item>md-icon.md-highlight{color:\"{{primary-color}}\"}md-list.md-THEME_NAME-theme md-list-item>md-icon.md-highlight.md-accent{color:\"{{accent-color}}\"}md-menu-content.md-THEME_NAME-theme{background-color:\"{{background-A100}}\"}md-menu-content.md-THEME_NAME-theme md-menu-item{color:\"{{background-A200-0.87}}\"}md-menu-content.md-THEME_NAME-theme md-menu-item md-icon{color:\"{{background-A200-0.54}}\"}md-menu-content.md-THEME_NAME-theme md-menu-item .md-button[disabled],md-menu-content.md-THEME_NAME-theme md-menu-item .md-button[disabled] md-icon{color:\"{{background-A200-0.25}}\"}md-menu-content.md-THEME_NAME-theme md-menu-divider{background-color:\"{{background-A200-0.11}}\"}md-menu-bar.md-THEME_NAME-theme>button.md-button{color:\"{{foreground-2}}\";border-radius:2px}md-menu-bar.md-THEME_NAME-theme md-menu.md-open>button,md-menu-bar.md-THEME_NAME-theme md-menu>button:focus{outline:none;background:\"{{background-200}}\"}md-menu-bar.md-THEME_NAME-theme.md-open:not(.md-keyboard-mode) md-menu:hover>button{background-color:\"{{ background-500-0.2}}\"}md-menu-bar.md-THEME_NAME-theme:not(.md-keyboard-mode):not(.md-open) md-menu button:focus,md-menu-bar.md-THEME_NAME-theme:not(.md-keyboard-mode):not(.md-open) md-menu button:hover{background:transparent}md-menu-content.md-THEME_NAME-theme .md-menu>.md-button:after{color:\"{{background-A200-0.54}}\"}md-menu-content.md-THEME_NAME-theme .md-menu.md-open>.md-button{background-color:\"{{ background-500-0.2}}\"}md-toolbar.md-THEME_NAME-theme.md-menu-toolbar{background-color:\"{{background-A100}}\";color:\"{{background-A200}}\"}md-toolbar.md-THEME_NAME-theme.md-menu-toolbar md-toolbar-filler{background-color:\"{{primary-color}}\";color:\"{{background-A100-0.87}}\"}md-toolbar.md-THEME_NAME-theme.md-menu-toolbar md-toolbar-filler md-icon{color:\"{{background-A100-0.87}}\"}md-nav-bar.md-THEME_NAME-theme .md-nav-bar{background-color:transparent;border-color:\"{{foreground-4}}\"}md-nav-bar.md-THEME_NAME-theme .md-button._md-nav-button.md-unselected{color:\"{{foreground-2}}\"}md-nav-bar.md-THEME_NAME-theme md-nav-ink-bar{color:\"{{accent-color}}\";background:\"{{accent-color}}\"}md-nav-bar.md-THEME_NAME-theme.md-accent>.md-nav-bar{background-color:\"{{accent-color}}\"}md-nav-bar.md-THEME_NAME-theme.md-accent>.md-nav-bar .md-button._md-nav-button{color:\"{{accent-A100}}\"}md-nav-bar.md-THEME_NAME-theme.md-accent>.md-nav-bar .md-button._md-nav-button.md-active,md-nav-bar.md-THEME_NAME-theme.md-accent>.md-nav-bar .md-button._md-nav-button.md-focused{color:\"{{accent-contrast}}\"}md-nav-bar.md-THEME_NAME-theme.md-accent>.md-nav-bar .md-button._md-nav-button.md-focused{background:\"{{accent-contrast-0.1}}\"}md-nav-bar.md-THEME_NAME-theme.md-accent>.md-nav-bar md-nav-ink-bar{color:\"{{primary-600-1}}\";background:\"{{primary-600-1}}\"}md-nav-bar.md-THEME_NAME-theme.md-warn>.md-nav-bar{background-color:\"{{warn-color}}\"}md-nav-bar.md-THEME_NAME-theme.md-warn>.md-nav-bar .md-button._md-nav-button{color:\"{{warn-100}}\"}md-nav-bar.md-THEME_NAME-theme.md-warn>.md-nav-bar .md-button._md-nav-button.md-active,md-nav-bar.md-THEME_NAME-theme.md-warn>.md-nav-bar .md-button._md-nav-button.md-focused{color:\"{{warn-contrast}}\"}md-nav-bar.md-THEME_NAME-theme.md-warn>.md-nav-bar .md-button._md-nav-button.md-focused{background:\"{{warn-contrast-0.1}}\"}md-nav-bar.md-THEME_NAME-theme.md-primary>.md-nav-bar{background-color:\"{{primary-color}}\"}md-nav-bar.md-THEME_NAME-theme.md-primary>.md-nav-bar .md-button._md-nav-button{color:\"{{primary-100}}\"}md-nav-bar.md-THEME_NAME-theme.md-primary>.md-nav-bar .md-button._md-nav-button.md-active,md-nav-bar.md-THEME_NAME-theme.md-primary>.md-nav-bar .md-button._md-nav-button.md-focused{color:\"{{primary-contrast}}\"}md-nav-bar.md-THEME_NAME-theme.md-primary>.md-nav-bar .md-button._md-nav-button.md-focused{background:\"{{primary-contrast-0.1}}\"}md-toolbar>md-nav-bar.md-THEME_NAME-theme>.md-nav-bar{background-color:\"{{primary-color}}\"}md-toolbar>md-nav-bar.md-THEME_NAME-theme>.md-nav-bar .md-button._md-nav-button{color:\"{{primary-100}}\"}md-toolbar>md-nav-bar.md-THEME_NAME-theme>.md-nav-bar .md-button._md-nav-button.md-active,md-toolbar>md-nav-bar.md-THEME_NAME-theme>.md-nav-bar .md-button._md-nav-button.md-focused{color:\"{{primary-contrast}}\"}md-toolbar>md-nav-bar.md-THEME_NAME-theme>.md-nav-bar .md-button._md-nav-button.md-focused{background:\"{{primary-contrast-0.1}}\"}md-toolbar.md-accent>md-nav-bar.md-THEME_NAME-theme>.md-nav-bar{background-color:\"{{accent-color}}\"}md-toolbar.md-accent>md-nav-bar.md-THEME_NAME-theme>.md-nav-bar .md-button._md-nav-button{color:\"{{accent-A100}}\"}md-toolbar.md-accent>md-nav-bar.md-THEME_NAME-theme>.md-nav-bar .md-button._md-nav-button.md-active,md-toolbar.md-accent>md-nav-bar.md-THEME_NAME-theme>.md-nav-bar .md-button._md-nav-button.md-focused{color:\"{{accent-contrast}}\"}md-toolbar.md-accent>md-nav-bar.md-THEME_NAME-theme>.md-nav-bar .md-button._md-nav-button.md-focused{background:\"{{accent-contrast-0.1}}\"}md-toolbar.md-accent>md-nav-bar.md-THEME_NAME-theme>.md-nav-bar md-nav-ink-bar{color:\"{{primary-600-1}}\";background:\"{{primary-600-1}}\"}md-toolbar.md-warn>md-nav-bar.md-THEME_NAME-theme>.md-nav-bar{background-color:\"{{warn-color}}\"}md-toolbar.md-warn>md-nav-bar.md-THEME_NAME-theme>.md-nav-bar .md-button._md-nav-button{color:\"{{warn-100}}\"}md-toolbar.md-warn>md-nav-bar.md-THEME_NAME-theme>.md-nav-bar .md-button._md-nav-button.md-active,md-toolbar.md-warn>md-nav-bar.md-THEME_NAME-theme>.md-nav-bar .md-button._md-nav-button.md-focused{color:\"{{warn-contrast}}\"}md-toolbar.md-warn>md-nav-bar.md-THEME_NAME-theme>.md-nav-bar .md-button._md-nav-button.md-focused{background:\"{{warn-contrast-0.1}}\"}md-progress-circular.md-THEME_NAME-theme path{stroke:\"{{primary-color}}\"}md-progress-circular.md-THEME_NAME-theme.md-warn path{stroke:\"{{warn-color}}\"}md-progress-circular.md-THEME_NAME-theme.md-accent path{stroke:\"{{accent-color}}\"}._md-panel-backdrop.md-THEME_NAME-theme{background-color:\"{{background-900-1.0}}\"}md-progress-linear.md-THEME_NAME-theme .md-container{background-color:\"{{primary-100}}\"}md-progress-linear.md-THEME_NAME-theme .md-bar{background-color:\"{{primary-color}}\"}md-progress-linear.md-THEME_NAME-theme.md-warn .md-container{background-color:\"{{warn-100}}\"}md-progress-linear.md-THEME_NAME-theme.md-warn .md-bar{background-color:\"{{warn-color}}\"}md-progress-linear.md-THEME_NAME-theme.md-accent .md-container{background-color:\"{{accent-100}}\"}md-progress-linear.md-THEME_NAME-theme.md-accent .md-bar{background-color:\"{{accent-color}}\"}md-progress-linear.md-THEME_NAME-theme[md-mode=buffer].md-warn .md-bar1{background-color:\"{{warn-100}}\"}md-progress-linear.md-THEME_NAME-theme[md-mode=buffer].md-warn .md-dashed:before{background:radial-gradient(\"{{warn-100}}\" 0,\"{{warn-100}}\" 16%,transparent 42%)}md-progress-linear.md-THEME_NAME-theme[md-mode=buffer].md-accent .md-bar1{background-color:\"{{accent-100}}\"}md-progress-linear.md-THEME_NAME-theme[md-mode=buffer].md-accent .md-dashed:before{background:radial-gradient(\"{{accent-100}}\" 0,\"{{accent-100}}\" 16%,transparent 42%)}md-radio-button.md-THEME_NAME-theme .md-off{border-color:\"{{foreground-2}}\"}md-radio-button.md-THEME_NAME-theme .md-on{background-color:\"{{accent-color-0.87}}\"}md-radio-button.md-THEME_NAME-theme.md-checked .md-off{border-color:\"{{accent-color-0.87}}\"}md-radio-button.md-THEME_NAME-theme.md-checked .md-ink-ripple{color:\"{{accent-color-0.87}}\"}md-radio-button.md-THEME_NAME-theme .md-container .md-ripple{color:\"{{accent-A700}}\"}md-radio-button.md-THEME_NAME-theme:not([disabled]).md-primary .md-on,md-radio-button.md-THEME_NAME-theme:not([disabled]) .md-primary .md-on,md-radio-group.md-THEME_NAME-theme:not([disabled]).md-primary .md-on,md-radio-group.md-THEME_NAME-theme:not([disabled]) .md-primary .md-on{background-color:\"{{primary-color-0.87}}\"}md-radio-button.md-THEME_NAME-theme:not([disabled]).md-primary.md-checked .md-off,md-radio-button.md-THEME_NAME-theme:not([disabled]) .md-primary.md-checked .md-off,md-radio-button.md-THEME_NAME-theme:not([disabled]).md-primary .md-checked .md-off,md-radio-button.md-THEME_NAME-theme:not([disabled]) .md-primary .md-checked .md-off,md-radio-group.md-THEME_NAME-theme:not([disabled]).md-primary.md-checked .md-off,md-radio-group.md-THEME_NAME-theme:not([disabled]) .md-primary.md-checked .md-off,md-radio-group.md-THEME_NAME-theme:not([disabled]).md-primary .md-checked .md-off,md-radio-group.md-THEME_NAME-theme:not([disabled]) .md-primary .md-checked .md-off{border-color:\"{{primary-color-0.87}}\"}md-radio-button.md-THEME_NAME-theme:not([disabled]).md-primary.md-checked .md-ink-ripple,md-radio-button.md-THEME_NAME-theme:not([disabled]) .md-primary.md-checked .md-ink-ripple,md-radio-button.md-THEME_NAME-theme:not([disabled]).md-primary .md-checked .md-ink-ripple,md-radio-button.md-THEME_NAME-theme:not([disabled]) .md-primary .md-checked .md-ink-ripple,md-radio-group.md-THEME_NAME-theme:not([disabled]).md-primary.md-checked .md-ink-ripple,md-radio-group.md-THEME_NAME-theme:not([disabled]) .md-primary.md-checked .md-ink-ripple,md-radio-group.md-THEME_NAME-theme:not([disabled]).md-primary .md-checked .md-ink-ripple,md-radio-group.md-THEME_NAME-theme:not([disabled]) .md-primary .md-checked .md-ink-ripple{color:\"{{primary-color-0.87}}\"}md-radio-button.md-THEME_NAME-theme:not([disabled]).md-primary .md-container .md-ripple,md-radio-button.md-THEME_NAME-theme:not([disabled]) .md-primary .md-container .md-ripple,md-radio-group.md-THEME_NAME-theme:not([disabled]).md-primary .md-container .md-ripple,md-radio-group.md-THEME_NAME-theme:not([disabled]) .md-primary .md-container .md-ripple{color:\"{{primary-600}}\"}md-radio-button.md-THEME_NAME-theme:not([disabled]).md-warn .md-on,md-radio-button.md-THEME_NAME-theme:not([disabled]) .md-warn .md-on,md-radio-group.md-THEME_NAME-theme:not([disabled]).md-warn .md-on,md-radio-group.md-THEME_NAME-theme:not([disabled]) .md-warn .md-on{background-color:\"{{warn-color-0.87}}\"}md-radio-button.md-THEME_NAME-theme:not([disabled]).md-warn.md-checked .md-off,md-radio-button.md-THEME_NAME-theme:not([disabled]) .md-warn.md-checked .md-off,md-radio-button.md-THEME_NAME-theme:not([disabled]).md-warn .md-checked .md-off,md-radio-button.md-THEME_NAME-theme:not([disabled]) .md-warn .md-checked .md-off,md-radio-group.md-THEME_NAME-theme:not([disabled]).md-warn.md-checked .md-off,md-radio-group.md-THEME_NAME-theme:not([disabled]) .md-warn.md-checked .md-off,md-radio-group.md-THEME_NAME-theme:not([disabled]).md-warn .md-checked .md-off,md-radio-group.md-THEME_NAME-theme:not([disabled]) .md-warn .md-checked .md-off{border-color:\"{{warn-color-0.87}}\"}md-radio-button.md-THEME_NAME-theme:not([disabled]).md-warn.md-checked .md-ink-ripple,md-radio-button.md-THEME_NAME-theme:not([disabled]) .md-warn.md-checked .md-ink-ripple,md-radio-button.md-THEME_NAME-theme:not([disabled]).md-warn .md-checked .md-ink-ripple,md-radio-button.md-THEME_NAME-theme:not([disabled]) .md-warn .md-checked .md-ink-ripple,md-radio-group.md-THEME_NAME-theme:not([disabled]).md-warn.md-checked .md-ink-ripple,md-radio-group.md-THEME_NAME-theme:not([disabled]) .md-warn.md-checked .md-ink-ripple,md-radio-group.md-THEME_NAME-theme:not([disabled]).md-warn .md-checked .md-ink-ripple,md-radio-group.md-THEME_NAME-theme:not([disabled]) .md-warn .md-checked .md-ink-ripple{color:\"{{warn-color-0.87}}\"}md-radio-button.md-THEME_NAME-theme:not([disabled]).md-warn .md-container .md-ripple,md-radio-button.md-THEME_NAME-theme:not([disabled]) .md-warn .md-container .md-ripple,md-radio-group.md-THEME_NAME-theme:not([disabled]).md-warn .md-container .md-ripple,md-radio-group.md-THEME_NAME-theme:not([disabled]) .md-warn .md-container .md-ripple{color:\"{{warn-600}}\"}md-radio-button.md-THEME_NAME-theme[disabled],md-radio-group.md-THEME_NAME-theme[disabled]{color:\"{{foreground-3}}\"}md-radio-button.md-THEME_NAME-theme[disabled] .md-container .md-off,md-radio-button.md-THEME_NAME-theme[disabled] .md-container .md-on,md-radio-group.md-THEME_NAME-theme[disabled] .md-container .md-off,md-radio-group.md-THEME_NAME-theme[disabled] .md-container .md-on{border-color:\"{{foreground-3}}\"}md-radio-group.md-THEME_NAME-theme .md-checked .md-ink-ripple{color:\"{{accent-color-0.26}}\"}md-radio-group.md-THEME_NAME-theme .md-checked:not([disabled]).md-primary .md-ink-ripple,md-radio-group.md-THEME_NAME-theme.md-primary .md-checked:not([disabled]) .md-ink-ripple{color:\"{{primary-color-0.26}}\"}md-radio-group.md-THEME_NAME-theme .md-checked.md-primary .md-ink-ripple{color:\"{{warn-color-0.26}}\"}md-radio-group.md-THEME_NAME-theme.md-focused:not(:empty) .md-checked .md-container:before{background-color:\"{{accent-color-0.26}}\"}md-radio-group.md-THEME_NAME-theme.md-focused:not(:empty) .md-checked.md-primary .md-container:before,md-radio-group.md-THEME_NAME-theme.md-focused:not(:empty).md-primary .md-checked .md-container:before{background-color:\"{{primary-color-0.26}}\"}md-radio-group.md-THEME_NAME-theme.md-focused:not(:empty) .md-checked.md-warn .md-container:before,md-radio-group.md-THEME_NAME-theme.md-focused:not(:empty).md-warn .md-checked .md-container:before{background-color:\"{{warn-color-0.26}}\"}md-sidenav.md-THEME_NAME-theme,md-sidenav.md-THEME_NAME-theme md-content{background-color:\"{{background-hue-1}}\"}md-input-container md-select.md-THEME_NAME-theme .md-select-value span:first-child:after{color:\"{{warn-A700}}\"}md-input-container:not(.md-input-focused):not(.md-input-invalid) md-select.md-THEME_NAME-theme .md-select-value span:first-child:after{color:\"{{foreground-3}}\"}md-input-container.md-input-focused:not(.md-input-has-value) md-select.md-THEME_NAME-theme .md-select-value,md-input-container.md-input-focused:not(.md-input-has-value) md-select.md-THEME_NAME-theme .md-select-value.md-select-placeholder{color:\"{{primary-color}}\"}md-input-container.md-input-invalid md-select.md-THEME_NAME-theme .md-select-value{color:\"{{warn-A700}}\"!important;border-bottom-color:\"{{warn-A700}}\"!important}md-input-container.md-input-invalid md-select.md-THEME_NAME-theme.md-no-underline .md-select-value{border-bottom-color:transparent!important}md-select.md-THEME_NAME-theme[disabled] .md-select-value{border-bottom-color:transparent;background-image:linear-gradient(90deg,\"{{foreground-3}}\" 0,\"{{foreground-3}}\" 33%,transparent 0);background-image:-ms-linear-gradient(left,transparent 0,\"{{foreground-3}}\" 100%)}md-select.md-THEME_NAME-theme .md-select-value{border-bottom-color:\"{{foreground-4}}\"}md-select.md-THEME_NAME-theme .md-select-value.md-select-placeholder{color:\"{{foreground-3}}\"}md-select.md-THEME_NAME-theme .md-select-value span:first-child:after{color:\"{{warn-A700}}\"}md-select.md-THEME_NAME-theme.md-no-underline .md-select-value{border-bottom-color:transparent!important}md-select.md-THEME_NAME-theme.ng-invalid.ng-touched .md-select-value{color:\"{{warn-A700}}\"!important;border-bottom-color:\"{{warn-A700}}\"!important}md-select.md-THEME_NAME-theme.ng-invalid.ng-touched.md-no-underline .md-select-value{border-bottom-color:transparent!important}md-select.md-THEME_NAME-theme:not([disabled]):focus .md-select-value{border-bottom-color:\"{{primary-color}}\";color:\"{{ foreground-1 }}\"}md-select.md-THEME_NAME-theme:not([disabled]):focus .md-select-value.md-select-placeholder{color:\"{{ foreground-1 }}\"}md-select.md-THEME_NAME-theme:not([disabled]):focus.md-no-underline .md-select-value{border-bottom-color:transparent!important}md-select.md-THEME_NAME-theme:not([disabled]):focus.md-accent .md-select-value{border-bottom-color:\"{{accent-color}}\"}md-select.md-THEME_NAME-theme:not([disabled]):focus.md-warn .md-select-value{border-bottom-color:\"{{warn-color}}\"}md-select.md-THEME_NAME-theme[disabled] .md-select-icon,md-select.md-THEME_NAME-theme[disabled] .md-select-value,md-select.md-THEME_NAME-theme[disabled] .md-select-value.md-select-placeholder{color:\"{{foreground-3}}\"}md-select.md-THEME_NAME-theme .md-select-icon{color:\"{{foreground-2}}\"}md-select-menu.md-THEME_NAME-theme md-content{background:\"{{background-A100}}\"}md-select-menu.md-THEME_NAME-theme md-content md-optgroup{color:\"{{background-600-0.87}}\"}md-select-menu.md-THEME_NAME-theme md-content md-option{color:\"{{background-900-0.87}}\"}md-select-menu.md-THEME_NAME-theme md-content md-option[disabled] .md-text{color:\"{{background-400-0.87}}\"}md-select-menu.md-THEME_NAME-theme md-content md-option:not([disabled]):focus,md-select-menu.md-THEME_NAME-theme md-content md-option:not([disabled]):hover{background:\"{{background-200}}\"}md-select-menu.md-THEME_NAME-theme md-content md-option[selected]{color:\"{{primary-500}}\"}md-select-menu.md-THEME_NAME-theme md-content md-option[selected]:focus{color:\"{{primary-600}}\"}md-select-menu.md-THEME_NAME-theme md-content md-option[selected].md-accent{color:\"{{accent-color}}\"}md-select-menu.md-THEME_NAME-theme md-content md-option[selected].md-accent:focus{color:\"{{accent-A700}}\"}.md-checkbox-enabled.md-THEME_NAME-theme .md-ripple{color:\"{{primary-600}}\"}.md-checkbox-enabled.md-THEME_NAME-theme[selected] .md-ripple{color:\"{{background-600}}\"}.md-checkbox-enabled.md-THEME_NAME-theme .md-ink-ripple{color:\"{{foreground-2}}\"}.md-checkbox-enabled.md-THEME_NAME-theme[selected] .md-ink-ripple{color:\"{{primary-color-0.87}}\"}.md-checkbox-enabled.md-THEME_NAME-theme:not(.md-checked) .md-icon{border-color:\"{{foreground-2}}\"}.md-checkbox-enabled.md-THEME_NAME-theme[selected] .md-icon{background-color:\"{{primary-color-0.87}}\"}.md-checkbox-enabled.md-THEME_NAME-theme[selected].md-focused .md-container:before{background-color:\"{{primary-color-0.26}}\"}.md-checkbox-enabled.md-THEME_NAME-theme[selected] .md-icon:after{border-color:\"{{primary-contrast-0.87}}\"}.md-checkbox-enabled.md-THEME_NAME-theme .md-indeterminate[disabled] .md-container{color:\"{{foreground-3}}\"}.md-checkbox-enabled.md-THEME_NAME-theme md-option .md-text{color:\"{{background-900-0.87}}\"}md-slider.md-THEME_NAME-theme .md-track{background-color:\"{{foreground-3}}\"}md-slider.md-THEME_NAME-theme .md-track-ticks{color:\"{{background-contrast}}\"}md-slider.md-THEME_NAME-theme .md-focus-ring{background-color:\"{{accent-A200-0.2}}\"}md-slider.md-THEME_NAME-theme .md-disabled-thumb{border-color:\"{{background-color}}\";background-color:\"{{background-color}}\"}md-slider.md-THEME_NAME-theme.md-min .md-thumb:after{background-color:\"{{background-color}}\";border-color:\"{{foreground-3}}\"}md-slider.md-THEME_NAME-theme.md-min .md-focus-ring{background-color:\"{{foreground-3-0.38}}\"}md-slider.md-THEME_NAME-theme.md-min[md-discrete] .md-thumb:after{background-color:\"{{background-contrast}}\";border-color:transparent}md-slider.md-THEME_NAME-theme.md-min[md-discrete] .md-sign{background-color:\"{{background-400}}\"}md-slider.md-THEME_NAME-theme.md-min[md-discrete] .md-sign:after{border-top-color:\"{{background-400}}\"}md-slider.md-THEME_NAME-theme.md-min[md-discrete][md-vertical] .md-sign:after{border-top-color:transparent;border-left-color:\"{{background-400}}\"}md-slider.md-THEME_NAME-theme .md-track.md-track-fill{background-color:\"{{accent-color}}\"}md-slider.md-THEME_NAME-theme .md-thumb:after{border-color:\"{{accent-color}}\";background-color:\"{{accent-color}}\"}md-slider.md-THEME_NAME-theme .md-sign{background-color:\"{{accent-color}}\"}md-slider.md-THEME_NAME-theme .md-sign:after{border-top-color:\"{{accent-color}}\"}md-slider.md-THEME_NAME-theme[md-vertical] .md-sign:after{border-top-color:transparent;border-left-color:\"{{accent-color}}\"}md-slider.md-THEME_NAME-theme .md-thumb-text{color:\"{{accent-contrast}}\"}md-slider.md-THEME_NAME-theme.md-warn .md-focus-ring{background-color:\"{{warn-200-0.38}}\"}md-slider.md-THEME_NAME-theme.md-warn .md-track.md-track-fill{background-color:\"{{warn-color}}\"}md-slider.md-THEME_NAME-theme.md-warn .md-thumb:after{border-color:\"{{warn-color}}\";background-color:\"{{warn-color}}\"}md-slider.md-THEME_NAME-theme.md-warn .md-sign{background-color:\"{{warn-color}}\"}md-slider.md-THEME_NAME-theme.md-warn .md-sign:after{border-top-color:\"{{warn-color}}\"}md-slider.md-THEME_NAME-theme.md-warn[md-vertical] .md-sign:after{border-top-color:transparent;border-left-color:\"{{warn-color}}\"}md-slider.md-THEME_NAME-theme.md-warn .md-thumb-text{color:\"{{warn-contrast}}\"}md-slider.md-THEME_NAME-theme.md-primary .md-focus-ring{background-color:\"{{primary-200-0.38}}\"}md-slider.md-THEME_NAME-theme.md-primary .md-track.md-track-fill{background-color:\"{{primary-color}}\"}md-slider.md-THEME_NAME-theme.md-primary .md-thumb:after{border-color:\"{{primary-color}}\";background-color:\"{{primary-color}}\"}md-slider.md-THEME_NAME-theme.md-primary .md-sign{background-color:\"{{primary-color}}\"}md-slider.md-THEME_NAME-theme.md-primary .md-sign:after{border-top-color:\"{{primary-color}}\"}md-slider.md-THEME_NAME-theme.md-primary[md-vertical] .md-sign:after{border-top-color:transparent;border-left-color:\"{{primary-color}}\"}md-slider.md-THEME_NAME-theme.md-primary .md-thumb-text{color:\"{{primary-contrast}}\"}md-slider.md-THEME_NAME-theme[disabled] .md-thumb:after{border-color:transparent}md-slider.md-THEME_NAME-theme[disabled]:not(.md-min) .md-thumb:after,md-slider.md-THEME_NAME-theme[disabled][md-discrete] .md-thumb:after{background-color:\"{{foreground-3}}\";border-color:transparent}md-slider.md-THEME_NAME-theme[disabled][readonly] .md-sign{background-color:\"{{background-400}}\"}md-slider.md-THEME_NAME-theme[disabled][readonly] .md-sign:after{border-top-color:\"{{background-400}}\"}md-slider.md-THEME_NAME-theme[disabled][readonly][md-vertical] .md-sign:after{border-top-color:transparent;border-left-color:\"{{background-400}}\"}md-slider.md-THEME_NAME-theme[disabled][readonly] .md-disabled-thumb{border-color:transparent;background-color:transparent}md-slider-container[disabled]>:first-child:not(md-slider),md-slider-container[disabled]>:last-child:not(md-slider){color:\"{{foreground-3}}\"}.md-subheader.md-THEME_NAME-theme{color:\"{{ foreground-2-0.23 }}\";background-color:\"{{background-default}}\"}.md-subheader.md-THEME_NAME-theme.md-primary{color:\"{{primary-color}}\"}.md-subheader.md-THEME_NAME-theme.md-accent{color:\"{{accent-color}}\"}.md-subheader.md-THEME_NAME-theme.md-warn{color:\"{{warn-color}}\"}md-switch.md-THEME_NAME-theme .md-ink-ripple{color:\"{{background-500}}\"}md-switch.md-THEME_NAME-theme .md-thumb{background-color:\"{{background-50}}\"}md-switch.md-THEME_NAME-theme .md-bar{background-color:\"{{background-500}}\"}md-switch.md-THEME_NAME-theme.md-checked .md-ink-ripple{color:\"{{accent-color}}\"}md-switch.md-THEME_NAME-theme.md-checked .md-thumb{background-color:\"{{accent-color}}\"}md-switch.md-THEME_NAME-theme.md-checked .md-bar{background-color:\"{{accent-color-0.5}}\"}md-switch.md-THEME_NAME-theme.md-checked.md-focused .md-thumb:before{background-color:\"{{accent-color-0.26}}\"}md-switch.md-THEME_NAME-theme.md-checked.md-primary .md-ink-ripple{color:\"{{primary-color}}\"}md-switch.md-THEME_NAME-theme.md-checked.md-primary .md-thumb{background-color:\"{{primary-color}}\"}md-switch.md-THEME_NAME-theme.md-checked.md-primary .md-bar{background-color:\"{{primary-color-0.5}}\"}md-switch.md-THEME_NAME-theme.md-checked.md-primary.md-focused .md-thumb:before{background-color:\"{{primary-color-0.26}}\"}md-switch.md-THEME_NAME-theme.md-checked.md-warn .md-ink-ripple{color:\"{{warn-color}}\"}md-switch.md-THEME_NAME-theme.md-checked.md-warn .md-thumb{background-color:\"{{warn-color}}\"}md-switch.md-THEME_NAME-theme.md-checked.md-warn .md-bar{background-color:\"{{warn-color-0.5}}\"}md-switch.md-THEME_NAME-theme.md-checked.md-warn.md-focused .md-thumb:before{background-color:\"{{warn-color-0.26}}\"}md-switch.md-THEME_NAME-theme[disabled] .md-thumb{background-color:\"{{background-400}}\"}md-switch.md-THEME_NAME-theme[disabled] .md-bar{background-color:\"{{foreground-4}}\"}md-tabs.md-THEME_NAME-theme md-tabs-wrapper{background-color:transparent;border-color:\"{{foreground-4}}\"}md-tabs.md-THEME_NAME-theme .md-paginator md-icon{color:\"{{primary-color}}\"}md-tabs.md-THEME_NAME-theme md-ink-bar{color:\"{{accent-color}}\";background:\"{{accent-color}}\"}md-tabs.md-THEME_NAME-theme .md-tab{color:\"{{foreground-2}}\"}md-tabs.md-THEME_NAME-theme .md-tab[disabled],md-tabs.md-THEME_NAME-theme .md-tab[disabled] md-icon{color:\"{{foreground-3}}\"}md-tabs.md-THEME_NAME-theme .md-tab.md-active,md-tabs.md-THEME_NAME-theme .md-tab.md-active md-icon,md-tabs.md-THEME_NAME-theme .md-tab.md-focused,md-tabs.md-THEME_NAME-theme .md-tab.md-focused md-icon{color:\"{{primary-color}}\"}md-tabs.md-THEME_NAME-theme .md-tab.md-focused{background:\"{{primary-color-0.1}}\"}md-tabs.md-THEME_NAME-theme .md-tab .md-ripple-container{color:\"{{accent-A100}}\"}md-tabs.md-THEME_NAME-theme.md-accent>md-tabs-wrapper{background-color:\"{{accent-color}}\"}md-tabs.md-THEME_NAME-theme.md-accent>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]),md-tabs.md-THEME_NAME-theme.md-accent>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]) md-icon{color:\"{{accent-A100}}\"}md-tabs.md-THEME_NAME-theme.md-accent>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-active,md-tabs.md-THEME_NAME-theme.md-accent>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-active md-icon,md-tabs.md-THEME_NAME-theme.md-accent>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-focused,md-tabs.md-THEME_NAME-theme.md-accent>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-focused md-icon{color:\"{{accent-contrast}}\"}md-tabs.md-THEME_NAME-theme.md-accent>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-focused{background:\"{{accent-contrast-0.1}}\"}md-tabs.md-THEME_NAME-theme.md-accent>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-ink-bar{color:\"{{primary-600-1}}\";background:\"{{primary-600-1}}\"}md-tabs.md-THEME_NAME-theme.md-primary>md-tabs-wrapper{background-color:\"{{primary-color}}\"}md-tabs.md-THEME_NAME-theme.md-primary>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]),md-tabs.md-THEME_NAME-theme.md-primary>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]) md-icon{color:\"{{primary-100}}\"}md-tabs.md-THEME_NAME-theme.md-primary>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-active,md-tabs.md-THEME_NAME-theme.md-primary>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-active md-icon,md-tabs.md-THEME_NAME-theme.md-primary>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-focused,md-tabs.md-THEME_NAME-theme.md-primary>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-focused md-icon{color:\"{{primary-contrast}}\"}md-tabs.md-THEME_NAME-theme.md-primary>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-focused{background:\"{{primary-contrast-0.1}}\"}md-tabs.md-THEME_NAME-theme.md-warn>md-tabs-wrapper{background-color:\"{{warn-color}}\"}md-tabs.md-THEME_NAME-theme.md-warn>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]),md-tabs.md-THEME_NAME-theme.md-warn>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]) md-icon{color:\"{{warn-100}}\"}md-tabs.md-THEME_NAME-theme.md-warn>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-active,md-tabs.md-THEME_NAME-theme.md-warn>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-active md-icon,md-tabs.md-THEME_NAME-theme.md-warn>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-focused,md-tabs.md-THEME_NAME-theme.md-warn>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-focused md-icon{color:\"{{warn-contrast}}\"}md-tabs.md-THEME_NAME-theme.md-warn>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-focused{background:\"{{warn-contrast-0.1}}\"}md-toolbar>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper{background-color:\"{{primary-color}}\"}md-toolbar>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]),md-toolbar>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]) md-icon{color:\"{{primary-100}}\"}md-toolbar>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-active,md-toolbar>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-active md-icon,md-toolbar>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-focused,md-toolbar>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-focused md-icon{color:\"{{primary-contrast}}\"}md-toolbar>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-focused{background:\"{{primary-contrast-0.1}}\"}md-toolbar.md-accent>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper{background-color:\"{{accent-color}}\"}md-toolbar.md-accent>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]),md-toolbar.md-accent>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]) md-icon{color:\"{{accent-A100}}\"}md-toolbar.md-accent>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-active,md-toolbar.md-accent>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-active md-icon,md-toolbar.md-accent>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-focused,md-toolbar.md-accent>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-focused md-icon{color:\"{{accent-contrast}}\"}md-toolbar.md-accent>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-focused{background:\"{{accent-contrast-0.1}}\"}md-toolbar.md-accent>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-ink-bar{color:\"{{primary-600-1}}\";background:\"{{primary-600-1}}\"}md-toolbar.md-warn>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper{background-color:\"{{warn-color}}\"}md-toolbar.md-warn>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]),md-toolbar.md-warn>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]) md-icon{color:\"{{warn-100}}\"}md-toolbar.md-warn>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-active,md-toolbar.md-warn>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-active md-icon,md-toolbar.md-warn>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-focused,md-toolbar.md-warn>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-focused md-icon{color:\"{{warn-contrast}}\"}md-toolbar.md-warn>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-focused{background:\"{{warn-contrast-0.1}}\"}md-toast.md-THEME_NAME-theme .md-toast-content{background-color:#323232;color:\"{{background-50}}\"}md-toast.md-THEME_NAME-theme .md-toast-content .md-button{color:\"{{background-50}}\"}md-toast.md-THEME_NAME-theme .md-toast-content .md-button.md-highlight{color:\"{{accent-color}}\"}md-toast.md-THEME_NAME-theme .md-toast-content .md-button.md-highlight.md-primary{color:\"{{primary-color}}\"}md-toast.md-THEME_NAME-theme .md-toast-content .md-button.md-highlight.md-warn{color:\"{{warn-color}}\"}md-toolbar.md-THEME_NAME-theme:not(.md-menu-toolbar){background-color:\"{{primary-color}}\";color:\"{{primary-contrast}}\"}md-toolbar.md-THEME_NAME-theme:not(.md-menu-toolbar) md-icon{color:\"{{primary-contrast}}\";fill:\"{{primary-contrast}}\"}md-toolbar.md-THEME_NAME-theme:not(.md-menu-toolbar) .md-button[disabled] md-icon{color:\"{{primary-contrast-0.26}}\";fill:\"{{primary-contrast-0.26}}\"}md-toolbar.md-THEME_NAME-theme:not(.md-menu-toolbar).md-accent{background-color:\"{{accent-color}}\";color:\"{{accent-contrast}}\"}md-toolbar.md-THEME_NAME-theme:not(.md-menu-toolbar).md-accent .md-ink-ripple{color:\"{{accent-contrast}}\"}md-toolbar.md-THEME_NAME-theme:not(.md-menu-toolbar).md-accent md-icon{color:\"{{accent-contrast}}\";fill:\"{{accent-contrast}}\"}md-toolbar.md-THEME_NAME-theme:not(.md-menu-toolbar).md-accent .md-button[disabled] md-icon{color:\"{{accent-contrast-0.26}}\";fill:\"{{accent-contrast-0.26}}\"}md-toolbar.md-THEME_NAME-theme:not(.md-menu-toolbar).md-warn{background-color:\"{{warn-color}}\";color:\"{{warn-contrast}}\"}.md-panel.md-tooltip.md-THEME_NAME-theme{color:\"{{background-700-contrast}}\";background-color:\"{{background-700}}\"}body.md-THEME_NAME-theme,html.md-THEME_NAME-theme{color:\"{{foreground-1}}\";background-color:\"{{background-color}}\"}");
+		angular.module('material.core').constant('$MD_THEME_CSS', 'md-autocomplete.md-THEME_NAME-theme{background:"{{background-A100}}"}md-autocomplete.md-THEME_NAME-theme[disabled]:not([md-floating-label]){background:"{{background-100}}"}md-autocomplete.md-THEME_NAME-theme button md-icon path{fill:"{{background-600}}"}md-autocomplete.md-THEME_NAME-theme button:after{background:"{{background-600-0.3}}"}.md-autocomplete-suggestions-container.md-THEME_NAME-theme{background:"{{background-A100}}"}.md-autocomplete-suggestions-container.md-THEME_NAME-theme li{color:"{{background-900}}"}.md-autocomplete-suggestions-container.md-THEME_NAME-theme li .highlight{color:"{{background-600}}"}.md-autocomplete-suggestions-container.md-THEME_NAME-theme li.selected,.md-autocomplete-suggestions-container.md-THEME_NAME-theme li:hover{background:"{{background-200}}"}md-backdrop{background-color:"{{background-900-0.0}}"}md-backdrop.md-opaque.md-THEME_NAME-theme{background-color:"{{background-900-1.0}}"}md-bottom-sheet.md-THEME_NAME-theme{background-color:"{{background-50}}";border-top-color:"{{background-300}}"}md-bottom-sheet.md-THEME_NAME-theme.md-list md-list-item{color:"{{foreground-1}}"}md-bottom-sheet.md-THEME_NAME-theme .md-subheader{background-color:"{{background-50}}";color:"{{foreground-1}}"}.md-button.md-THEME_NAME-theme:not([disabled]).md-focused,.md-button.md-THEME_NAME-theme:not([disabled]):hover{background-color:"{{background-500-0.2}}"}.md-button.md-THEME_NAME-theme:not([disabled]).md-icon-button:hover{background-color:transparent}.md-button.md-THEME_NAME-theme.md-fab md-icon{color:"{{accent-contrast}}"}.md-button.md-THEME_NAME-theme.md-primary{color:"{{primary-color}}"}.md-button.md-THEME_NAME-theme.md-primary.md-fab,.md-button.md-THEME_NAME-theme.md-primary.md-raised{color:"{{primary-contrast}}";background-color:"{{primary-color}}"}.md-button.md-THEME_NAME-theme.md-primary.md-fab:not([disabled]) md-icon,.md-button.md-THEME_NAME-theme.md-primary.md-raised:not([disabled]) md-icon{color:"{{primary-contrast}}"}.md-button.md-THEME_NAME-theme.md-primary.md-fab:not([disabled]).md-focused,.md-button.md-THEME_NAME-theme.md-primary.md-fab:not([disabled]):hover,.md-button.md-THEME_NAME-theme.md-primary.md-raised:not([disabled]).md-focused,.md-button.md-THEME_NAME-theme.md-primary.md-raised:not([disabled]):hover{background-color:"{{primary-600}}"}.md-button.md-THEME_NAME-theme.md-primary:not([disabled]) md-icon{color:"{{primary-color}}"}.md-button.md-THEME_NAME-theme.md-fab{background-color:"{{accent-color}}";color:"{{accent-contrast}}"}.md-button.md-THEME_NAME-theme.md-fab:not([disabled]) .md-icon{color:"{{accent-contrast}}"}.md-button.md-THEME_NAME-theme.md-fab:not([disabled]).md-focused,.md-button.md-THEME_NAME-theme.md-fab:not([disabled]):hover{background-color:"{{accent-A700}}"}.md-button.md-THEME_NAME-theme.md-raised{color:"{{background-900}}";background-color:"{{background-50}}"}.md-button.md-THEME_NAME-theme.md-raised:not([disabled]) md-icon{color:"{{background-900}}"}.md-button.md-THEME_NAME-theme.md-raised:not([disabled]):hover{background-color:"{{background-50}}"}.md-button.md-THEME_NAME-theme.md-raised:not([disabled]).md-focused{background-color:"{{background-200}}"}.md-button.md-THEME_NAME-theme.md-warn{color:"{{warn-color}}"}.md-button.md-THEME_NAME-theme.md-warn.md-fab,.md-button.md-THEME_NAME-theme.md-warn.md-raised{color:"{{warn-contrast}}";background-color:"{{warn-color}}"}.md-button.md-THEME_NAME-theme.md-warn.md-fab:not([disabled]) md-icon,.md-button.md-THEME_NAME-theme.md-warn.md-raised:not([disabled]) md-icon{color:"{{warn-contrast}}"}.md-button.md-THEME_NAME-theme.md-warn.md-fab:not([disabled]).md-focused,.md-button.md-THEME_NAME-theme.md-warn.md-fab:not([disabled]):hover,.md-button.md-THEME_NAME-theme.md-warn.md-raised:not([disabled]).md-focused,.md-button.md-THEME_NAME-theme.md-warn.md-raised:not([disabled]):hover{background-color:"{{warn-600}}"}.md-button.md-THEME_NAME-theme.md-warn:not([disabled]) md-icon{color:"{{warn-color}}"}.md-button.md-THEME_NAME-theme.md-accent{color:"{{accent-color}}"}.md-button.md-THEME_NAME-theme.md-accent.md-fab,.md-button.md-THEME_NAME-theme.md-accent.md-raised{color:"{{accent-contrast}}";background-color:"{{accent-color}}"}.md-button.md-THEME_NAME-theme.md-accent.md-fab:not([disabled]) md-icon,.md-button.md-THEME_NAME-theme.md-accent.md-raised:not([disabled]) md-icon{color:"{{accent-contrast}}"}.md-button.md-THEME_NAME-theme.md-accent.md-fab:not([disabled]).md-focused,.md-button.md-THEME_NAME-theme.md-accent.md-fab:not([disabled]):hover,.md-button.md-THEME_NAME-theme.md-accent.md-raised:not([disabled]).md-focused,.md-button.md-THEME_NAME-theme.md-accent.md-raised:not([disabled]):hover{background-color:"{{accent-A700}}"}.md-button.md-THEME_NAME-theme.md-accent:not([disabled]) md-icon{color:"{{accent-color}}"}.md-button.md-THEME_NAME-theme.md-accent[disabled],.md-button.md-THEME_NAME-theme.md-fab[disabled],.md-button.md-THEME_NAME-theme.md-raised[disabled],.md-button.md-THEME_NAME-theme.md-warn[disabled],.md-button.md-THEME_NAME-theme[disabled]{color:"{{foreground-3}}";cursor:default}.md-button.md-THEME_NAME-theme.md-accent[disabled] md-icon,.md-button.md-THEME_NAME-theme.md-fab[disabled] md-icon,.md-button.md-THEME_NAME-theme.md-raised[disabled] md-icon,.md-button.md-THEME_NAME-theme.md-warn[disabled] md-icon,.md-button.md-THEME_NAME-theme[disabled] md-icon{color:"{{foreground-3}}"}.md-button.md-THEME_NAME-theme.md-fab[disabled],.md-button.md-THEME_NAME-theme.md-raised[disabled]{background-color:"{{foreground-4}}"}.md-button.md-THEME_NAME-theme[disabled]{background-color:transparent}._md a.md-THEME_NAME-theme:not(.md-button).md-primary{color:"{{primary-color}}"}._md a.md-THEME_NAME-theme:not(.md-button).md-primary:hover{color:"{{primary-700}}"}._md a.md-THEME_NAME-theme:not(.md-button).md-accent{color:"{{accent-color}}"}._md a.md-THEME_NAME-theme:not(.md-button).md-accent:hover{color:"{{accent-A700}}"}._md a.md-THEME_NAME-theme:not(.md-button).md-warn{color:"{{warn-color}}"}._md a.md-THEME_NAME-theme:not(.md-button).md-warn:hover{color:"{{warn-700}}"}md-card.md-THEME_NAME-theme{color:"{{foreground-1}}";background-color:"{{background-hue-1}}";border-radius:2px}md-card.md-THEME_NAME-theme .md-card-image{border-radius:2px 2px 0 0}md-card.md-THEME_NAME-theme md-card-header md-card-avatar md-icon{color:"{{background-color}}";background-color:"{{foreground-3}}"}md-card.md-THEME_NAME-theme md-card-header md-card-header-text .md-subhead,md-card.md-THEME_NAME-theme md-card-title md-card-title-text:not(:only-child) .md-subhead{color:"{{foreground-2}}"}md-checkbox.md-THEME_NAME-theme .md-ripple{color:"{{accent-A700}}"}md-checkbox.md-THEME_NAME-theme.md-checked .md-ripple{color:"{{background-600}}"}md-checkbox.md-THEME_NAME-theme.md-checked.md-focused .md-container:before{background-color:"{{accent-color-0.26}}"}md-checkbox.md-THEME_NAME-theme .md-ink-ripple{color:"{{foreground-2}}"}md-checkbox.md-THEME_NAME-theme.md-checked .md-ink-ripple{color:"{{accent-color-0.87}}"}md-checkbox.md-THEME_NAME-theme:not(.md-checked) .md-icon{border-color:"{{foreground-2}}"}md-checkbox.md-THEME_NAME-theme.md-checked .md-icon{background-color:"{{accent-color-0.87}}"}md-checkbox.md-THEME_NAME-theme.md-checked .md-icon:after{border-color:"{{accent-contrast-0.87}}"}md-checkbox.md-THEME_NAME-theme:not([disabled]).md-primary .md-ripple{color:"{{primary-600}}"}md-checkbox.md-THEME_NAME-theme:not([disabled]).md-primary.md-checked .md-ripple{color:"{{background-600}}"}md-checkbox.md-THEME_NAME-theme:not([disabled]).md-primary .md-ink-ripple{color:"{{foreground-2}}"}md-checkbox.md-THEME_NAME-theme:not([disabled]).md-primary.md-checked .md-ink-ripple{color:"{{primary-color-0.87}}"}md-checkbox.md-THEME_NAME-theme:not([disabled]).md-primary:not(.md-checked) .md-icon{border-color:"{{foreground-2}}"}md-checkbox.md-THEME_NAME-theme:not([disabled]).md-primary.md-checked .md-icon{background-color:"{{primary-color-0.87}}"}md-checkbox.md-THEME_NAME-theme:not([disabled]).md-primary.md-checked.md-focused .md-container:before{background-color:"{{primary-color-0.26}}"}md-checkbox.md-THEME_NAME-theme:not([disabled]).md-primary.md-checked .md-icon:after{border-color:"{{primary-contrast-0.87}}"}md-checkbox.md-THEME_NAME-theme:not([disabled]).md-primary .md-indeterminate[disabled] .md-container{color:"{{foreground-3}}"}md-checkbox.md-THEME_NAME-theme:not([disabled]).md-warn .md-ripple{color:"{{warn-600}}"}md-checkbox.md-THEME_NAME-theme:not([disabled]).md-warn .md-ink-ripple{color:"{{foreground-2}}"}md-checkbox.md-THEME_NAME-theme:not([disabled]).md-warn.md-checked .md-ink-ripple{color:"{{warn-color-0.87}}"}md-checkbox.md-THEME_NAME-theme:not([disabled]).md-warn:not(.md-checked) .md-icon{border-color:"{{foreground-2}}"}md-checkbox.md-THEME_NAME-theme:not([disabled]).md-warn.md-checked .md-icon{background-color:"{{warn-color-0.87}}"}md-checkbox.md-THEME_NAME-theme:not([disabled]).md-warn.md-checked.md-focused:not([disabled]) .md-container:before{background-color:"{{warn-color-0.26}}"}md-checkbox.md-THEME_NAME-theme:not([disabled]).md-warn.md-checked .md-icon:after{border-color:"{{background-200}}"}md-checkbox.md-THEME_NAME-theme[disabled]:not(.md-checked) .md-icon{border-color:"{{foreground-3}}"}md-checkbox.md-THEME_NAME-theme[disabled].md-checked .md-icon{background-color:"{{foreground-3}}"}md-checkbox.md-THEME_NAME-theme[disabled].md-checked .md-icon:after{border-color:"{{background-200}}"}md-checkbox.md-THEME_NAME-theme[disabled] .md-icon:after{border-color:"{{foreground-3}}"}md-checkbox.md-THEME_NAME-theme[disabled] .md-label{color:"{{foreground-3}}"}md-chips.md-THEME_NAME-theme .md-chips{box-shadow:0 1px "{{foreground-4}}"}md-chips.md-THEME_NAME-theme .md-chips.md-focused{box-shadow:0 2px "{{primary-color}}"}md-chips.md-THEME_NAME-theme .md-chips .md-chip-input-container input{color:"{{foreground-1}}"}md-chips.md-THEME_NAME-theme .md-chips .md-chip-input-container input:-moz-placeholder,md-chips.md-THEME_NAME-theme .md-chips .md-chip-input-container input::-moz-placeholder{color:"{{foreground-3}}"}md-chips.md-THEME_NAME-theme .md-chips .md-chip-input-container input:-ms-input-placeholder{color:"{{foreground-3}}"}md-chips.md-THEME_NAME-theme .md-chips .md-chip-input-container input::-webkit-input-placeholder{color:"{{foreground-3}}"}md-chips.md-THEME_NAME-theme md-chip{background:"{{background-300}}";color:"{{background-800}}"}md-chips.md-THEME_NAME-theme md-chip md-icon{color:"{{background-700}}"}md-chips.md-THEME_NAME-theme md-chip.md-focused{background:"{{primary-color}}";color:"{{primary-contrast}}"}md-chips.md-THEME_NAME-theme md-chip.md-focused md-icon{color:"{{primary-contrast}}"}md-chips.md-THEME_NAME-theme md-chip._md-chip-editing{background:transparent;color:"{{background-800}}"}md-chips.md-THEME_NAME-theme md-chip-remove .md-button md-icon path{fill:"{{background-500}}"}.md-contact-suggestion span.md-contact-email{color:"{{background-400}}"}md-content.md-THEME_NAME-theme{color:"{{foreground-1}}";background-color:"{{background-default}}"}.md-calendar.md-THEME_NAME-theme{background:"{{background-A100}}";color:"{{background-A200-0.87}}"}.md-calendar.md-THEME_NAME-theme tr:last-child td{border-bottom-color:"{{background-200}}"}.md-THEME_NAME-theme .md-calendar-day-header{background:"{{background-300}}";color:"{{background-A200-0.87}}"}.md-THEME_NAME-theme .md-calendar-date.md-calendar-date-today .md-calendar-date-selection-indicator{border:1px solid "{{primary-500}}"}.md-THEME_NAME-theme .md-calendar-date.md-calendar-date-today.md-calendar-date-disabled{color:"{{primary-500-0.6}}"}.md-calendar-date.md-focus .md-THEME_NAME-theme .md-calendar-date-selection-indicator,.md-THEME_NAME-theme .md-calendar-date-selection-indicator:hover{background:"{{background-300}}"}.md-THEME_NAME-theme .md-calendar-date.md-calendar-selected-date .md-calendar-date-selection-indicator,.md-THEME_NAME-theme .md-calendar-date.md-focus.md-calendar-selected-date .md-calendar-date-selection-indicator{background:"{{primary-500}}";color:"{{primary-500-contrast}}";border-color:transparent}.md-THEME_NAME-theme .md-calendar-date-disabled,.md-THEME_NAME-theme .md-calendar-month-label-disabled{color:"{{background-A200-0.435}}"}.md-THEME_NAME-theme .md-datepicker-input{color:"{{foreground-1}}"}.md-THEME_NAME-theme .md-datepicker-input:-moz-placeholder,.md-THEME_NAME-theme .md-datepicker-input::-moz-placeholder{color:"{{foreground-3}}"}.md-THEME_NAME-theme .md-datepicker-input:-ms-input-placeholder{color:"{{foreground-3}}"}.md-THEME_NAME-theme .md-datepicker-input::-webkit-input-placeholder{color:"{{foreground-3}}"}.md-THEME_NAME-theme .md-datepicker-input-container{border-bottom-color:"{{foreground-4}}"}.md-THEME_NAME-theme .md-datepicker-input-container.md-datepicker-focused{border-bottom-color:"{{primary-color}}"}.md-accent .md-THEME_NAME-theme .md-datepicker-input-container.md-datepicker-focused{border-bottom-color:"{{accent-color}}"}.md-THEME_NAME-theme .md-datepicker-input-container.md-datepicker-invalid,.md-warn .md-THEME_NAME-theme .md-datepicker-input-container.md-datepicker-focused{border-bottom-color:"{{warn-A700}}"}.md-THEME_NAME-theme .md-datepicker-calendar-pane{border-color:"{{background-hue-1}}"}.md-THEME_NAME-theme .md-datepicker-triangle-button .md-datepicker-expand-triangle{border-top-color:"{{foreground-2}}"}.md-THEME_NAME-theme .md-datepicker-open .md-datepicker-calendar-icon{color:"{{primary-color}}"}.md-accent .md-THEME_NAME-theme .md-datepicker-open .md-datepicker-calendar-icon,.md-THEME_NAME-theme .md-datepicker-open.md-accent .md-datepicker-calendar-icon{color:"{{accent-color}}"}.md-THEME_NAME-theme .md-datepicker-open.md-warn .md-datepicker-calendar-icon,.md-warn .md-THEME_NAME-theme .md-datepicker-open .md-datepicker-calendar-icon{color:"{{warn-A700}}"}.md-THEME_NAME-theme .md-datepicker-calendar{background:"{{background-A100}}"}.md-THEME_NAME-theme .md-datepicker-input-mask-opaque{box-shadow:0 0 0 9999px "{{background-hue-1}}"}.md-THEME_NAME-theme .md-datepicker-open .md-datepicker-input-container{background:"{{background-hue-1}}"}md-dialog.md-THEME_NAME-theme{border-radius:4px;background-color:"{{background-hue-1}}";color:"{{foreground-1}}"}md-dialog.md-THEME_NAME-theme.md-content-overflow .md-actions,md-dialog.md-THEME_NAME-theme.md-content-overflow md-dialog-actions,md-divider.md-THEME_NAME-theme{border-top-color:"{{foreground-4}}"}.layout-gt-lg-row>md-divider.md-THEME_NAME-theme,.layout-gt-md-row>md-divider.md-THEME_NAME-theme,.layout-gt-sm-row>md-divider.md-THEME_NAME-theme,.layout-gt-xs-row>md-divider.md-THEME_NAME-theme,.layout-lg-row>md-divider.md-THEME_NAME-theme,.layout-md-row>md-divider.md-THEME_NAME-theme,.layout-row>md-divider.md-THEME_NAME-theme,.layout-sm-row>md-divider.md-THEME_NAME-theme,.layout-xl-row>md-divider.md-THEME_NAME-theme,.layout-xs-row>md-divider.md-THEME_NAME-theme{border-right-color:"{{foreground-4}}"}md-icon.md-THEME_NAME-theme{color:"{{foreground-2}}"}md-icon.md-THEME_NAME-theme.md-primary{color:"{{primary-color}}"}md-icon.md-THEME_NAME-theme.md-accent{color:"{{accent-color}}"}md-icon.md-THEME_NAME-theme.md-warn{color:"{{warn-color}}"}md-input-container.md-THEME_NAME-theme .md-input{color:"{{foreground-1}}";border-color:"{{foreground-4}}"}md-input-container.md-THEME_NAME-theme .md-input:-moz-placeholder,md-input-container.md-THEME_NAME-theme .md-input::-moz-placeholder{color:"{{foreground-3}}"}md-input-container.md-THEME_NAME-theme .md-input:-ms-input-placeholder{color:"{{foreground-3}}"}md-input-container.md-THEME_NAME-theme .md-input::-webkit-input-placeholder{color:"{{foreground-3}}"}md-input-container.md-THEME_NAME-theme>md-icon{color:"{{foreground-1}}"}md-input-container.md-THEME_NAME-theme .md-placeholder,md-input-container.md-THEME_NAME-theme label{color:"{{foreground-3}}"}md-input-container.md-THEME_NAME-theme label.md-required:after{color:"{{warn-A700}}"}md-input-container.md-THEME_NAME-theme:not(.md-input-focused):not(.md-input-invalid) label.md-required:after{color:"{{foreground-2}}"}md-input-container.md-THEME_NAME-theme .md-input-message-animation,md-input-container.md-THEME_NAME-theme .md-input-messages-animation{color:"{{warn-A700}}"}md-input-container.md-THEME_NAME-theme .md-input-message-animation .md-char-counter,md-input-container.md-THEME_NAME-theme .md-input-messages-animation .md-char-counter{color:"{{foreground-1}}"}md-input-container.md-THEME_NAME-theme.md-input-focused .md-input:-moz-placeholder,md-input-container.md-THEME_NAME-theme.md-input-focused .md-input::-moz-placeholder{color:"{{foreground-2}}"}md-input-container.md-THEME_NAME-theme.md-input-focused .md-input:-ms-input-placeholder{color:"{{foreground-2}}"}md-input-container.md-THEME_NAME-theme.md-input-focused .md-input::-webkit-input-placeholder{color:"{{foreground-2}}"}md-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-has-value label{color:"{{foreground-2}}"}md-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused .md-input,md-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-resized .md-input{border-color:"{{primary-color}}"}md-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused label,md-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused md-icon{color:"{{primary-color}}"}md-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused.md-accent .md-input{border-color:"{{accent-color}}"}md-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused.md-accent label,md-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused.md-accent md-icon{color:"{{accent-color}}"}md-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused.md-warn .md-input{border-color:"{{warn-A700}}"}md-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused.md-warn label,md-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused.md-warn md-icon{color:"{{warn-A700}}"}md-input-container.md-THEME_NAME-theme.md-input-invalid .md-input{border-color:"{{warn-A700}}"}md-input-container.md-THEME_NAME-theme.md-input-invalid .md-char-counter,md-input-container.md-THEME_NAME-theme.md-input-invalid .md-input-message-animation,md-input-container.md-THEME_NAME-theme.md-input-invalid label{color:"{{warn-A700}}"}[disabled] md-input-container.md-THEME_NAME-theme .md-input,md-input-container.md-THEME_NAME-theme .md-input[disabled]{border-bottom-color:transparent;color:"{{foreground-3}}";background-image:linear-gradient(90deg,"{{foreground-3}}" 0,"{{foreground-3}}" 33%,transparent 0);background-image:-ms-linear-gradient(left,transparent 0,"{{foreground-3}}" 100%)}md-list.md-THEME_NAME-theme md-list-item.md-2-line .md-list-item-text h3,md-list.md-THEME_NAME-theme md-list-item.md-2-line .md-list-item-text h4,md-list.md-THEME_NAME-theme md-list-item.md-3-line .md-list-item-text h3,md-list.md-THEME_NAME-theme md-list-item.md-3-line .md-list-item-text h4{color:"{{foreground-1}}"}md-list.md-THEME_NAME-theme md-list-item.md-2-line .md-list-item-text p,md-list.md-THEME_NAME-theme md-list-item.md-3-line .md-list-item-text p{color:"{{foreground-2}}"}md-list.md-THEME_NAME-theme .md-proxy-focus.md-focused div.md-no-style{background-color:"{{background-100}}"}md-list.md-THEME_NAME-theme md-list-item .md-avatar-icon{background-color:"{{foreground-3}}";color:"{{background-color}}"}md-list.md-THEME_NAME-theme md-list-item>md-icon{color:"{{foreground-2}}"}md-list.md-THEME_NAME-theme md-list-item>md-icon.md-highlight{color:"{{primary-color}}"}md-list.md-THEME_NAME-theme md-list-item>md-icon.md-highlight.md-accent{color:"{{accent-color}}"}md-menu-content.md-THEME_NAME-theme{background-color:"{{background-A100}}"}md-menu-content.md-THEME_NAME-theme md-menu-item{color:"{{background-A200-0.87}}"}md-menu-content.md-THEME_NAME-theme md-menu-item md-icon{color:"{{background-A200-0.54}}"}md-menu-content.md-THEME_NAME-theme md-menu-item .md-button[disabled],md-menu-content.md-THEME_NAME-theme md-menu-item .md-button[disabled] md-icon{color:"{{background-A200-0.25}}"}md-menu-content.md-THEME_NAME-theme md-menu-divider{background-color:"{{background-A200-0.11}}"}md-menu-bar.md-THEME_NAME-theme>button.md-button{color:"{{foreground-2}}";border-radius:2px}md-menu-bar.md-THEME_NAME-theme md-menu.md-open>button,md-menu-bar.md-THEME_NAME-theme md-menu>button:focus{outline:none;background:"{{background-200}}"}md-menu-bar.md-THEME_NAME-theme.md-open:not(.md-keyboard-mode) md-menu:hover>button{background-color:"{{ background-500-0.2}}"}md-menu-bar.md-THEME_NAME-theme:not(.md-keyboard-mode):not(.md-open) md-menu button:focus,md-menu-bar.md-THEME_NAME-theme:not(.md-keyboard-mode):not(.md-open) md-menu button:hover{background:transparent}md-menu-content.md-THEME_NAME-theme .md-menu>.md-button:after{color:"{{background-A200-0.54}}"}md-menu-content.md-THEME_NAME-theme .md-menu.md-open>.md-button{background-color:"{{ background-500-0.2}}"}md-toolbar.md-THEME_NAME-theme.md-menu-toolbar{background-color:"{{background-A100}}";color:"{{background-A200}}"}md-toolbar.md-THEME_NAME-theme.md-menu-toolbar md-toolbar-filler{background-color:"{{primary-color}}";color:"{{background-A100-0.87}}"}md-toolbar.md-THEME_NAME-theme.md-menu-toolbar md-toolbar-filler md-icon{color:"{{background-A100-0.87}}"}md-nav-bar.md-THEME_NAME-theme .md-nav-bar{background-color:transparent;border-color:"{{foreground-4}}"}md-nav-bar.md-THEME_NAME-theme .md-button._md-nav-button.md-unselected{color:"{{foreground-2}}"}md-nav-bar.md-THEME_NAME-theme md-nav-ink-bar{color:"{{accent-color}}";background:"{{accent-color}}"}md-nav-bar.md-THEME_NAME-theme.md-accent>.md-nav-bar{background-color:"{{accent-color}}"}md-nav-bar.md-THEME_NAME-theme.md-accent>.md-nav-bar .md-button._md-nav-button{color:"{{accent-A100}}"}md-nav-bar.md-THEME_NAME-theme.md-accent>.md-nav-bar .md-button._md-nav-button.md-active,md-nav-bar.md-THEME_NAME-theme.md-accent>.md-nav-bar .md-button._md-nav-button.md-focused{color:"{{accent-contrast}}"}md-nav-bar.md-THEME_NAME-theme.md-accent>.md-nav-bar .md-button._md-nav-button.md-focused{background:"{{accent-contrast-0.1}}"}md-nav-bar.md-THEME_NAME-theme.md-accent>.md-nav-bar md-nav-ink-bar{color:"{{primary-600-1}}";background:"{{primary-600-1}}"}md-nav-bar.md-THEME_NAME-theme.md-warn>.md-nav-bar{background-color:"{{warn-color}}"}md-nav-bar.md-THEME_NAME-theme.md-warn>.md-nav-bar .md-button._md-nav-button{color:"{{warn-100}}"}md-nav-bar.md-THEME_NAME-theme.md-warn>.md-nav-bar .md-button._md-nav-button.md-active,md-nav-bar.md-THEME_NAME-theme.md-warn>.md-nav-bar .md-button._md-nav-button.md-focused{color:"{{warn-contrast}}"}md-nav-bar.md-THEME_NAME-theme.md-warn>.md-nav-bar .md-button._md-nav-button.md-focused{background:"{{warn-contrast-0.1}}"}md-nav-bar.md-THEME_NAME-theme.md-primary>.md-nav-bar{background-color:"{{primary-color}}"}md-nav-bar.md-THEME_NAME-theme.md-primary>.md-nav-bar .md-button._md-nav-button{color:"{{primary-100}}"}md-nav-bar.md-THEME_NAME-theme.md-primary>.md-nav-bar .md-button._md-nav-button.md-active,md-nav-bar.md-THEME_NAME-theme.md-primary>.md-nav-bar .md-button._md-nav-button.md-focused{color:"{{primary-contrast}}"}md-nav-bar.md-THEME_NAME-theme.md-primary>.md-nav-bar .md-button._md-nav-button.md-focused{background:"{{primary-contrast-0.1}}"}md-toolbar>md-nav-bar.md-THEME_NAME-theme>.md-nav-bar{background-color:"{{primary-color}}"}md-toolbar>md-nav-bar.md-THEME_NAME-theme>.md-nav-bar .md-button._md-nav-button{color:"{{primary-100}}"}md-toolbar>md-nav-bar.md-THEME_NAME-theme>.md-nav-bar .md-button._md-nav-button.md-active,md-toolbar>md-nav-bar.md-THEME_NAME-theme>.md-nav-bar .md-button._md-nav-button.md-focused{color:"{{primary-contrast}}"}md-toolbar>md-nav-bar.md-THEME_NAME-theme>.md-nav-bar .md-button._md-nav-button.md-focused{background:"{{primary-contrast-0.1}}"}md-toolbar.md-accent>md-nav-bar.md-THEME_NAME-theme>.md-nav-bar{background-color:"{{accent-color}}"}md-toolbar.md-accent>md-nav-bar.md-THEME_NAME-theme>.md-nav-bar .md-button._md-nav-button{color:"{{accent-A100}}"}md-toolbar.md-accent>md-nav-bar.md-THEME_NAME-theme>.md-nav-bar .md-button._md-nav-button.md-active,md-toolbar.md-accent>md-nav-bar.md-THEME_NAME-theme>.md-nav-bar .md-button._md-nav-button.md-focused{color:"{{accent-contrast}}"}md-toolbar.md-accent>md-nav-bar.md-THEME_NAME-theme>.md-nav-bar .md-button._md-nav-button.md-focused{background:"{{accent-contrast-0.1}}"}md-toolbar.md-accent>md-nav-bar.md-THEME_NAME-theme>.md-nav-bar md-nav-ink-bar{color:"{{primary-600-1}}";background:"{{primary-600-1}}"}md-toolbar.md-warn>md-nav-bar.md-THEME_NAME-theme>.md-nav-bar{background-color:"{{warn-color}}"}md-toolbar.md-warn>md-nav-bar.md-THEME_NAME-theme>.md-nav-bar .md-button._md-nav-button{color:"{{warn-100}}"}md-toolbar.md-warn>md-nav-bar.md-THEME_NAME-theme>.md-nav-bar .md-button._md-nav-button.md-active,md-toolbar.md-warn>md-nav-bar.md-THEME_NAME-theme>.md-nav-bar .md-button._md-nav-button.md-focused{color:"{{warn-contrast}}"}md-toolbar.md-warn>md-nav-bar.md-THEME_NAME-theme>.md-nav-bar .md-button._md-nav-button.md-focused{background:"{{warn-contrast-0.1}}"}md-progress-circular.md-THEME_NAME-theme path{stroke:"{{primary-color}}"}md-progress-circular.md-THEME_NAME-theme.md-warn path{stroke:"{{warn-color}}"}md-progress-circular.md-THEME_NAME-theme.md-accent path{stroke:"{{accent-color}}"}._md-panel-backdrop.md-THEME_NAME-theme{background-color:"{{background-900-1.0}}"}md-progress-linear.md-THEME_NAME-theme .md-container{background-color:"{{primary-100}}"}md-progress-linear.md-THEME_NAME-theme .md-bar{background-color:"{{primary-color}}"}md-progress-linear.md-THEME_NAME-theme.md-warn .md-container{background-color:"{{warn-100}}"}md-progress-linear.md-THEME_NAME-theme.md-warn .md-bar{background-color:"{{warn-color}}"}md-progress-linear.md-THEME_NAME-theme.md-accent .md-container{background-color:"{{accent-100}}"}md-progress-linear.md-THEME_NAME-theme.md-accent .md-bar{background-color:"{{accent-color}}"}md-progress-linear.md-THEME_NAME-theme[md-mode=buffer].md-warn .md-bar1{background-color:"{{warn-100}}"}md-progress-linear.md-THEME_NAME-theme[md-mode=buffer].md-warn .md-dashed:before{background:radial-gradient("{{warn-100}}" 0,"{{warn-100}}" 16%,transparent 42%)}md-progress-linear.md-THEME_NAME-theme[md-mode=buffer].md-accent .md-bar1{background-color:"{{accent-100}}"}md-progress-linear.md-THEME_NAME-theme[md-mode=buffer].md-accent .md-dashed:before{background:radial-gradient("{{accent-100}}" 0,"{{accent-100}}" 16%,transparent 42%)}md-radio-button.md-THEME_NAME-theme .md-off{border-color:"{{foreground-2}}"}md-radio-button.md-THEME_NAME-theme .md-on{background-color:"{{accent-color-0.87}}"}md-radio-button.md-THEME_NAME-theme.md-checked .md-off{border-color:"{{accent-color-0.87}}"}md-radio-button.md-THEME_NAME-theme.md-checked .md-ink-ripple{color:"{{accent-color-0.87}}"}md-radio-button.md-THEME_NAME-theme .md-container .md-ripple{color:"{{accent-A700}}"}md-radio-button.md-THEME_NAME-theme:not([disabled]).md-primary .md-on,md-radio-button.md-THEME_NAME-theme:not([disabled]) .md-primary .md-on,md-radio-group.md-THEME_NAME-theme:not([disabled]).md-primary .md-on,md-radio-group.md-THEME_NAME-theme:not([disabled]) .md-primary .md-on{background-color:"{{primary-color-0.87}}"}md-radio-button.md-THEME_NAME-theme:not([disabled]).md-primary.md-checked .md-off,md-radio-button.md-THEME_NAME-theme:not([disabled]) .md-primary.md-checked .md-off,md-radio-button.md-THEME_NAME-theme:not([disabled]).md-primary .md-checked .md-off,md-radio-button.md-THEME_NAME-theme:not([disabled]) .md-primary .md-checked .md-off,md-radio-group.md-THEME_NAME-theme:not([disabled]).md-primary.md-checked .md-off,md-radio-group.md-THEME_NAME-theme:not([disabled]) .md-primary.md-checked .md-off,md-radio-group.md-THEME_NAME-theme:not([disabled]).md-primary .md-checked .md-off,md-radio-group.md-THEME_NAME-theme:not([disabled]) .md-primary .md-checked .md-off{border-color:"{{primary-color-0.87}}"}md-radio-button.md-THEME_NAME-theme:not([disabled]).md-primary.md-checked .md-ink-ripple,md-radio-button.md-THEME_NAME-theme:not([disabled]) .md-primary.md-checked .md-ink-ripple,md-radio-button.md-THEME_NAME-theme:not([disabled]).md-primary .md-checked .md-ink-ripple,md-radio-button.md-THEME_NAME-theme:not([disabled]) .md-primary .md-checked .md-ink-ripple,md-radio-group.md-THEME_NAME-theme:not([disabled]).md-primary.md-checked .md-ink-ripple,md-radio-group.md-THEME_NAME-theme:not([disabled]) .md-primary.md-checked .md-ink-ripple,md-radio-group.md-THEME_NAME-theme:not([disabled]).md-primary .md-checked .md-ink-ripple,md-radio-group.md-THEME_NAME-theme:not([disabled]) .md-primary .md-checked .md-ink-ripple{color:"{{primary-color-0.87}}"}md-radio-button.md-THEME_NAME-theme:not([disabled]).md-primary .md-container .md-ripple,md-radio-button.md-THEME_NAME-theme:not([disabled]) .md-primary .md-container .md-ripple,md-radio-group.md-THEME_NAME-theme:not([disabled]).md-primary .md-container .md-ripple,md-radio-group.md-THEME_NAME-theme:not([disabled]) .md-primary .md-container .md-ripple{color:"{{primary-600}}"}md-radio-button.md-THEME_NAME-theme:not([disabled]).md-warn .md-on,md-radio-button.md-THEME_NAME-theme:not([disabled]) .md-warn .md-on,md-radio-group.md-THEME_NAME-theme:not([disabled]).md-warn .md-on,md-radio-group.md-THEME_NAME-theme:not([disabled]) .md-warn .md-on{background-color:"{{warn-color-0.87}}"}md-radio-button.md-THEME_NAME-theme:not([disabled]).md-warn.md-checked .md-off,md-radio-button.md-THEME_NAME-theme:not([disabled]) .md-warn.md-checked .md-off,md-radio-button.md-THEME_NAME-theme:not([disabled]).md-warn .md-checked .md-off,md-radio-button.md-THEME_NAME-theme:not([disabled]) .md-warn .md-checked .md-off,md-radio-group.md-THEME_NAME-theme:not([disabled]).md-warn.md-checked .md-off,md-radio-group.md-THEME_NAME-theme:not([disabled]) .md-warn.md-checked .md-off,md-radio-group.md-THEME_NAME-theme:not([disabled]).md-warn .md-checked .md-off,md-radio-group.md-THEME_NAME-theme:not([disabled]) .md-warn .md-checked .md-off{border-color:"{{warn-color-0.87}}"}md-radio-button.md-THEME_NAME-theme:not([disabled]).md-warn.md-checked .md-ink-ripple,md-radio-button.md-THEME_NAME-theme:not([disabled]) .md-warn.md-checked .md-ink-ripple,md-radio-button.md-THEME_NAME-theme:not([disabled]).md-warn .md-checked .md-ink-ripple,md-radio-button.md-THEME_NAME-theme:not([disabled]) .md-warn .md-checked .md-ink-ripple,md-radio-group.md-THEME_NAME-theme:not([disabled]).md-warn.md-checked .md-ink-ripple,md-radio-group.md-THEME_NAME-theme:not([disabled]) .md-warn.md-checked .md-ink-ripple,md-radio-group.md-THEME_NAME-theme:not([disabled]).md-warn .md-checked .md-ink-ripple,md-radio-group.md-THEME_NAME-theme:not([disabled]) .md-warn .md-checked .md-ink-ripple{color:"{{warn-color-0.87}}"}md-radio-button.md-THEME_NAME-theme:not([disabled]).md-warn .md-container .md-ripple,md-radio-button.md-THEME_NAME-theme:not([disabled]) .md-warn .md-container .md-ripple,md-radio-group.md-THEME_NAME-theme:not([disabled]).md-warn .md-container .md-ripple,md-radio-group.md-THEME_NAME-theme:not([disabled]) .md-warn .md-container .md-ripple{color:"{{warn-600}}"}md-radio-button.md-THEME_NAME-theme[disabled],md-radio-group.md-THEME_NAME-theme[disabled]{color:"{{foreground-3}}"}md-radio-button.md-THEME_NAME-theme[disabled] .md-container .md-off,md-radio-button.md-THEME_NAME-theme[disabled] .md-container .md-on,md-radio-group.md-THEME_NAME-theme[disabled] .md-container .md-off,md-radio-group.md-THEME_NAME-theme[disabled] .md-container .md-on{border-color:"{{foreground-3}}"}md-radio-group.md-THEME_NAME-theme .md-checked .md-ink-ripple{color:"{{accent-color-0.26}}"}md-radio-group.md-THEME_NAME-theme .md-checked:not([disabled]).md-primary .md-ink-ripple,md-radio-group.md-THEME_NAME-theme.md-primary .md-checked:not([disabled]) .md-ink-ripple{color:"{{primary-color-0.26}}"}md-radio-group.md-THEME_NAME-theme .md-checked.md-primary .md-ink-ripple{color:"{{warn-color-0.26}}"}md-radio-group.md-THEME_NAME-theme.md-focused:not(:empty) .md-checked .md-container:before{background-color:"{{accent-color-0.26}}"}md-radio-group.md-THEME_NAME-theme.md-focused:not(:empty) .md-checked.md-primary .md-container:before,md-radio-group.md-THEME_NAME-theme.md-focused:not(:empty).md-primary .md-checked .md-container:before{background-color:"{{primary-color-0.26}}"}md-radio-group.md-THEME_NAME-theme.md-focused:not(:empty) .md-checked.md-warn .md-container:before,md-radio-group.md-THEME_NAME-theme.md-focused:not(:empty).md-warn .md-checked .md-container:before{background-color:"{{warn-color-0.26}}"}md-sidenav.md-THEME_NAME-theme,md-sidenav.md-THEME_NAME-theme md-content{background-color:"{{background-hue-1}}"}md-input-container md-select.md-THEME_NAME-theme .md-select-value span:first-child:after{color:"{{warn-A700}}"}md-input-container:not(.md-input-focused):not(.md-input-invalid) md-select.md-THEME_NAME-theme .md-select-value span:first-child:after{color:"{{foreground-3}}"}md-input-container.md-input-focused:not(.md-input-has-value) md-select.md-THEME_NAME-theme .md-select-value,md-input-container.md-input-focused:not(.md-input-has-value) md-select.md-THEME_NAME-theme .md-select-value.md-select-placeholder{color:"{{primary-color}}"}md-input-container.md-input-invalid md-select.md-THEME_NAME-theme .md-select-value{color:"{{warn-A700}}"!important;border-bottom-color:"{{warn-A700}}"!important}md-input-container.md-input-invalid md-select.md-THEME_NAME-theme.md-no-underline .md-select-value{border-bottom-color:transparent!important}md-select.md-THEME_NAME-theme[disabled] .md-select-value{border-bottom-color:transparent;background-image:linear-gradient(90deg,"{{foreground-3}}" 0,"{{foreground-3}}" 33%,transparent 0);background-image:-ms-linear-gradient(left,transparent 0,"{{foreground-3}}" 100%)}md-select.md-THEME_NAME-theme .md-select-value{border-bottom-color:"{{foreground-4}}"}md-select.md-THEME_NAME-theme .md-select-value.md-select-placeholder{color:"{{foreground-3}}"}md-select.md-THEME_NAME-theme .md-select-value span:first-child:after{color:"{{warn-A700}}"}md-select.md-THEME_NAME-theme.md-no-underline .md-select-value{border-bottom-color:transparent!important}md-select.md-THEME_NAME-theme.ng-invalid.ng-touched .md-select-value{color:"{{warn-A700}}"!important;border-bottom-color:"{{warn-A700}}"!important}md-select.md-THEME_NAME-theme.ng-invalid.ng-touched.md-no-underline .md-select-value{border-bottom-color:transparent!important}md-select.md-THEME_NAME-theme:not([disabled]):focus .md-select-value{border-bottom-color:"{{primary-color}}";color:"{{ foreground-1 }}"}md-select.md-THEME_NAME-theme:not([disabled]):focus .md-select-value.md-select-placeholder{color:"{{ foreground-1 }}"}md-select.md-THEME_NAME-theme:not([disabled]):focus.md-no-underline .md-select-value{border-bottom-color:transparent!important}md-select.md-THEME_NAME-theme:not([disabled]):focus.md-accent .md-select-value{border-bottom-color:"{{accent-color}}"}md-select.md-THEME_NAME-theme:not([disabled]):focus.md-warn .md-select-value{border-bottom-color:"{{warn-color}}"}md-select.md-THEME_NAME-theme[disabled] .md-select-icon,md-select.md-THEME_NAME-theme[disabled] .md-select-value,md-select.md-THEME_NAME-theme[disabled] .md-select-value.md-select-placeholder{color:"{{foreground-3}}"}md-select.md-THEME_NAME-theme .md-select-icon{color:"{{foreground-2}}"}md-select-menu.md-THEME_NAME-theme md-content{background:"{{background-A100}}"}md-select-menu.md-THEME_NAME-theme md-content md-optgroup{color:"{{background-600-0.87}}"}md-select-menu.md-THEME_NAME-theme md-content md-option{color:"{{background-900-0.87}}"}md-select-menu.md-THEME_NAME-theme md-content md-option[disabled] .md-text{color:"{{background-400-0.87}}"}md-select-menu.md-THEME_NAME-theme md-content md-option:not([disabled]):focus,md-select-menu.md-THEME_NAME-theme md-content md-option:not([disabled]):hover{background:"{{background-200}}"}md-select-menu.md-THEME_NAME-theme md-content md-option[selected]{color:"{{primary-500}}"}md-select-menu.md-THEME_NAME-theme md-content md-option[selected]:focus{color:"{{primary-600}}"}md-select-menu.md-THEME_NAME-theme md-content md-option[selected].md-accent{color:"{{accent-color}}"}md-select-menu.md-THEME_NAME-theme md-content md-option[selected].md-accent:focus{color:"{{accent-A700}}"}.md-checkbox-enabled.md-THEME_NAME-theme .md-ripple{color:"{{primary-600}}"}.md-checkbox-enabled.md-THEME_NAME-theme[selected] .md-ripple{color:"{{background-600}}"}.md-checkbox-enabled.md-THEME_NAME-theme .md-ink-ripple{color:"{{foreground-2}}"}.md-checkbox-enabled.md-THEME_NAME-theme[selected] .md-ink-ripple{color:"{{primary-color-0.87}}"}.md-checkbox-enabled.md-THEME_NAME-theme:not(.md-checked) .md-icon{border-color:"{{foreground-2}}"}.md-checkbox-enabled.md-THEME_NAME-theme[selected] .md-icon{background-color:"{{primary-color-0.87}}"}.md-checkbox-enabled.md-THEME_NAME-theme[selected].md-focused .md-container:before{background-color:"{{primary-color-0.26}}"}.md-checkbox-enabled.md-THEME_NAME-theme[selected] .md-icon:after{border-color:"{{primary-contrast-0.87}}"}.md-checkbox-enabled.md-THEME_NAME-theme .md-indeterminate[disabled] .md-container{color:"{{foreground-3}}"}.md-checkbox-enabled.md-THEME_NAME-theme md-option .md-text{color:"{{background-900-0.87}}"}md-slider.md-THEME_NAME-theme .md-track{background-color:"{{foreground-3}}"}md-slider.md-THEME_NAME-theme .md-track-ticks{color:"{{background-contrast}}"}md-slider.md-THEME_NAME-theme .md-focus-ring{background-color:"{{accent-A200-0.2}}"}md-slider.md-THEME_NAME-theme .md-disabled-thumb{border-color:"{{background-color}}";background-color:"{{background-color}}"}md-slider.md-THEME_NAME-theme.md-min .md-thumb:after{background-color:"{{background-color}}";border-color:"{{foreground-3}}"}md-slider.md-THEME_NAME-theme.md-min .md-focus-ring{background-color:"{{foreground-3-0.38}}"}md-slider.md-THEME_NAME-theme.md-min[md-discrete] .md-thumb:after{background-color:"{{background-contrast}}";border-color:transparent}md-slider.md-THEME_NAME-theme.md-min[md-discrete] .md-sign{background-color:"{{background-400}}"}md-slider.md-THEME_NAME-theme.md-min[md-discrete] .md-sign:after{border-top-color:"{{background-400}}"}md-slider.md-THEME_NAME-theme.md-min[md-discrete][md-vertical] .md-sign:after{border-top-color:transparent;border-left-color:"{{background-400}}"}md-slider.md-THEME_NAME-theme .md-track.md-track-fill{background-color:"{{accent-color}}"}md-slider.md-THEME_NAME-theme .md-thumb:after{border-color:"{{accent-color}}";background-color:"{{accent-color}}"}md-slider.md-THEME_NAME-theme .md-sign{background-color:"{{accent-color}}"}md-slider.md-THEME_NAME-theme .md-sign:after{border-top-color:"{{accent-color}}"}md-slider.md-THEME_NAME-theme[md-vertical] .md-sign:after{border-top-color:transparent;border-left-color:"{{accent-color}}"}md-slider.md-THEME_NAME-theme .md-thumb-text{color:"{{accent-contrast}}"}md-slider.md-THEME_NAME-theme.md-warn .md-focus-ring{background-color:"{{warn-200-0.38}}"}md-slider.md-THEME_NAME-theme.md-warn .md-track.md-track-fill{background-color:"{{warn-color}}"}md-slider.md-THEME_NAME-theme.md-warn .md-thumb:after{border-color:"{{warn-color}}";background-color:"{{warn-color}}"}md-slider.md-THEME_NAME-theme.md-warn .md-sign{background-color:"{{warn-color}}"}md-slider.md-THEME_NAME-theme.md-warn .md-sign:after{border-top-color:"{{warn-color}}"}md-slider.md-THEME_NAME-theme.md-warn[md-vertical] .md-sign:after{border-top-color:transparent;border-left-color:"{{warn-color}}"}md-slider.md-THEME_NAME-theme.md-warn .md-thumb-text{color:"{{warn-contrast}}"}md-slider.md-THEME_NAME-theme.md-primary .md-focus-ring{background-color:"{{primary-200-0.38}}"}md-slider.md-THEME_NAME-theme.md-primary .md-track.md-track-fill{background-color:"{{primary-color}}"}md-slider.md-THEME_NAME-theme.md-primary .md-thumb:after{border-color:"{{primary-color}}";background-color:"{{primary-color}}"}md-slider.md-THEME_NAME-theme.md-primary .md-sign{background-color:"{{primary-color}}"}md-slider.md-THEME_NAME-theme.md-primary .md-sign:after{border-top-color:"{{primary-color}}"}md-slider.md-THEME_NAME-theme.md-primary[md-vertical] .md-sign:after{border-top-color:transparent;border-left-color:"{{primary-color}}"}md-slider.md-THEME_NAME-theme.md-primary .md-thumb-text{color:"{{primary-contrast}}"}md-slider.md-THEME_NAME-theme[disabled] .md-thumb:after{border-color:transparent}md-slider.md-THEME_NAME-theme[disabled]:not(.md-min) .md-thumb:after,md-slider.md-THEME_NAME-theme[disabled][md-discrete] .md-thumb:after{background-color:"{{foreground-3}}";border-color:transparent}md-slider.md-THEME_NAME-theme[disabled][readonly] .md-sign{background-color:"{{background-400}}"}md-slider.md-THEME_NAME-theme[disabled][readonly] .md-sign:after{border-top-color:"{{background-400}}"}md-slider.md-THEME_NAME-theme[disabled][readonly][md-vertical] .md-sign:after{border-top-color:transparent;border-left-color:"{{background-400}}"}md-slider.md-THEME_NAME-theme[disabled][readonly] .md-disabled-thumb{border-color:transparent;background-color:transparent}md-slider-container[disabled]>:first-child:not(md-slider),md-slider-container[disabled]>:last-child:not(md-slider){color:"{{foreground-3}}"}.md-subheader.md-THEME_NAME-theme{color:"{{ foreground-2-0.23 }}";background-color:"{{background-default}}"}.md-subheader.md-THEME_NAME-theme.md-primary{color:"{{primary-color}}"}.md-subheader.md-THEME_NAME-theme.md-accent{color:"{{accent-color}}"}.md-subheader.md-THEME_NAME-theme.md-warn{color:"{{warn-color}}"}md-switch.md-THEME_NAME-theme .md-ink-ripple{color:"{{background-500}}"}md-switch.md-THEME_NAME-theme .md-thumb{background-color:"{{background-50}}"}md-switch.md-THEME_NAME-theme .md-bar{background-color:"{{background-500}}"}md-switch.md-THEME_NAME-theme.md-checked .md-ink-ripple{color:"{{accent-color}}"}md-switch.md-THEME_NAME-theme.md-checked .md-thumb{background-color:"{{accent-color}}"}md-switch.md-THEME_NAME-theme.md-checked .md-bar{background-color:"{{accent-color-0.5}}"}md-switch.md-THEME_NAME-theme.md-checked.md-focused .md-thumb:before{background-color:"{{accent-color-0.26}}"}md-switch.md-THEME_NAME-theme.md-checked.md-primary .md-ink-ripple{color:"{{primary-color}}"}md-switch.md-THEME_NAME-theme.md-checked.md-primary .md-thumb{background-color:"{{primary-color}}"}md-switch.md-THEME_NAME-theme.md-checked.md-primary .md-bar{background-color:"{{primary-color-0.5}}"}md-switch.md-THEME_NAME-theme.md-checked.md-primary.md-focused .md-thumb:before{background-color:"{{primary-color-0.26}}"}md-switch.md-THEME_NAME-theme.md-checked.md-warn .md-ink-ripple{color:"{{warn-color}}"}md-switch.md-THEME_NAME-theme.md-checked.md-warn .md-thumb{background-color:"{{warn-color}}"}md-switch.md-THEME_NAME-theme.md-checked.md-warn .md-bar{background-color:"{{warn-color-0.5}}"}md-switch.md-THEME_NAME-theme.md-checked.md-warn.md-focused .md-thumb:before{background-color:"{{warn-color-0.26}}"}md-switch.md-THEME_NAME-theme[disabled] .md-thumb{background-color:"{{background-400}}"}md-switch.md-THEME_NAME-theme[disabled] .md-bar{background-color:"{{foreground-4}}"}md-tabs.md-THEME_NAME-theme md-tabs-wrapper{background-color:transparent;border-color:"{{foreground-4}}"}md-tabs.md-THEME_NAME-theme .md-paginator md-icon{color:"{{primary-color}}"}md-tabs.md-THEME_NAME-theme md-ink-bar{color:"{{accent-color}}";background:"{{accent-color}}"}md-tabs.md-THEME_NAME-theme .md-tab{color:"{{foreground-2}}"}md-tabs.md-THEME_NAME-theme .md-tab[disabled],md-tabs.md-THEME_NAME-theme .md-tab[disabled] md-icon{color:"{{foreground-3}}"}md-tabs.md-THEME_NAME-theme .md-tab.md-active,md-tabs.md-THEME_NAME-theme .md-tab.md-active md-icon,md-tabs.md-THEME_NAME-theme .md-tab.md-focused,md-tabs.md-THEME_NAME-theme .md-tab.md-focused md-icon{color:"{{primary-color}}"}md-tabs.md-THEME_NAME-theme .md-tab.md-focused{background:"{{primary-color-0.1}}"}md-tabs.md-THEME_NAME-theme .md-tab .md-ripple-container{color:"{{accent-A100}}"}md-tabs.md-THEME_NAME-theme.md-accent>md-tabs-wrapper{background-color:"{{accent-color}}"}md-tabs.md-THEME_NAME-theme.md-accent>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]),md-tabs.md-THEME_NAME-theme.md-accent>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]) md-icon{color:"{{accent-A100}}"}md-tabs.md-THEME_NAME-theme.md-accent>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-active,md-tabs.md-THEME_NAME-theme.md-accent>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-active md-icon,md-tabs.md-THEME_NAME-theme.md-accent>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-focused,md-tabs.md-THEME_NAME-theme.md-accent>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-focused md-icon{color:"{{accent-contrast}}"}md-tabs.md-THEME_NAME-theme.md-accent>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-focused{background:"{{accent-contrast-0.1}}"}md-tabs.md-THEME_NAME-theme.md-accent>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-ink-bar{color:"{{primary-600-1}}";background:"{{primary-600-1}}"}md-tabs.md-THEME_NAME-theme.md-primary>md-tabs-wrapper{background-color:"{{primary-color}}"}md-tabs.md-THEME_NAME-theme.md-primary>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]),md-tabs.md-THEME_NAME-theme.md-primary>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]) md-icon{color:"{{primary-100}}"}md-tabs.md-THEME_NAME-theme.md-primary>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-active,md-tabs.md-THEME_NAME-theme.md-primary>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-active md-icon,md-tabs.md-THEME_NAME-theme.md-primary>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-focused,md-tabs.md-THEME_NAME-theme.md-primary>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-focused md-icon{color:"{{primary-contrast}}"}md-tabs.md-THEME_NAME-theme.md-primary>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-focused{background:"{{primary-contrast-0.1}}"}md-tabs.md-THEME_NAME-theme.md-warn>md-tabs-wrapper{background-color:"{{warn-color}}"}md-tabs.md-THEME_NAME-theme.md-warn>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]),md-tabs.md-THEME_NAME-theme.md-warn>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]) md-icon{color:"{{warn-100}}"}md-tabs.md-THEME_NAME-theme.md-warn>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-active,md-tabs.md-THEME_NAME-theme.md-warn>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-active md-icon,md-tabs.md-THEME_NAME-theme.md-warn>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-focused,md-tabs.md-THEME_NAME-theme.md-warn>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-focused md-icon{color:"{{warn-contrast}}"}md-tabs.md-THEME_NAME-theme.md-warn>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-focused{background:"{{warn-contrast-0.1}}"}md-toolbar>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper{background-color:"{{primary-color}}"}md-toolbar>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]),md-toolbar>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]) md-icon{color:"{{primary-100}}"}md-toolbar>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-active,md-toolbar>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-active md-icon,md-toolbar>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-focused,md-toolbar>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-focused md-icon{color:"{{primary-contrast}}"}md-toolbar>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-focused{background:"{{primary-contrast-0.1}}"}md-toolbar.md-accent>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper{background-color:"{{accent-color}}"}md-toolbar.md-accent>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]),md-toolbar.md-accent>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]) md-icon{color:"{{accent-A100}}"}md-toolbar.md-accent>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-active,md-toolbar.md-accent>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-active md-icon,md-toolbar.md-accent>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-focused,md-toolbar.md-accent>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-focused md-icon{color:"{{accent-contrast}}"}md-toolbar.md-accent>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-focused{background:"{{accent-contrast-0.1}}"}md-toolbar.md-accent>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-ink-bar{color:"{{primary-600-1}}";background:"{{primary-600-1}}"}md-toolbar.md-warn>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper{background-color:"{{warn-color}}"}md-toolbar.md-warn>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]),md-toolbar.md-warn>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]) md-icon{color:"{{warn-100}}"}md-toolbar.md-warn>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-active,md-toolbar.md-warn>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-active md-icon,md-toolbar.md-warn>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-focused,md-toolbar.md-warn>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-focused md-icon{color:"{{warn-contrast}}"}md-toolbar.md-warn>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-focused{background:"{{warn-contrast-0.1}}"}md-toast.md-THEME_NAME-theme .md-toast-content{background-color:#323232;color:"{{background-50}}"}md-toast.md-THEME_NAME-theme .md-toast-content .md-button{color:"{{background-50}}"}md-toast.md-THEME_NAME-theme .md-toast-content .md-button.md-highlight{color:"{{accent-color}}"}md-toast.md-THEME_NAME-theme .md-toast-content .md-button.md-highlight.md-primary{color:"{{primary-color}}"}md-toast.md-THEME_NAME-theme .md-toast-content .md-button.md-highlight.md-warn{color:"{{warn-color}}"}md-toolbar.md-THEME_NAME-theme:not(.md-menu-toolbar){background-color:"{{primary-color}}";color:"{{primary-contrast}}"}md-toolbar.md-THEME_NAME-theme:not(.md-menu-toolbar) md-icon{color:"{{primary-contrast}}";fill:"{{primary-contrast}}"}md-toolbar.md-THEME_NAME-theme:not(.md-menu-toolbar) .md-button[disabled] md-icon{color:"{{primary-contrast-0.26}}";fill:"{{primary-contrast-0.26}}"}md-toolbar.md-THEME_NAME-theme:not(.md-menu-toolbar).md-accent{background-color:"{{accent-color}}";color:"{{accent-contrast}}"}md-toolbar.md-THEME_NAME-theme:not(.md-menu-toolbar).md-accent .md-ink-ripple{color:"{{accent-contrast}}"}md-toolbar.md-THEME_NAME-theme:not(.md-menu-toolbar).md-accent md-icon{color:"{{accent-contrast}}";fill:"{{accent-contrast}}"}md-toolbar.md-THEME_NAME-theme:not(.md-menu-toolbar).md-accent .md-button[disabled] md-icon{color:"{{accent-contrast-0.26}}";fill:"{{accent-contrast-0.26}}"}md-toolbar.md-THEME_NAME-theme:not(.md-menu-toolbar).md-warn{background-color:"{{warn-color}}";color:"{{warn-contrast}}"}.md-panel.md-tooltip.md-THEME_NAME-theme{color:"{{background-700-contrast}}";background-color:"{{background-700}}"}body.md-THEME_NAME-theme,html.md-THEME_NAME-theme{color:"{{foreground-1}}";background-color:"{{background-color}}"}');
 	})();
 
 
-})(window, window.angular);;window.ngMaterial={version:{full: "1.1.4"}};
+})(window, window.angular);window.ngMaterial={version:{full: '1.1.4'}};

@@ -4,10 +4,10 @@
 //! license : MIT
 //! momentjs.com
 
-;(function (global, factory) {
+(function (global, factory) {
 	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
 		typeof define === 'function' && define.amd ? define(factory) :
-			global.moment = factory()
+			global.moment = factory();
 }(this, (function () { 'use strict';
 
 	var hookCallback;
@@ -16,8 +16,8 @@
 		return hookCallback.apply(null, arguments);
 	}
 
-// This is done to register the method called with moment()
-// without creating circular dependencies.
+	// This is done to register the method called with moment()
+	// without creating circular dependencies.
 	function setHookCallback (callback) {
 		hookCallback = callback;
 	}
@@ -183,8 +183,8 @@
 		return m;
 	}
 
-// Plugins that add properties should also add the key here (null value),
-// so we can properly clone ourselves.
+	// Plugins that add properties should also add the key here (null value),
+	// so we can properly clone ourselves.
 	var momentProperties = hooks.momentProperties = [];
 
 	function copyConfig(to, from) {
@@ -236,7 +236,7 @@
 
 	var updateInProgress = false;
 
-// Moment prototype object
+	// Moment prototype object
 	function Moment(config) {
 		copyConfig(this, config);
 		this._d = new Date(config._d != null ? config._d.getTime() : NaN);
@@ -276,7 +276,7 @@
 		return value;
 	}
 
-// compare two arrays, return the number of differences
+	// compare two arrays, return the number of differences
 	function compareArrays(array1, array2, dontConvert) {
 		var len = Math.min(array1.length, array2.length),
 			lengthDiff = Math.abs(array1.length - array2.length),
@@ -555,10 +555,10 @@
 
 	var formatTokenFunctions = {};
 
-// token:    'M'
-// padded:   ['MM', 2]
-// ordinal:  'Mo'
-// callback: function () { this.month() + 1 }
+	// token:    'M'
+	// padded:   ['MM', 2]
+	// ordinal:  'Mo'
+	// callback: function () { this.month() + 1 }
 	function addFormatToken (token, padded, ordinal, callback) {
 		var func = callback;
 		if (typeof callback === 'string') {
@@ -608,7 +608,7 @@
 		};
 	}
 
-// format date using native date object
+	// format date using native date object
 	function formatMoment(m, format) {
 		if (!m.isValid()) {
 			return m.localeData().invalidDate();
@@ -657,8 +657,8 @@
 
 	var matchTimestamp = /[+-]?\d+(\.\d{1,3})?/; // 123456789 123456789.123
 
-// any word (or two) characters or numbers including two/three word month in arabic.
-// includes scottish gaelic two word and hyphenated months
+	// any word (or two) characters or numbers including two/three word month in arabic.
+	// includes scottish gaelic two word and hyphenated months
 	var matchWord = /[0-9]{0,256}['a-z\u00A0-\u05FF\u0700-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]{1,256}|[\u0600-\u06FF\/]{1,256}(\s*?[\u0600-\u06FF]{1,256}){1,2}/i;
 
 
@@ -678,7 +678,7 @@
 		return regexes[token](config._strict, config._locale);
 	}
 
-// Code from http://stackoverflow.com/questions/3561493/is-there-a-regexp-escape-function-in-javascript
+	// Code from http://stackoverflow.com/questions/3561493/is-there-a-regexp-escape-function-in-javascript
 	function unescapeFormat(s) {
 		return regexEscape(s.replace('\\', '').replace(/\\(\[)|\\(\])|\[([^\]\[]*)\]|\\(.)/g, function (matched, p1, p2, p3, p4) {
 			return p1 || p2 || p3 || p4;
@@ -729,7 +729,7 @@
 	var WEEK = 7;
 	var WEEKDAY = 8;
 
-// FORMATTING
+	// FORMATTING
 
 	addFormatToken('Y', 0, 0, function () {
 		var y = this.year();
@@ -744,15 +744,15 @@
 	addFormatToken(0, ['YYYYY',  5],       0, 'year');
 	addFormatToken(0, ['YYYYYY', 6, true], 0, 'year');
 
-// ALIASES
+	// ALIASES
 
 	addUnitAlias('year', 'y');
 
-// PRIORITIES
+	// PRIORITIES
 
 	addUnitPriority('year', 1);
 
-// PARSING
+	// PARSING
 
 	addRegexToken('Y',      matchSigned);
 	addRegexToken('YY',     match1to2, match2);
@@ -771,7 +771,7 @@
 		array[YEAR] = parseInt(input, 10);
 	});
 
-// HELPERS
+	// HELPERS
 
 	function daysInYear(year) {
 		return isLeapYear(year) ? 366 : 365;
@@ -781,13 +781,13 @@
 		return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
 	}
 
-// HOOKS
+	// HOOKS
 
 	hooks.parseTwoDigitYear = function (input) {
 		return toInt(input) + (toInt(input) > 68 ? 1900 : 2000);
 	};
 
-// MOMENTS
+	// MOMENTS
 
 	var getSetYear = makeGetSet('FullYear', true);
 
@@ -823,7 +823,7 @@
 		}
 	}
 
-// MOMENTS
+	// MOMENTS
 
 	function stringGet (units) {
 		units = normalizeUnits(units);
@@ -880,7 +880,7 @@
 		return modMonth === 1 ? (isLeapYear(year) ? 29 : 28) : (31 - modMonth % 7 % 2);
 	}
 
-// FORMATTING
+	// FORMATTING
 
 	addFormatToken('M', ['MM', 2], 'Mo', function () {
 		return this.month() + 1;
@@ -894,15 +894,15 @@
 		return this.localeData().months(this, format);
 	});
 
-// ALIASES
+	// ALIASES
 
 	addUnitAlias('month', 'M');
 
-// PRIORITY
+	// PRIORITY
 
 	addUnitPriority('month', 8);
 
-// PARSING
+	// PARSING
 
 	addRegexToken('M',    match1to2);
 	addRegexToken('MM',   match1to2, match2);
@@ -927,7 +927,7 @@
 		}
 	});
 
-// LOCALES
+	// LOCALES
 
 	var MONTHS_IN_FORMAT = /D[oD]?(\[[^\[\]]*\]|\s)+MMMM?/;
 	var defaultLocaleMonths = 'January_February_March_April_May_June_July_August_September_October_November_December'.split('_');
@@ -1029,7 +1029,7 @@
 		}
 	}
 
-// MOMENTS
+	// MOMENTS
 
 	function setMonth (mom, value) {
 		var dayOfMonth;
@@ -1166,7 +1166,7 @@
 		return date;
 	}
 
-// start-of-first-week - start-of-year
+	// start-of-first-week - start-of-year
 	function firstWeekOffset(year, dow, doy) {
 		var // first-week day -- which january is always in the first week (4 for iso, 1 for other)
 			fwd = 7 + dow - doy,
@@ -1176,7 +1176,7 @@
 		return -fwdlw + fwd - 1;
 	}
 
-// https://en.wikipedia.org/wiki/ISO_week_date#Calculating_a_date_given_the_year.2C_week_number_and_weekday
+	// https://en.wikipedia.org/wiki/ISO_week_date#Calculating_a_date_given_the_year.2C_week_number_and_weekday
 	function dayOfYearFromWeeks(year, week, weekday, dow, doy) {
 		var localWeekday = (7 + weekday - dow) % 7,
 			weekOffset = firstWeekOffset(year, dow, doy),
@@ -1228,22 +1228,22 @@
 		return (daysInYear(year) - weekOffset + weekOffsetNext) / 7;
 	}
 
-// FORMATTING
+	// FORMATTING
 
 	addFormatToken('w', ['ww', 2], 'wo', 'week');
 	addFormatToken('W', ['WW', 2], 'Wo', 'isoWeek');
 
-// ALIASES
+	// ALIASES
 
 	addUnitAlias('week', 'w');
 	addUnitAlias('isoWeek', 'W');
 
-// PRIORITIES
+	// PRIORITIES
 
 	addUnitPriority('week', 5);
 	addUnitPriority('isoWeek', 5);
 
-// PARSING
+	// PARSING
 
 	addRegexToken('w',  match1to2);
 	addRegexToken('ww', match1to2, match2);
@@ -1254,9 +1254,9 @@
 		week[token.substr(0, 1)] = toInt(input);
 	});
 
-// HELPERS
+	// HELPERS
 
-// LOCALES
+	// LOCALES
 
 	function localeWeek (mom) {
 		return weekOfYear(mom, this._week.dow, this._week.doy).week;
@@ -1275,7 +1275,7 @@
 		return this._week.doy;
 	}
 
-// MOMENTS
+	// MOMENTS
 
 	function getSetWeek (input) {
 		var week = this.localeData().week(this);
@@ -1287,7 +1287,7 @@
 		return input == null ? week : this.add((input - week) * 7, 'd');
 	}
 
-// FORMATTING
+	// FORMATTING
 
 	addFormatToken('d', 0, 'do', 'day');
 
@@ -1306,18 +1306,18 @@
 	addFormatToken('e', 0, 0, 'weekday');
 	addFormatToken('E', 0, 0, 'isoWeekday');
 
-// ALIASES
+	// ALIASES
 
 	addUnitAlias('day', 'd');
 	addUnitAlias('weekday', 'e');
 	addUnitAlias('isoWeekday', 'E');
 
-// PRIORITY
+	// PRIORITY
 	addUnitPriority('day', 11);
 	addUnitPriority('weekday', 11);
 	addUnitPriority('isoWeekday', 11);
 
-// PARSING
+	// PARSING
 
 	addRegexToken('d',    match1to2);
 	addRegexToken('e',    match1to2);
@@ -1346,7 +1346,7 @@
 		week[token] = toInt(input);
 	});
 
-// HELPERS
+	// HELPERS
 
 	function parseWeekday(input, locale) {
 		if (typeof input !== 'string') {
@@ -1372,7 +1372,7 @@
 		return isNaN(input) ? null : input;
 	}
 
-// LOCALES
+	// LOCALES
 
 	var defaultLocaleWeekdays = 'Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday'.split('_');
 	function localeWeekdays (m, format) {
@@ -1498,7 +1498,7 @@
 		}
 	}
 
-// MOMENTS
+	// MOMENTS
 
 	function getSetDayOfWeek (input) {
 		if (!this.isValid()) {
@@ -1640,7 +1640,7 @@
 		this._weekdaysMinStrictRegex = new RegExp('^(' + minPieces.join('|') + ')', 'i');
 	}
 
-// FORMATTING
+	// FORMATTING
 
 	function hFormat() {
 		return this.hours() % 12 || 12;
@@ -1681,14 +1681,14 @@
 	meridiem('a', true);
 	meridiem('A', false);
 
-// ALIASES
+	// ALIASES
 
 	addUnitAlias('hour', 'h');
 
-// PRIORITY
+	// PRIORITY
 	addUnitPriority('hour', 13);
 
-// PARSING
+	// PARSING
 
 	function matchMeridiem (isStrict, locale) {
 		return locale._meridiemParse;
@@ -1748,7 +1748,7 @@
 		array[SECOND] = toInt(input.substr(pos2));
 	});
 
-// LOCALES
+	// LOCALES
 
 	function localeIsPM (input) {
 		// IE8 Quirks Mode & IE7 Standards Mode do not allow accessing strings like arrays
@@ -1766,18 +1766,18 @@
 	}
 
 
-// MOMENTS
+	// MOMENTS
 
-// Setting the hour should keep the time, because the user explicitly
-// specified which hour he wants. So trying to maintain the same hour (in
-// a new timezone) makes sense. Adding/subtracting hours does not follow
-// this rule.
+	// Setting the hour should keep the time, because the user explicitly
+	// specified which hour he wants. So trying to maintain the same hour (in
+	// a new timezone) makes sense. Adding/subtracting hours does not follow
+	// this rule.
 	var getSetHour = makeGetSet('Hours', true);
 
-// months
-// week
-// weekdays
-// meridiem
+	// months
+	// week
+	// weekdays
+	// meridiem
 	var baseConfig = {
 		calendar: defaultCalendar,
 		longDateFormat: defaultLongDateFormat,
@@ -1798,7 +1798,7 @@
 		meridiemParse: defaultLocaleMeridiemParse
 	};
 
-// internal storage for locale config files
+	// internal storage for locale config files
 	var locales = {};
 	var localeFamilies = {};
 	var globalLocale;
@@ -1807,9 +1807,9 @@
 		return key ? key.toLowerCase().replace('_', '-') : key;
 	}
 
-// pick the locale from the array
-// try ['en-au', 'en-gb'] as 'en-au', 'en-gb', 'en', as in move through the list trying each
-// substring from most specific to least, but move to the next array item if it's a more specific variant than the current root
+	// pick the locale from the array
+	// try ['en-au', 'en-gb'] as 'en-au', 'en-gb', 'en', as in move through the list trying each
+	// substring from most specific to least, but move to the next array item if it's a more specific variant than the current root
 	function chooseLocale(names) {
 		var i = 0, j, next, locale, split;
 
@@ -1849,9 +1849,9 @@
 		return locales[name];
 	}
 
-// This function will load locale and then set the global locale.  If
-// no arguments are passed in, it will simply return the current global
-// locale key.
+	// This function will load locale and then set the global locale.  If
+	// no arguments are passed in, it will simply return the current global
+	// locale key.
 	function getSetGlobalLocale (key, values) {
 		var data;
 		if (key) {
@@ -1946,7 +1946,7 @@
 		return locales[name];
 	}
 
-// returns locale data
+	// returns locale data
 	function getLocale (key) {
 		var locale;
 
@@ -2004,7 +2004,7 @@
 		return m;
 	}
 
-// Pick the first defined of two or three arguments.
+	// Pick the first defined of two or three arguments.
 	function defaults(a, b, c) {
 		if (a != null) {
 			return a;
@@ -2024,10 +2024,10 @@
 		return [nowValue.getFullYear(), nowValue.getMonth(), nowValue.getDate()];
 	}
 
-// convert an array to a date.
-// the array should mirror the parameters below
-// note: all values past the year are optional and will default to the lowest possible value.
-// [year, month, day , hour, minute, second, millisecond]
+	// convert an array to a date.
+	// the array should mirror the parameters below
+	// note: all values past the year are optional and will default to the lowest possible value.
+	// [year, month, day , hour, minute, second, millisecond]
 	function configFromArray (config) {
 		var i, date, input = [], currentDate, yearToUse;
 
@@ -2152,8 +2152,8 @@
 		}
 	}
 
-// iso 8601 regex
-// 0000-00-00 0000-W00 or 0000-W00-0 + T + 00 or 00:00 or 00:00:00 or 00:00:00.000 + +00:00 or +0000 or +00)
+	// iso 8601 regex
+	// 0000-00-00 0000-W00 or 0000-W00-0 + T + 00 or 00:00 or 00:00:00 or 00:00:00.000 + +00:00 or +0000 or +00)
 	var extendedIsoRegex = /^\s*((?:[+-]\d{6}|\d{4})-(?:\d\d-\d\d|W\d\d-\d|W\d\d|\d\d\d|\d\d))(?:(T| )(\d\d(?::\d\d(?::\d\d(?:[.,]\d+)?)?)?)([\+\-]\d\d(?::?\d\d)?|\s*Z)?)?$/;
 	var basicIsoRegex = /^\s*((?:[+-]\d{6}|\d{4})(?:\d\d\d\d|W\d\d\d|W\d\d|\d\d\d|\d\d))(?:(T| )(\d\d(?:\d\d(?:\d\d(?:[.,]\d+)?)?)?)([\+\-]\d\d(?::?\d\d)?|\s*Z)?)?$/;
 
@@ -2174,7 +2174,7 @@
 		['YYYYDDD', /\d{7}/]
 	];
 
-// iso time formats and regexes
+	// iso time formats and regexes
 	var isoTimes = [
 		['HH:mm:ss.SSSS', /\d\d:\d\d:\d\d\.\d+/],
 		['HH:mm:ss,SSSS', /\d\d:\d\d:\d\d,\d+/],
@@ -2189,7 +2189,7 @@
 
 	var aspNetJsonRegex = /^\/?Date\((\-?\d+)/i;
 
-// date from iso format
+	// date from iso format
 	function configFromISO(config) {
 		var i, l,
 			string = config._i,
@@ -2242,7 +2242,7 @@
 		}
 	}
 
-// RFC 2822 regex: For details see https://tools.ietf.org/html/rfc2822#section-3.3
+	// RFC 2822 regex: For details see https://tools.ietf.org/html/rfc2822#section-3.3
 	var rfc2822 = /^(?:(Mon|Tue|Wed|Thu|Fri|Sat|Sun),?\s)?(\d{1,2})\s(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s(\d{2,4})\s(\d\d):(\d\d)(?::(\d\d))?\s(?:(UT|GMT|[ECMP][SD]T)|([Zz])|([+-]\d{4}))$/;
 
 	function extractFromRFC2822Strings(yearStr, monthStr, dayStr, hourStr, minuteStr, secondStr) {
@@ -2316,7 +2316,7 @@
 		}
 	}
 
-// date and time from ref 2822 format
+	// date and time from ref 2822 format
 	function configFromRFC2822(config) {
 		var match = rfc2822.exec(preprocessRFC2822(config._i));
 		if (match) {
@@ -2337,7 +2337,7 @@
 		}
 	}
 
-// date from iso format or fallback
+	// date from iso format or fallback
 	function configFromString(config) {
 		var matched = aspNetJsonRegex.exec(config._i);
 
@@ -2374,13 +2374,13 @@
 		}
 	);
 
-// constant that refers to the ISO standard
+	// constant that refers to the ISO standard
 	hooks.ISO_8601 = function () {};
 
-// constant that refers to the RFC 2822 form
+	// constant that refers to the RFC 2822 form
 	hooks.RFC_2822 = function () {};
 
-// date from string and format string
+	// date from string and format string
 	function configFromStringAndFormat(config) {
 		// TODO: Move this to another part of the creation flow to prevent circular deps
 		if (config._f === hooks.ISO_8601) {
@@ -2478,7 +2478,7 @@
 		}
 	}
 
-// date from string and array of format strings
+	// date from string and array of format strings
 	function configFromStringAndArray(config) {
 		var tempConfig,
 			bestMoment,
@@ -2655,11 +2655,11 @@
 		}
 	);
 
-// Pick a moment m from moments so that m[fn](other) is true for all
-// other. This relies on the function fn to be transitive.
-//
-// moments should either be an array of moment objects or an array, whose
-// first element is an array of moment objects.
+	// Pick a moment m from moments so that m[fn](other) is true for all
+	// other. This relies on the function fn to be transitive.
+	//
+	// moments should either be an array of moment objects or an array, whose
+	// first element is an array of moment objects.
 	function pickBy(fn, moments) {
 		var res, i;
 		if (moments.length === 1 && isArray(moments[0])) {
@@ -2677,7 +2677,7 @@
 		return res;
 	}
 
-// TODO: Use [].sort instead?
+	// TODO: Use [].sort instead?
 	function min () {
 		var args = [].slice.call(arguments, 0);
 
@@ -2775,7 +2775,7 @@
 		}
 	}
 
-// FORMATTING
+	// FORMATTING
 
 	function offset (token, separator) {
 		addFormatToken(token, 0, 0, function () {
@@ -2792,7 +2792,7 @@
 	offset('Z', ':');
 	offset('ZZ', '');
 
-// PARSING
+	// PARSING
 
 	addRegexToken('Z',  matchShortOffset);
 	addRegexToken('ZZ', matchShortOffset);
@@ -2801,11 +2801,11 @@
 		config._tzm = offsetFromString(matchShortOffset, input);
 	});
 
-// HELPERS
+	// HELPERS
 
-// timezone chunker
-// '+10:00' > ['10',  '00']
-// '-1530'  > ['-15', '30']
+	// timezone chunker
+	// '+10:00' > ['10',  '00']
+	// '-1530'  > ['-15', '30']
 	var chunkOffset = /([\+\-]|\d\d)/gi;
 
 	function offsetFromString(matcher, string) {
@@ -2824,7 +2824,7 @@
 			parts[0] === '+' ? minutes : -minutes;
 	}
 
-// Return a moment from input, that is local/utc/zone equivalent to model.
+	// Return a moment from input, that is local/utc/zone equivalent to model.
 	function cloneWithOffset(input, model) {
 		var res, diff;
 		if (model._isUTC) {
@@ -2845,24 +2845,24 @@
 		return -Math.round(m._d.getTimezoneOffset() / 15) * 15;
 	}
 
-// HOOKS
+	// HOOKS
 
-// This function will be called whenever a moment is mutated.
-// It is intended to keep the offset in sync with the timezone.
+	// This function will be called whenever a moment is mutated.
+	// It is intended to keep the offset in sync with the timezone.
 	hooks.updateOffset = function () {};
 
-// MOMENTS
+	// MOMENTS
 
-// keepLocalTime = true means only change the timezone, without
-// affecting the local hour. So 5:31:26 +0300 --[utcOffset(2, true)]-->
-// 5:31:26 +0200 It is possible that 5:31:26 doesn't exist with offset
-// +0200, so we adjust the time as needed, to be valid.
-//
-// Keeping the time actually adds/subtracts (one hour)
-// from the actual represented time. That is why we call updateOffset
-// a second time. In case it wants us to change the offset again
-// _changeInProgress == true case, then we have to adjust, because
-// there is no such time in the given timezone.
+	// keepLocalTime = true means only change the timezone, without
+	// affecting the local hour. So 5:31:26 +0300 --[utcOffset(2, true)]-->
+	// 5:31:26 +0200 It is possible that 5:31:26 doesn't exist with offset
+	// +0200, so we adjust the time as needed, to be valid.
+	//
+	// Keeping the time actually adds/subtracts (one hour)
+	// from the actual represented time. That is why we call updateOffset
+	// a second time. In case it wants us to change the offset again
+	// _changeInProgress == true case, then we have to adjust, because
+	// there is no such time in the given timezone.
 	function getSetOffset (input, keepLocalTime, keepMinutes) {
 		var offset = this._offset || 0,
 			localAdjust;
@@ -2995,12 +2995,12 @@
 		return this.isValid() ? this._isUTC && this._offset === 0 : false;
 	}
 
-// ASP.NET json date format regex
+	// ASP.NET json date format regex
 	var aspNetRegex = /^(\-|\+)?(?:(\d*)[. ])?(\d+)\:(\d+)(?:\:(\d+)(\.\d*)?)?$/;
 
-// from http://docs.closure-library.googlecode.com/git/closure_goog_date_date.js.source.html
-// somewhat more in line with 4.4.3.2 2004 spec, but allows decimal anywhere
-// and further modified to allow for strings containing both week and day
+	// from http://docs.closure-library.googlecode.com/git/closure_goog_date_date.js.source.html
+	// somewhat more in line with 4.4.3.2 2004 spec, but allows decimal anywhere
+	// and further modified to allow for strings containing both week and day
 	var isoRegex = /^(-|\+)?P(?:([-+]?[0-9,.]*)Y)?(?:([-+]?[0-9,.]*)M)?(?:([-+]?[0-9,.]*)W)?(?:([-+]?[0-9,.]*)D)?(?:T(?:([-+]?[0-9,.]*)H)?(?:([-+]?[0-9,.]*)M)?(?:([-+]?[0-9,.]*)S)?)?$/;
 
 	function createDuration (input, key) {
@@ -3024,7 +3024,7 @@
 			} else {
 				duration.milliseconds = input;
 			}
-		} else if (!!(match = aspNetRegex.exec(input))) {
+		} else if (match = aspNetRegex.exec(input)) {
 			sign = (match[1] === '-') ? -1 : 1;
 			duration = {
 				y  : 0,
@@ -3034,7 +3034,7 @@
 				s  : toInt(match[SECOND])                       * sign,
 				ms : toInt(absRound(match[MILLISECOND] * 1000)) * sign // the millisecond decimal point is included in the match
 			};
-		} else if (!!(match = isoRegex.exec(input))) {
+		} else if (match = isoRegex.exec(input)) {
 			sign = (match[1] === '-') ? -1 : (match[1] === '+') ? 1 : 1;
 			duration = {
 				y : parseIso(match[2], sign),
@@ -3108,7 +3108,7 @@
 		return res;
 	}
 
-// TODO: remove 'name' arg after deprecation is removed
+	// TODO: remove 'name' arg after deprecation is removed
 	function createAdder(direction, name) {
 		return function (val, period) {
 			var dur, tmp;
@@ -3256,15 +3256,15 @@
 		units = normalizeUnits(units);
 
 		switch (units) {
-			case 'year': output = monthDiff(this, that) / 12; break;
-			case 'month': output = monthDiff(this, that); break;
-			case 'quarter': output = monthDiff(this, that) / 3; break;
-			case 'second': output = (this - that) / 1e3; break; // 1000
-			case 'minute': output = (this - that) / 6e4; break; // 1000 * 60
-			case 'hour': output = (this - that) / 36e5; break; // 1000 * 60 * 60
-			case 'day': output = (this - that - zoneDelta) / 864e5; break; // 1000 * 60 * 60 * 24, negate dst
-			case 'week': output = (this - that - zoneDelta) / 6048e5; break; // 1000 * 60 * 60 * 24 * 7, negate dst
-			default: output = this - that;
+		case 'year': output = monthDiff(this, that) / 12; break;
+		case 'month': output = monthDiff(this, that); break;
+		case 'quarter': output = monthDiff(this, that) / 3; break;
+		case 'second': output = (this - that) / 1e3; break; // 1000
+		case 'minute': output = (this - that) / 6e4; break; // 1000 * 60
+		case 'hour': output = (this - that) / 36e5; break; // 1000 * 60 * 60
+		case 'day': output = (this - that - zoneDelta) / 864e5; break; // 1000 * 60 * 60 * 24, negate dst
+		case 'week': output = (this - that - zoneDelta) / 6048e5; break; // 1000 * 60 * 60 * 24 * 7, negate dst
+		default: output = this - that;
 		}
 
 		return asFloat ? output : absFloor(output);
@@ -3373,9 +3373,9 @@
 		return this.to(createLocal(), withoutSuffix);
 	}
 
-// If passed a locale key, it will set the locale for this
-// instance.  Otherwise, it will return the locale configuration
-// variables for this instance.
+	// If passed a locale key, it will set the locale for this
+	// instance.  Otherwise, it will return the locale configuration
+	// variables for this instance.
 	function locale (key) {
 		var newLocaleData;
 
@@ -3410,27 +3410,27 @@
 		// the following switch intentionally omits break keywords
 		// to utilize falling through the cases.
 		switch (units) {
-			case 'year':
-				this.month(0);
+		case 'year':
+			this.month(0);
 			/* falls through */
-			case 'quarter':
-			case 'month':
-				this.date(1);
+		case 'quarter':
+		case 'month':
+			this.date(1);
 			/* falls through */
-			case 'week':
-			case 'isoWeek':
-			case 'day':
-			case 'date':
-				this.hours(0);
+		case 'week':
+		case 'isoWeek':
+		case 'day':
+		case 'date':
+			this.hours(0);
 			/* falls through */
-			case 'hour':
-				this.minutes(0);
+		case 'hour':
+			this.minutes(0);
 			/* falls through */
-			case 'minute':
-				this.seconds(0);
+		case 'minute':
+			this.seconds(0);
 			/* falls through */
-			case 'second':
-				this.milliseconds(0);
+		case 'second':
+			this.milliseconds(0);
 		}
 
 		// weeks are a special case
@@ -3520,7 +3520,7 @@
 		};
 	}
 
-// FORMATTING
+	// FORMATTING
 
 	addFormatToken(0, ['gg', 2], 0, function () {
 		return this.weekYear() % 100;
@@ -3539,18 +3539,18 @@
 	addWeekYearFormatToken('GGGG',  'isoWeekYear');
 	addWeekYearFormatToken('GGGGG', 'isoWeekYear');
 
-// ALIASES
+	// ALIASES
 
 	addUnitAlias('weekYear', 'gg');
 	addUnitAlias('isoWeekYear', 'GG');
 
-// PRIORITY
+	// PRIORITY
 
 	addUnitPriority('weekYear', 1);
 	addUnitPriority('isoWeekYear', 1);
 
 
-// PARSING
+	// PARSING
 
 	addRegexToken('G',      matchSigned);
 	addRegexToken('g',      matchSigned);
@@ -3569,7 +3569,7 @@
 		week[token] = hooks.parseTwoDigitYear(input);
 	});
 
-// MOMENTS
+	// MOMENTS
 
 	function getSetWeekYear (input) {
 		return getSetWeekYearHelper.call(this,
@@ -3617,43 +3617,43 @@
 		return this;
 	}
 
-// FORMATTING
+	// FORMATTING
 
 	addFormatToken('Q', 0, 'Qo', 'quarter');
 
-// ALIASES
+	// ALIASES
 
 	addUnitAlias('quarter', 'Q');
 
-// PRIORITY
+	// PRIORITY
 
 	addUnitPriority('quarter', 7);
 
-// PARSING
+	// PARSING
 
 	addRegexToken('Q', match1);
 	addParseToken('Q', function (input, array) {
 		array[MONTH] = (toInt(input) - 1) * 3;
 	});
 
-// MOMENTS
+	// MOMENTS
 
 	function getSetQuarter (input) {
 		return input == null ? Math.ceil((this.month() + 1) / 3) : this.month((input - 1) * 3 + this.month() % 3);
 	}
 
-// FORMATTING
+	// FORMATTING
 
 	addFormatToken('D', ['DD', 2], 'Do', 'date');
 
-// ALIASES
+	// ALIASES
 
 	addUnitAlias('date', 'D');
 
-// PRIOROITY
+	// PRIOROITY
 	addUnitPriority('date', 9);
 
-// PARSING
+	// PARSING
 
 	addRegexToken('D',  match1to2);
 	addRegexToken('DD', match1to2, match2);
@@ -3669,22 +3669,22 @@
 		array[DATE] = toInt(input.match(match1to2)[0], 10);
 	});
 
-// MOMENTS
+	// MOMENTS
 
 	var getSetDayOfMonth = makeGetSet('Date', true);
 
-// FORMATTING
+	// FORMATTING
 
 	addFormatToken('DDD', ['DDDD', 3], 'DDDo', 'dayOfYear');
 
-// ALIASES
+	// ALIASES
 
 	addUnitAlias('dayOfYear', 'DDD');
 
-// PRIORITY
+	// PRIORITY
 	addUnitPriority('dayOfYear', 4);
 
-// PARSING
+	// PARSING
 
 	addRegexToken('DDD',  match1to3);
 	addRegexToken('DDDD', match3);
@@ -3692,60 +3692,60 @@
 		config._dayOfYear = toInt(input);
 	});
 
-// HELPERS
+	// HELPERS
 
-// MOMENTS
+	// MOMENTS
 
 	function getSetDayOfYear (input) {
 		var dayOfYear = Math.round((this.clone().startOf('day') - this.clone().startOf('year')) / 864e5) + 1;
 		return input == null ? dayOfYear : this.add((input - dayOfYear), 'd');
 	}
 
-// FORMATTING
+	// FORMATTING
 
 	addFormatToken('m', ['mm', 2], 0, 'minute');
 
-// ALIASES
+	// ALIASES
 
 	addUnitAlias('minute', 'm');
 
-// PRIORITY
+	// PRIORITY
 
 	addUnitPriority('minute', 14);
 
-// PARSING
+	// PARSING
 
 	addRegexToken('m',  match1to2);
 	addRegexToken('mm', match1to2, match2);
 	addParseToken(['m', 'mm'], MINUTE);
 
-// MOMENTS
+	// MOMENTS
 
 	var getSetMinute = makeGetSet('Minutes', false);
 
-// FORMATTING
+	// FORMATTING
 
 	addFormatToken('s', ['ss', 2], 0, 'second');
 
-// ALIASES
+	// ALIASES
 
 	addUnitAlias('second', 's');
 
-// PRIORITY
+	// PRIORITY
 
 	addUnitPriority('second', 15);
 
-// PARSING
+	// PARSING
 
 	addRegexToken('s',  match1to2);
 	addRegexToken('ss', match1to2, match2);
 	addParseToken(['s', 'ss'], SECOND);
 
-// MOMENTS
+	// MOMENTS
 
 	var getSetSecond = makeGetSet('Seconds', false);
 
-// FORMATTING
+	// FORMATTING
 
 	addFormatToken('S', 0, 0, function () {
 		return ~~(this.millisecond() / 100);
@@ -3776,15 +3776,15 @@
 	});
 
 
-// ALIASES
+	// ALIASES
 
 	addUnitAlias('millisecond', 'ms');
 
-// PRIORITY
+	// PRIORITY
 
 	addUnitPriority('millisecond', 16);
 
-// PARSING
+	// PARSING
 
 	addRegexToken('S',    match1to3, match1);
 	addRegexToken('SS',   match1to3, match2);
@@ -3802,16 +3802,16 @@
 	for (token = 'S'; token.length <= 9; token += 'S') {
 		addParseToken(token, parseMs);
 	}
-// MOMENTS
+	// MOMENTS
 
 	var getSetMillisecond = makeGetSet('Milliseconds', false);
 
-// FORMATTING
+	// FORMATTING
 
 	addFormatToken('z',  0, 0, 'zoneAbbr');
 	addFormatToken('zz', 0, 0, 'zoneName');
 
-// MOMENTS
+	// MOMENTS
 
 	function getZoneAbbr () {
 		return this._isUTC ? 'UTC' : '';
@@ -3862,47 +3862,47 @@
 	proto.valueOf           = valueOf;
 	proto.creationData      = creationData;
 
-// Year
+	// Year
 	proto.year       = getSetYear;
 	proto.isLeapYear = getIsLeapYear;
 
-// Week Year
+	// Week Year
 	proto.weekYear    = getSetWeekYear;
 	proto.isoWeekYear = getSetISOWeekYear;
 
-// Quarter
+	// Quarter
 	proto.quarter = proto.quarters = getSetQuarter;
 
-// Month
+	// Month
 	proto.month       = getSetMonth;
 	proto.daysInMonth = getDaysInMonth;
 
-// Week
+	// Week
 	proto.week           = proto.weeks        = getSetWeek;
 	proto.isoWeek        = proto.isoWeeks     = getSetISOWeek;
 	proto.weeksInYear    = getWeeksInYear;
 	proto.isoWeeksInYear = getISOWeeksInYear;
 
-// Day
+	// Day
 	proto.date       = getSetDayOfMonth;
 	proto.day        = proto.days             = getSetDayOfWeek;
 	proto.weekday    = getSetLocaleDayOfWeek;
 	proto.isoWeekday = getSetISODayOfWeek;
 	proto.dayOfYear  = getSetDayOfYear;
 
-// Hour
+	// Hour
 	proto.hour = proto.hours = getSetHour;
 
-// Minute
+	// Minute
 	proto.minute = proto.minutes = getSetMinute;
 
-// Second
+	// Second
 	proto.second = proto.seconds = getSetSecond;
 
-// Millisecond
+	// Millisecond
 	proto.millisecond = proto.milliseconds = getSetMillisecond;
 
-// Offset
+	// Offset
 	proto.utcOffset            = getSetOffset;
 	proto.utc                  = setOffsetToUTC;
 	proto.local                = setOffsetToLocal;
@@ -3914,11 +3914,11 @@
 	proto.isUtc                = isUtc;
 	proto.isUTC                = isUtc;
 
-// Timezone
+	// Timezone
 	proto.zoneAbbr = getZoneAbbr;
 	proto.zoneName = getZoneName;
 
-// Deprecations
+	// Deprecations
 	proto.dates  = deprecate('dates accessor is deprecated. Use date instead.', getSetDayOfMonth);
 	proto.months = deprecate('months accessor is deprecated. Use month instead', getSetMonth);
 	proto.years  = deprecate('years accessor is deprecated. Use year instead', getSetYear);
@@ -3949,19 +3949,19 @@
 	proto$1.pastFuture      = pastFuture;
 	proto$1.set             = set;
 
-// Month
+	// Month
 	proto$1.months            =        localeMonths;
 	proto$1.monthsShort       =        localeMonthsShort;
 	proto$1.monthsParse       =        localeMonthsParse;
 	proto$1.monthsRegex       = monthsRegex;
 	proto$1.monthsShortRegex  = monthsShortRegex;
 
-// Week
+	// Week
 	proto$1.week = localeWeek;
 	proto$1.firstDayOfYear = localeFirstDayOfYear;
 	proto$1.firstDayOfWeek = localeFirstDayOfWeek;
 
-// Day of Week
+	// Day of Week
 	proto$1.weekdays       =        localeWeekdays;
 	proto$1.weekdaysMin    =        localeWeekdaysMin;
 	proto$1.weekdaysShort  =        localeWeekdaysShort;
@@ -3971,7 +3971,7 @@
 	proto$1.weekdaysShortRegex  =        weekdaysShortRegex;
 	proto$1.weekdaysMinRegex    =        weekdaysMinRegex;
 
-// Hours
+	// Hours
 	proto$1.isPM = localeIsPM;
 	proto$1.meridiem = localeMeridiem;
 
@@ -4001,14 +4001,14 @@
 		return out;
 	}
 
-// ()
-// (5)
-// (fmt, 5)
-// (fmt)
-// (true)
-// (true, 5)
-// (true, fmt, 5)
-// (true, fmt)
+	// ()
+	// (5)
+	// (fmt, 5)
+	// (fmt)
+	// (true)
+	// (true, 5)
+	// (true, fmt, 5)
+	// (true, fmt)
 	function listWeekdaysImpl (localeSorted, format, index, field) {
 		if (typeof localeSorted === 'boolean') {
 			if (isNumber(format)) {
@@ -4077,7 +4077,7 @@
 		}
 	});
 
-// Side effect imports
+	// Side effect imports
 	hooks.lang = deprecate('moment.lang is deprecated. Use moment.locale instead.', getSetGlobalLocale);
 	hooks.langData = deprecate('moment.langData is deprecated. Use moment.localeData instead.', getLocale);
 
@@ -4110,12 +4110,12 @@
 		return duration._bubble();
 	}
 
-// supports only 2.0-style add(1, 's') or add(duration)
+	// supports only 2.0-style add(1, 's') or add(duration)
 	function add$1 (input, value) {
 		return addSubtract$1(this, input, value, 1);
 	}
 
-// supports only 2.0-style subtract(1, 's') or subtract(duration)
+	// supports only 2.0-style subtract(1, 's') or subtract(duration)
 	function subtract$1 (input, value) {
 		return addSubtract$1(this, input, value, -1);
 	}
@@ -4204,19 +4204,19 @@
 			// handle milliseconds separately because of floating point math errors (issue #1867)
 			days = this._days + Math.round(monthsToDays(this._months));
 			switch (units) {
-				case 'week'   : return days / 7     + milliseconds / 6048e5;
-				case 'day'    : return days         + milliseconds / 864e5;
-				case 'hour'   : return days * 24    + milliseconds / 36e5;
-				case 'minute' : return days * 1440  + milliseconds / 6e4;
-				case 'second' : return days * 86400 + milliseconds / 1000;
+			case 'week'   : return days / 7     + milliseconds / 6048e5;
+			case 'day'    : return days         + milliseconds / 864e5;
+			case 'hour'   : return days * 24    + milliseconds / 36e5;
+			case 'minute' : return days * 1440  + milliseconds / 6e4;
+			case 'second' : return days * 86400 + milliseconds / 1000;
 				// Math.floor prevents floating point math errors here
-				case 'millisecond': return Math.floor(days * 864e5) + milliseconds;
-				default: throw new Error('Unknown unit ' + units);
+			case 'millisecond': return Math.floor(days * 864e5) + milliseconds;
+			default: throw new Error('Unknown unit ' + units);
 			}
 		}
 	}
 
-// TODO: Use this.as('ms')?
+	// TODO: Use this.as('ms')?
 	function valueOf$1 () {
 		if (!this.isValid()) {
 			return NaN;
@@ -4281,7 +4281,7 @@
 		M : 11          // months to year
 	};
 
-// helper function for moment.fn.from, moment.fn.fromNow, and moment.duration.fn.humanize
+	// helper function for moment.fn.from, moment.fn.fromNow, and moment.duration.fn.humanize
 	function substituteTimeAgo(string, number, withoutSuffix, isFuture, locale) {
 		return locale.relativeTime(number || 1, !!withoutSuffix, string, isFuture);
 	}
@@ -4313,7 +4313,7 @@
 		return substituteTimeAgo.apply(null, a);
 	}
 
-// This function allows you to set the rounding function for relative time strings
+	// This function allows you to set the rounding function for relative time strings
 	function getSetRelativeTimeRounding (roundingFunction) {
 		if (roundingFunction === undefined) {
 			return round;
@@ -4325,7 +4325,7 @@
 		return false;
 	}
 
-// This function allows you to set a threshold for relative time strings
+	// This function allows you to set a threshold for relative time strings
 	function getSetRelativeTimeThreshold (threshold, limit) {
 		if (thresholds[threshold] === undefined) {
 			return false;
@@ -4453,18 +4453,18 @@
 	proto$2.locale         = locale;
 	proto$2.localeData     = localeData;
 
-// Deprecations
+	// Deprecations
 	proto$2.toIsoString = deprecate('toIsoString() is deprecated. Please use toISOString() instead (notice the capitals)', toISOString$1);
 	proto$2.lang = lang;
 
-// Side effect imports
+	// Side effect imports
 
-// FORMATTING
+	// FORMATTING
 
 	addFormatToken('X', 0, 0, 'unix');
 	addFormatToken('x', 0, 0, 'valueOf');
 
-// PARSING
+	// PARSING
 
 	addRegexToken('x', matchSigned);
 	addRegexToken('X', matchTimestamp);
@@ -4475,7 +4475,7 @@
 		config._d = new Date(toInt(input));
 	});
 
-// Side effect imports
+	// Side effect imports
 
 
 	hooks.version = '2.19.3';

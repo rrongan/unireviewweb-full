@@ -17,18 +17,18 @@
 	var NG_ANIMATE_CLASSNAME = 'ng-animate';
 	var NG_ANIMATE_CHILDREN_DATA = '$$ngAnimateChildren';
 
-// Detect proper transitionend/animationend event names.
+	// Detect proper transitionend/animationend event names.
 	var CSS_PREFIX = '', TRANSITION_PROP, TRANSITIONEND_EVENT, ANIMATION_PROP, ANIMATIONEND_EVENT;
 
-// If unprefixed events are not supported but webkit-prefixed are, use the latter.
-// Otherwise, just use W3C names, browsers not supporting them at all will just ignore them.
-// Note: Chrome implements `window.onwebkitanimationend` and doesn't implement `window.onanimationend`
-// but at the same time dispatches the `animationend` event and not `webkitAnimationEnd`.
-// Register both events in case `window.onanimationend` is not supported because of that,
-// do the same for `transitionend` as Safari is likely to exhibit similar behavior.
-// Also, the only modern browser that uses vendor prefixes for transitions/keyframes is webkit
-// therefore there is no reason to test anymore for other vendor prefixes:
-// http://caniuse.com/#search=transition
+	// If unprefixed events are not supported but webkit-prefixed are, use the latter.
+	// Otherwise, just use W3C names, browsers not supporting them at all will just ignore them.
+	// Note: Chrome implements `window.onwebkitanimationend` and doesn't implement `window.onanimationend`
+	// but at the same time dispatches the `animationend` event and not `webkitAnimationEnd`.
+	// Register both events in case `window.onanimationend` is not supported because of that,
+	// do the same for `transitionend` as Safari is likely to exhibit similar behavior.
+	// Also, the only modern browser that uses vendor prefixes for transitions/keyframes is webkit
+	// therefore there is no reason to test anymore for other vendor prefixes:
+	// http://caniuse.com/#search=transition
 	if ((window.ontransitionend === undefined) && (window.onwebkittransitionend !== undefined)) {
 		CSS_PREFIX = '-webkit-';
 		TRANSITION_PROP = 'WebkitTransition';
@@ -113,20 +113,20 @@
 	function stripCommentsFromElement(element) {
 		if (element instanceof jqLite) {
 			switch (element.length) {
-				case 0:
+			case 0:
+				return element;
+
+			case 1:
+				// there is no point of stripping anything if the element
+				// is the only element within the jqLite wrapper.
+				// (it's important that we retain the element instance.)
+				if (element[0].nodeType === ELEMENT_NODE) {
 					return element;
+				}
+				break;
 
-				case 1:
-					// there is no point of stripping anything if the element
-					// is the only element within the jqLite wrapper.
-					// (it's important that we retain the element instance.)
-					if (element[0].nodeType === ELEMENT_NODE) {
-						return element;
-					}
-					break;
-
-				default:
-					return jqLite(extractElementNode(element));
+			default:
+				return jqLite(extractElementNode(element));
 			}
 		}
 
@@ -841,15 +841,15 @@
 		};
 	}
 
-// we do not reassign an already present style value since
-// if we detect the style property value again we may be
-// detecting styles that were added via the `from` styles.
-// We make use of `isDefined` here since an empty string
-// or null value (which is what getPropertyValue will return
-// for a non-existing style) will still be marked as a valid
-// value for the style (a falsy value implies that the style
-// is to be removed at the end of the animation). If we had a simple
-// "OR" statement then it would not be enough to catch that.
+	// we do not reassign an already present style value since
+	// if we detect the style property value again we may be
+	// detecting styles that were added via the `from` styles.
+	// We make use of `isDefined` here since an empty string
+	// or null value (which is what getPropertyValue will return
+	// for a non-existing style) will still be marked as a valid
+	// value for the style (a falsy value implies that the style
+	// is to be removed at the end of the animation). If we had a simple
+	// "OR" statement then it would not be enough to catch that.
 	function registerRestorableStyles(backup, node, properties) {
 		forEach(properties, function(prop) {
 			backup[prop] = isDefined(backup[prop])
@@ -1649,12 +1649,12 @@
 						forEach(['width','height','top','left'], function(key) {
 							var value = coords[key];
 							switch (key) {
-								case 'top':
-									value += bodyNode.scrollTop;
-									break;
-								case 'left':
-									value += bodyNode.scrollLeft;
-									break;
+							case 'top':
+								value += bodyNode.scrollTop;
+								break;
+							case 'left':
+								value += bodyNode.scrollLeft;
+								break;
 							}
 							styles[key] = Math.floor(value) + 'px';
 						});
@@ -1789,9 +1789,9 @@
 			}];
 	}];
 
-// TODO(matsko): use caching here to speed things up for detection
-// TODO(matsko): add documentation
-//  by the time...
+	// TODO(matsko): use caching here to speed things up for detection
+	// TODO(matsko): add documentation
+	//  by the time...
 
 	var $$AnimateJsProvider = ['$animateProvider', /** @this */ function($animateProvider) {
 		this.$get = ['$injector', '$$AnimateRunner', '$$jqLite',
@@ -1933,25 +1933,25 @@
 					function executeAnimationFn(fn, element, event, options, onDone) {
 						var args;
 						switch (event) {
-							case 'animate':
-								args = [element, options.from, options.to, onDone];
-								break;
+						case 'animate':
+							args = [element, options.from, options.to, onDone];
+							break;
 
-							case 'setClass':
-								args = [element, classesToAdd, classesToRemove, onDone];
-								break;
+						case 'setClass':
+							args = [element, classesToAdd, classesToRemove, onDone];
+							break;
 
-							case 'addClass':
-								args = [element, classesToAdd, onDone];
-								break;
+						case 'addClass':
+							args = [element, classesToAdd, onDone];
+							break;
 
-							case 'removeClass':
-								args = [element, classesToRemove, onDone];
-								break;
+						case 'removeClass':
+							args = [element, classesToRemove, onDone];
+							break;
 
-							default:
-								args = [element, onDone];
-								break;
+						default:
+							args = [element, onDone];
+							break;
 						}
 
 						args.push(options);
@@ -2734,12 +2734,12 @@
 						var animationDetails = activeAnimationsLookup.get(child);
 						if (animationDetails) {
 							switch (state) {
-								case RUNNING_STATE:
-									animationDetails.runner.end();
+							case RUNNING_STATE:
+								animationDetails.runner.end();
 								/* falls through */
-								case PRE_DIGEST_STATE:
-									activeAnimationsLookup.delete(child);
-									break;
+							case PRE_DIGEST_STATE:
+								activeAnimationsLookup.delete(child);
+								break;
 							}
 						}
 					});

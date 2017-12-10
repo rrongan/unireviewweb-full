@@ -1,7 +1,6 @@
 var College = require('../models/college');
 var Course = require('../models/course').model;
 var express = require('express');
-var Fuse = require('fuse.js');
 
 var router = express.Router();
 

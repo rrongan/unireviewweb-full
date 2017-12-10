@@ -5,128 +5,128 @@
     @url: https://github.com/JohnnyTheTank/angular-wikipedia-api-factory#readme 
     @license: MIT
 */
-"use strict";
+'use strict';
 
-angular.module("jtt_wikipedia", [])
-    .factory('wikipediaFactory', ['$http', 'wikipediaSearchDataService', function ($http, wikipediaSearchDataService) {
+angular.module('jtt_wikipedia', [])
+	.factory('wikipediaFactory', ['$http', 'wikipediaSearchDataService', function ($http, wikipediaSearchDataService) {
 
-        var wikipediaFactory = {};
+		var wikipediaFactory = {};
 
-        wikipediaFactory.searchArticlesByTitle = function (_params) {
+		wikipediaFactory.searchArticlesByTitle = function (_params) {
 
-            var wikipediaSearchData = wikipediaSearchDataService.getNew("searchArticlesByTitle", _params);
+			var wikipediaSearchData = wikipediaSearchDataService.getNew('searchArticlesByTitle', _params);
 
-            return $http.jsonp(
-                wikipediaSearchData.url,
-                {
-                    method: 'GET',
-                    params: wikipediaSearchData.object,
-                }
-            );
-        };
+			return $http.jsonp(
+				wikipediaSearchData.url,
+				{
+					method: 'GET',
+					params: wikipediaSearchData.object,
+				}
+			);
+		};
 
-        wikipediaFactory.searchArticles = function (_params) {
+		wikipediaFactory.searchArticles = function (_params) {
 
-            var wikipediaSearchData = wikipediaSearchDataService.getNew("searchArticles", _params);
+			var wikipediaSearchData = wikipediaSearchDataService.getNew('searchArticles', _params);
 
-            return $http.jsonp(
-                wikipediaSearchData.url,
-                {
-                    method: 'GET',
-                    params: wikipediaSearchData.object,
-                }
-            );
-        };
+			return $http.jsonp(
+				wikipediaSearchData.url,
+				{
+					method: 'GET',
+					params: wikipediaSearchData.object,
+				}
+			);
+		};
 
-        wikipediaFactory.getArticle = function (_params) {
+		wikipediaFactory.getArticle = function (_params) {
 
-            var wikipediaSearchData = wikipediaSearchDataService.getNew("getArticle", _params);
+			var wikipediaSearchData = wikipediaSearchDataService.getNew('getArticle', _params);
 
-            return $http.jsonp(
-                wikipediaSearchData.url,
-                {
-                    method: 'GET',
-                    params: wikipediaSearchData.object,
-                }
-            );
-        };
+			return $http.jsonp(
+				wikipediaSearchData.url,
+				{
+					method: 'GET',
+					params: wikipediaSearchData.object,
+				}
+			);
+		};
 
-        return wikipediaFactory;
-    }])
-    .service('wikipediaSearchDataService', function () {
-        this.getApiBaseUrl = function (_lang) {
-            return 'https://' + _lang + ".wikipedia.org/w/api.php";
-        };
+		return wikipediaFactory;
+	}])
+	.service('wikipediaSearchDataService', function () {
+		this.getApiBaseUrl = function (_lang) {
+			return 'https://' + _lang + '.wikipedia.org/w/api.php';
+		};
 
-        this.fillDataInObjectByList = function (_object, _params, _list) {
+		this.fillDataInObjectByList = function (_object, _params, _list) {
 
-            angular.forEach(_list, function (value, key) {
-                if (angular.isDefined(_params[value])) {
-                    _object.object[value] = _params[value];
-                }
-            });
+			angular.forEach(_list, function (value, key) {
+				if (angular.isDefined(_params[value])) {
+					_object.object[value] = _params[value];
+				}
+			});
 
-            return _object;
-        };
+			return _object;
+		};
 
-        this.getNew = function (_type, _params) {
+		this.getNew = function (_type, _params) {
 
-            var wikipediaSearchData = {
-                object: {
-                    action: 'query',
-                    format: 'json',
-                    formatversion: 2,
-                },
-                url: "",
-            };
+			var wikipediaSearchData = {
+				object: {
+					action: 'query',
+					format: 'json',
+					formatversion: 2,
+				},
+				url: '',
+			};
 
-            if (angular.isUndefined(_params.lang)) {
-                _params.lang = 'en'
-            }
+			if (angular.isUndefined(_params.lang)) {
+				_params.lang = 'en';
+			}
 
-            if (angular.isUndefined(_params.pithumbsize)) {
-                _params.pithumbsize = '400'
-            }
+			if (angular.isUndefined(_params.pithumbsize)) {
+				_params.pithumbsize = '400';
+			}
 
-            switch (_type) {
-                case "searchArticlesByTitle":
-                    wikipediaSearchData.object.prop = 'extracts|pageimages|info';
-                    wikipediaSearchData.object.generator = 'search';
-                    wikipediaSearchData.object.gsrsearch = 'intitle:' + _params.term;
-                    wikipediaSearchData.object.pilimit = 'max';
-                    wikipediaSearchData.object.exlimit = 'max';
-                    wikipediaSearchData.object.exintro = '';
+			switch (_type) {
+			case 'searchArticlesByTitle':
+				wikipediaSearchData.object.prop = 'extracts|pageimages|info';
+				wikipediaSearchData.object.generator = 'search';
+				wikipediaSearchData.object.gsrsearch = 'intitle:' + _params.term;
+				wikipediaSearchData.object.pilimit = 'max';
+				wikipediaSearchData.object.exlimit = 'max';
+				wikipediaSearchData.object.exintro = '';
 
-                    wikipediaSearchData = this.fillDataInObjectByList(wikipediaSearchData, _params, [
-                        'prop', 'generator', 'gsrsearch', 'pilimit', 'exlimit', 'exintro', 'rvparse', 'formatversion', 'prop', 'pithumbsize', 'gsrlimit'
-                    ]);
-                    wikipediaSearchData.url = this.getApiBaseUrl(_params.lang);
-                    break;
+				wikipediaSearchData = this.fillDataInObjectByList(wikipediaSearchData, _params, [
+					'prop', 'generator', 'gsrsearch', 'pilimit', 'exlimit', 'exintro', 'rvparse', 'formatversion', 'prop', 'pithumbsize', 'gsrlimit'
+				]);
+				wikipediaSearchData.url = this.getApiBaseUrl(_params.lang);
+				break;
 
-                case "searchArticles":
-                    wikipediaSearchData.object.prop = 'extracts|pageimages|info';
-                    wikipediaSearchData.object.generator = 'search';
-                    wikipediaSearchData.object.gsrsearch = _params.term;
-                    wikipediaSearchData.object.pilimit = 'max';
-                    wikipediaSearchData.object.exlimit = 'max';
-                    wikipediaSearchData.object.exintro = '';
+			case 'searchArticles':
+				wikipediaSearchData.object.prop = 'extracts|pageimages|info';
+				wikipediaSearchData.object.generator = 'search';
+				wikipediaSearchData.object.gsrsearch = _params.term;
+				wikipediaSearchData.object.pilimit = 'max';
+				wikipediaSearchData.object.exlimit = 'max';
+				wikipediaSearchData.object.exintro = '';
 
-                    wikipediaSearchData = this.fillDataInObjectByList(wikipediaSearchData, _params, [
-                        'prop', 'generator', 'gsrsearch', 'pilimit', 'exlimit', 'exintro', 'rvparse', 'formatversion', 'prop', 'pithumbsize', 'gsrlimit'
-                    ]);
-                    wikipediaSearchData.url = this.getApiBaseUrl(_params.lang);
-                    break;
+				wikipediaSearchData = this.fillDataInObjectByList(wikipediaSearchData, _params, [
+					'prop', 'generator', 'gsrsearch', 'pilimit', 'exlimit', 'exintro', 'rvparse', 'formatversion', 'prop', 'pithumbsize', 'gsrlimit'
+				]);
+				wikipediaSearchData.url = this.getApiBaseUrl(_params.lang);
+				break;
 
-                case "getArticle":
-                    wikipediaSearchData.object.prop = 'extracts|pageimages|images|info';
-                    wikipediaSearchData.object.titles = _params.term;
+			case 'getArticle':
+				wikipediaSearchData.object.prop = 'extracts|pageimages|images|info';
+				wikipediaSearchData.object.titles = _params.term;
 
-                    wikipediaSearchData = this.fillDataInObjectByList(wikipediaSearchData, _params, [
-                        'prop', 'rvparse', 'formatversion', 'prop', 'pithumbsize', 'redirects'
-                    ]);
-                    wikipediaSearchData.url = this.getApiBaseUrl(_params.lang);
-                    break;
-            }
-            return wikipediaSearchData;
-        };
-    });
+				wikipediaSearchData = this.fillDataInObjectByList(wikipediaSearchData, _params, [
+					'prop', 'rvparse', 'formatversion', 'prop', 'pithumbsize', 'redirects'
+				]);
+				wikipediaSearchData.url = this.getApiBaseUrl(_params.lang);
+				break;
+			}
+			return wikipediaSearchData;
+		};
+	});

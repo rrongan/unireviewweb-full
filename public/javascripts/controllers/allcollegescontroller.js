@@ -6,7 +6,7 @@ app.controller('allCollegesController', ['$http','$window','$state','$scope','Go
 
 	$scope.getFiltered= function(result, idx){
 		result._index = idx;
-		return !(result._index % 3 )
+		return !(result._index % 3 );
 	};
 
 	$http.get('/college').then(async function (data) {
@@ -16,10 +16,10 @@ app.controller('allCollegesController', ['$http','$window','$state','$scope','Go
 				$scope.results[i].image = res[0];
 			});
 		}
-		var image = $scope.results[i].image;
+		var image = $scope.results[i].image; // eslint-disable-line no-unused-vars
 	});
 
 	$scope.go = function(college,image) {
 		$state.go('collegemain',{'collegeid':college._id, 'image':image});
-	}
+	};
 }]);

@@ -57,8 +57,8 @@
 	 * {@link guide/accessibility Developer Guide}.
 	 */
 	var ngAriaModule = angular.module('ngAria', ['ng']).
-	info({ angularVersion: '1.6.7' }).
-	provider('$aria', $AriaProvider);
+		info({ angularVersion: '1.6.7' }).
+		provider('$aria', $AriaProvider);
 
 	/**
 	 * Internal Utilities
@@ -275,50 +275,50 @@
 							}
 
 							switch (shape) {
-								case 'radio':
-								case 'checkbox':
-									if (shouldAttachRole(shape, elem)) {
-										elem.attr('role', shape);
-									}
-									if (shouldAttachAttr('aria-checked', 'ariaChecked', elem, false)) {
-										scope.$watch(ngAriaWatchModelValue, shape === 'radio' ?
-											getRadioReaction : getCheckboxReaction);
-									}
-									if (needsTabIndex) {
-										elem.attr('tabindex', 0);
-									}
-									break;
-								case 'range':
-									if (shouldAttachRole(shape, elem)) {
-										elem.attr('role', 'slider');
-									}
-									if ($aria.config('ariaValue')) {
-										var needsAriaValuemin = !elem.attr('aria-valuemin') &&
+							case 'radio':
+							case 'checkbox':
+								if (shouldAttachRole(shape, elem)) {
+									elem.attr('role', shape);
+								}
+								if (shouldAttachAttr('aria-checked', 'ariaChecked', elem, false)) {
+									scope.$watch(ngAriaWatchModelValue, shape === 'radio' ?
+										getRadioReaction : getCheckboxReaction);
+								}
+								if (needsTabIndex) {
+									elem.attr('tabindex', 0);
+								}
+								break;
+							case 'range':
+								if (shouldAttachRole(shape, elem)) {
+									elem.attr('role', 'slider');
+								}
+								if ($aria.config('ariaValue')) {
+									var needsAriaValuemin = !elem.attr('aria-valuemin') &&
 											(attr.hasOwnProperty('min') || attr.hasOwnProperty('ngMin'));
-										var needsAriaValuemax = !elem.attr('aria-valuemax') &&
+									var needsAriaValuemax = !elem.attr('aria-valuemax') &&
 											(attr.hasOwnProperty('max') || attr.hasOwnProperty('ngMax'));
-										var needsAriaValuenow = !elem.attr('aria-valuenow');
+									var needsAriaValuenow = !elem.attr('aria-valuenow');
 
-										if (needsAriaValuemin) {
-											attr.$observe('min', function ngAriaValueMinReaction(newVal) {
-												elem.attr('aria-valuemin', newVal);
-											});
-										}
-										if (needsAriaValuemax) {
-											attr.$observe('max', function ngAriaValueMinReaction(newVal) {
-												elem.attr('aria-valuemax', newVal);
-											});
-										}
-										if (needsAriaValuenow) {
-											scope.$watch(ngAriaWatchModelValue, function ngAriaValueNowReaction(newVal) {
-												elem.attr('aria-valuenow', newVal);
-											});
-										}
+									if (needsAriaValuemin) {
+										attr.$observe('min', function ngAriaValueMinReaction(newVal) {
+											elem.attr('aria-valuemin', newVal);
+										});
 									}
-									if (needsTabIndex) {
-										elem.attr('tabindex', 0);
+									if (needsAriaValuemax) {
+										attr.$observe('max', function ngAriaValueMinReaction(newVal) {
+											elem.attr('aria-valuemax', newVal);
+										});
 									}
-									break;
+									if (needsAriaValuenow) {
+										scope.$watch(ngAriaWatchModelValue, function ngAriaValueNowReaction(newVal) {
+											elem.attr('aria-valuenow', newVal);
+										});
+									}
+								}
+								if (needsTabIndex) {
+									elem.attr('tabindex', 0);
+								}
+								break;
 							}
 
 							if (!attr.hasOwnProperty('ngRequired') && ngModel.$validators.required

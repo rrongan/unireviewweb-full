@@ -15,7 +15,7 @@ var app = angular.module('UniReviewWeb', ['ui.router','ui.bootstrap','ngMaterial
 	});
 
 app.config(['$stateProvider', '$urlRouterProvider', 'USER_ROLES', '$sceDelegateProvider',function($stateProvider, $urlRouterProvider, USER_ROLES, $sceDelegateProvider) {
-	$urlRouterProvider.otherwise("/");
+	$urlRouterProvider.otherwise('/');
 
 	$stateProvider
 		.state('home', {
@@ -59,37 +59,37 @@ app.config(['$stateProvider', '$urlRouterProvider', 'USER_ROLES', '$sceDelegateP
 			}
 		})
 		.state('allcolleges', {
-		url:'/colleges',
-		templateUrl : '../pages/allcolleges.ejs',
-		controller  : 'allCollegesController',
-		data: {
-			authorizedRoles: [USER_ROLES.all]
-		}
-	})
-	.state('addcollege', {
-		url:'/addcollege',
-		templateUrl : '../pages/addcollege.ejs',
-		controller  : 'addCollegeController',
-		data: {
-			authorizedRoles: [USER_ROLES.all]
-		}
-	})
-	.state('editcollege', {
-		url:'/editcollege',
-		templateUrl : '../pages/editcollege.ejs',
-		controller  : 'editCollegeController',
-		data: {
-			authorizedRoles: [USER_ROLES.all]
-		}
-	})
-	.state('studentprofile', {
-		url:'/studentprofile',
-		templateUrl : '../pages/studentprofile.ejs',
-		controller  : 'studentProfileController',
-		data: {
-			authorizedRoles: [USER_ROLES.all]
-		}
-	});
+			url:'/colleges',
+			templateUrl : '../pages/allcolleges.ejs',
+			controller  : 'allCollegesController',
+			data: {
+				authorizedRoles: [USER_ROLES.all]
+			}
+		})
+		.state('addcollege', {
+			url:'/addcollege',
+			templateUrl : '../pages/addcollege.ejs',
+			controller  : 'addCollegeController',
+			data: {
+				authorizedRoles: [USER_ROLES.all]
+			}
+		})
+		.state('editcollege', {
+			url:'/editcollege',
+			templateUrl : '../pages/editcollege.ejs',
+			controller  : 'editCollegeController',
+			data: {
+				authorizedRoles: [USER_ROLES.all]
+			}
+		})
+		.state('studentprofile', {
+			url:'/studentprofile',
+			templateUrl : '../pages/studentprofile.ejs',
+			controller  : 'studentProfileController',
+			data: {
+				authorizedRoles: [USER_ROLES.all]
+			}
+		});
 
 	$sceDelegateProvider.resourceUrlWhitelist([
 		'self',

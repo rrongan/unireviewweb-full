@@ -9,8 +9,8 @@ app.factory('Auth', [ '$http', '$rootScope', '$window', 'Session', 'AUTH_EVENTS'
 			$http.post('/auth/login', user).then(function (data) {
 				var users = data.data.users;
 				if(users.studentid)
-					user.userRole = "student";
-				$window.sessionStorage["userInfo"] = JSON.stringify(user);
+					user.userRole = 'student';
+				$window.sessionStorage['userInfo'] = JSON.stringify(user);
 				Session.create(users);
 				$rootScope.currentUser = users;
 
@@ -36,7 +36,7 @@ app.factory('Auth', [ '$http', '$rootScope', '$window', 'Session', 'AUTH_EVENTS'
 
 		authService.logout = function () {
 			Session.destroy();
-			$window.sessionStorage.removeItem("userInfo");
+			$window.sessionStorage.removeItem('userInfo');
 			$rootScope.$broadcast(AUTH_EVENTS.logoutSuccess);
 		};
 
@@ -75,16 +75,16 @@ app.run(function($rootScope, $window, $state, Auth, AUTH_EVENTS) {
 		}
 	});
 
-	if ($window.sessionStorage["userInfo"] && !$rootScope.currentUser) {
-		var credentials = JSON.parse($window.sessionStorage["userInfo"]);
-		Auth.login(credentials,function (user) {});
+	if ($window.sessionStorage['userInfo'] && !$rootScope.currentUser) {
+		var credentials = JSON.parse($window.sessionStorage['userInfo']);
+		Auth.login(credentials,function () {});
 	}
 
 	$rootScope.getClass = function(path) {
 		if ($state.current.name == path) {
-			return "active";
+			return 'active';
 		} else {
-			return "";
+			return '';
 		}
 	};
 
@@ -94,7 +94,7 @@ app.run(function($rootScope, $window, $state, Auth, AUTH_EVENTS) {
 
 });
 
-app.service('Session', function($rootScope, USER_ROLES) {
+app.service('Session', function($rootScope) {
 
 	this.create = function(user) {
 		this.user = user;
