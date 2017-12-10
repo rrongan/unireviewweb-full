@@ -116,7 +116,7 @@ router.editStudentPassword = function(req, res) {
 			res.status(404).json({ message: 'Student NOT Found!', errmsg : err});
 		else {
 			try {
-				if(req.body.oldpassword === req.body.reenterpassword) {
+				if(req.body.newpassword === req.body.reenterpassword) {
 					student.comparePassword(req.body.oldpassword, function(err, isMatch){
 						if (err)
 							res.status(400).json({Error:err.message});
@@ -129,12 +129,12 @@ router.editStudentPassword = function(req, res) {
 										res.json({ message: 'Student Password Updated!'});
 								});
 							}else{
-								res.status(400).json({ message: 'Incorrect Password!'});
+								res.status(400).json({ message: 'Incorrect Current Password!'});
 							}
 						}
 					});
 				}else{
-					res.status(400).json({ message: 'Password Not Match With Re-enter Password, Please Try Again!'});
+					res.status(400).json({ message: 'New Password Not Match With Re-enter Password, Please Try Again!'});
 				}
 			}catch (e){
 				res.send('Edit Student Password Error: ',e);

@@ -1,12 +1,17 @@
 var app = angular.module('UniReviewWeb');
 
-app.controller('signUpController', ['$scope', '$http', '$state', '$mdDialog', function($scope, $http, $state, $mdDialog) {
+app.controller('signUpController', ['$scope', '$rootScope', '$http', '$state', '$mdDialog', function($scope, $rootScope, $http, $state, $mdDialog) {
 
 	$scope.check.mainpage = false;
 
 	$scope.signin = function () {
 		$state.go('signin')
 	};
+
+	if($rootScope.currentUser){
+		$scope.check.mainpage = true;
+		$state.go('home');
+	}
 
 	$scope.submit = function() {
 		if (!$scope.loginForm.$invalid && $scope.credentials.password === $scope.credentials.cpassword) {

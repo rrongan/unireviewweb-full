@@ -18,6 +18,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
+  background-color: transparent;
 }
 
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
@@ -1999,10 +2000,6 @@ ul.buttons.vertical li:first-child {
 
 /* Table */
 
-table {
-  width: 100%;
-}
-
 table.default {
   width: 100%;
 }
@@ -2041,6 +2038,37 @@ table.editcollege tbody tr {
 
 table.editcollege td {
     padding: 0.5em 1em 0.5em 1em;
+}
+
+table.editcollege td input{
+    margin: 0.5em 1em 0.5em 1em;
+}
+
+table.editstudent {
+    width: 100%;
+}
+
+table.editstudent td p{
+    color: black;
+    font-size: 24px;
+}
+
+table.editstudent td label{
+    color: black;
+}
+
+table.editstudent td input{
+    color: black;
+    width: 30%;
+    margin: 0.5em 1em 0.5em 1em;
+}
+
+table.editstudent md-select{
+    width:20%;
+}
+
+table.editstudent textarea{
+    color: black;
 }
 
 table.review {

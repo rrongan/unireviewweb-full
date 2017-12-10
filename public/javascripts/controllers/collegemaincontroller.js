@@ -137,9 +137,17 @@ app.controller('collegeMainController', ['$http','$window','$rootScope','$scope'
 			type: 'College'
 		};
 		if(reviewdetails.rating === 0){
-			alert("Rate At Least 1 Star for Review");
+			var alert = $mdDialog.alert()
+				.title("Rate At Least 1 Star for Review")
+				.ariaLabel('Lucky day')
+				.ok('Confirm');
+			$mdDialog.show(alert);
 		}else if(reviewdetails.comment === ""){
-			alert("Comment is Required for Adding Review")
+			var alert = $mdDialog.alert()
+				.title("Comment is Required for Adding Review")
+				.ariaLabel('Lucky day')
+				.ok('Confirm');
+			$mdDialog.show(alert);
 		}else{
 			$http.post('/college/'+$state.params.collegeid+'/review',reviewdetails).then(function (data) {
 				var alert = $mdDialog.alert()

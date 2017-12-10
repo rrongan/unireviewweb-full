@@ -81,6 +81,14 @@ app.config(['$stateProvider', '$urlRouterProvider', 'USER_ROLES', '$sceDelegateP
 		data: {
 			authorizedRoles: [USER_ROLES.all]
 		}
+	})
+	.state('studentprofile', {
+		url:'/studentprofile',
+		templateUrl : '../pages/studentprofile.ejs',
+		controller  : 'studentProfileController',
+		data: {
+			authorizedRoles: [USER_ROLES.all]
+		}
 	});
 
 	$sceDelegateProvider.resourceUrlWhitelist([
