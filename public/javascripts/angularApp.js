@@ -20,7 +20,7 @@ app.config(['$stateProvider', '$urlRouterProvider', 'USER_ROLES', '$sceDelegateP
 	$stateProvider
 		.state('home', {
 			url:'/',
-			templateUrl : '../pages/main.ejs',
+			templateUrl : '../public/pages/main.ejs',
 			controller  : 'mainController',
 			data: {
 				authorizedRoles: [USER_ROLES.all]
@@ -28,7 +28,7 @@ app.config(['$stateProvider', '$urlRouterProvider', 'USER_ROLES', '$sceDelegateP
 		})
 		.state('searchresult', {
 			url:'/college/search/:param',
-			templateUrl : '../pages/searchresult.ejs',
+			templateUrl : '../public/pages/searchresult.ejs',
 			controller  : 'searchResultController',
 			data: {
 				authorizedRoles: [USER_ROLES.admin]
@@ -36,7 +36,7 @@ app.config(['$stateProvider', '$urlRouterProvider', 'USER_ROLES', '$sceDelegateP
 		})
 		.state('signin', {
 			url:'/signin',
-			templateUrl : '../pages/signin.ejs',
+			templateUrl : '../public/pages/signin.ejs',
 			controller  : 'signInController',
 			data: {
 				authorizedRoles: [USER_ROLES.all]
@@ -44,7 +44,7 @@ app.config(['$stateProvider', '$urlRouterProvider', 'USER_ROLES', '$sceDelegateP
 		})
 		.state('signup', {
 			url:'/signup',
-			templateUrl : '../pages/signup.ejs',
+			templateUrl : '../public/pages/signup.ejs',
 			controller  : 'signUpController',
 			data: {
 				authorizedRoles: [USER_ROLES.all]
@@ -52,7 +52,7 @@ app.config(['$stateProvider', '$urlRouterProvider', 'USER_ROLES', '$sceDelegateP
 		})
 		.state('collegemain', {
 			url:'/college?collegeid&image',
-			templateUrl : '../pages/collegemain.ejs',
+			templateUrl : '../public/pages/collegemain.ejs',
 			controller  : 'collegeMainController',
 			data: {
 				authorizedRoles: [USER_ROLES.all]
@@ -60,7 +60,7 @@ app.config(['$stateProvider', '$urlRouterProvider', 'USER_ROLES', '$sceDelegateP
 		})
 		.state('allcolleges', {
 			url:'/colleges',
-			templateUrl : '../pages/allcolleges.ejs',
+			templateUrl : '../public/pages/allcolleges.ejs',
 			controller  : 'allCollegesController',
 			data: {
 				authorizedRoles: [USER_ROLES.all]
@@ -68,7 +68,7 @@ app.config(['$stateProvider', '$urlRouterProvider', 'USER_ROLES', '$sceDelegateP
 		})
 		.state('addcollege', {
 			url:'/addcollege',
-			templateUrl : '../pages/addcollege.ejs',
+			templateUrl : '../public/pages/addcollege.ejs',
 			controller  : 'addCollegeController',
 			data: {
 				authorizedRoles: [USER_ROLES.all]
@@ -76,7 +76,7 @@ app.config(['$stateProvider', '$urlRouterProvider', 'USER_ROLES', '$sceDelegateP
 		})
 		.state('editcollege', {
 			url:'/editcollege',
-			templateUrl : '../pages/editcollege.ejs',
+			templateUrl : '../public/pages/editcollege.ejs',
 			controller  : 'editCollegeController',
 			data: {
 				authorizedRoles: [USER_ROLES.all]
@@ -84,7 +84,7 @@ app.config(['$stateProvider', '$urlRouterProvider', 'USER_ROLES', '$sceDelegateP
 		})
 		.state('studentprofile', {
 			url:'/studentprofile',
-			templateUrl : '../pages/studentprofile.ejs',
+			templateUrl : '../public/pages/studentprofile.ejs',
 			controller  : 'studentProfileController',
 			data: {
 				authorizedRoles: [USER_ROLES.all]
