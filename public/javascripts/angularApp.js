@@ -1,4 +1,5 @@
 /* Authentication https://medium.com/opinionated-angularjs/techniques-for-authentication-in-angularjs-applications-7bbf0346acec*/
+require('../stylesheets/style.css');
 require('angular');
 require('angular-route');
 require('angular-aria');

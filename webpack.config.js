@@ -16,14 +16,17 @@ module.exports = {
 	target: 'web',
 	output: {
 		path: path.join(__dirname, 'build'),
-		publicPath: 'http://localhost:3000',
+		publicPath: 'http://localhost:3000/build/',
 		filename: 'bundle.js'
 	},
 	module: {
 		rules: [
 			{ test: /\.js$/,
 				exclude: /node_modules/,
-				loader: "babel-loader"}
+				loader: "babel-loader"},
+			{ test: /\.css$/, loaders: ['style-loader','css-loader']},
+			{test: /\.(svg|png|jpe?g|gif)(\?\S*)?$/, loader: 'file-loader'},
+			{test: /\.(eot|woff|woff2|ttf)(\?\S*)?$/, loader: 'file-loader'}
 		]
 	}
 };

@@ -3424,7 +3424,7 @@ body.index #main {
     width: 50%;
     text-align: center;
     cursor: pointer;
-    -webkit-transition: .5s ease;!important;
+    -webkit-transition: .5s ease!important;
     transition: .5s ease;
 }
 .tab-group li a:hover {
@@ -3457,7 +3457,7 @@ body.index #main {
     width: 50%;
     text-align: center;
     cursor: pointer;
-    -webkit-transition: .5s ease;!important;
+    -webkit-transition: .5s ease!important;
     transition: .5s ease;
 }
 .tab-group-college li a:hover {
@@ -3489,7 +3489,7 @@ body.index #main {
 }
 
 .form label.active {
-    -webkit-transform: translateY(50px);!important;
+    -webkit-transform: translateY(50px)!important;
     transform: translateY(50px);
     left: 2px;
     font-size: 14px;
@@ -3512,8 +3512,8 @@ body.index #main {
     border: 1px solid #a0b3b0;
     color: #ffffff;
     border-radius: 0;
-    -webkit-transition: border-color .25s ease, box-shadow .25s ease;!important;
-    transition: border-color .25s ease, box-shadow .25s ease;!important;
+    -webkit-transition: border-color .25s ease, box-shadow .25s ease!important;
+    transition: border-color .25s ease, box-shadow .25s ease!important;
 }
 
 .form input:focus, textarea:focus {
@@ -3554,9 +3554,9 @@ body.index #main {
     letter-spacing: .1em;
     background: #1ab188;
     color: #ffffff;
-    -webkit-transition: all 0.5s ease;!important;
+    -webkit-transition: all 0.5s ease!important;
     transition: all 0.5s ease;
-    -webkit-appearance: none;!important;
+    -webkit-appearance: none!important;
 }
 .form .button:hover, .form .button:focus {
     background: #179b77;

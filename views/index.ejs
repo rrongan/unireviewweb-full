@@ -5,7 +5,7 @@
   <meta charset="utf-8" />
   <script src="../build/bundle.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="/public/stylesheets/style.css" />
+  <!--<link rel="stylesheet" href="/public/stylesheets/style.css" />-->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body ng-controller="mainController" class="index">
@@ -98,10 +98,10 @@
   </td>
   <td ng-show="showEditDelete(review.reviewer)">
     <md-button class="md-fab md-primary" aria-label="Use Android" ng-click="editReview(review)">
-      <md-icon class="editicon" md-svg-src="images/icons/edit.svg"></md-icon>
+      <md-icon class="editicon" md-svg-src="/public/images/icons/edit.svg"></md-icon>
     </md-button>
     <md-button class="md-fab md-warn" aria-label="Use Android" ng-click="deleteReview($event,review)">
-      <md-icon class="editicon" md-svg-src="images/icons/delete.svg"></md-icon>
+      <md-icon class="editicon" md-svg-src="/public/images/icons/delete.svg"></md-icon>
     </md-button>
   </td>
 </script>
@@ -113,10 +113,10 @@
   </td>
   <td ng-show="showEditDelete(review.reviewer)">
     <md-button class="md-fab md-primary" aria-label="Use Android" ng-click="updateReview(review)">
-      <md-icon class="editicon" md-svg-src="images/icons/save.svg"></md-icon>
+      <md-icon class="editicon" md-svg-src="/public/images/icons/save.svg"></md-icon>
     </md-button>
     <md-button class="md-fab md-warn" aria-label="Use Android" ng-click="reset()">
-      <md-icon class="editicon" md-svg-src="images/icons/cancel.svg"></md-icon>
+      <md-icon class="editicon" md-svg-src="/public/images/icons/cancel.svg"></md-icon>
     </md-button>
   </td>
 </script>
@@ -130,10 +130,10 @@
   </td>
   <td ng-show="showEditDelete()">
     <md-button class="md-fab md-primary" aria-label="Use Android" ng-click="editCollege(college)">
-      <md-icon class="editicon" md-svg-src="images/icons/edit.svg"></md-icon>
+      <md-icon class="editicon" md-svg-src="/public/images/icons/edit.svg"></md-icon>
     </md-button>
     <md-button class="md-fab md-warn" aria-label="Use Android" ng-click="deleteCollege($event,college)">
-      <md-icon class="editicon" md-svg-src="images/icons/delete.svg"></md-icon>
+      <md-icon class="editicon" md-svg-src="/public/images/icons/delete.svg"></md-icon>
     </md-button>
   </td>
 </script>
@@ -151,10 +151,10 @@
   </td>
   <td ng-show="showEditDelete()">
     <md-button class="md-fab md-primary" aria-label="Use Android" ng-click="updateCollege(college)">
-      <md-icon class="editicon" md-svg-src="images/icons/save.svg"></md-icon>
+      <md-icon class="editicon" md-svg-src="/public/images/icons/save.svg"></md-icon>
     </md-button>
     <md-button class="md-fab md-warn" aria-label="Use Android" ng-click="reset()">
-      <md-icon class="editicon" md-svg-src="images/icons/cancel.svg"></md-icon>
+      <md-icon class="editicon" md-svg-src="/public/images/icons/cancel.svg"></md-icon>
     </md-button>
   </td>
 </script>
@@ -171,10 +171,10 @@
     </td>
     <td ng-show="showEditDelete()">
       <md-button class="md-fab md-primary" aria-label="Use Android" ng-click="editStudent(student)">
-        <md-icon class="editicon" md-svg-src="images/icons/edit.svg"></md-icon>
+        <md-icon class="editicon" md-svg-src="/public/images/icons/edit.svg"></md-icon>
       </md-button>
       <md-button class="md-fab md-warn" aria-label="Use Android" ng-click="deleteStudent($event,student)">
-        <md-icon class="editicon" md-svg-src="images/icons/delete.svg"></md-icon>
+        <md-icon class="editicon" md-svg-src="/public/images/icons/delete.svg"></md-icon>
       </md-button>
     </td>
   </tr>
@@ -208,10 +208,10 @@
   <tr>
     <td ng-show="showEditDelete()">
       <md-button class="md-fab md-primary" aria-label="Use Android" ng-click="updateStudent(student)">
-        <md-icon class="editicon" md-svg-src="images/icons/save.svg"></md-icon>
+        <md-icon class="editicon" md-svg-src="/public/images/icons/save.svg"></md-icon>
       </md-button>
       <md-button class="md-fab md-warn" aria-label="Use Android" ng-click="reset()">
-        <md-icon class="editicon" md-svg-src="images/icons/cancel.svg"></md-icon>
+        <md-icon class="editicon" md-svg-src="/public/images/icons/cancel.svg"></md-icon>
       </md-button>
     </td>
   </tr>
