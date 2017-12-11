@@ -165,39 +165,39 @@ describe('College Unit', function () {
 		});
 	});
 
-	// describe('PUT /college/:id', function () {
-	// 	it('should return confirmation message and update college detail', async function(done) {
-	// 		var modify = {
-	// 			name: 'Cork Institute of Technology',
-	// 			contactno: '082123132',
-	// 			email: 'cork@cit.ie',
-	// 			address: 'Kilkenny Road, Carlow'
-	// 		};
-	// 		await College.find(function (err,college) {
-	// 			tempid = college[0]._id;
-	// 		});
-	// 		request(app)
-	// 			.put('/college/'+tempid)
-	// 			.send(modify)
-	// 			.expect(200)
-	// 			.end(function (err, res) {
-	// 				if(err) return done(err);
-	// 				expect(res.body).to.have.property('message').equal('College Updated!' ) ;
-	// 				var result = {
-	// 					name: res.body.data.name,
-	// 					contactno: res.body.data.contactno,
-	// 					email: res.body.data.email,
-	// 					address: res.body.data.address
-	// 				};
-	// 				expect(result).to.include( {
-	// 					name: 'Cork Institute of Technology',
-	// 					contactno: '082123132',
-	// 					email: 'cork@cit.ie',
-	// 					address: 'Kilkenny Road, Carlow'
-	// 				} );
-	// 				done();
-	// 			});
-	// 	});
+	describe('PUT /college/:id', function () {
+		// it('should return confirmation message and update college detail', async function(done) {
+		// 	var modify = {
+		// 		name: 'Cork Institute of Technology',
+		// 		contactno: '082123132',
+		// 		email: 'cork@cit.ie',
+		// 		address: 'Kilkenny Road, Carlow'
+		// 	};
+		// 	await College.find(function (err,college) {
+		// 		tempid = college[0]._id;
+		// 	});
+		// 	request(app)
+		// 		.put('/college/'+tempid)
+		// 		.send(modify)
+		// 		.expect(200)
+		// 		.end(function (err, res) {
+		// 			if(err) return done(err);
+		// 			expect(res.body).to.have.property('message').equal('College Updated!' ) ;
+		// 			var result = {
+		// 				name: res.body.data.name,
+		// 				contactno: res.body.data.contactno,
+		// 				email: res.body.data.email,
+		// 				address: res.body.data.address
+		// 			};
+		// 			expect(result).to.include( {
+		// 				name: 'Cork Institute of Technology',
+		// 				contactno: '082123132',
+		// 				email: 'cork@cit.ie',
+		// 				address: 'Kilkenny Road, Carlow'
+		// 			} );
+		// 			done();
+		// 		});
+		// });
 
 		it('should return 404 if college is not found', function(done) {
 			request(app)
