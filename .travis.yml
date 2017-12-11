@@ -1,3 +1,17 @@
 language: node_js
 node_js:
 - stable
+script:
+- npm run coverage
+- npm run check-coverage
+after_success:
+- npm run report-coverage
+branches:
+ only:
+ - master
+notifications:
+ email:
+   recipients:
+     - rrongan@gmail.com      # use your own
+   on_success: never        # default: change
+   on_failure: always       # default: always
