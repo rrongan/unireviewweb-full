@@ -1,11 +1,9 @@
 /*Review Edit Delete http://blog.shubhamsaxena.com/creating-simple-inline-editing-with-angularjs/*/
-var app = angular.module('UniReviewWeb');
-
 function collegeMainController($scope, $http, $rootScope, $route, $routeParams, $mdDialog, $location, GoogleImageSearch, wikipediaFactory, $sce, moment) {
 
 	$scope.check.mainpage = false;
 
-	$scope.icon = "";
+	$scope.icon = '';
 	$scope.readOnly = true;
 	$scope.rating = 0;
 	$scope.show = true;

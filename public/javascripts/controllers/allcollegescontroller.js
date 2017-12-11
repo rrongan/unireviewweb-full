@@ -1,5 +1,3 @@
-var app = angular.module('UniReviewWeb');
-
 function allCollegesController($scope, $http, $location, GoogleImageSearch) {
 
 	$scope.check.mainpage = false;
@@ -19,7 +17,7 @@ function allCollegesController($scope, $http, $location, GoogleImageSearch) {
 		var image = $scope.results[i].image; // eslint-disable-line no-unused-vars
 	});
 
-	$scope.go = function(college,image) {
+	$scope.go = function(college) {
 		$location.path('/college/'+ college._id);
 	};
 }

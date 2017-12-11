@@ -1,5 +1,3 @@
-var app = angular.module('UniReviewWeb');
-
 function signUpController($scope, $http, $rootScope, $location, $mdDialog) {
 
 	$scope.check.mainpage = false;

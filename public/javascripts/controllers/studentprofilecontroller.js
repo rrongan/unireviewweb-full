@@ -1,5 +1,3 @@
-var app = angular.module('UniReviewWeb');
-
 function studentProfileController($scope, $http, $rootScope, $location, $route, $mdDialog, moment ) {
 
 	$scope.check.mainpage = false;

@@ -38,7 +38,7 @@ if (prod) {
 } else {
 	app.use(express.static(path.join(__dirname, '')));
 }
-app.use("/public", express.static(__dirname + "/public"));
+app.use('/public', express.static(__dirname + '/public'));
 app.use(session({
 	key: 'user_sid',
 	secret: 'unireviewweb',

@@ -2,3 +2,5 @@ README.md
 /public/javascripts/angular
 /public/javascripts/jquery
 /public/javascripts/plugin/
+build/
+dist/

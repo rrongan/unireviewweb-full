@@ -1,5 +1,3 @@
-var app = angular.module('UniReviewWeb');
-
 function searchResultController($scope, $http, $location , $routeParams, GoogleImageSearch) {
 
 	$scope.check.mainpage = false;

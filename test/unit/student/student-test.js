@@ -289,7 +289,7 @@ describe('Student Unit', function () {
 		it('should return confirmation message and update student password', async function(done) {
 			var modify = {
 				'oldpassword':'tempstudent01',
-				'reenterpassword':'tempstudent01',
+				'reenterpassword':'tempstudent00',
 				'newpassword':'tempstudent00'
 			};
 			await Student.find(function (err,student) {
@@ -306,7 +306,7 @@ describe('Student Unit', function () {
 				});
 		});
 
-		it('should return error message when old password and reenter password is not equal', async function(done) {
+		it('should return error message when new password and reenter password is not equal', async function(done) {
 			var modify = {
 				'oldpassword':'tempstudent01',
 				'reenterpassword':'tempstudent00',
@@ -321,7 +321,7 @@ describe('Student Unit', function () {
 				.expect(400)
 				.end(function (err, res) {
 					if(err) return done(err);
-					expect(res.body).to.have.property('message').equal('Password Not Match With Re-enter Password, Please Try Again!' ) ;
+					expect(res.body).to.have.property('message').equal('New Password Not Match With Re-enter Password, Please Try Again!' ) ;
 					done();
 				});
 		});
@@ -330,7 +330,7 @@ describe('Student Unit', function () {
 			var modify = {
 				'oldpassword':'tempstudent00',
 				'reenterpassword':'tempstudent00',
-				'newpassword':'tempstudent02'
+				'newpassword':'tempstudent00'
 			};
 			await Student.find(function (err,student) {
 				tempid = student[0]._id;
@@ -341,7 +341,7 @@ describe('Student Unit', function () {
 				.expect(400)
 				.end(function (err, res) {
 					if(err) return done(err);
-					expect(res.body).to.have.property('message').equal('Incorrect Password!' ) ;
+					expect(res.body).to.have.property('message').equal('Incorrect Current Password!' ) ;
 					done();
 				});
 		});

@@ -1,5 +1,3 @@
-var app = angular.module('UniReviewWeb');
-
 function addCollegeController($scope, $http, $mdDialog, $location) {
 
 	$scope.check.mainpage = false;
@@ -36,6 +34,6 @@ function addCollegeController($scope, $http, $mdDialog, $location) {
 	$scope.edit = function () {
 		$location.path('/editcollege');
 	};
-};
+}
 
 module.exports = addCollegeController;

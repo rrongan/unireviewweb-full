@@ -1,5 +1,3 @@
-var app = angular.module('UniReviewWeb');
-
 function signInController($scope, $location, $window, Auth, $mdDialog) {
 
 	$scope.check.mainpage = false;
@@ -34,6 +32,6 @@ function signInController($scope, $location, $window, Auth, $mdDialog) {
 	$scope.signup = function () {
 		$location.path('/signup');
 	};
-};
+}
 
 module.exports = signInController;

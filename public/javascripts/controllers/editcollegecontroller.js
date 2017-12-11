@@ -1,5 +1,3 @@
-var app = angular.module('UniReviewWeb');
-
 function editCollegeController($scope, $http, $rootScope, $route, $location, $mdDialog) {
 
 	$scope.check.mainpage = false;

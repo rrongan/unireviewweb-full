@@ -1,5 +1,3 @@
-var app = angular.module('UniReviewWeb');
-
 function mainController($scope, $location, $rootScope, Auth, AUTH_EVENTS, USER_ROLES, $window, $mdDialog) {
 
 
@@ -29,10 +27,6 @@ function mainController($scope, $location, $rootScope, Auth, AUTH_EVENTS, USER_R
 	$scope.home = function () {
 		if(!$scope.check.mainpage)
 			$scope.check.mainpage = true;
-	};
-
-	var showLoginPage = function() {
-		$location.path('signin');
 	};
 
 	var backHomePage = function() {
