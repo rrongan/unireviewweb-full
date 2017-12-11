@@ -93,7 +93,7 @@ router.editStudent = function(req, res) {
 				if(req.body.username)
 					student.username = req.body.username;
 			}catch (e){
-				res.send('Edit Student Error: ',e);
+				res.status(400).send(e);
 			}
 			Student.update({_id:req.params.id},student,function (err) {
 				if (err)
@@ -137,7 +137,7 @@ router.editStudentPassword = function(req, res) {
 					res.status(400).json({ message: 'New Password Not Match With Re-enter Password, Please Try Again!'});
 				}
 			}catch (e){
-				res.send('Edit Student Password Error: ',e);
+				res.status(400).send(e);
 			}
 		}
 	});
