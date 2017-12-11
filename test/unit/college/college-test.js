@@ -179,7 +179,7 @@ describe('College Unit', function () {
 			request(app)
 				.put('/college/'+tempid)
 				.send(modify)
-				.expect(200)
+				.expect(400)
 				.end(function (err, res) {
 					if(err) return done(err);
 					expect(res.body).to.have.property('message').equal('College Updated!' ) ;
