@@ -10,7 +10,9 @@
     "unit": "npm run unitStudent && npm run unitAuth && npm run unitCollege",
     "integration": "cross-env NODE_ENV=test LOG_LEVEL=silent nyc mocha ./test/integration -name '*-test.js",
     "test": "npm run unit && npm run integration",
-    "build": "webpack"
+    "build": "webpack",
+    "start-prod": "set NODE_ENV=prod && node bin/www",
+    "build-prod": "webpack --config webpack-prod.config.js"
   },
   "dependencies": {
     "@uirouter/angularjs": "^1.0.11",
@@ -44,6 +46,7 @@
   "devDependencies": {
     "babel-core": "^6.14.0",
     "babel-loader": "^7.1.2",
+    "babel-minify-webpack-plugin": "^0.2.0",
     "chai": "^3.5.0",
     "chai-http": "^2.0.1",
     "chai-things": "^0.2.0",
@@ -51,6 +54,7 @@
     "css-loader": "^0.28.7",
     "eslint": "^4.1.1",
     "eslint-plugin-json": "^1.2.0",
+    "extract-text-webpack-plugin": "^2.0.0",
     "file-loader": "^1.1.5",
     "html-webpack-plugin": "^2.30.1",
     "istanbul": "^0.4.5",

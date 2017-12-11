@@ -6,3 +6,4 @@ package-lock.json
 *DS_St*
 /.nyc_output
 build/
+dist/
