@@ -1,9 +1,14 @@
 var path = require('path');
 var webpack = require('webpack');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+var CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
 	devtool: 'source-map',
 	plugins: [
+		new CleanWebpackPlugin(['build']),
+		new HtmlWebpackPlugin({ inject: 'head',
+			template: __dirname + "/public/index.tmpl.html"}),
 		new webpack.ProvidePlugin({
 			$: "jquery",
 			jQuery: "jquery",

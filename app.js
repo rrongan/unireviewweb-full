@@ -33,6 +33,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '')));
+app.use("/public", express.static(__dirname + "/public"));
 app.use(session({
 	key: 'user_sid',
 	secret: 'unireviewweb',

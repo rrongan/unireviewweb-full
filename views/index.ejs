@@ -5,7 +5,6 @@
   <meta charset="utf-8" />
   <script src="../build/bundle.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <!--<link rel="stylesheet" href="/public/stylesheets/style.css" />-->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body ng-controller="mainController" class="index">
@@ -38,56 +37,18 @@
   <footer id="footer">
 
     <ul class="icons">
-      <li><a href="#" class="icon circle fa-twitter"><span class="label">Twitter</span></a></li>
-      <li><a href="#" class="icon circle fa-facebook"><span class="label">Facebook</span></a></li>
-      <li><a href="#" class="icon circle fa-google-plus"><span class="label">Google+</span></a></li>
-      <li><a href="#" class="icon circle fa-github"><span class="label">Github</span></a></li>
-      <li><a href="#" class="icon circle fa-dribbble"><span class="label">Dribbble</span></a></li>
+      <li><a href="https://github.com/rrongan/unireviewweb-full" class="icon circle fa-github"><span class="label">Github</span></a></li>
     </ul>
 
     <ul class="copyright">
-      <li>&copy; Untitled</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+      <li>&copy; Academic Review</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
     </ul>
 
   </footer>
 
 </div>
 
-<!-- Scripts -->
-<!--<script src="/public/javascripts/angular/angular.min.js"></script>-->
-<!--<script src="/public/javascripts/angular/angular-route.js"></script>-->
 <script src="/public/javascripts/angular/angular-ui-router.js"></script>
-<!--<script src="/public/javascripts/angular/angular-animate.js"></script>-->
-<!--<script src="/public/javascripts/angular/angular-aria.js"></script>-->
-<!--<script src="/public/javascripts/angular/angular-material.js"></script>-->
-<!--<script src="/public/javascripts/angular/angular-messages.js"></script>-->
-<!--<script src="/public/javascripts/angular/ui-bootstrap-tpls-2.5.0.min.js"></script>-->
-<!--<script src="/public/javascripts/plugin/moment.js"></script>-->
-<!--<script src="/public/javascripts/angular/angular-moment.js"></script>-->
-
-<!--<script src="/public/javascripts/angularApp.js"></script>-->
-<!--<script src="/public/javascripts/controllers/maincontroller.js"></script>-->
-<!--<script src="/public/javascripts/controllers/searchresultcontroller.js"></script>-->
-<!--<script src="/public/javascripts/controllers/signincontroller.js"></script>-->
-<!--<script src="/public/javascripts/controllers/signupcontroller.js"></script>-->
-<!--<script src="/public/javascripts/controllers/collegemaincontroller.js"></script>-->
-<!--<script src="/public/javascripts/controllers/allcollegescontroller.js"></script>-->
-<!--<script src="/public/javascripts/controllers/addcollegecontroller.js"></script>-->
-<!--<script src="/public/javascripts/controllers/editcollegecontroller.js"></script>-->
-<!--<script src="/public/javascripts/controllers/studentprofilecontroller.js"></script>-->
-
-<!--<script src="/public/javascripts/plugin/auth.js"></script>-->
-<!--<script src="/public/javascripts/plugin/googleImage.js"></script>-->
-<!--<script src="/public/javascripts/plugin/rating.js"></script>-->
-<!--<script src="/public/javascripts/plugin/wikipedia.js"></script>-->
-
-<!--<script src="/public/javascripts/jquery/jquery.min.js"></script>-->
-<!--<script src="/public/javascripts/jquery/jquery.dropotron.min.js"></script>-->
-<!--<script src="/public/javascripts/jquery/jquery.scrolly.min.js"></script>-->
-<!--<script src="/public/javascripts/jquery/jquery.scrollgress.min.js"></script>-->
-<!--<script src="/public/javascripts/jquery/skel.min.js"></script>-->
-<!--<script src="/public/javascripts/jquery/util.js"></script>-->
-<!--<script src="/public/javascripts/jquery/main.js"></script>-->
 
 
 <script type="text/ng-template" id="display">
@@ -190,7 +151,7 @@
       <label for="dob">Date of Birth</label><br>
       <md-datepicker id="dob" md-current-view="year" ng-model="student.dob" md-placeholder="Enter date"></md-datepicker><br>
       <label for="gender">Gender</label><br>
-      <md-select ng-model="student.gender">
+      <md-select id="gender" ng-model="student.gender">
         <md-option ng-repeat="gender in genderopt" value="{{gender}}">{{gender}}</md-option>
       </md-select>
       <label for="address">Address</label>
