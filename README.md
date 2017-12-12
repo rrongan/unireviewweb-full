@@ -97,9 +97,10 @@ Deployed Application URL in Heroku: [https://unireviewweb-full.herokuapp.com/](h
 + Supertest integration for API endpoint testing
 + ESLint integration for code style
 ### CA2
-+ [nyc](https://www.npmjs.com/package/nyc)for project coverage
-+ [Babel Minify Webpack Plugin](https://github.com/webpack-contrib/babel-minify-webpack-plugin)for building production dist
-+ 
++ [nyc](https://www.npmjs.com/package/nyc) for project coverage
++ [Babel Minify Webpack Plugin](https://github.com/webpack-contrib/babel-minify-webpack-plugin) for building production dist
++ [Wikipedia Plugin](https://github.com/JohnnyTheTank/angular-wikipedia-api-factory#readme)
++ [Google Image Plugin](https://github.com/Techblogogy/free-google-image-search)
 
 
 ## References

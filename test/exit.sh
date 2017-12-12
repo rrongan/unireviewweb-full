@@ -1,1 +1,1 @@
-travis_terminate 0
+travis_terminate
