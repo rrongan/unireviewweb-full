@@ -5,7 +5,7 @@
   "scripts": {
     "api:dev": "npm-run-all --parallel lint test server",
     "start": "npm-run-all build:dev",
-    "stop": "node ./test/exit.sh",
+    "stop": "killall -9v node",
     "server": "nodemon bin/www",
     "unitAuth": "cross-env NODE_ENV=test LOG_LEVEL=silent nyc mocha ./test/unit/authentication -name '*-test.js'",
     "unitStudent": "cross-env NODE_ENV=test LOG_LEVEL=silent nyc mocha ./test/unit/student -name '*-test.js'",
@@ -29,7 +29,7 @@
     "lint": "esw .",
     "lint:watch": "npm run lint -- --watch",
     "coverage": "nyc npm test",
-    "postcoverage": "npm stop",
+    "postcoverage": "npm stop && node ./test/exit.sh",
     "coverage-server": "npm-run-all --parallel build:dev coverage",
     "check-coverage": "nyc check-coverage --statements 40 --branches 20 --functions 40 --lines 50",
     "report-coverage": "nyc report --reporter=text-lcov | coveralls"

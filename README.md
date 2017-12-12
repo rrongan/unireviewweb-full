@@ -19,7 +19,7 @@ is on mLab.
 This project requires NodeJS to be installed with version that greater than 8.0.0 and I built it using Node 8.9.1, and 
 NPM 5.2.0.The project are connected to the mLab database so it does not need to install database locally.
 
-#Build Automation
+## Build Automation
 Use `npm install` to install the dependencies of the project.
 
 To build the application for development,run `npm run build:dev`. To build the application for production,
@@ -99,6 +99,7 @@ Deployed Application URL in Heroku: [https://unireviewweb-full.herokuapp.com/](h
 ### CA2
 + [nyc](https://www.npmjs.com/package/nyc) for project coverage
 + [Babel Minify Webpack Plugin](https://github.com/webpack-contrib/babel-minify-webpack-plugin) for building production dist
++ [mLab](https://mlab.com)
 + [Wikipedia Plugin](https://github.com/JohnnyTheTank/angular-wikipedia-api-factory#readme)
 + [Google Image Plugin](https://github.com/Techblogogy/free-google-image-search)
 
