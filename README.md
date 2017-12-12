@@ -29,6 +29,51 @@ To run the unit and integration test suite, run `npm test`. To run acceptance te
 is not included in `npm test` because the test not running well in Travis CI.
 
 ## Automated Deployment
+###Add Edit College Pages
+![](./img/addcollege.jpg)
+![](./img/editcollege.jpg)
+
+    √ shows the main body
+    √ shows the form
+    √ shows the tab-group and check elements inside (85ms)
+    √ shows add college input boxes and submit button (150ms)
+    √ shows the header (147ms)
+###Search Page
+![](./img/search.jpg)
+
+    √ shows the main body
+    √ shows the header
+###College Main page
+![](./img/collegemain.jpg)
+
+    √ shows the main body
+    √ shows the rating
+    √ shows the college tab-group and check elements inside (78ms)
+###Home page
+![](./img/main.jpg)
+
+    √ shows the main body
+    √ shows the nav bar
+    √ shows the buttons (69ms)
+    √ shows the inner
+    √ shows the elements in inner (145ms)
+    √ search college (198ms)
+    √ shows the footer
+###All Colleges page
+![](./img/allcolleges.jpg)
+
+    √ shows the main body
+    √ shows the header
+###Sign In Sign Up Pages
+![](./img/signin.jpg)
+![](./img/signup.jpg)
+
+    √ shows the main body
+    √ shows the form
+    √ shows the tab-group and check elements inside (69ms)
+    √ shows sign up input boxes and submit button (171ms)
+    √ shows the header (129ms)
+    √ shows sign in input boxes and submit button (112ms)
 
 ## Continuous Integration
 Travis URL: [https://travis-ci.org/rrongan/unireviewweb-full](https://travis-ci.org/rrongan/unireviewweb-full)

@@ -9,7 +9,7 @@ var mochaTimeOut = 30000;
 
 var pageSelector ;
 
-test.describe('Search Page', function() {
+test.describe('All College Page', function() {
 	this.timeout(mochaTimeOut);
 	test.before( function() {
 		driver = new webdriver.Builder()
