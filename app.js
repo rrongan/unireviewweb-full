@@ -36,7 +36,7 @@ app.use(cookieParser());
 if (prod) {
 	app.use(express.static(path.join(__dirname, 'dist')));
 } else {
-	app.use(express.static(path.join(__dirname, '')));
+	app.use(express.static(path.join(__dirname, 'build')));
 }
 app.use('/public', express.static(__dirname + '/public'));
 app.use(session({
