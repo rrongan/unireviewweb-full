@@ -3,8 +3,8 @@ language: node_js
 node_js:
 - stable
 script:
-- npm run server &
-- sleep 3
+- npm run build:dev &
+- sleep 10
 - npm run coverage
 - npm run check-coverage
 after_success:
