@@ -96,23 +96,23 @@ test.describe('Sign In Sign Up Pages', function() {
 		var tabgroup = driver.findElement(webdriver.By.className('tab-group'));
 		driver.findElement(webdriver.By.tagName('h2'))
 			.then(function(element) {
-				element.getAttribute("textContent")
+				element.getAttribute('textContent')
 					.then(function(text) {
 						expect(text).to.equal('Sign Up for Free');
-					} )
+					} );
 			});
 		tabgroup.findElements(webdriver.By.tagName('li'))
 			.then(function(elements) {
 				elements[1].findElement(webdriver.By.tagName('a')).then(function (element) {
 					element.click();
-				})
+				});
 			});
 		driver.findElement(webdriver.By.tagName('h2'))
 			.then(function(element) {
-				element.getAttribute("textContent")
+				element.getAttribute('textContent')
 					.then(function(text) {
 						expect(text).to.equal('Welcome Back!');
-					} )
+					} );
 			});
 	});
 	test.it('shows sign in input boxes and submit button', function() {

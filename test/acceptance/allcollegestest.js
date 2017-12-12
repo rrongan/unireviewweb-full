@@ -28,10 +28,10 @@ test.describe('Search Page', function() {
 	test.it('shows the header', function() {
 		driver.findElement(webdriver.By.tagName('h2'))
 			.then(function(element) {
-				element.getAttribute("textContent")
+				element.getAttribute('textContent')
 					.then(function(text) {
 						expect(text).to.equal('All Colleges');
-					} )
+					} );
 			});
 	});
 	test.after(function() {

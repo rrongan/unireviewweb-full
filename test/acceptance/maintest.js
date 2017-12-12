@@ -62,14 +62,14 @@ test.describe('Home page', function() {
 		var li = ul.findElement(webdriver.By.tagName('li'));
 		header.findElement(webdriver.By.tagName('h2'))
 			.then(function(element) {
-				element.getAttribute("textContent")
+				element.getAttribute('textContent')
 					.then(function(text) {
 						expect(text).to.equal('Academic Review');
 					} )  ;
 			});
 		inner.findElement(webdriver.By.tagName('h3'))
 			.then(function(element) {
-				element.getAttribute("textContent")
+				element.getAttribute('textContent')
 					.then(function(text) {
 						expect(text).to.equal('Find a college for you');
 					} )  ;
@@ -78,10 +78,10 @@ test.describe('Home page', function() {
 			expect(element).to.not.equal(null );
 		});
 		li.findElement(webdriver.By.tagName('button')).then(function(element) {
-			element.getAttribute("textContent")
+			element.getAttribute('textContent')
 				.then(function(text) {
 					expect(text).to.equal('Search');
-				} )
+				} );
 		});
 	} );
 	test.it( 'search college', function() {
@@ -101,7 +101,7 @@ test.describe('Home page', function() {
 				.then(function(element) {
 					expect(element).to.not.equal(null );
 				});
-		})
+		});
 	} );
 	test.it( 'shows the footer', function() {
 		var footerSelector = webdriver.By.tagName('footer');

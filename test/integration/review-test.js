@@ -33,9 +33,9 @@ describe('Review', function () {
 		it('should return confirmation message and update database', function(done) {
 			var tempreview = {
 				rating: 5,
-				comment: "Very good",
-				reviewer: "5a14996c1a26b93bd4979e89",
-				type: "College"
+				comment: 'Very good',
+				reviewer: '5a14996c1a26b93bd4979e89',
+				type: 'College'
 			};
 			request(app)
 				.post('/review')
@@ -69,9 +69,9 @@ describe('Review', function () {
 					});
 					expect(result[0]).to.include( {
 						rating: 5,
-						comment: "Very good",
-						reviewer: "5a14996c1a26b93bd4979e89",
-						type: "College"
+						comment: 'Very good',
+						reviewer: '5a14996c1a26b93bd4979e89',
+						type: 'College'
 					} );
 					done();
 				});
@@ -96,9 +96,9 @@ describe('Review', function () {
 					});
 					expect(result).to.include( {
 						rating: 5,
-						comment: "Very good",
-						reviewer: "5a14996c1a26b93bd4979e89",
-						type: "College"
+						comment: 'Very good',
+						reviewer: '5a14996c1a26b93bd4979e89',
+						type: 'College'
 					} );
 					done();
 				});
@@ -120,9 +120,9 @@ describe('Review', function () {
 		it('should return confirmation message and update review detail', function(done) {
 			var modify = {
 				rating: 4,
-				comment: "Very good",
-				reviewer: "5a14996c1a26b93bd4979e89",
-				type: "College"
+				comment: 'Very good',
+				reviewer: '5a14996c1a26b93bd4979e89',
+				type: 'College'
 			};
 			request(app)
 				.put('/review/'+tempid)
@@ -139,9 +139,9 @@ describe('Review', function () {
 					};
 					expect(result).to.include( {
 						rating: 4,
-						comment: "Very good",
-						reviewer: "5a14996c1a26b93bd4979e89",
-						type: "College"
+						comment: 'Very good',
+						reviewer: '5a14996c1a26b93bd4979e89',
+						type: 'College'
 					} );
 					done();
 				});
@@ -181,9 +181,9 @@ describe('Review', function () {
 					});
 					expect(result[0]).to.include( {
 						rating: '4',
-						comment: "Very good",
-						reviewer: "5a14996c1a26b93bd4979e89",
-						type: "College"
+						comment: 'Very good',
+						reviewer: '5a14996c1a26b93bd4979e89',
+						type: 'College'
 					} );
 					done();
 				});
