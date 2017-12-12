@@ -6,7 +6,7 @@ os:
 - windows
 script:
 - npm run lint
-- run build:dev
+- npm run build:dev
 - npm run coverage
 - npm run check-coverage
 after_success:
