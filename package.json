@@ -12,7 +12,7 @@
     "unit": "npm run unitStudent && npm run unitAuth && npm run unitCollege",
     "integration": "cross-env NODE_ENV=test LOG_LEVEL=silent nyc mocha ./test/integration -name '*-test.js'",
     "acceptance": "cross-env NODE_ENV=test LOG_LEVEL=silent nyc mocha ./test/acceptance -name '*-test.js'",
-    "test": "npm run unit && npm run integration",
+    "test": "npm run unit && npm run integration && npm run acceptance",
     "test:watch": "npm run test -- --watch",
     "build:dev": "webpack",
     "build:watch": "webpack --watch",
