@@ -2,10 +2,8 @@ dist: trusty
 language: node_js
 node_js:
 - stable
-os:
-- windows
 script:
-- npm run coverage-server &
+- npm run coverage-server
 - npm run check-coverage
 after_success:
 - npm stop
