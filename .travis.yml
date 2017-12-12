@@ -3,10 +3,10 @@ language: node_js
 node_js:
 - stable
 script:
-- npm run coverage-server
+- npm server &
+- npm run coverage
 - npm run check-coverage
 after_success:
-- npm stop
 - npm run report-coverage
 branches:
  only:
