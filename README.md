@@ -126,4 +126,14 @@ Deployed Application URL in Heroku: [https://unireviewweb-full.herokuapp.com/](h
 + [https://github.com/visionmedia/supertest](https://github.com/visionmedia/supertest)
 
 ### Website Template
-+ 
++ [https://html5up.net/twenty](https://html5up.net/twenty)
+### Banner Background
++ [https://cdn.theculturetrip.com/wp-content/uploads/2016/08/6995209237_5244628609_k.jpg](https://cdn.theculturetrip.com/wp-content/uploads/2016/08/6995209237_5244628609_k.jpg)
+### Review Edit Delete
++ [http://blog.shubhamsaxena.com/creating-simple-inline-editing-with-angularjs/](http://blog.shubhamsaxena.com/creating-simple-inline-editing-with-angularjs/)
+### Google Image Plugin
++ [https://github.com/Techblogogy/free-google-image-search](https://github.com/Techblogogy/free-google-image-search)
+### Rating
++ [https://www.npmjs.com/package/angular-jk-rating-stars](https://www.npmjs.com/package/angular-jk-rating-stars)
+### Wikipedia Plugin
++ [https://github.com/JohnnyTheTank/angular-wikipedia-api-factory#readme ](https://github.com/JohnnyTheTank/angular-wikipedia-api-factory#readme)

@@ -1,1 +1,1 @@
-killall -9v node
+travis_terminate 0
