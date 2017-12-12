@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "api:dev": "npm-run-all --parallel lint test server",
-    "start": "npm-run-all --parallel build:prod",
+    "start": "npm-run-all build:dev",
     "server": "nodemon bin/www",
     "unitAuth": "cross-env NODE_ENV=test LOG_LEVEL=silent nyc mocha ./test/unit/authentication -name '*-test.js'",
     "unitStudent": "cross-env NODE_ENV=test LOG_LEVEL=silent nyc mocha ./test/unit/student -name '*-test.js'",
