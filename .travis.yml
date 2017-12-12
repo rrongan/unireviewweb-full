@@ -2,8 +2,10 @@ dist: trusty
 language: node_js
 node_js:
 - stable
-script:
+before_script:
 - node bin/www &
+ - sleep 3
+script:
 - npm run coverage
 - npm run check-coverage
 after_success:
