@@ -22,6 +22,7 @@ var authentication = require('./routes/authentication.js');
 var googleimg = require('./routes/googleimg.js');
 
 var app = express();
+process.title = app;
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
