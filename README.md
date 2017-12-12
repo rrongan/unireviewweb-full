@@ -29,7 +29,9 @@ To run the unit and integration test suite, run `npm test`. To run acceptance te
 is not included in `npm test` because the test not running well in Travis CI.
 
 ## Automated Deployment
-###Add Edit College Pages
+
+### Add Edit College Pages
+
 ![](./img/addcollege.jpg)
 ![](./img/editcollege.jpg)
 
@@ -38,18 +40,21 @@ is not included in `npm test` because the test not running well in Travis CI.
     √ shows the tab-group and check elements inside (85ms)
     √ shows add college input boxes and submit button (150ms)
     √ shows the header (147ms)
-###Search Page
+### Search Page
+
 ![](./img/search.jpg)
 
     √ shows the main body
     √ shows the header
-###College Main page
+### College Main page
+
 ![](./img/collegemain.jpg)
 
     √ shows the main body
     √ shows the rating
     √ shows the college tab-group and check elements inside (78ms)
-###Home page
+### Home page
+
 ![](./img/main.jpg)
 
     √ shows the main body
@@ -59,12 +64,14 @@ is not included in `npm test` because the test not running well in Travis CI.
     √ shows the elements in inner (145ms)
     √ search college (198ms)
     √ shows the footer
-###All Colleges page
+### All Colleges page
+
 ![](./img/allcolleges.jpg)
 
     √ shows the main body
     √ shows the header
-###Sign In Sign Up Pages
+### Sign In Sign Up Pages
+
 ![](./img/signin.jpg)
 ![](./img/signup.jpg)
 
@@ -98,7 +105,6 @@ Deployed Application URL in Heroku: [https://unireviewweb-full.herokuapp.com/](h
 ## References
 
 ### Web Application Development Lab
-
 + [https://ddrohan.github.io/wit-wad/labwall.html](https://ddrohan.github.io/wit-wad/labwall.html)
 ### Agile Software Development Lab
 + [https://moodle.wit.ie/course/view.php?id=115160&section=5](https://moodle.wit.ie/course/view.php?id=115160&section=5)
@@ -118,3 +124,6 @@ Deployed Application URL in Heroku: [https://unireviewweb-full.herokuapp.com/](h
 + [https://github.com/mockgoose/mockgoose](https://github.com/mockgoose/mockgoose)
 ### Supertest 
 + [https://github.com/visionmedia/supertest](https://github.com/visionmedia/supertest)
+
+### Website Template
++ 
