@@ -21,7 +21,7 @@
     "clean-build": "rimraf ./build && mkdir build",
     "clean-dist": "rimraf ./dist && mkdir dist",
     "clean": "npm-run-all clean-build clean-dist",
-    "prebuild:dev": "npm-run-all test clean-build",
+    "prebuild:dev": "npm-run-all clean-build",
     "postbuild:dev": "npm run server",
     "lint": "esw .",
     "lint:watch": "npm run lint -- --watch",
