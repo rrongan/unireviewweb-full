@@ -53,7 +53,7 @@ app.use(session({
 
 //open mongo database
 if(process.env.NODE_ENV !== 'test') {
-	mongoose.connect('mongodb://localhost:27017/unireviewdb');
+	mongoose.connect('mongodb://yunshen:yunshen95@ds135916.mlab.com:35916/unireviewweb');
 	var db = mongoose.connection;
 	db.on('error', function (err) {
 		console.log('connection error', err);
