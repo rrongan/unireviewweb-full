@@ -19,7 +19,7 @@ notifications:
    on_success: never        # default: change
    on_failure: always       # default: always
 install:            # NEW
-- wget -N http://chromedriver.storage.googleapis.com/2.90/chromedriver_linux64.zip -P ~/
+- wget -N https://chromedriver.storage.googleapis.com/2.9/chromedriver_linux64.zip -P ~/
 - unzip ~/chromedriver_linux64.zip -d ~/
 - rm ~/chromedriver_linux64.zip
 - sudo mv -f ~/chromedriver /usr/local/share/
