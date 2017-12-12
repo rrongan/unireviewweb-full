@@ -15,6 +15,7 @@
     "test": "npm run unit && npm run integration && npm run acceptance",
     "test:watch": "npm run test -- --watch",
     "build:dev": "webpack",
+    "dev": "webpack",
     "build:watch": "webpack --watch",
     "server:prod": "cross-env NODE_ENV=prod && node bin/www",
     "build:prod": "webpack --config webpack-prod.config.js",

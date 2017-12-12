@@ -5,8 +5,7 @@ node_js:
 os:
 - windows
 script:
-- npm run lint
-- npm run build:dev
+- npm run dev
 - npm run coverage
 - npm run check-coverage
 after_success:
