@@ -64,7 +64,7 @@ test.describe('Home page', function() {
 			.then(function(element) {
 				element.getAttribute('textContent')
 					.then(function(text) {
-						expect(text).to.equal('Academic Review');
+						expect(text).to.equal('Academ Review');
 					} )  ;
 			});
 		inner.findElement(webdriver.By.tagName('h3'))
